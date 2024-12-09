@@ -23,9 +23,7 @@
         $this->params = $arr?array_values($arr):[];
         call_user_func_array([$this->controller, $this->action], $this->params);
         }
-
         
-
         function UrlProcess () {
             if (isset($_GET["url"])) {
                 return explode("/",filter_var(trim($_GET["url"], "/")));
