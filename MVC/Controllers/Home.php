@@ -2,8 +2,8 @@
 class Home extends Controller {
     static function SayHi()
     {
-        $kit = self::model("ProductModel");
-        echo $kit->GetProducts();
+        $kit = self::model("HomepageModel");
+        print_r($kit->GetProducts());
     }
     static function Show($a, $b)
     {
