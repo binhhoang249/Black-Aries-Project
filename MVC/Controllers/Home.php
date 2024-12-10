@@ -1,13 +1,17 @@
 <?php
-class Home
-{
+class Home extends Controller {
     static function SayHi()
     {
-        echo "Home-SayHi";
+        $kit = self::model("ProductModel");
+        echo $kit->GetProducts();
     }
-    static function Show()
+    static function Show($a, $b)
     {
-        echo "Home-Show";
+//        model
+        $kit = self::model("ProductModel");
+        $tong = $kit->Tong($a,$b);
+//        view
+        self::view("NewProducts",["Number"=>$tong]);
     }
 }
 ?>
