@@ -122,3 +122,18 @@
 .banner p {
     font-size: 18px; /* Kích thước chữ mô tả */
 }
+.carousel-control-next-icon {
+    background-color: gray !important; /* Màu đen cho mũi tên */
+}
+.carousel-control-prev-icon {
+    background-color: gray !important; /* Màu đen cho mũi tên */
+}
+.itemal{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        width:20%;
+}
+    .back_color{
+        background:#F6FBFF;
+}
