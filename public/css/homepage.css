@@ -1,0 +1,124 @@
+.container {
+    width: 100%;
+    max-width: 1450px;  /* Điều chỉnh chiều rộng tối đa */
+    min-height: auto; /* Không cần chiều cao tối thiểu */
+
+}
+.card-category {
+    border: none;
+    border-radius: 10px;
+    height: 150px;
+    margin: 10px;
+    margin-left:0px;
+    margin-right:10px;
+
+}
+.card-category:hover {
+    background-color: #f0f8ff;
+    cursor: pointer;
+}
+.card-category.active {
+    background-color: #365b85;
+    color: #fff;
+}
+.card-category .bi {
+    color: #365b85;
+}
+.card-category.active .bi {
+    color: #fff;
+}
+
+.card-body .mt-auto {
+    margin-top: auto;
+}
+
+.row {
+    display: flex;
+    flex-wrap: nowrap; /* Không cho các thẻ card xuống dòng */
+    justify-content: space-evenly; /* Căn giữa các thẻ card */
+}
+
+#container .col-6 {
+    flex: 0 0 270px; /* Chiều rộng tối thiểu của mỗi thẻ card */
+    margin: 10px;
+}
+
+/* Sửa kích thước card cho sản phẩm */
+.card-product {
+    border: 1px solid #ddd;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    height: 440px; /* Thay đổi chiều cao của thẻ sản phẩm */
+    width: 308px;
+}
+
+.card-product:hover {
+    transform: scale(1.05);
+}
+
+.card-product img {
+    width: 100%; /* Giữ hình ảnh rộng 100% của card */
+    min-height: 270px; /* Nếu không có ảnh, sẽ có một chiều cao mặc định */
+    object-fit: cover; /* Cắt và giữ tỷ lệ của hình ảnh */
+}
+
+.card-product .card-body {
+    padding-top: 20px;
+}
+
+.card-product .card-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.card-product .card-text {
+    font-size: 16px;
+    color: #28a745;
+}
+
+.card-product .btn {
+    background-color: #007bff;
+    color: #fff;
+    margin-top: 0px;
+    border-radius: 5px;
+}
+
+.card-product .btn:hover {
+    background-color: #0056b3;
+}
+.banner .img-fluid{
+    width: 1400px;
+    object-fit: cover;
+    margin-left:140px;
+    
+}
+
+.banner {
+    position: relative;
+    width:83%;
+    margin-left:130px;
+    height: 400px; /* Bạn có thể điều chỉnh chiều cao tùy theo nhu cầu */
+    background-image: url('../images/banner.png'); /* Đường dẫn đến hình ảnh nền */
+    background-size: cover; /* Đảm bảo hình ảnh phủ đầy banner */
+    background-position: center; /* Căn giữa hình ảnh trong banner */
+    display: flex;
+    align-items: center; /* Căn giữa banner dọc */
+    text-align: center;
+    color: black; /* Màu chữ */
+}
+
+.banner-content {
+    max-width: 800px; /* Đặt chiều rộng tối đa cho nội dung bên trong banner */
+    padding: 20px; /* Đệm cho nội dung */
+}
+
+.banner h1 {
+    font-size: 26px; /* Kích thước chữ tiêu đề */
+    margin-bottom: 10px;
+    margin-left:30px;
+}
+
+.banner p {
+    font-size: 18px; /* Kích thước chữ mô tả */
+}
