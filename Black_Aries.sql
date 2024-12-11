@@ -109,14 +109,7 @@ INSERT INTO Color (color_name, color_link) VALUES
    ('Black', '#000000'),
    ('White', '#FFFFFF');
 
-INSERT INTO Product_color (quantity, image, price, defaultal, product_id, color_id) VALUES
-    (10, 'dining_table_red.png', 250, 1, 1, 1),
-    (5, 'corner_sofa_blue.png', 800, 1, 2, 2),
-    (15, 'office_chair_green.png', 150, 1, 3, 3),
-    (8, 'queen_bed_black.png', 500, 1, 4, 4),
-    (20, 'desk_lamp_white.png', 50, 1, 5, 5);
-
--- Vortex Dining Table
+    -- Vortex Dining Table
 INSERT INTO Product_color (quantity, image, price, defaultal, product_id, color_id) VALUES
   (10, 'vortex_dining_table_red.png', 650, 0, 1, 1),  
   (10, 'vortex_dining_table_blue.png', 250, 0, 1, 2),  
@@ -169,8 +162,7 @@ INSERT INTO Product_color (quantity, image, price, defaultal, product_id, color_
   (12, 'prego_dining_table_red.png', 450, 0, 7, 1),  
   (12, 'prego_dining_table_blue.png', 480, 0, 7, 2),  
   (12, 'prego_dining_table_green.png', 450, 0, 7, 3),  
-  (12, 'prego_dining_table_black.png', 450, 0, 7, 4),  
-  (12, 'prego_dining_table_white.png', 450, 1, 7, 5);  
+  (12, 'prego_dining_table_black.png', 450, 0, 7, 4),  /-strong/-heart:>:o:-((:-h (12, 'prego_dining_table_white.png', 450, 1, 7, 5);  
 
 -- Tony Cafe Table
 INSERT INTO Product_color (quantity, image, price, defaultal, product_id, color_id) VALUES
@@ -231,8 +223,7 @@ INSERT INTO Product_color (quantity, image, price, defaultal, product_id, color_
   (12, 'amelia_hanging_chair_green.png', 770, 0, 15, 3),
   (12, 'amelia_hanging_chair_black.png', 780, 0, 15, 4),
   (12, 'amelia_hanging_chair_white.png', 790, 1, 15, 5),
-
-  -- Kiawah Hanging Chair
+-- Kiawah Hanging Chair
   (10, 'kiawah_hanging_chair_red.png', 800, 0, 16, 1),
   (10, 'kiawah_hanging_chair_blue.png', 810, 0, 16, 2),
   (10, 'kiawah_hanging_chair_green.png', 820, 0, 16, 3),
@@ -266,7 +257,6 @@ INSERT INTO Product_color (quantity, image, price, defaultal, product_id, color_
   (20, 'wailea_outdoor_swivel_chair_green.png', 1020, 0, 20, 3),
   (20, 'wailea_outdoor_swivel_chair_black.png', 1030, 0, 20, 4),
   (20, 'wailea_outdoor_swivel_chair_white.png', 1040, 1, 20, 5);
-
 
 -- Cái này là cái mới nhất cho nên sẽ chạy cuối cùng
 CREATE TABLE Bussiness (
