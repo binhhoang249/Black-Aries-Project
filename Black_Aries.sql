@@ -39,17 +39,68 @@ CREATE TABLE Product_color (
 
 INSERT INTO Categories (category_name) VALUES
    ('Table'),
-   ('Sofa'),
    ('Chair'),
-   ('Bed'),
-   ('Lamp');
+   ('Lamp'),
+   ('Sofa'),
+   ('Bed');
 
-INSERT INTO Products (product_name, description, time_stamp, category_id, status, discount, popular) VALUES
-  ('Dining Table', 'Modern dining table', '2024-12-10', 1, 1, 10.5, 1),
-  ('Corner Sofa', 'Comfortable corner sofa', '2024-12-10', 2, 1, 15.0, 0),
-  ('Office Chair', 'Ergonomic office chair', '2024-12-10', 3, 1, 8.0, 1),
-  ('Queen Bed', 'Stylish queen-size bed', '2024-12-10', 4, 1, 12.0, 0),
-  ('Desk Lamp', 'LED desk lamp', '2024-12-10', 5, 1, 5.0, 1);
+  INSERT INTO Products (product_name, description, time_stamp, category_id, status, discount, popular)
+VALUES
+  ('Vortex Dining Table', 'This contemporary dining table is designed with clean, sharp lines and a minimalist aesthetic, making it a perfect centerpiece for modern dining rooms. Its sleek design offers versatility, seamlessly blending into both formal and casual settings, with a durable surface ideal for daily use or elegant dinner parties.', '2024-12-10', 1, 1, 10.5, 0),
+  ('Multiplo Square Cafe Table with Square Base', 'Embrace rustic charm with the Multiplo Square Cafe Table. Its sturdy square base and solid wood finish bring a warm, inviting atmosphere to cafes or home kitchens. Perfect for small gatherings, its timeless design will complement any rustic or industrial-themed space while providing functional seating.', '2024-12-4', 1, 1, 11.0, 0),
+  ('GAX XW Table', 'The GAX XW Table combines industrial aesthetics with modern sophistication, offering a sturdy metal frame and a sleek wood tabletop. Perfect for urban lofts or contemporary dining spaces, this table is both functional and stylish, designed to withstand the rigors of daily use while making a bold statement in any room.', '2024-12-8', 1, 1, 12.0, 0),
+  ('Rows Diagonal Dining Table with Glass Top', 'This modern dining table is an ideal choice for those seeking a touch of elegance and sophistication. Featuring a diagonal frame and a transparent glass top, it allows the beauty of your space to shine through. Its minimalistic yet striking design makes it a perfect addition to any contemporary dining room.', '2024-12-9', 1, 1, 13.0, 0),
+  ('Orbital Curved Extendable Dining Table', 'With its minimalist design and innovative curved structure, the Orbital Curved Dining Table is a modern marvel. The extendable feature provides flexibility for larger gatherings, while its smooth finish and elegant lines make it a stylish focal point in any home or office dining area.', '2024-8-6', 1, 1, 14.0, 1),
+  ('Levante Extendable Dining Table', 'The Levante Dining Table combines rustic farmhouse charm with modern functionality. Its extendable design allows for easy accommodation of larger groups, making it ideal for family meals or dinner parties. Crafted with high-quality wood and finished with a natural tone, it offers both durability and beauty.', '2024-5-2', 1, 1, 15.0, 1),
+  ('Prego Dining Table', 'This classic wooden dining table brings timeless appeal to any home. Its traditional design features solid wood construction, with a smooth finish that adds warmth and elegance. Perfect for families, this table offers ample space for meals while maintaining a sophisticated, rustic look.', '2024-10-10', 1, 1, 16.0, 1),
+  ('Tony Cafe Table', 'Designed with a vintage flair, the Tony Cafe Table features a round wooden top and a sturdy base, making it a perfect addition to cafes, bistros, or home dining areas. Its simple yet charming design captures the essence of old-school cafe culture while providing reliable support for your dining needs', '2024-9-10', 1, 1, 17.0, 1),
+  ('Carlina Round Dining TableDining Table', 'The Carlina Round Dining Table brings a fresh Scandinavian touch to your dining space. Made from natural wood and featuring a clean, round design, this table fits perfectly in homes that embrace minimalism and simplicity. Its design emphasizes functionality and comfort, making it a versatile addition to any contemporary dining room.', '2024-12-5', 1, 1, 18.0, 0),
+  ('Explorer Round Dining Table', 'The Explorer Round Dining Table features a transitional style that combines traditional craftsmanship with modern design elements. Its smooth surface and sturdy base make it a versatile option for dining rooms or kitchens, perfect for both intimate family dinners and larger social gatherings.', '2024-8-5', 1, 1, 19.0, 0),
+
+  ('Lollygagger Lounge Chair', 'Level up your patio space with the Lollygagger Lounge Chair from Loll Designs. This modern Adirondack chair is a fresh take on a classic where you’ll find an integrated bottle opener underneath the arm to ensure maximum relaxation as you sit back, relax and watch the world go by. Select the optional Sunbrella fabric cushion for the ultimate leisure experience with no fear of the elements.', '2024-12-8', 2, 1, 8.0, 0),
+  ('Amelia Club Chair', 'Offering an air of simple elegance, the Amelia Club Chair from Azzurro Living is a functional blend of comfort and style. Characterized by its aluminum frame and hand-knotted sand rope detailing, this club chair is suitable for use both indoors and out, and is topped with Solvita Performance covered, high-density foam cushions, ready to stand up to the elements. This update on a traditional club chair frame works well in a variety of settings whether part of a large seating ensemble poolside or paired together with a teak end table on a screened-in porch. ', '2024-12-3', 2, 1, 8.5, 0),
+  ('Montauk Club Chair', 'Featuring a mesh back for breathability and a sleek frame, the Montauk Club Chair is a perfect blend of comfort and modern style. Ideal for both work and relaxation, this chair provides support for long hours while adding a touch of sophistication to any office or home setting.', '2024-12-3', 2, 1, 9.0, 0),
+  ('Moments Outdoor Lounge Chair', 'Elevate your outdoor space with the Moments Outdoor Lounge Chair. Crafted from premium leather and designed for ultimate comfort, this chair combines luxury with practicality. Whether you place it poolside or on your patio, it offers a stylish and durable seating option for long hours of relaxation.', '2024-12-14', 2, 1, 9.5, 0),
+  ('Amelia Hanging Chair', 'The Amelia Hanging Chair is perfect for those seeking a unique and fun seating option. Whether used in a living room, patio, or gaming space, its suspended design offers an inviting space to relax and unwind. Made from high-quality materials, this chair combines comfort with a modern aesthetic.', '2024-8-10', 2, 1, 10.0, 1),
+  ('Kiawah Hanging Chair', ' A swivel office chair with a twist, the Kiawah Hanging Chair offers both style and functionality. Perfect for small spaces or casual settings, it provides comfortable seating with the added benefit of swivel movement, making it a versatile choice for workspaces or leisure areas.', '2024-1-4', 2, 1, 10.5, 1),
+  ('Proust Outdoor Lounge Chair', 'The Monet Outdoor Highback Chair combines lounge-style comfort with modern design. Its high back offers excellent support, making it ideal for long hours of relaxation or reading. Whether used indoors or outdoors, it provides an elegant and comfortable seating experience.', '2024-7-10', 2, 1, 11.0, 1),
+  ('Monet Outdoor Highback Chair', ' The Monet Outdoor Highback Chair combines lounge-style comfort with modern design. Its high back offers excellent support, making it ideal for long hours of relaxation or reading. Whether used indoors or outdoors, it provides an elegant and comfortable seating experience.', '2024-7-9', 2, 1, 11.5, 1),
+  ('BM5568 Deck Chair', 'The BM5568 Deck Chair offers height adjustability for personalized comfort. Perfect for both home and office settings, this chair provides ergonomic support while maintaining a sleek, modern look. Whether used for work or relaxation, it ensures comfort during long hours of use.', '2024-6-19', 2, 1, 12.0, 0),
+  ('Wailea Outdoor Swivel Chair', 'Compact yet stylish, the Wailea Outdoor Swivel Chair is perfect for smaller spaces. Designed for both comfort and practicality, this chair features a swivel base and modern design, making it an ideal addition to any outdoor setting or contemporary office.', '2024-6-10', 2, 1, 12.5, 0),
+
+  ('Outrack Garota Outdoor LED Track Light', 'The Outrack Garota Outdoor LED Track Light is a versatile lighting option for any space. Its flexible arm allows you to adjust the light angle, making it perfect for illuminating outdoor patios, decks, or garden areas. A reliable and stylish addition to your outdoor lighting collection.', '2024-12-11', 3, 1, 5.0, 0),
+  ('Ventura Outdoor Pendant Light', 'The Ventura Outdoor Pendant Light offers touch-sensitive controls and sleek design for modern outdoor spaces. Ideal for patios, decks, or balconies, it provides ambient lighting while adding a contemporary touch to your outdoor decor.', '2024-12-16', 3, 1, 5.5, 0),
+  ('Rochefort Outdoor Pendant Light', 'This wireless charging LED desk lamp combines modern functionality with sleek design. The Rochefort Outdoor Pendant Light is perfect for illuminating workspaces or outdoor areas, offering both style and convenience with its built-in wireless charging feature.', '2024-12-12', 3, 1, 6.0, 0),
+  ('Outrack Nans Perris Outdoor LED Track Light', 'This outdoor LED track light features a modern design and energy-efficient lighting. The adjustable light direction makes it perfect for illuminating outdoor areas such as gardens, walkways, or decorative outdoor spaces.', '2024-12-25', 3, 1, 6.5, 0),
+  ('Outrack Nans Cone Outdoor LED Track Light', 'This outdoor LED track light with a conical shape provides strong and energy-efficient illumination. Its design is ideal for outdoor spaces, highlighting gardens, pathways, or decorative areas in an elegant and functional way.', '2024-6-10', 3, 1, 7.0, 1),
+  ('Nucli Outdoor Pendant Light', 'The Nucli outdoor pendant light offers a simple and elegant design, perfect for hanging in outdoor areas such as gardens or porches. Equipped with LED technology, it provides soft yet efficient lighting for a comfortable outdoor experience.', '2024-9-10', 3, 1, 7.5, 1),
+  ('Amelie Portable Outdoor LED Hanging Lamp', 'The Amelie portable outdoor hanging lamp is versatile and ideal for outdoor events or spaces that require easy mobility. It uses LED bulbs to ensure long-lasting, energy-efficient lighting, creating a warm and inviting atmosphere wherever it’s placed.', '2024-2-10', 3, 1, 8.0, 1),
+  ('Alford Place Outdoor Hanging Light', ' The Alford Place outdoor hanging light combines functionality with decorative beauty. Its vibrant colors and durable construction make it perfect for outdoor spaces, adding a lively and cozy touch to any setting.', '2024-9-11', 3, 1, 8.5, 1),
+  ('LED Aurora Dual Zone Flush Mount', 'The LED Aurora flush mount light features a sleek, seamless design with dual lighting zones, allowing you to adjust the brightness for different areas. It’s suitable for both indoor and outdoor use, providing even and energy-efficient lighting for a variety of spaces.', '2024-8-10', 3, 1, 9.0, 0),
+  ('Pi LED Round Flush Mount', ' The Pi LED round flush mount light brings a minimalist, modern look to any space. Its simple design makes it perfect for installation in various areas, including living rooms, dining rooms, or hallways, while offering energy-saving and long-lasting LED illumination.', '2024-2-10', 3, 1, 9.5, 0),
+
+  ('Asker 3 Seater Sofa with Ottoman', 'The Asker 3-Seater Sofa with Ottoman offers a luxurious and comfortable seating experience, designed with a recliner mechanism for ultimate relaxation. This sofa set includes a matching ottoman for added convenience, making it perfect for living rooms and lounges.', '2024-12-24', 4, 1, 20.0, 0),
+  ('Asker 3 Seater Sofa', 'The Asker 3-Seater Sofa is a sectional luxury sofa designed to provide a cozy and stylish seating solution for your living space. With high-quality upholstery and a modern design, it offers both comfort and elegance for any home.', '2024-12-28', 4, 1, 21.0, 0),
+  ('Ridge Outdoor Sofa', 'The Ridge Outdoor Sofa combines comfort with durability, featuring a sleeper design for versatile seating options. Perfect for outdoor spaces, it offers a comfortable lounging experience while also doubling as a bed for added convenience.', '2024-12-22', 4, 1, 22.0, 0),
+  ('Salto Sofa', 'The Salto Sofa boasts a classic design that blends timeless style with luxurious comfort. Its sleek lines and soft cushions make it the ideal centerpiece for any living room or seating area, offering both elegance and relaxation.', '2024-12-15', 4, 1, 23.0, 0),
+  ('PAROS 3-Seater Sofa', 'The PAROS 3-Seater Sofa is a contemporary luxury sofa designed for modern living. With its plush cushions and refined silhouette, it offers a sophisticated and comfortable seating option that complements any stylish interior.', '2024-6-10', 4, 1, 24.0, 1),
+  ('Jack Outdoor 3 Seater Sofa', 'The Jack Outdoor 3-Seater Sofa features an L-shaped design, perfect for outdoor relaxation. Made with durable materials, it provides a comfortable seating area for gatherings while adding a modern touch to patios or garden spaces.', '2024-9-19', 4, 1, 25.0, 1),
+  ('Bonan Lounge End Sofa', 'The Bonan Lounge End Sofa offers a U-shaped design, creating a spacious and comfortable lounging area. Its luxurious fabric and modern style make it a perfect addition to both contemporary and classic interiors.', '2024-1-10', 4, 1, 26.0, 1),
+  ('Nisswa Sofa', 'The Nisswa Sofa features a tufted design that adds a touch of luxury and elegance to any space. With its plush cushions and stylish structure, this sofa is a perfect blend of comfort and classic aesthetics.', '2024-3-11', 4, 1, 27.0, 1),
+  ('Jut Sofa', 'The Jut Sofa is a modular luxury sofa designed for ultimate flexibility. Its contemporary design allows for easy configuration, making it ideal for various room layouts and providing both comfort and style.', '2024-2-10', 4, 1, 28.0, 0),
+  ('Stone Sofa', ' The Stone Sofa offers a vintage-style design that exudes charm and character. With its classic upholstery and timeless design, this sofa brings a cozy, retro feel to any living room or sitting area.', '2024-6-10', 4, 1, 29.0, 0),
+
+  ('CLOE Upholstered Bed', 'The CLOE Upholstered Bed offers a luxurious and comfortable sleeping experience, featuring a soft, padded headboard for added support. Its queen-size frame and elegant design make it a perfect centerpiece for any bedroom.', '2024-12-2', 5, 1, 12.0, 0),
+  ('Potter Bed', 'The Potter Bed features a sturdy wooden frame with a queen-size design, combining strength and style. Its clean lines and natural wood finish make it an ideal choice for those seeking a rustic yet refined look for their bedroom.', '2024-12-4', 5, 1, 13.0, 0),
+  ('Sydney Bed', 'The Sydney Bed features a platform design, offering a sleek and modern aesthetic. The low-profile queen-size frame provides a minimalist look, making it a perfect fit for contemporary bedroom styles.', '2024-12-8', 5, 1, 14.0, 0),
+  ('Linn Bed', 'The Linn Bed offers a storage queen-size design, providing ample space underneath for keeping your bedroom organized. Its functional yet stylish design makes it an excellent choice for those looking for both comfort and convenience.', '2024-12-5', 5, 1, 15.0, 0),
+  ('Allegra Bed', 'The Allegra Bed features a canopy-style design, adding an element of elegance and romance to your bedroom. With its queen-size frame, this bed is perfect for creating a luxurious, serene sleeping environment.', '2024-4-10', 5, 1, 16.0, 1),
+  ('Laurent Upholstered Bed', 'The Laurent Upholstered Bed features a sleek sleigh design with a soft, upholstered headboard. Its queen-size frame provides both comfort and style, making it a perfect addition to any elegant bedroom.', '2024-3-10', 5, 1, 17.0, 1),
+  ('Moment Bed', ' The Moment Bed features a modern design with clean lines and a contemporary queen-size frame. Its minimalist aesthetic offers both comfort and sophistication, making it a perfect fit for modern bedroom decor.', '2024-6-10', 5, 1, 18.0, 1),
+  ('Platform Bed', 'The Platform Bed is a traditional queen-size design with a simple yet classic structure. Its sturdy frame and clean lines offer both support and elegance, making it ideal for any traditional bedroom setting.', '2024-4-03', 5, 1, 19.0, 1),
+  ('Air Bed', ' The Air Bed offers an industrial queen-size design, featuring a metal frame and modern styling. Its bold, minimalist look is perfect for adding a touch of urban style to your bedroom while providing a comfortable sleeping experience.', '2024-8-8', 5, 1, 20.0, 0),
+  ('Nook Bed', 'The Nook Bed offers a contemporary queen-size design with a focus on comfort and style. Its sleek frame and modern aesthetic make it a perfect choice for those seeking a stylish and comfortable sleeping arrangement.Contemporary queen-size bed', '2024-8-3', 5, 1, 21.0, 0);
+
 
 INSERT INTO Color (color_name, color_link) VALUES
    ('Red', '#FF0000'),
@@ -65,30 +116,23 @@ INSERT INTO Product_color (quantity, image, price, defaultal, product_id, color_
     (8, 'queen_bed_black.png', 500, 1, 4, 4),
     (20, 'desk_lamp_white.png', 50, 1, 5, 5);
 
--- Nếu ai đã chạy hết tất cả database rồi thì chạy thêm lệnh này nữa, chạy lần lượt tránh lỗi.
-ALTER TABLE Products
-    MODIFY description TEXT;
+-- Cái này là cái mới nhất cho nên sẽ chạy cuối cùng
+CREATE TABLE Bussiness (
+   Bussiness_id INT PRIMARY KEY DEFAULT 1,
+   bussiness_name VARCHAR(50) NOT NULL,
+   description TEXT,
+   address VARCHAR(255),
+   contact_number VARCHAR(15),
+   email VARCHAR(100),
+   logo VARCHAR(135),
+   image VARCHAR(135));
 
-UPDATE Products
-SET description = 'Modern dining table with a sleek design, crafted from high-quality wood, offering durability and elegance for any dining space. The table features a spacious surface, allowing for comfortable dining experiences with family and friends. Its minimalist aesthetic blends seamlessly with modern interiors, while the sturdy legs provide stability and long-lasting support.'
-WHERE product_id = 1;
-
-UPDATE Products
-SET description = 'Comfortable corner sofa with plush cushions and a sturdy frame, providing ample seating space for family and guests. This sofa offers a contemporary design with soft fabric upholstery, making it a cozy spot for relaxation. The L-shaped configuration is perfect for maximizing seating in small living rooms, and its durable build ensures longevity for years to come.'
-WHERE product_id = 2;
-
-UPDATE Products
-SET description = 'Ergonomic office chair designed for maximum comfort and support, featuring adjustable height, lumbar support, and breathable mesh material. The chair is equipped with 360-degree swivel functionality, smooth-rolling casters, and a recline feature to suit different work positions. Its sleek, modern look makes it a perfect fit for any home office or workspace.'
-WHERE product_id = 3;
-
-UPDATE Products
-SET description = 'Stylish queen-size bed with a modern headboard, crafted with high-quality materials to ensure a comfortable and restful night’s sleep. The bed frame is designed to support various mattress types, providing versatility for different preferences. Its sophisticated design enhances the bedroom’s decor, while the sturdy construction guarantees lasting durability.'
-WHERE product_id = 4;
-
-UPDATE Products
-SET description = 'LED desk lamp with adjustable brightness and a flexible neck, perfect for focused lighting while studying or working. The lamp’s energy-efficient LED bulbs provide bright, long-lasting illumination. It features a touch-sensitive control panel for easy adjustments and a modern design that complements any workspace or study area.'
-WHERE product_id = 5;
-
-
-
-
+INSERT INTO Bussiness (bussiness_name, description, address, contact_number, email, logo, image)
+VALUES
+    ('Black Aries',
+     'Black Aries is a premium furniture company specializing in high-quality, modern, and stylish furniture pieces for homes and offices. We offer a wide range of products including sofas, tables, chairs, and storage solutions, all designed for durability and aesthetics. Our expert design team ensures that each product aligns with the latest design trends and meets the highest standards of craftsmanship. We take pride in our commitment to customer satisfaction and creating spaces that are both functional and beautiful.',
+     '123 Main Street, City Center, Hometown, Country',
+     '+1234567890',
+     'contact@blackaries.com',
+     'logo_black_aries.png',
+     'image_black_aries.png');
