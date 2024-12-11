@@ -258,6 +258,195 @@ INSERT INTO Product_color (quantity, image, price, defaultal, product_id, color_
   (20, 'wailea_outdoor_swivel_chair_black.png', 1030, 0, 20, 4),
   (20, 'wailea_outdoor_swivel_chair_white.png', 1040, 1, 20, 5);
 
+
+-- 3 Lamp
+ --INSERT INTO Product_color (quantity, image, price, defaultal, product_id, color_id) VALUES
+INSERT INTO Product_color (quantity, image, price, defaultal, product_id, color_id) VALUES
+  (15, 'Outrack_Garota_Outdoor_LED_Track_Light_red.png', 160, 0, 21, 1),
+  (18, 'Outrack_Garota_Outdoor_LED_Track_Light_blue.png', 210, 0, 21, 2),
+  (20, 'Outrack_Garota_Outdoor_LED_Track_Light_green.png', 170, 0, 21, 3),
+  (14, 'Outrack_Garota_Outdoor_LED_Track_Light_black.png', 180, 0, 21, 4),
+  (22, 'Outrack_Garota_Outdoor_LED_Track_Light_white.png', 150, 1, 21, 5),
+  
+  (15, 'Ventura_Outdoor_Pendant_Light_red.png', 180, 0, 22, 1),
+  (18, 'Ventura_Outdoor_Pendant_Light_blue.png', 230, 0, 22, 2),
+  (20, 'Ventura_Outdoor_Pendant_Light_green.png', 200, 0, 22, 3),
+  (14, 'Ventura_Outdoor_Pendant_Light_black.png', 210, 0, 22, 4),
+  (22, 'Ventura_Outdoor_Pendant_Light_white.png', 190, 1, 22, 5),
+  
+  (10, 'Rochefort_Outdoor_Pendant_Light_red.png', 200, 0, 23, 1),
+  (12, 'Rochefort_Outdoor_Pendant_Light_blue.png', 240, 0, 23, 2),
+  (15, 'Rochefort_Outdoor_Pendant_Light_green.png', 210, 0, 23, 3),
+  (18, 'Rochefort_Outdoor_Pendant_Light_black.png', 220, 0, 23, 4),
+  (20, 'Rochefort_Outdoor_Pendant_Light_white.png', 200, 1, 23, 5),
+  
+  (15, 'Outrack_Nans_Perris_Outdoor_LED_Track_Light_red.png', 180, 0, 24, 1),
+  (20, 'Outrack_Nans_Perris_Outdoor_LED_Track_Light_blue.png', 230, 0, 24, 2),
+  (18, 'Outrack_Nans_Perris_Outdoor_LED_Track_Light_green.png', 190, 0, 24, 3),
+  (14, 'Outrack_Nans_Perris_Outdoor_LED_Track_Light_black.png', 200, 0, 24, 4),
+  (22, 'Outrack_Nans_Perris_Outdoor_LED_Track_Light_white.png', 180, 1, 24, 5),
+  
+  (12, 'Outrack_Nans_Cone_Outdoor_LED_Track_Light_red.png', 190, 0, 25, 1),
+  (15, 'Outrack_Nans_Cone_Outdoor_LED_Track_Light_blue.png', 240, 0, 25, 2),
+  (18, 'Outrack_Nans_Cone_Outdoor_LED_Track_Light_green.png', 200, 0, 25, 3),
+  (14, 'Outrack_Nans_Cone_Outdoor_LED_Track_Light_black.png', 210, 0, 25, 4),
+  (22, 'Outrack_Nans_Cone_Outdoor_LED_Track_Light_white.png', 190, 1, 25, 5),
+  
+  (15, 'Nucli_Outdoor_Pendant_Light_red.png', 150, 0, 26, 1),
+  (18, 'Nucli_Outdoor_Pendant_Light_blue.png', 180, 0, 26, 2),
+  (20, 'Nucli_Outdoor_Pendant_Light_green.png', 160, 0, 26, 3),
+  (14, 'Nucli_Outdoor_Pendant_Light_black.png', 170, 0, 26, 4),
+  (22, 'Nucli_Outdoor_Pendant_Light_white.png', 150, 1, 26, 5),
+  
+  (10, 'Amelie_Portable_Outdoor_LED_Hanging_Lamp_red.png', 190, 0, 27, 1),
+  (12, 'Amelie_Portable_Outdoor_LED_Hanging_Lamp_blue.png', 220, 0, 27, 2),
+  (15, 'Amelie_Portable_Outdoor_LED_Hanging_Lamp_green.png', 200, 0, 27, 3),
+  (18, 'Amelie_Portable_Outdoor_LED_Hanging_Lamp_black.png', 210, 0, 27, 4),
+  (20, 'Amelie_Portable_Outdoor_LED_Hanging_Lamp_white.png', 190, 1, 27, 5),
+  
+  (12, 'Alford_Place_Outdoor_Hanging_Light_red.png', 160, 0, 28, 1),
+  (15, 'Alford_Place_Outdoor_Hanging_Light_blue.png', 190, 0, 28, 2),
+  (18, 'Alford_Place_Outdoor_Hanging_Light_green.png', 170, 0, 28, 3),
+  (14, 'Alford_Place_Outdoor_Hanging_Light_black.png', 180, 0, 28, 4),
+  (20, 'Alford_Place_Outdoor_Hanging_Light_white.png', 160, 1, 28, 5),
+  
+  (15, 'LED_Aurora_Dual_Zone_Flush_Mount_red.png', 170, 0, 29, 1),
+  (18, 'LED_Aurora_Dual_Zone_Flush_Mount_blue.png', 200, 0, 29, 2),
+  (20, 'LED_Aurora_Dual_Zone_Flush_Mount_green.png', 180, 0, 29, 3),
+  (14, 'LED_Aurora_Dual_Zone_Flush_Mount_black.png', 190, 0, 29, 4),
+  (22, 'LED_Aurora_Dual_Zone_Flush_Mount_white.png', 170, 1, 29, 5),
+  
+  (15, 'Pi_LED_Round_Flush_Mount_red.png', 180, 0, 30, 1),
+  (18, 'Pi_LED_Round_Flush_Mount_blue.png', 210, 0, 30, 2),
+  (20, 'Pi_LED_Round_Flush_Mount_green.png', 190, 0, 30, 3),
+  (14, 'Pi_LED_Round_Flush_Mount_black.png', 200, 0, 30, 4),
+  (22, 'Pi_LED_Round_Flush_Mount_white.png', 180, 1, 30, 5);
+
+INSERT INTO Product_color (quantity, image, price, defaultal, product_id, color_id) VALUES
+  (18, 'Asker_3_Seater_Sofa_with_Ottoman_red.png', 240, 0, 31, 1),
+  (20, 'Asker_3_Seater_Sofa_with_Ottoman_blue.png', 270, 0, 31, 2),
+  (22, 'Asker_3_Seater_Sofa_with_Ottoman_green.png', 250, 0, 31, 3),
+  (16, 'Asker_3_Seater_Sofa_with_Ottoman_black.png', 260, 0, 31, 4),
+  (24, 'Asker_3_Seater_Sofa_with_Ottoman_white.png', 240, 1, 31, 5),
+
+  (20, 'Asker_3_Seater_Sofa_red.png', 220, 0, 32, 1),
+  (22, 'Asker_3_Seater_Sofa_blue.png', 250, 0, 32, 2),
+  (24, 'Asker_3_Seater_Sofa_green.png', 230, 0, 32, 3),
+  (18, 'Asker_3_Seater_Sofa_black.png', 240, 0, 32, 4),
+  (26, 'Asker_3_Seater_Sofa_white.png', 220, 1, 32, 5),
+
+  (20, 'Ridge_Outdoor_Sofa_red.png', 320, 0, 33, 1),
+  (22, 'Ridge_Outdoor_Sofa_blue.png', 350, 0, 33, 2),
+  (24, 'Ridge_Outdoor_Sofa_green.png', 330, 0, 33, 3),
+  (18, 'Ridge_Outdoor_Sofa_black.png', 340, 0, 33, 4),
+  (26, 'Ridge_Outdoor_Sofa_white.png', 320, 1, 33, 5),
+
+  (25, 'Salto_Sofa_red.png', 280, 0, 34, 1),
+  (30, 'Salto_Sofa_blue.png', 310, 0, 34, 2),
+  (28, 'Salto_Sofa_green.png', 290, 0, 34, 3),
+  (20, 'Salto_Sofa_black.png', 300, 0, 34, 4),
+  (35, 'Salto_Sofa_white.png', 280, 1, 34, 5),
+
+  (20, 'PAROS_3_Seater_Sofa_red.png', 300, 0, 35, 1),
+  (22, 'PAROS_3_Seater_Sofa_blue.png', 330, 0, 35, 2),
+  (24, 'PAROS_3_Seater_Sofa_green.png', 310, 0, 35, 3),
+  (18, 'PAROS_3_Seater_Sofa_black.png', 320, 0, 35, 4),
+  (26, 'PAROS_3_Seater_Sofa_white.png', 300, 1, 35, 5),
+
+  (15, 'Jack_Outdoor_3_Seater_Sofa_red.png', 280, 0, 36, 1),
+  (18, 'Jack_Outdoor_3_Seater_Sofa_blue.png', 310, 0, 36, 2),
+  (20, 'Jack_Outdoor_3_Seater_Sofa_green.png', 290, 0, 36, 3),
+  (14, 'Jack_Outdoor_3_Seater_Sofa_black.png', 300, 0, 36, 4),
+  (22, 'Jack_Outdoor_3_Seater_Sofa_white.png', 280, 1, 36, 5),
+
+  (18, 'Bonan_Lounge_End_Sofa_red.png', 260, 0, 37, 1),
+  (20, 'Bonan_Lounge_End_Sofa_blue.png', 290, 0, 37, 2),
+  (22, 'Bonan_Lounge_End_Sofa_green.png', 270, 0, 37, 3),
+  (16, 'Bonan_Lounge_End_Sofa_black.png', 280, 0, 37, 4),
+  (24, 'Bonan_Lounge_End_Sofa_white.png', 260, 1, 37, 5),
+
+  (15, 'Nisswa_Sofa_red.png', 240, 0, 38, 1),
+  (18, 'Nisswa_Sofa_blue.png', 270, 0, 38, 2),
+  (20, 'Nisswa_Sofa_green.png', 250, 0, 38, 3),
+  (14, 'Nisswa_Sofa_black.png', 260, 0, 38, 4),
+  (22, 'Nisswa_Sofa_white.png', 240, 1, 38, 5),
+
+  (20, 'Jut_Sofa_red.png', 220, 0, 39, 1),
+  (22, 'Jut_Sofa_blue.png', 250, 0, 39, 2),
+  (24, 'Jut_Sofa_green.png', 230, 0, 39, 3),
+  (18, 'Jut_Sofa_black.png', 240, 0, 39, 4),
+  (26, 'Jut_Sofa_white.png', 220, 1, 39, 5),
+
+  (25, 'Stone_Sofa_red.png', 330, 0, 40, 1),
+  (30, 'Stone_Sofa_blue.png', 360, 0, 40, 2),
+  (28, 'Stone_Sofa_green.png', 340, 0, 40, 3),
+  (20, 'Stone_Sofa_black.png', 350, 0, 40, 4),
+  (35, 'Stone_Sofa_white.png', 330, 1, 40, 5),
+
+  (20, 'CLOE_Upholstered_Bed_red.png', 320, 0, 41, 1),
+  (22, 'CLOE_Upholstered_Bed_blue.png', 350, 0, 41, 2),
+  (24, 'CLOE_Upholstered_Bed_green.png', 330, 0, 41, 3),
+  (18, 'CLOE_Upholstered_Bed_black.png', 340, 0, 41, 4),
+  (26, 'CLOE_Upholstered_Bed_white.png', 320, 1, 41, 5);
+
+  INSERT INTO Product_color (quantity, image, price, defaultal, product_id, color_id) VALUES
+  (18, 'Potter_Bed_red.png', 330, 0, 42, 1),
+  (22, 'Potter_Bed_blue.png', 360, 0, 42, 2),
+  (24, 'Potter_Bed_green.png', 340, 0, 42, 3),
+  (16, 'Potter_Bed_black.png', 350, 0, 42, 4),
+  (26, 'Potter_Bed_white.png', 330, 1, 42, 5),
+
+  (20, 'Sydney_Bed_red.png', 310, 0, 43, 1),
+  (22, 'Sydney_Bed_blue.png', 340, 0, 43, 2),
+  (24, 'Sydney_Bed_green.png', 320, 0, 43, 3),
+  (18, 'Sydney_Bed_black.png', 330, 0, 43, 4),
+  (26, 'Sydney_Bed_white.png', 310, 1, 43, 5),
+
+  (15, 'Linn_Bed_red.png', 300, 0, 44, 1),
+  (18, 'Linn_Bed_blue.png', 330, 0, 44, 2),
+  (20, 'Linn_Bed_green.png', 310, 0, 44, 3),
+  (14, 'Linn_Bed_black.png', 320, 0, 44, 4),
+  (22, 'Linn_Bed_white.png', 300, 1, 44, 5),
+
+  (20, 'Allegra_Bed_red.png', 280, 0, 45, 1),
+  (22, 'Allegra_Bed_blue.png', 310, 0, 45, 2),
+  (24, 'Allegra_Bed_green.png', 290, 0, 45, 3),
+  (18, 'Allegra_Bed_black.png', 300, 0, 45, 4),
+  (26, 'Allegra_Bed_white.png', 280, 1, 45, 5),
+
+  (25, 'Laurent_Upholstered_Bed_red.png', 350, 0, 46, 1),
+  (30, 'Laurent_Upholstered_Bed_blue.png', 380, 0, 46, 2),
+  (28, 'Laurent_Upholstered_Bed_green.png', 360, 0, 46, 3),
+  (20, 'Laurent_Upholstered_Bed_black.png', 370, 0, 46, 4),
+  (35, 'Laurent_Upholstered_Bed_white.png', 350, 1, 46, 5),
+
+  (20, 'Moment_Bed_red.png', 330, 0, 47, 1),
+  (22, 'Moment_Bed_blue.png', 360, 0, 47, 2),
+  (24, 'Moment_Bed_green.png', 340, 0, 47, 3),
+  (18, 'Moment_Bed_black.png', 350, 0, 47, 4),
+  (26, 'Moment_Bed_white.png', 330, 1, 47, 5),
+
+  (15, 'Platform_Bed_red.png', 320, 0, 48, 1),
+  (18, 'Platform_Bed_blue.png', 350, 0, 48, 2),
+  (20, 'Platform_Bed_green.png', 330, 0, 48, 3),
+  (14, 'Platform_Bed_black.png', 340, 0, 48, 4),
+  (22, 'Platform_Bed_white.png', 320, 1, 48, 5),
+
+  (25, 'Air_Bed_red.png', 340, 0, 49, 1),
+  (30, 'Air_Bed_blue.png', 370, 0, 49, 2),
+  (28, 'Air_Bed_green.png', 350, 0, 49, 3),
+  (20, 'Air_Bed_black.png', 360, 0, 49, 4),
+  (35, 'Air_Bed_white.png', 340, 1, 49, 5),
+
+  (18, 'Nook_Bed_red.png', 310, 0, 50, 1),
+  (22, 'Nook_Bed_blue.png', 340, 0, 50, 2),
+  (24, 'Nook_Bed_green.png', 320, 0, 50, 3),
+  (16, 'Nook_Bed_black.png', 330, 0, 50, 4),
+  (26, 'Nook_Bed_white.png', 310, 1, 50, 5);
+
+
+
+   
 -- Cái này là cái mới nhất cho nên sẽ chạy cuối cùng
 CREATE TABLE Bussiness (
    Bussiness_id INT PRIMARY KEY DEFAULT 1,
