@@ -65,6 +65,27 @@ INSERT INTO Product_color (quantity, image, price, defaultal, product_id, color_
     (8, 'queen_bed_black.png', 500, 1, 4, 4),
     (20, 'desk_lamp_white.png', 50, 1, 5, 5);
 
+-- Cái này là cái mới nhất cho nên sẽ chạy cuối cùng
+CREATE TABLE Bussiness (
+   Bussiness_id INT PRIMARY KEY DEFAULT 1,
+   bussiness_name VARCHAR(50) NOT NULL,
+   description TEXT,
+   address VARCHAR(255),
+   contact_number VARCHAR(15),
+   email VARCHAR(100),
+   logo VARCHAR(135),
+   image VARCHAR(135)
+);
+
+INSERT INTO Bussiness (bussiness_name, description, address, contact_number, email, logo, image)
+VALUES
+    ('Black Aries',
+     'Black Aries is a premium furniture company specializing in high-quality, modern, and stylish furniture pieces for homes and offices. We offer a wide range of products including sofas, tables, chairs, and storage solutions, all designed for durability and aesthetics. Our expert design team ensures that each product aligns with the latest design trends and meets the highest standards of craftsmanship. We take pride in our commitment to customer satisfaction and creating spaces that are both functional and beautiful.',
+     '123 Main Street, City Center, Hometown, Country',
+     '+1234567890',
+     'contact@blackaries.com',
+     'logo_black_aries.png',
+     'image_black_aries.png');
 -- Nếu ai đã chạy hết tất cả database rồi thì chạy thêm lệnh này nữa, chạy lần lượt tránh lỗi.
 ALTER TABLE Products
     MODIFY description TEXT;
