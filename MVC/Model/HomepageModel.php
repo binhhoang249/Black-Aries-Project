@@ -9,7 +9,7 @@
         }
 
         public function  getCatagories() {
-            $sql = "select * from catagories";
+            $sql = "select * from categories";
             return $this->db->select($sql);
         }
         public function getProductColor() {
