@@ -2,17 +2,35 @@
 class Home extends Controller {
     static function SayHi()
     {
-        $kit = self::model("HomepageModel");
-        print_r($kit->getProducts());
-        print_r($kit->getProductColor());
-    }
-    static function Show($a, $b)
-    {
-//        model
-        $kit = self::model("ProductModel");
-        $tong = $kit->Tong($a,$b);
-//        view
-        self::view("NewProducts",["Number"=>$tong]);
+        $model = self::model("HomepageModel");
+        $data['product']= $model->getProducts();
+        $data['categories']= $model->getCatagories();
+        $data['product_color']= $model->getProductColor();
+        $liProduct=$data['product'];
+        for($j=0;$j<count($liProduct)-1;$j++){
+            for( $i=0;$i<count($liProduct)-1-$j;$i++){
+                if($liProduct[$i]['popular']<$liProduct[$i+1]['popular']){
+                    $temp=$liProduct[$i];
+                    $liProduct[$i]=$liProduct[$i+1];
+                    $liProduct[$i+1]=$temp;
+                }
+            }
+        }
+        $dateProduct=$data['product'];
+        for($j=0;$j<count($liProduct)-1;$j++){
+            for( $i=0;$i<count($liProduct)-1-$j;$i++){
+                $date1= new DateTime($dateProduct[$i]['time_stamp']);
+                $date2= new DateTime ($dateProduct[$i+1]['time_stamp']);
+                if($date1->getTimestamp() < $date2->getTimestamp()){
+                    $temp=$dateProduct[$i];
+                    $dateProduct[$i]=$dateProduct[$i+1];
+                    $dateProduct[$i+1]=$temp;
+                }
+            }
+        }
+        $data['product_lates']=$dateProduct;
+        $data['product_popular']=$liProduct;
+        self::view('Homepage',$data);
     }
 }
 ?>

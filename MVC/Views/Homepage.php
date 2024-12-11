@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Category List</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="http://localhost/Black-Aries-Project/public/css/homepage.css" rel="stylesheet">
+    <link href="public/css/homepage.css" rel="stylesheet">
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
+    <?php extract($data); ?>
     <div id="container">
         <!-- category -->
         <div class="container py-4">
@@ -35,23 +35,12 @@
                         <span class="visually-hidden">Next</span>
                     </button>
                 </div>
-            </div>
         </div>
         <!-- khung của hiện sản phẩm theo loại-->
-        <div class="container my-5" class="productFCategory">
+        <div class="container my-5 productFCategory">
             <h2 class="text-center mb-4">Product </h2>
         <!-- Nơi sẽ lưu các product theo loại -->
             <div class="row" id="product_category">
-                <div class="col-md-3">
-                    <div class="card-product text-center p-3 shadow-sm">
-                        <img src="img/product4.jpg" class="card-img-top" alt="product4">
-                        <div class="card-body">
-                            <h5 class="card-title">Sản phẩm 4</h5>
-                            <p class="card-text">$250</p>
-                            <a href="#" class="btn btn-primary">Thêm vào giỏ</a>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
         <!-- -->
@@ -61,19 +50,30 @@
             <h2 class="text-center mb-4">Popular Product</h2>
             <div class="row">
                 <?php
-                if ($popularProducts->num_rows > 0) {
-                    while ($row = $popularProducts->fetch_assoc()) {
+                if (!empty($product_popular)) {
+                    $n=1;
+                    foreach($product_popular as $row) {
+                        $p_color=[];
+                        foreach($product_color as $value2){
+                            if ($row['product_id']==$value2['product_id']){
+                                $p_color=$value2;
+                            }
+                        }
                         echo '
                         <div class="col-md-3">
                             <div class="card-product text-center p-3 shadow-sm">
-                                <img src="' . $row["image"] . '" class="card-img-top" alt="' . $row["name"] . '">
+                                <img src=" '. $p_color['image'] .'" class="card-img-top" alt="' . $row["product_name"] . '">
                                 <div class="card-body">
-                                    <h5 class="card-title">' . $row["name"] . '</h5>
-                                    <p class="card-text">$' . $row["price"] . '</p>
+                                    <h5 class="card-title">' . $row["product_name"] . '</h5>
+                                    <p class="card-text">$' . $p_color['price'] . '</p>
                                     <a href="#" class="btn btn-primary">Add to cart</a>
                                 </div>
                             </div>
                         </div>';
+                        if($n==4){
+                            break;
+                        }
+                        $n++;
                     }
                 } else {
                     echo "<p>Không có sản phẩm nào!</p>";
@@ -87,19 +87,30 @@
             <h2 class="text-center mb-4">Latest Product</h2>
             <div class="row">
                 <?php
-                if ($latestProducts->num_rows > 0) {
-                    while ($row = $latestProducts->fetch_assoc()) {
+                if (!empty($product_lates)) {
+                    $n=1;
+                    foreach($product_lates as $row) {
+                        $p_color=[];
+                        foreach($product_color as $value2){
+                            if ($row['product_id']==$value2['product_id']){
+                                $p_color=$value2;
+                            }
+                        }
                         echo '
                         <div class="col-md-3">
                             <div class="card-product text-center p-3 shadow-sm">
-                                <img src="' . $row["image"] . '" class="card-img-top" alt="' . $row["name"] . '">
+                                <img src=" '. $p_color['image'] .'" class="card-img-top" alt="' . $row["product_name"] . '">
                                 <div class="card-body">
-                                    <h5 class="card-title">' . $row["name"] . '</h5>
-                                    <p class="card-text">$' . $row["price"] . '</p>
+                                    <h5 class="card-title">' . $row["product_name"] . '</h5>
+                                    <p class="card-text">$' . $p_color['price'] . '</p>
                                     <a href="#" class="btn btn-primary">Add to cart</a>
                                 </div>
                             </div>
                         </div>';
+                        if($n==4){
+                            break;
+                        }
+                        $n++;
                     }
                 } else {
                     echo "<p>Không có sản phẩm nào!</p>";
@@ -113,19 +124,30 @@
             <h2 class="text-center mb-4">All Product</h2>
             <div class="row">
                 <?php
-                if ($allProducts->num_rows > 0) {
-                    while ($row = $allProducts->fetch_assoc()) {
+                if (!empty($product)) {
+                    $n=1;
+                    foreach($product as $row) {
+                        $p_color=[];
+                        foreach($product_color as $value2){
+                            if ($row['product_id']==$value2['product_id']){
+                                $p_color=$value2;
+                            }
+                        }
                         echo '
                         <div class="col-md-3">
                             <div class="card-product text-center p-3 shadow-sm">
-                                <img src="' . $row["image"] . '" class="card-img-top" alt="' . $row["name"] . '">
+                                <img src=" '. $p_color['image'] .'" class="card-img-top" alt="' . $row["product_name"] . '">
                                 <div class="card-body">
-                                    <h5 class="card-title">' . $row["name"] . '</h5>
-                                    <p class="card-text">$' . $row["price"] . '</p>
+                                    <h5 class="card-title">' . $row["product_name"] . '</h5>
+                                    <p class="card-text">$' . $p_color['price'] . '</p>
                                     <a href="#" class="btn btn-primary">Add to cart</a>
                                 </div>
                             </div>
                         </div>';
+                        if($n==4){
+                            break;
+                        }
+                        $n++;
                     }
                 } else {
                     echo "<p>Không có sản phẩm nào!</p>";
