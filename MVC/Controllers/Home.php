@@ -3,7 +3,8 @@ class Home extends Controller {
     static function SayHi()
     {
         $kit = self::model("HomepageModel");
-        print_r($kit->GetProducts());
+        print_r($kit->getProducts());
+        print_r($kit->getProductColor());
     }
     static function Show($a, $b)
     {
