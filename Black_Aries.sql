@@ -1,5 +1,4 @@
 CREATE DATABASE Black_Aries;
-
 USE Black_Aries;
 CREATE TABLE Categories (
       category_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -9,7 +8,7 @@ CREATE TABLE Categories (
 CREATE TABLE Products (
       product_id INT PRIMARY KEY AUTO_INCREMENT,
       product_name VARCHAR(50) NOT NULL,
-      description VARCHAR(235),
+      description text,
       time_stamp DATE,
       category_id INT,
       status INT,
@@ -162,7 +161,7 @@ INSERT INTO Product_color (quantity, image, price, defaultal, product_id, color_
   (12, 'prego_dining_table_red.png', 450, 0, 7, 1),  
   (12, 'prego_dining_table_blue.png', 480, 0, 7, 2),  
   (12, 'prego_dining_table_green.png', 450, 0, 7, 3),  
-  (12, 'prego_dining_table_black.png', 450, 0, 7, 4),  /-strong/-heart:>:o:-((:-h (12, 'prego_dining_table_white.png', 450, 1, 7, 5);  
+  (12, 'prego_dining_table_black.png', 450, 0, 7, 4), (12, 'prego_dining_table_white.png', 450, 1, 7, 5);  
 
 -- Tony Cafe Table
 INSERT INTO Product_color (quantity, image, price, defaultal, product_id, color_id) VALUES
@@ -260,8 +259,7 @@ INSERT INTO Product_color (quantity, image, price, defaultal, product_id, color_
 
 
 -- 3 Lamp
- --INSERT INTO Product_color (quantity, image, price, defaultal, product_id, color_id) VALUES
-INSERT INTO Product_color (quantity, image, price, defaultal, product_id, color_id) VALUES
+ INSERT INTO Product_color (quantity, image, price, defaultal, product_id, color_id) VALUES
   (15, 'Outrack_Garota_Outdoor_LED_Track_Light_red.png', 160, 0, 21, 1),
   (18, 'Outrack_Garota_Outdoor_LED_Track_Light_blue.png', 210, 0, 21, 2),
   (20, 'Outrack_Garota_Outdoor_LED_Track_Light_green.png', 170, 0, 21, 3),
