@@ -116,6 +116,158 @@ INSERT INTO Product_color (quantity, image, price, defaultal, product_id, color_
     (8, 'queen_bed_black.png', 500, 1, 4, 4),
     (20, 'desk_lamp_white.png', 50, 1, 5, 5);
 
+-- Vortex Dining Table
+INSERT INTO Product_color (quantity, image, price, defaultal, product_id, color_id) VALUES
+  (10, 'vortex_dining_table_red.png', 650, 0, 1, 1),  
+  (10, 'vortex_dining_table_blue.png', 250, 0, 1, 2),  
+  (10, 'vortex_dining_table_green.png', 250, 0, 1, 3),  
+  (10, 'vortex_dining_table_black.png', 850, 0, 1, 4),  
+  (10, 'vortex_dining_table_white.png', 250, 1, 1, 5);  
+
+-- Multiplo Square Cafe Table with Square Base
+INSERT INTO Product_color (quantity, image, price, defaultal, product_id, color_id) VALUES
+  (5, 'multiplo_square_cafe_table_red.png', 800, 0, 2, 1),  
+  (5, 'multiplo_square_cafe_table_blue.png', 500, 0, 2, 2),  
+  (5, 'multiplo_square_cafe_table_green.png', 800, 0, 2, 3),  
+  (5, 'multiplo_square_cafe_table_black.png', 870, 0, 2, 4),  
+  (5, 'multiplo_square_cafe_table_white.png', 800, 1, 2, 5);  
+
+-- GAX XW Table
+INSERT INTO Product_color (quantity, image, price, defaultal, product_id, color_id) VALUES
+  (15, 'gax_xw_table_red.png', 150, 0, 3, 1),  
+  (15, 'gax_xw_table_blue.png', 190, 0, 3, 2),  
+  (15, 'gax_xw_table_green.png', 150, 0, 3, 3),  
+  (15, 'gax_xw_table_black.png', 150, 0, 3, 4),  
+  (15, 'gax_xw_table_white.png', 150, 1, 3, 5);  
+
+-- Rows Diagonal Dining Table with Glass Top
+INSERT INTO Product_color (quantity, image, price, defaultal, product_id, color_id) VALUES
+  (8, 'rows_diagonal_dining_table_red.png', 500, 0, 4, 1),  
+  (8, 'rows_diagonal_dining_table_blue.png', 560, 0, 4, 2),  
+  (8, 'rows_diagonal_dining_table_green.png', 580, 0, 4, 3),  
+  (8, 'rows_diagonal_dining_table_black.png', 500, 0, 4, 4),  
+  (8, 'rows_diagonal_dining_table_white.png', 100, 1, 4, 5);  
+
+-- Orbital Curved Extendable Dining Table
+INSERT INTO Product_color (quantity, image, price, defaultal, product_id, color_id) VALUES
+  (20, 'orbital_curved_extendable_dining_table_red.png', 580, 0, 5, 1),  
+  (20, 'orbital_curved_extendable_dining_table_blue.png', 550, 0, 5, 2),  
+  (20, 'orbital_curved_extendable_dining_table_green.png', 550, 0, 5, 3),  
+  (20, 'orbital_curved_extendable_dining_table_black.png', 550, 0, 5, 4),  
+  (20, 'orbital_curved_extendable_dining_table_white.png', 550, 1, 5, 5);  
+
+-- Levante Extendable Dining Table
+INSERT INTO Product_color (quantity, image, price, defaultal, product_id, color_id) VALUES
+  (10, 'levante_extendable_dining_table_red.png', 610, 0, 6, 1),  
+  (10, 'levante_extendable_dining_table_blue.png', 600, 0, 6, 2),  
+  (10, 'levante_extendable_dining_table_green.png', 600, 0, 6, 3),  
+  (10, 'levante_extendable_dining_table_black.png', 600, 0, 6, 4),  
+  (10, 'levante_extendable_dining_table_white.png', 600, 1, 6, 5);  
+
+-- Prego Dining Table
+INSERT INTO Product_color (quantity, image, price, defaultal, product_id, color_id) VALUES
+  (12, 'prego_dining_table_red.png', 450, 0, 7, 1),  
+  (12, 'prego_dining_table_blue.png', 480, 0, 7, 2),  
+  (12, 'prego_dining_table_green.png', 450, 0, 7, 3),  
+  (12, 'prego_dining_table_black.png', 450, 0, 7, 4),  
+  (12, 'prego_dining_table_white.png', 450, 1, 7, 5);  
+
+-- Tony Cafe Table
+INSERT INTO Product_color (quantity, image, price, defaultal, product_id, color_id) VALUES
+  (18, 'tony_cafe_table_red.png', 200, 0, 8, 1),  
+  (18, 'tony_cafe_table_blue.png', 200, 0, 8, 2),  
+  (18, 'tony_cafe_table_green.png', 200, 0, 8, 3),  
+  (18, 'tony_cafe_table_black.png', 200, 0, 8, 4),  
+  (18, 'tony_cafe_table_white.png', 200, 1, 8, 5);  
+
+-- Carlina Round Dining Table
+INSERT INTO Product_color (quantity, image, price, defaultal, product_id, color_id) VALUES
+  (14, 'carlina_round_dining_table_red.png', 350, 0, 9, 1),  
+  (14, 'carlina_round_dining_table_blue.png', 350, 0, 9, 2),  
+  (14, 'carlina_round_dining_table_green.png', 350, 0, 9, 3),  
+  (14, 'carlina_round_dining_table_black.png', 350, 0, 9, 4),  
+  (14, 'carlina_round_dining_table_white.png', 350, 1, 9, 5);  
+
+-- Explorer Round Dining Table
+INSERT INTO Product_color (quantity, image, price, defaultal, product_id, color_id) VALUES
+  (16, 'explorer_round_dining_table_red.png', 400, 0, 10, 1),  
+  (16, 'explorer_round_dining_table_blue.png', 400, 0, 10, 2),  
+  (16, 'explorer_round_dining_table_green.png', 400, 0, 10, 3),  
+  (16, 'explorer_round_dining_table_black.png', 400, 0, 10, 4),  
+  (16, 'explorer_round_dining_table_white.png', 400, 1, 10, 5);  
+
+INSERT INTO Product_color (quantity, image, price, defaultal, product_id, color_id) VALUES
+  -- Lollygagger Lounge Chair
+  (15, 'lollygagger_lounge_chair_red.png', 550, 0, 11, 1),  
+  (15, 'lollygagger_lounge_chair_blue.png', 560, 0, 11, 2),
+  (15, 'lollygagger_lounge_chair_green.png', 570, 0, 11, 3),
+  (15, 'lollygagger_lounge_chair_black.png', 580, 0, 11, 4),
+  (15, 'lollygagger_lounge_chair_white.png', 590, 1, 11, 5),
+
+  -- Amelia Club Chair
+  (20, 'amelia_club_chair_red.png', 600, 0, 12, 1),
+  (20, 'amelia_club_chair_blue.png', 610, 0, 12, 2),
+  (20, 'amelia_club_chair_green.png', 620, 0, 12, 3),
+  (20, 'amelia_club_chair_black.png', 630, 0, 12, 4),
+  (20, 'amelia_club_chair_white.png', 640, 1, 12, 5),
+
+  -- Montauk Club Chair
+  (18, 'montauk_club_chair_red.png', 650, 0, 13, 1),
+  (18, 'montauk_club_chair_blue.png', 660, 0, 13, 2),
+  (18, 'montauk_club_chair_green.png', 670, 0, 13, 3),
+  (18, 'montauk_club_chair_black.png', 680, 0, 13, 4),
+  (18, 'montauk_club_chair_white.png', 690, 1, 13, 5),
+
+  -- Moments Outdoor Lounge Chair
+  (25, 'moments_outdoor_lounge_chair_red.png', 700, 0, 14, 1),
+  (25, 'moments_outdoor_lounge_chair_blue.png', 710, 0, 14, 2),
+  (25, 'moments_outdoor_lounge_chair_green.png', 720, 0, 14, 3),
+  (25, 'moments_outdoor_lounge_chair_black.png', 730, 0, 14, 4),
+  (25, 'moments_outdoor_lounge_chair_white.png', 740, 1, 14, 5),
+
+  -- Amelia Hanging Chair
+  (12, 'amelia_hanging_chair_red.png', 750, 0, 15, 1),
+  (12, 'amelia_hanging_chair_blue.png', 760, 0, 15, 2),
+  (12, 'amelia_hanging_chair_green.png', 770, 0, 15, 3),
+  (12, 'amelia_hanging_chair_black.png', 780, 0, 15, 4),
+  (12, 'amelia_hanging_chair_white.png', 790, 1, 15, 5),
+
+  -- Kiawah Hanging Chair
+  (10, 'kiawah_hanging_chair_red.png', 800, 0, 16, 1),
+  (10, 'kiawah_hanging_chair_blue.png', 810, 0, 16, 2),
+  (10, 'kiawah_hanging_chair_green.png', 820, 0, 16, 3),
+  (10, 'kiawah_hanging_chair_black.png', 830, 0, 16, 4),
+  (10, 'kiawah_hanging_chair_white.png', 840, 1, 16, 5),
+
+  -- Proust Outdoor Lounge Chair
+  (15, 'proust_outdoor_lounge_chair_red.png', 850, 0, 17, 1),
+  (15, 'proust_outdoor_lounge_chair_blue.png', 860, 0, 17, 2),
+  (15, 'proust_outdoor_lounge_chair_green.png', 870, 0, 17, 3),
+  (15, 'proust_outdoor_lounge_chair_black.png', 880, 0, 17, 4),
+  (15, 'proust_outdoor_lounge_chair_white.png', 890, 1, 17, 5),
+
+  -- Monet Outdoor Highback Chair
+  (18, 'monet_outdoor_highback_chair_red.png', 900, 0, 18, 1),
+  (18, 'monet_outdoor_highback_chair_blue.png', 910, 0, 18, 2),
+  (18, 'monet_outdoor_highback_chair_green.png', 920, 0, 18, 3),
+  (18, 'monet_outdoor_highback_chair_black.png', 930, 0, 18, 4),
+  (18, 'monet_outdoor_highback_chair_white.png', 940, 1, 18, 5),
+
+  -- BM5568 Deck Chair
+  (22, 'bm5568_deck_chair_red.png', 950, 0, 19, 1),
+  (22, 'bm5568_deck_chair_blue.png', 960, 0, 19, 2),
+  (22, 'bm5568_deck_chair_green.png', 970, 0, 19, 3),
+  (22, 'bm5568_deck_chair_black.png', 980, 0, 19, 4),
+  (22, 'bm5568_deck_chair_white.png', 990, 1, 19, 5),
+
+  -- Wailea Outdoor Swivel Chair
+  (20, 'wailea_outdoor_swivel_chair_red.png', 1000, 0, 20, 1),
+  (20, 'wailea_outdoor_swivel_chair_blue.png', 1010, 0, 20, 2),
+  (20, 'wailea_outdoor_swivel_chair_green.png', 1020, 0, 20, 3),
+  (20, 'wailea_outdoor_swivel_chair_black.png', 1030, 0, 20, 4),
+  (20, 'wailea_outdoor_swivel_chair_white.png', 1040, 1, 20, 5);
+
+
 -- Cái này là cái mới nhất cho nên sẽ chạy cuối cùng
 CREATE TABLE Bussiness (
    Bussiness_id INT PRIMARY KEY DEFAULT 1,
