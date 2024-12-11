@@ -1,7 +1,4 @@
 <style>
-    body{
-        background: gray;
-    }
     *{
         box-sizing:border-box;
     }
@@ -18,6 +15,7 @@
         position:sticky;
         top:0;
         width:100%;
+        z-index:1000;
     }
     .header-logo{
         display:flex;
@@ -25,8 +23,8 @@
         margin-left:30px;
     }
     .header-logo-icon{
-        width:120px;
-        height:60px;
+        width:227px;
+        height:81px;
     }
     .header-logo-icon img{
         height:100%;
@@ -82,7 +80,7 @@
 <!-- link: <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">  -->
 <header>
     <div class="header-logo">
-        <div class="header-logo-icon"><img src="" alt="Logo web"></div>
+        <div class="header-logo-icon"><img src="public/images/logo_shop-removebg-preview 1.png" alt="Logo web"></div>
         <div class="header-logo-navigation">
             <ul>
                 <li><a href="#">Trang chủ</a></li>

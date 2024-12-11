@@ -7,8 +7,6 @@
         justify-content:space-between;
         padding: 10px 20px;
         background-color:rgba(82, 122, 154, 0.41);
-        position:fixed;
-        bottom:0;
         width:100%
     }
     a{
