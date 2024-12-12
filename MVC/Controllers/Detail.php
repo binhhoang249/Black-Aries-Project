@@ -1,23 +1,29 @@
 <?php
-class Details extends Controller {
-    public function show($id) {
-        // Lấy model của Details
-        $model = self::model("DetailsModel");
+class ProductDetailsController {
+    private $detailsModel;
 
-        // Lấy thông tin chi tiết của sản phẩm
-        $data['product_details'] = $model->getProductDetails($id);
+    public function __construct() {
+        // Khởi tạo model
+        $this->detailsModel = new DetailsModel();
+    }
 
-        // Lấy thông tin giá (price) từ bảng product_color
-        $data['product_price'] = $model->getProductPrice($id);
+    // Hàm để lấy thông tin chi tiết sản phẩm
+    public function showProductDetails($id) {
+        // Gọi phương thức từ model để lấy chi tiết sản phẩm
+        $productDetails = $this->detailsModel->getProductDetails($id);
+        $sliderImages = $this->detailsModel->getsliderimages($id);
 
-        // Kiểm tra nếu không tìm thấy sản phẩm
-        if (empty($data['product_details'])) {
-            echo "Product does not exist!";
-            return;
+        // Kiểm tra xem có kết quả không
+        if (!empty($productDetails)) {
+            // Lấy dữ liệu chi tiết sản phẩm và hình ảnh slider
+            $product = $productDetails[0]; // Dữ liệu chỉ có 1 sản phẩm nên lấy phần tử đầu tiên
+            $images = array_column($sliderImages, 'image'); // Tạo một mảng chỉ chứa các hình ảnh slider
+
+            include 'views/product_details.php'; 
+        } else {
+            // Nếu không tìm thấy sản phẩm, bạn có thể thông báo lỗi hoặc chuyển hướng
+            echo "Product not found.";
         }
-
-        // Trả về View và truyền dữ liệu
-        self::view("DetailsPage", $data);
     }
 }
 ?>
