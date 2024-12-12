@@ -73,19 +73,20 @@
 }
 
 .card-product .card-text {
-    font-size: 16px;
-    color: #28a745;
+    font-size: 20px;
+    color: #a72828;
 }
 
 .card-product .btn {
-    background-color: #007bff;
+    border: none;
+    background-color: #527A9A;
     color: #fff;
     margin-top: 0px;
-    border-radius: 5px;
+    width: 246px;
 }
 
 .card-product .btn:hover {
-    background-color: #0056b3;
+    background-color: #8cacc6;
 }
 .banner .img-fluid{
     width: 1400px;
