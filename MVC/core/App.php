@@ -2,7 +2,7 @@
     class App {
         // http://localhost/BlackArirsProjecct/Home/Sayhi/12/3123
         protected $controller = "Home";
-        protected $action = "SayHi";
+        protected $action = "index";
         protected $params;
         function __construct() {
            $arr = $this->UrlProcess();

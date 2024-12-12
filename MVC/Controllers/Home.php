@@ -1,6 +1,6 @@
 <?php
 class Home extends Controller {
-    static function SayHi()
+    static function index()
     {
         $model = self::model("HomepageModel");
         $data['product']= $model->getProducts();
@@ -35,3 +35,4 @@ class Home extends Controller {
 }
 ?>
 <!-- Mỗi thằng action sẽ thực hiện 1 hàm tương ứng right. -->
+

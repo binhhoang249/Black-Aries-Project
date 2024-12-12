@@ -148,7 +148,7 @@
                 }
                 console.log(de_product_color)
                 document.querySelector('.cur_image').innerHTML=`
-                    <img src="public/images/${de_product_color.image}" alt="image1">
+                    <img src="${de_product_color.image}" alt="image1">
                 `
                 let dis= parseFloat(product[0].discount);
                 let de_price=parseFloat(de_product_color.price);

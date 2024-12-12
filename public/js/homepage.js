@@ -1,57 +1,56 @@
-var slider = document.querySelector('.slider');
-var itemPerView=5;
-var positionCurrent=0;
+var slider = document.querySelector(".slider");
+var itemPerView = 5;
+var positionCurrent = 0;
 let itemWidth = 0;
-var listPFC=[];
-function nextSlide(){
-    var items = document.querySelectorAll('.itemal');
-    itemWidth = items[0].offsetWidth;
-    if(positionCurrent > (itemPerView-items.length)*itemWidth){
-        positionCurrent -= itemWidth;
-    }else{
-        positionCurrent=0;
-    }
-    slider.style.transform=`translateX(${positionCurrent}px)`;
+var listPFC = [];
+function nextSlide() {
+  var items = document.querySelectorAll(".itemal");
+  itemWidth = items[0].offsetWidth;
+  if (positionCurrent > (itemPerView - items.length) * itemWidth) {
+    positionCurrent -= itemWidth;
+  } else {
+    positionCurrent = 0;
+  }
+  slider.style.transform = `translateX(${positionCurrent}px)`;
 }
-function prevSlide(){
-    var items = document.querySelectorAll('.itemal');
-    itemWidth = items[0].offsetWidth;
-    if(items.length>itemPerView){
-        if(positionCurrent===0){
-            positionCurrent = -1*(items.length-itemPerView)*itemWidth;
-        }else{
-            positionCurrent += itemWidth;
-        }
-    }else{
-        positionCurrent=0;
+function prevSlide() {
+  var items = document.querySelectorAll(".itemal");
+  itemWidth = items[0].offsetWidth;
+  if (items.length > itemPerView) {
+    if (positionCurrent === 0) {
+      positionCurrent = -1 * (items.length - itemPerView) * itemWidth;
+    } else {
+      positionCurrent += itemWidth;
     }
-    slider.style.transform=`translateX(${positionCurrent}px)`;
+  } else {
+    positionCurrent = 0;
+  }
+  slider.style.transform = `translateX(${positionCurrent}px)`;
 }
-slider.innerHTML ="";
-var categories =[];
+slider.innerHTML = "";
+var categories = [];
 //chưa có đường dẫn
-fetch('http://localhost/Black-Aries-Project/public/ajax/serveData.php',{
-    method:'POST',
-    headers: {'Content-type':'application/json'},
-    body: JSON.stringify("getCategory") 
+fetch("http://localhost/Black-Aries-Project/public/ajax/serveData.php", {
+  method: "POST",
+  headers: { "Content-type": "application/json" },
+  body: JSON.stringify("getCategory"),
 })
-.then(reponse => reponse.text())
-.then(data => {
-    try{
-        console.log(data);
-        let resu =JSON.parse(data);
-        categories = resu.category;
-        let product= resu.product;
-        if(categories.length>0){
-            for(let category of categories){
-                let listProduct=[]
-                for(let pro of product){
-                    if(pro.category_id==category.category_id){
-                        listProduct.push(pro);
-                    }
-                }
-                slider.innerHTML+= 
-                `
+  .then((reponse) => reponse.text())
+  .then((data) => {
+    try {
+      console.log(data);
+      let resu = JSON.parse(data);
+      categories = resu.category;
+      let product = resu.product;
+      if (categories.length > 0) {
+        for (let category of categories) {
+          let listProduct = [];
+          for (let pro of product) {
+            if (pro.category_id == category.category_id) {
+              listProduct.push(pro);
+            }
+          }
+          slider.innerHTML += `
                     <div class="itemal" style="display:flex;justify-content:center;align-items:center;width:20%;" data-category=${category.category_id}>
                         <div class="rootal" style="width:80%;">
                             <div class="card-category text-center p-3 shadow-sm">
@@ -68,57 +67,66 @@ fetch('http://localhost/Black-Aries-Project/public/ajax/serveData.php',{
                             </div>
                         </div>
                     </div>
-                `
-            }
-            //Chọn lạo sản phẩm đầu tiên làm mặc định
-            let de_ca=document.querySelector('.itemal');
-            de_ca.querySelector('.rootal').querySelector('.card-category').classList.add('back_color');
-            displayProductFcategory(de_ca.dataset.category);
-            //
-            var items = document.querySelectorAll('.itemal');
-            items.forEach( item => {
-                item.addEventListener('click', function(){
-                    items.forEach( it =>{
-                        let itRoot=it.querySelector('.rootal').querySelector('.card-category');
-                        itRoot.classList.remove('back_color');
-                    })
-                    let cate_id=item.dataset.category;
-                    let itemRoot=item.querySelector('.rootal').querySelector('.card-category');
-                    itemRoot.classList.add('back_color');
-                    displayProductFcategory(cate_id);
-                })
-            })
-        }else{
-            slider.innerHTML+= "<h2>Don't have category</h2>";
+                `;
         }
-    }catch{
-        console.error("Error oarsing Json",error)
+        //Chọn lạo sản phẩm đầu tiên làm mặc định
+        let de_ca = document.querySelector(".itemal");
+        de_ca
+          .querySelector(".rootal")
+          .querySelector(".card-category")
+          .classList.add("back_color");
+        displayProductFcategory(de_ca.dataset.category);
+        //
+        var items = document.querySelectorAll(".itemal");
+        items.forEach((item) => {
+          item.addEventListener("click", function () {
+            items.forEach((it) => {
+              let itRoot = it
+                .querySelector(".rootal")
+                .querySelector(".card-category");
+              itRoot.classList.remove("back_color");
+            });
+            let cate_id = item.dataset.category;
+            let itemRoot = item
+              .querySelector(".rootal")
+              .querySelector(".card-category");
+            itemRoot.classList.add("back_color");
+            displayProductFcategory(cate_id);
+          });
+        });
+      } else {
+        slider.innerHTML += "<h2>Don't have category</h2>";
+      }
+    } catch {
+      console.error("Error oarsing Json", error);
     }
-})
-function displayProductFcategory(type){
-    findProductFcategory(type,(listPFC)=>{
-        let res= listPFC;
-        let productF= res.products;
-        let pro_color = res.product_colors;
-        let proFcate = document.getElementById('product_category');
-        proFcate.innerHTML ="";
-        let numf=1;
-        if(productF.length>0){
-            for(let pro of productF){
-                let cu_productColor=null;
-                for(let o_lcor of pro_color){
-                    if(o_lcor.product_id==pro.product_id && o_lcor.defaultal){
-                        cu_productColor=o_lcor;
-                        break;
-                    }
-                }
-                proFcate.innerHTML+=
-                `
+  });
+function displayProductFcategory(type) {
+  findProductFcategory(type, (listPFC) => {
+    let res = listPFC;
+    let productF = res.products;
+    let pro_color = res.product_colors;
+    let proFcate = document.getElementById("product_category");
+    proFcate.innerHTML = "";
+    let numf = 1;
+    if (productF.length > 0) {
+      for (let pro of productF) {
+        let cu_productColor = null;
+        for (let o_lcor of pro_color) {
+          if (o_lcor.product_id == pro.product_id && o_lcor.defaultal) {
+            cu_productColor = o_lcor;
+            break;
+          }
+        }
+        console.log(pro);
+        console.log("-------------->heheheheh------------------");
+        let url = cu_productColor.image;
+        proFcate.innerHTML += `
                     <div class="col-md-3">
                         <div class="card-product text-center p-3 shadow-sm">
-                            <img src="../images/${cu_productColor.image}" class="card-img-top" alt="product">
+                            <img src="${url}" class="card-img-top" alt="product">
                             <div class="card-body">
-                                <a href="http://localhost/Black-Aries-Project/Detail/show/5">
+                                <a href="http://localhost/Black-Aries-Project/Detail/show/${pro.product_id}">
                                     <h5 class="card-title">${pro.product_name}</h5>
                                 </a>
                                 <p class="card-text">$${cu_productColor.price}</p>
@@ -126,33 +134,35 @@ function displayProductFcategory(type){
                             </div>
                         </div>
                     </div>
-                `
-                if(numf ==4){
-                    break;
-                }
-                numf++;
-            }
-        }else{
-            proFcate.innerHTML="<h2>Don't have product</h2>";
+                `;
+        if (numf == 4) {
+          break;
         }
-        
-    });
+        numf++;
+      }
+    } else {
+      proFcate.innerHTML = "<h2>Don't have product</h2>";
+    }
+  });
 }
-function findProductFcategory(type,callback){
-    let prod=[];
-    return fetch('http://localhost/Black-Aries-Project/public/ajax/serveData.php',{
-        method:'POST',
-        headers: {'Content-type':'application/json'},
-        body: JSON.stringify(`getProductFcategory-${type}`) 
-    })
-    .then(response => response.text())
-    .then(data => {
-        try{
-            prod= JSON.parse(data);
-            listPFC=prod;
-            if (callback) callback(listPFC);
-        }catch{
-            console.error("Error oarsing Json",error);
-        }
-    })
+function findProductFcategory(type, callback) {
+  let prod = [];
+  return fetch(
+    "http://localhost/Black-Aries-Project/public/ajax/serveData.php",
+    {
+      method: "POST",
+      headers: { "Content-type": "application/json" },
+      body: JSON.stringify(`getProductFcategory-${type}`),
+    }
+  )
+    .then((response) => response.text())
+    .then((data) => {
+      try {
+        prod = JSON.parse(data);
+        listPFC = prod;
+        if (callback) callback(listPFC);
+      } catch {
+        console.error("Error oarsing Json", error);
+      }
+    });
 }
