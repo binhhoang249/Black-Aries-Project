@@ -71,7 +71,7 @@
                             <div class="card-product text-center p-3 shadow-sm">
                                 <img src=" '. $p_color['image'] .'" class="card-img-top" alt="' . $row["product_name"] . '">
                                 <div class="card-body">
-                                    <h5 class="card-title">' . $row["product_name"] . '</h5>
+                                    <a href=http://localhost/Black-Aries-Project/Detail/show/' . $row["product_id"] . '><h5 class="card-title">' . $row["product_name"] . '</h5> </a>
                                     <p class="card-text">$' . $p_color['price'] . '</p>
                                     <a href="#" class="btn btn-primary">Add to cart</a>
                                 </div>
@@ -108,7 +108,7 @@
                             <div class="card-product text-center p-3 shadow-sm">
                                 <img src=" '. $p_color['image'] .'" class="card-img-top" alt="' . $row["product_name"] . '">
                                 <div class="card-body">
-                                    <h5 class="card-title">' . $row["product_name"] . '</h5>
+                                    <a href=http://localhost/Black-Aries-Project/Detail/show/' . $row["product_id"] . '><h5 class="card-title">' . $row["product_name"] . '</h5> </a>
                                     <p class="card-text">$' . $p_color['price'] . '</p>
                                     <a href="#" class="btn btn-primary">Add to cart</a>
                                 </div>
@@ -145,7 +145,7 @@
                             <div class="card-product text-center p-3 shadow-sm">
                                 <img src=" '. $p_color['image'] .'" class="card-img-top" alt="' . $row["product_name"] . '">
                                 <div class="card-body">
-                                    <h5 class="card-title">' . $row["product_name"] . '</h5>
+                                    <a href=http://localhost/Black-Aries-Project/Detail/show/' . $row["product_id"] . '><h5 class="card-title">' . $row["product_name"] . '</h5> </a>
                                     <p class="card-text">$' . $p_color['price'] . '</p>
                                     <a href="#" class="btn btn-primary">Add to cart</a>
                                 </div>

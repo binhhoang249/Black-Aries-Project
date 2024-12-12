@@ -1,142 +1,57 @@
+<?php extract($data); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detail</title>
+    <link href="http://localhost/Black-Aries-Project/public/css/detail.css" rel="stylesheet">
 </head>
 <body>
-    <style>
-        *{
-            box-sizing:border-box !important;
-        }
-        .detail-container{
-            display:flex;
-        }
-        .slider-container{
-            height:420px;
-            width: 95px;
-            overflow:hidden;
-            position:relative;
-        }
-        .slider{
-            width:100%;
-            height:100%;
-        }
-        .item{
-            width:100%;
-            height:105px;
-            padding:10px 0;
-        }
-        .item-image{
-            width: 100%;
-            height:100%;
-        }
-        .item-image img{
-            width: 100%;
-            height:100%;
-        }
-        .cur_image img{
-            width: 100%;
-            height:100%;
-        }
-        .cur_image{
-            width:400px;
-            height:420px;
-            margin-left:80px;
-            margin-right:80px;
-        }
-        .detail_content{
-            flex:1;
-            padding:0
-        }
-        .detail_content h2{
-            width: 100%;
-            text-align:center;
-            margin-top:0;
-            padding-top:0;
-
-        }
-        .detail_content p {
-            width: 100%;
-        }
-        .goCheckout{
-            background-color:#D9D9D9;
-            display:inline-flex;
-            align-items:center;
-            padding:20px 30px;
-            margin-bottom:15px;
-        }
-        .goCheckout input{
-            border:none;
-        }
-        .goCheckout label{
-            display:flex;
-            justify-content:center;
-            align-items:center;
-        }
-        #product_color_id{
-            display:none;
-        }
-        #product_price{
-            background-color:inherit;
-            width:120px;
-        }
-        #product_quantity{
-            width:60px;
-            margin: 0 40px;
-            text-align:center;
-            height:30px
-        }
-        #product_but{
-            background:#527A9A;
-            border:none;
-            color:white;
-            width: 160px;
-            padding:5px 0;
-            height:30px
-        }
-        .d_field{
-            display:flex;
-            justify-content:center;
-            align-items:center;
-        }
-        .d_field p{
-            margin:0;
-            padding:0;
-            margin-bottom:10px;
-            margin-left:5px;
-        }
-    </style>
     <div class="detail-container">
         <!-- khung ảnh -->
         <div class="slider-container">
             <div class="slider">
-                <div class="item" data-image=""> <div class="item-image"><img src="" alt="product_color"></div></div>
-                <div class="item" data-image="">  <div class="item-image"><img src="" alt="product_color"></div></div>
-                <div class="item" data-image=""> <div class="item-image"><img src="" alt="product_color"></div></div>
-                <div class="item" data-image="">  <div class="item-image"><img src="" alt="product_color"></div></div>
-                <div class="item" data-image="">  <div class="item-image"><img src="" alt="product_color"></div></div>
+                <?php  
+                    if(isset($product_color)&&count($product_color )>0) :
+                        foreach($product_color as $value){
+                            ?>
+                                <div class="item" data-id="<?php echo($value['product_color_id']);?>"> <div class="item-image"><img src="<?php echo($value['image']);?>" alt="product_color"></div></div>
+                            <?php
+                        }
+                    endif ;
+                    ?>
             </div>
+            <button type="button" class="but_lider" onclick="prevSlide()">&#8593;</button>
+            <button type="button" class="but_lider1" onclick="nextSlide()">&#8595;</button>
         </div>
         <!--Anhr hiện lên -->
         <div class="cur_image">
-            <img src="" alt="image">
+            <img src="<?php echo isset($product_color)? $product_color[0]['image']:"" ;?>" alt="image">
         </div>
         <!-- Nội dung -->
          <div class="detail_content">
-            <h2>Sticks Outdoor 2-Seater Sofa</h2>
-            <p>Elevate your outdoor space with the elegant and durable Sticks Outdoor 2-Seater Sofa from Cane-line. 
-                Inspired by nature, its unique stick-like frame adds charm while the innovative cushion ensures total comfort paired with quick-drying technology. 
-                Perfect as a standalone piece or paired with other designs from the Sticks series, 
-                this sofa is ready to take your outdoor entertaining spaces to new heights.
-            </p>
-            <form action="" method="POST" class="goCheckout">
-                <input id="product_color_id" name="product_color_id" type="text" placeholder="id của poduct_id">
-                <label>$<input type="text" value="09999" name="product_price" id="product_price"></label> 
-                <input type="number" name="product_quantity" id="product_quantity" value="1">
-                <button type="submit" id="product_but" name="product_but">Buy</button>
-            </form>
+            <h2><?php echo isset($product)? $product[0]['product_name']:"" ;?></h2>
+            <p><?php echo isset($product)? $product[0]['description']:"" ;?></p>
+            <?php if(isset($product_color)&& count($product_color)>0): 
+                    $dis=(float)$product[0]['discount'];
+                    $priceprev=(float)$product_color[0]['price'];
+                    $priceCur=$priceprev*$dis/100;
+                    ?>
+                        <div style="display:flex;align-items:center">
+                            <div class="cur_price"><?php echo($priceCur); ?>$</div>
+                            <div class="prev_price"><?php echo($priceprev); ?>$</div>
+                        </div>
+                            <form action="" method="POST" class="goCheckout">
+                            <input id="product_color_id" name="product_color_id" type="text" placeholder="id của poduct_id" value="<?php echo($product_color[0]['product_color_id']); ?>" disabled>
+                            <input id="product_pr" name="product_pr" type="number" placeholder="price" value="<?php echo($priceCur); ?>" disabled>
+                            <label>$<input type="text" value="<?php echo($priceCur); ?>" name="product_price" id="product_price" disabled></label> 
+                            <input type="number" name="product_quantity" id="product_quantity" value="1">
+                            <button type="submit" id="product_but" name="product_but">Buy</button>
+                        </form>
+                    <?php
+                endif ;
+                ?>
             <div class="d_field">
                 <div>
                 <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -200,5 +115,86 @@
             </div>
          </div>
     </div>
+    <script type="text/javascript">
+        var list_product_color=(<?php echo( isset($product_color)?json_encode($product_color):""); ?>);
+        var product =(<?php echo( isset($product)?json_encode($product):""); ?>);
+        var qualityProduct = document.getElementById('product_quantity');
+        qualityProduct.addEventListener('input',function(){
+            let per = qualityProduct.value;
+            console.log(per);
+            if(per>0){
+                let cur =document.getElementById('product_pr').value;
+                console.log(cur);
+                let pric=Number(per)*parseFloat(cur);
+                document.getElementById('product_price').value=pric;
+            }else{
+                document.getElementById('product_price').value=0;
+            }
+        })
+        var itemal =document.querySelectorAll('.item');
+        itemal.forEach( ite => {
+            ite.addEventListener('click',function(){
+                let de_pro_id=ite.dataset.id;
+                console.log(de_pro_id)
+                console.log(list_product_color)
+                let de_product_color;
+                for(let ab of list_product_color){
+                    if(ab.product_color_id==de_pro_id){
+                        de_product_color=ab;
+                        console.log("sssssss")
+                        console.log(de_product_color)
+                        break;
+                    }
+                }
+                console.log(de_product_color)
+                document.querySelector('.cur_image').innerHTML=`
+                    <img src="public/images/${de_product_color.image}" alt="image1">
+                `
+                let dis= parseFloat(product[0].discount);
+                let de_price=parseFloat(de_product_color.price);
+                let de_curPrice= (dis*de_price)/100; 
+                document.querySelector('.cur_price').innerHTML=de_curPrice;
+                document.querySelector('.prev_price').innerHTML=de_price;
+                document.getElementById('product_color_id').value= de_pro_id;
+                document.getElementById('product_pr').value= de_curPrice ;
+                document.getElementById('product_price').value= de_curPrice ;
+                document.getElementById('product_quantity').value=1 ;
+                itemal.forEach(val =>{
+                    val.querySelector('.item-image').classList.remove('borderal');
+                })
+                ite.querySelector('.item-image').classList.add('borderal');
+            })
+        })
+        var slider = document.querySelector('.slider');
+        var itemPerView = 4;
+        var positionCurrent = 0;
+        let itemHeight = 0;
+
+        function nextSlide() {
+            let items = document.querySelectorAll('.item');
+            itemHeight = items[0].offsetHeight;
+            if (positionCurrent > (itemPerView - items.length) * itemHeight) {
+                positionCurrent -= itemHeight; // Di chuyển xuống
+            } else {
+                positionCurrent = 0; // Quay lại đầu
+            }
+            slider.style.transform = `translateY(${positionCurrent}px)`; // Di chuyển slider
+        }
+
+        function prevSlide() {
+            var items = document.querySelectorAll('.item');
+            itemHeight = items[0].offsetHeight;
+            if (items.length > itemPerView) {
+                if (positionCurrent === 0) {
+                    positionCurrent = -1 * (items.length - itemPerView) * itemHeight; // Di chuyển lên
+                } else {
+                    positionCurrent += itemHeight; // Di chuyển lên
+                }
+            } else {
+                positionCurrent = 0;
+            }
+            slider.style.transform = `translateY(${positionCurrent}px)`; // Di chuyển slider
+        }
+    </script>
 </body>
 </html>
