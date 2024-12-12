@@ -124,7 +124,7 @@ INSERT INTO Product_color (quantity, image, price, defaultal, product_id, color_
   (15, 'gax_xw_table_blue.png', 190, 0, 3, 2),  
   (15, 'gax_xw_table_green.png', 150, 0, 3, 3),  
   (15, 'gax_xw_table_black.png', 150, 0, 3, 4),  
-  (15, 'gax_xw_table_white.png', 150, 1, 3, 5);  
+  (15, 'gax_xw_table_white.png', 150, 1, 3, 5), 
   (8, 'rows_diagonal_dining_table_red.png', 500, 0, 4, 1),  
   (8, 'rows_diagonal_dining_table_blue.png', 560, 0, 4, 2),  
   (8, 'rows_diagonal_dining_table_green.png', 580, 0, 4, 3),  
