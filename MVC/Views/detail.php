@@ -22,8 +22,8 @@
                     endif ;
                     ?>
             </div>
-            <button type="button" class="but_lider">&#8593;</button>
-            <button type="button" class="but_lider1">&#8595;</button>
+            <button type="button" class="but_lider" onclick="prevSlide()">&#8593;</button>
+            <button type="button" class="but_lider1" onclick="nextSlide()">&#8595;</button>
         </div>
         <!--Anhr hiện lên -->
         <div class="cur_image">
@@ -43,9 +43,9 @@
                             <div class="prev_price"><?php echo($priceprev); ?>$</div>
                         </div>
                             <form action="" method="POST" class="goCheckout">
-                            <input id="product_color_id" name="product_color_id" type="text" placeholder="id của poduct_id" value="<?php echo($product_color[0]['product_color_id']); ?>">
-                            <input id="product_pr" name="product_pr" type="number" placeholder="price" value="<?php echo($priceCur); ?>">
-                            <label>$<input type="text" value="<?php echo($priceCur); ?>" name="product_price" id="product_price"></label> 
+                            <input id="product_color_id" name="product_color_id" type="text" placeholder="id của poduct_id" value="<?php echo($product_color[0]['product_color_id']); ?>" disabled>
+                            <input id="product_pr" name="product_pr" type="number" placeholder="price" value="<?php echo($priceCur); ?>" disabled>
+                            <label>$<input type="text" value="<?php echo($priceCur); ?>" name="product_price" id="product_price" disabled></label> 
                             <input type="number" name="product_quantity" id="product_quantity" value="1">
                             <button type="submit" id="product_but" name="product_but">Buy</button>
                         </form>
@@ -165,6 +165,36 @@
                 ite.querySelector('.item-image').classList.add('borderal');
             })
         })
+        var slider = document.querySelector('.slider');
+        var itemPerView = 4;
+        var positionCurrent = 0;
+        let itemHeight = 0;
+
+        function nextSlide() {
+            let items = document.querySelectorAll('.item');
+            itemHeight = items[0].offsetHeight;
+            if (positionCurrent > (itemPerView - items.length) * itemHeight) {
+                positionCurrent -= itemHeight; // Di chuyển xuống
+            } else {
+                positionCurrent = 0; // Quay lại đầu
+            }
+            slider.style.transform = `translateY(${positionCurrent}px)`; // Di chuyển slider
+        }
+
+        function prevSlide() {
+            var items = document.querySelectorAll('.item');
+            itemHeight = items[0].offsetHeight;
+            if (items.length > itemPerView) {
+                if (positionCurrent === 0) {
+                    positionCurrent = -1 * (items.length - itemPerView) * itemHeight; // Di chuyển lên
+                } else {
+                    positionCurrent += itemHeight; // Di chuyển lên
+                }
+            } else {
+                positionCurrent = 0;
+            }
+            slider.style.transform = `translateY(${positionCurrent}px)`; // Di chuyển slider
+        }
     </script>
 </body>
 </html>
