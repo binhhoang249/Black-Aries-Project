@@ -138,3 +138,7 @@
     .back_color{
         background:#F6FBFF;
 }
+a {
+    position: relative;
+    z-index: 1; /* Đảm bảo thẻ <a> hiển thị trên các phần tử khác */
+}

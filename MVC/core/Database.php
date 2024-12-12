@@ -4,8 +4,11 @@ class Database extends PDO {
         parent::__construct($connect, $user, $pass);
     }
 
-    public function select($sql, $fetchStyle = PDO::FETCH_ASSOC) {
+    public function select($sql,$data = array(), $fetchStyle = PDO::FETCH_ASSOC) {
         $statement = $this->prepare($sql);
+        foreach($data as $key => $value) {
+            $statement->bindValue($key, $value);
+        }
         $statement->execute();
         return $statement->fetchAll($fetchStyle);
     }

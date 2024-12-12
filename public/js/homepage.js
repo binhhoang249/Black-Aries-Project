@@ -118,7 +118,9 @@ function displayProductFcategory(type){
                         <div class="card-product text-center p-3 shadow-sm">
                             <img src="../images/${cu_productColor.image}" class="card-img-top" alt="product">
                             <div class="card-body">
-                                <h5 class="card-title">${pro.product_name}</h5>
+                                <a href="http://localhost/Black-Aries-Project/Detail/show/5">
+                                    <h5 class="card-title">${pro.product_name}</h5>
+                                </a>
                                 <p class="card-text">$${cu_productColor.price}</p>
                                 <a href="#" class="btn btn-primary">Add to cart</a>
                             </div>
