@@ -16,6 +16,9 @@
             <img src="http://localhost/Black-Aries-Project/public/images/aboutus.png" alt="Banner">
             <h1 class="title">About Us</h1>
         </div>
+        <div>
+        <img src="http://localhost/Black-Aries-Project/public/images/Air_Bed_black.png" alt="ádad">
+        </div>
     </div>
 </body>
 </html>
