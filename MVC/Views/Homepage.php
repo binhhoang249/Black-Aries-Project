@@ -45,7 +45,7 @@
         </div>
         <!-- khung của hiện sản phẩm theo loại-->
         <div class="container my-5 productFCategory">
-            <h2 class="text-center mb-4"> </h2>
+            <h2 class="text-center mb-4">Product </h2>
         <!-- Nơi sẽ lưu các product theo loại -->
             <div class="row" id="product_category">
             </div>
