@@ -1,5 +1,4 @@
 CREATE DATABASE Black_Aries;
-
 USE Black_Aries;
 CREATE TABLE Categories (
       category_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -144,8 +143,9 @@ INSERT INTO Product_color (quantity, image, price, defaultal, product_id, color_
   (12, 'prego_dining_table_red.png', 450, 0, 7, 1),  
   (12, 'prego_dining_table_blue.png', 480, 0, 7, 2),  
   (12, 'prego_dining_table_green.png', 450, 0, 7, 3),  
-  (12, 'prego_dining_table_black.png', 450, 0, 7, 4),
-  (12, 'prego_dining_table_white.png', 450, 1, 7, 5),
+  (12, 'prego_dining_table_black.png', 450, 0, 7, 4), (12, 'prego_dining_table_white.png', 450, 1, 7, 5);  
+-- Tony Cafe Table
+INSERT INTO Product_color (quantity, image, price, defaultal, product_id, color_id) VALUES
   (18, 'tony_cafe_table_red.png', 200, 0, 8, 1),  
   (18, 'tony_cafe_table_blue.png', 200, 0, 8, 2),  
   (18, 'tony_cafe_table_green.png', 200, 0, 8, 3),  
@@ -210,7 +210,9 @@ INSERT INTO Product_color (quantity, image, price, defaultal, product_id, color_
   (20, 'wailea_outdoor_swivel_chair_blue.png', 1010, 0, 20, 2),
   (20, 'wailea_outdoor_swivel_chair_green.png', 1020, 0, 20, 3),
   (20, 'wailea_outdoor_swivel_chair_black.png', 1030, 0, 20, 4),
-  (20, 'wailea_outdoor_swivel_chair_white.png', 1040, 1, 20, 5),
+  (20, 'wailea_outdoor_swivel_chair_white.png', 1040, 1, 20, 5);
+-- 3 Lamp
+ INSERT INTO Product_color (quantity, image, price, defaultal, product_id, color_id) VALUES
   (15, 'Outrack_Garota_Outdoor_LED_Track_Light_red.png', 160, 0, 21, 1),
   (18, 'Outrack_Garota_Outdoor_LED_Track_Light_blue.png', 210, 0, 21, 2),
   (20, 'Outrack_Garota_Outdoor_LED_Track_Light_green.png', 170, 0, 21, 3),
