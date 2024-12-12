@@ -28,8 +28,7 @@
 <footer>
     <div class="footer-component">
         <ul><h3>Company</h3>
-            <li><a href="#">About as</a></li>
-            <li><a href="#">Blog</a></li>
+            <li><a href="#">About us</a></li>
         </ul>
     </div>
     <div  class="footer-component">

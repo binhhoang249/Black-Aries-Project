@@ -119,8 +119,8 @@ function displayProductFcategory(type){
                             <img src="../images/${cu_productColor.image}" class="card-img-top" alt="product">
                             <div class="card-body">
                                 <h5 class="card-title">${pro.product_name}</h5>
-                                <p class="card-text">${cu_productColor.price}</p>
-                                <a href="#" class="btn btn-primary">Thêm vào giỏ</a>
+                                <p class="card-text">$${cu_productColor.price}</p>
+                                <a href="#" class="btn btn-primary">Add to cart</a>
                             </div>
                         </div>
                     </div>

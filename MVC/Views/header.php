@@ -42,12 +42,10 @@
     }
     .header-logo-navigation ul > li:hover ,  .header-user ul > li:hover {
         color:rgba(82, 122, 154, 1);
-        font-size:20px;
         cursor:pointer;
     }
     .header-logo-navigation ul li a:hover ,  .header-user ul li a:hover, #h-search:hover {
         color:rgba(82, 122, 154, 1);
-        font-size:20px;
         cursor:pointer ;
     }
     .header-search{
@@ -55,8 +53,8 @@
     }
     .h-searchField{
         position:absolute;
-        top:300%;
-        right:50%;
+        right:150%;
+        top:-50%;
         width:300px;
         border-radius:40px;
         display:none;
