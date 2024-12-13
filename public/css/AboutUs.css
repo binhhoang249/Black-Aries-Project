@@ -1,5 +1,6 @@
 .container {
     height: auto;
+    /* background-color: red; */
 }
 .banner {
     width: 100%;
@@ -21,4 +22,24 @@
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
+}
+
+.information-business {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+    text-align: center;
+    align-items: center;
+    background-color: #527A9A;
+    color: #fff;
+}
+
+.information-business h2 {
+    font-size: 48px;
+    margin: 0;
+    padding-top: 19px;
+}
+
+.information-business p {
+    font-size: 32px;
 }
