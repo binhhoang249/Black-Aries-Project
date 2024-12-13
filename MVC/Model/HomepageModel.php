@@ -13,8 +13,9 @@
             return $this->db->select($sql);
         }
         public function getProductColor() {
-            $sql = "select * from Product_color";
-            return $this->db->select($sql);
+            $sql = "select * from Product_color where defaultal = :defaultala";
+            $data[':defaultala']=1;
+            return $this->db->select($sql,$data);
         }
     }
 ?>

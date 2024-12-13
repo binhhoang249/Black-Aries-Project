@@ -85,7 +85,7 @@
             <ul>
                 <!--<li><a href="#">Trang chủ</a></li>-->
                 <li><a href="#">Product</a></li>
-                <li><a href="http://localhost/Black-Aries-Project/AboutUs">About as</a></li>
+                <li><a href="http://localhost/Black-Aries-Project/AboutUs">About us</a></li>
                 <li><a href="#">Contact</a></li>
             </ul>
         </div>
