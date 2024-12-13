@@ -18,7 +18,7 @@
     include_once 'MVC/Views/header.php';
     ?>
     <div style="width:100%;height:696px;position:relative">
-        <img style="width:100%;height:100%" src="public/images/Rectangle 12.png" alt="Banner">
+        <img style="width:100%;height:100%" src="public/images/Rectangle 2.png" alt="Banner">
         <p style="position:absolute;top:50%;left:50%;font-size:64px;color:white;transform:translate(-50%, -50%);width:864px;">Welcome to my Black Aries</p>
     </div>
     <div id="container">
@@ -69,22 +69,25 @@
                                 $p_color = $value2;
                             }
                         }
-                        
-                        echo '
-                        <div class="col-md-3">
-                            <div class="card-product text-center p-3 shadow-sm">
-                                <img src="' . htmlspecialchars(trim($p_color['image'])) . '" class="card-img-top" alt="' . htmlspecialchars($row["product_name"]) . '">
-                                <div class="card-body">
-                                    <a href="http://localhost/Black-Aries-Project/Detail/show/' . $row["product_id"] . '">
-                                        <h5 class="card-title">' . htmlspecialchars($row["product_name"]) . '</h5>
-                                    </a>
-                                    <p class="card-text">$' . htmlspecialchars($p_color['price']) . '</p>
-                                    <a href="#" class="btn btn-primary">Add to cart</a>
+                        if(!empty($p_color)){
+                            echo '
+                            <div class="col-md-3">
+                                <div class="card-product text-center p-3 shadow-sm">
+                                    <div class="card-imagel">
+                                        <img src="' . htmlspecialchars(trim($p_color['image'])) . '" class="card-img-top" alt="' . htmlspecialchars($row["product_name"]) . '">
+                                    </div>
+                                    <div class="card-body">
+                                        <a href="http://localhost/Black-Aries-Project/Detail/show/' . $row["product_id"] . '">
+                                            <h5 class="card-title">' . htmlspecialchars($row["product_name"]) . '</h5>
+                                        </a>
+                                        <p class="card-text">$' . htmlspecialchars($p_color['price']) . '</p>
+                                        <a href="#" class="btn btn-primary">Add to cart</a>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>';
-                        if ($n == 4) break;
-                        $n++;
+                            </div>';
+                            if ($n == 4) break;
+                            $n++;
+                        }
                     }
                 } else {
                     echo "<p>Không có sản phẩm nào!</p>";
@@ -108,23 +111,25 @@
                                 break; // Thoát khỏi vòng lặp khi tìm thấy màu sản phẩm
                             }
                         }
-
-                        echo '
-                <div class="col-md-3">
-                    <div class="card-product text-center p-3 shadow-sm">
-                        <img src="' . htmlspecialchars(trim($p_color['image'])) . '" class="card-img-top" alt="' . htmlspecialchars($row["product_name"]) . '">
-                        <div class="card-body">
-                            <a href="http://localhost/Black-Aries-Project/Detail/show/' . htmlspecialchars($row["product_id"]) . '">
-                                <h5 class="card-title">' . htmlspecialchars($row["product_name"]) . '</h5>
-                            </a>
-                            <p class="card-text">$' . htmlspecialchars($p_color['price']) . '</p>
-                            <a href="#" class="btn btn-primary">Add to cart</a>
-                        </div>
-                    </div>
-                </div>';
-
-                        if ($n == 4) break; // Chỉ hiển thị tối đa 4 sản phẩm
-                        $n++;
+                        if(!empty($p_color)){
+                            echo '
+                            <div class="col-md-3">
+                                <div class="card-product text-center p-3 shadow-sm">
+                                    <div class="card-imagel">
+                                        <img src="' . htmlspecialchars(trim($p_color['image'])) . '" class="card-img-top" alt="' . htmlspecialchars($row["product_name"]) . '">
+                                    </div>
+                                    <div class="card-body">
+                                        <a href="http://localhost/Black-Aries-Project/Detail/show/' . $row["product_id"] . '">
+                                            <h5 class="card-title">' . htmlspecialchars($row["product_name"]) . '</h5>
+                                        </a>
+                                        <p class="card-text">$' . htmlspecialchars($p_color['price']) . '</p>
+                                        <a href="#" class="btn btn-primary">Add to cart</a>
+                                    </div>
+                                </div>
+                            </div>';
+                            if ($n == 4) break;
+                            $n++;
+                        }
                     }
                 } else {
                     echo "<p>Không có sản phẩm nào!</p>";
@@ -147,21 +152,25 @@
                                 $p_color = $value2;
                             }
                         }
-                        echo '
-                        <div class="col-md-3">
-                            <div class="card-product text-center p-3 shadow-sm">
-                                <img src="' . htmlspecialchars(trim($p_color['image'])) . '" class="card-img-top" alt="' . htmlspecialchars($row["product_name"]) . '">
-                                <div class="card-body">
-                                    <a href="http://localhost/Black-Aries-Project/Detail/show/' . $row["product_id"] . '">
-                                        <h5 class="card-title">' . htmlspecialchars($row["product_name"]) . '</h5>
-                                    </a>
-                                    <p class="card-text">$' . htmlspecialchars($p_color['price']) . '</p>
-                                    <a href="#" class="btn btn-primary">Add to cart</a>
+                        if(!empty($p_color)){
+                            echo '
+                            <div class="col-md-3">
+                                <div class="card-product text-center p-3 shadow-sm">
+                                    <div class="card-imagel">
+                                        <img src="' . htmlspecialchars(trim($p_color['image'])) . '" class="card-img-top" alt="' . htmlspecialchars($row["product_name"]) . '">
+                                    </div>
+                                    <div class="card-body">
+                                        <a href="http://localhost/Black-Aries-Project/Detail/show/' . $row["product_id"] . '">
+                                            <h5 class="card-title">' . htmlspecialchars($row["product_name"]) . '</h5>
+                                        </a>
+                                        <p class="card-text">$' . htmlspecialchars($p_color['price']) . '</p>
+                                        <a href="#" class="btn btn-primary">Add to cart</a>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>';
-                        if ($n == 4) break;
-                        $n++;
+                            </div>';
+                            if ($n == 4) break;
+                            $n++;
+                        }
                     }
                 } else {
                     echo "<p>Không có sản phẩm nào!</p>";

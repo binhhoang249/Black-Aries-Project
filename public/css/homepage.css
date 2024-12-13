@@ -56,11 +56,15 @@
 .card-product:hover {
     transform: scale(1.05);
 }
-
-.card-product img {
+.card-imagel{
+    height: 270px;
+    width:100%;
+}
+.card-imagel img {
     width: 100%; /* Giữ hình ảnh rộng 100% của card */
-    min-height: 270px; /* Nếu không có ảnh, sẽ có một chiều cao mặc định */
+    height: 100%; /* Nếu không có ảnh, sẽ có một chiều cao mặc định */
     object-fit: cover; /* Cắt và giữ tỷ lệ của hình ảnh */
+    mix-blend-mode: multiply;
 }
 
 .card-product .card-body {
