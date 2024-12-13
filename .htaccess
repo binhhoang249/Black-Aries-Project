@@ -1,13 +1,18 @@
+# Bật mod_rewrite
 RewriteEngine On
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_URI} !\.(jpg|jpeg|png|gif|webp|svg)$ [NC]
-RewriteRule ^(.+)$ index.php?url=$1
-<FilesMatch "\.(jpg|jpeg|png|gif|webp|svg)$">
+
+# Điều kiện để không rewrite cho các tệp tĩnh như hình ảnh, CSS
+RewriteCond %{REQUEST_URI} !\.(css|jpg|jpeg|png|gif|webp|svg)$ [NC]
+
+# Quy tắc rewrite cho các yêu cầu còn lại
+RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
+
+# Cấp quyền cho các tệp CSS và hình ảnh
+<FilesMatch "\.(css|jpg|jpeg|png|gif|webp|svg)$">
     Require all granted
 </FilesMatch>
-AddType image/jpeg .jpg .jpeg
-AddType image/png .png
-AddType image/gif .gif
-AddType image/webp .webp
-AddType image/svg+xml .svg
+
+# Cấu hình cho tệp CSS
+<FilesMatch "\.css$">
+    Header set Content-Type "text/css"
+</FilesMatch>   
