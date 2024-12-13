@@ -23,7 +23,7 @@
         margin-left:30px;
     }
     .header-logo-icon{
-        width:227px;
+        width:180px;
         height:81px;
     }
     .header-logo-icon img{
@@ -78,12 +78,14 @@
 <!-- link: <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">  -->
 <header>
     <div class="header-logo">
-        <div class="header-logo-icon"><img src="public/images/logo_shop-removebg-preview 1.png" alt="Logo web"></div>
+        <a href="http://localhost/Black-Aries-Project/home">
+            <div class="header-logo-icon"><img src="http://localhost/Black-Aries-Project/public/images/logo_shop-removebg-preview.png" alt="Logo web"></div>
+        </a>
         <div class="header-logo-navigation">
             <ul>
-                <li><a href="#">Trang chủ</a></li>
+                <!--<li><a href="#">Trang chủ</a></li>-->
                 <li><a href="#">Product</a></li>
-                <li><a href="#">About as</a></li>
+                <li><a href="http://localhost/Black-Aries-Project/AboutUs">About as</a></li>
                 <li><a href="#">Contact</a></li>
             </ul>
         </div>

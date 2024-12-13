@@ -118,27 +118,29 @@ function displayProductFcategory(type) {
             break;
           }
         }
-        console.log(pro);
-        console.log("-------------->heheheheh------------------");
-        let url = cu_productColor.image;
-        proFcate.innerHTML += `
-                    <div class="col-md-3">
-                        <div class="card-product text-center p-3 shadow-sm">
-                            <img src="${url}" class="card-img-top" alt="product">
-                            <div class="card-body">
-                                <a href="http://localhost/Black-Aries-Project/Detail/show/${pro.product_id}">
-                                    <h5 class="card-title">${pro.product_name}</h5>
-                                </a>
-                                <p class="card-text">$${cu_productColor.price}</p>
-                                <a href="#" class="btn btn-primary">Add to cart</a>
-                            </div>
-                        </div>
-                    </div>
-                `;
-        if (numf == 4) {
-          break;
+        if(cu_productColor){
+          let url = cu_productColor.image;
+          proFcate.innerHTML += `
+                      <div class="col-md-3">
+                          <div class="card-product text-center p-3 shadow-sm">
+                              <div class="card-imagel">
+                                 <img src="${url}" class="card-img-top" alt="product">
+                              </div>
+                              <div class="card-body">
+                                  <a href="http://localhost/Black-Aries-Project/Detail/show/${pro.product_id}">
+                                      <h5 class="card-title">${pro.product_name}</h5>
+                                  </a>
+                                  <p class="card-text">$${cu_productColor.price}</p>
+                                  <a href="#" class="btn btn-primary">Add to cart</a>
+                              </div>
+                          </div>
+                      </div>
+                  `;
+          if (numf == 4) {
+            break;
+          }
+          numf++;
         }
-        numf++;
       }
     } else {
       proFcate.innerHTML = "<h2>Don't have product</h2>";
