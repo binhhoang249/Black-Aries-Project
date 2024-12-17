@@ -1,0 +1,131 @@
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+       
+            .container {
+                position: relative;
+                background-image: url('./images/Mask Group.jpg');
+                height: 100vh;  
+                width: 100%;  
+                background-size: cover;  
+                margin-top: 0;
+                background-attachment: fixed; 
+                padding-top: 70px;
+            }
+
+            .overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(255, 255, 255, 0.5);  /* Lớp phủ trắng với độ mờ */
+                z-index: 1;  /* Đảm bảo lớp phủ nằm dưới nội dung */
+            }
+
+            .content {
+                width: 550px;
+                margin: 0 auto;
+                padding: 20px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                background-color: white;
+                height: 580px;
+                position: relative;
+                z-index: 2;  /* Đảm bảo form hiển thị trên lớp phủ */
+            }
+            img {
+                width: 220px;
+                height: 100px;
+                }
+            .logo-container {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .line {
+                flex: 1;
+                height: 1px;
+                background-color: #ccc;
+            }
+
+            .title{
+                margin-top: 0;
+                text-align: center;
+                font-size: 43px;
+                font-weight: bold;
+                margin-bottom: 10px;
+            }
+            .form{
+                margin-top: 10px;
+                text-align:center;
+            }
+            
+            .form input {
+
+                width: 94%;
+                padding: 8px 10px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                outline: none;
+                height: 35px;
+            }
+            .signin-text{
+                font-size: 15px;
+                margin-top: 10px;
+                margin-left:295px;
+                margin-bottom:10px;
+            }
+
+            .signup{
+                display: flex; /* Sử dụng Flexbox */
+                flex-direction: column; /* Sắp xếp các phần tử theo chiều dọc */
+                gap: 10px; /* Khoảng cách giữa các nút */
+                margin: 0 auto; /* Căn giữa container trên màn hình */
+                align-items: center; /* Căn giữa nội dung bên trong container */    
+                boder-color:#aaa;
+                }
+
+            .sign-btn{
+                width: 94%;
+                background-color:#527A9A;
+                height: 35px;
+                border-radius:5px;
+                color: white;
+                border: 1px solid #ccc; /* Viền màu nhạt */
+            }
+            .sign-btn:hover {
+                background-color:#324C60;
+            }
+            .google-btn, .facebook-btn  {
+                width: 94%;
+                height: 35px;
+                border-radius:5px;
+                background-color: white;  
+                border: 1px solid #ccc; /* Viền màu nhạt */
+                cursor: pointer; 
+
+            }
+            .google-btn:hover, .facebook-btn:hover {
+                background-color: #f0f0f0; 
+                border-color: #aaa; 
+                color: #333; 
+            }
+            .google-btn i {
+                color: #db4437; 
+
+            }
+
+            .facebook-btn i {
+                color: #3b5998; 
+                margin-left:19px;
+
+            }
+            .google-btn i, .facebook-btn i {
+            margin-right: 8px; /* Adds some space between the icon and text */
+            }
+            
