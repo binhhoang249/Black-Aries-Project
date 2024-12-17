@@ -10,5 +10,9 @@ class Controller {
     static public function view($view, $data = []) {
         require_once __DIR__ . "/../views/" . $view . ".php";
     }
+    static public function sendMail (){
+        require_once __DIR__ . "/../Controllers/email.php";
+        return new email();
+    }
 }
 ?>

@@ -1,5 +1,10 @@
 <?php
-include_once '';
+require 'public/email/PHPMailer-master/src/Exception.php';
+require 'public/email/PHPMailer-master/src/PHPMailer.php';
+require 'public/email/PHPMailer-master/src/SMTP.php';
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
 class email {
     protected $master='nguyenthong0855@gmail.com';
     protected $pMaster='mkpltalsuwasrljy';
@@ -11,7 +16,8 @@ class email {
         
     }
     //Object lưu các thong tin cơ bản như fullname, email, password
-    public static function sendCode($object){
+    public  function sendCode($object){
+        $mail = new PHPMailer(true);
         try{
             $sMail=(isset($object)&&isset($object['mail']))?$object['mail']:$this->toEmail;
             $nMail=(isset($object)&&isset($object['fullname']))?$object['fullname']:$this->toEmail;
@@ -30,8 +36,8 @@ class email {
             $mail-> isSMTP();
             $mail->Host = 'smtp.gmail.com';
             $mail->SMTPAuth = true;
-            $mail->Username =$this->$master;
-            $mail->Password =$this->$pMaster;
+            $mail->Username =$this->master;
+            $mail->Password =$this->pMaster;
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             $mail->Port = 587;
             $mail->setFrom($this->master, $this->pMaster);
@@ -48,7 +54,8 @@ class email {
         }
     }
     //Object lưu các thong tin cơ bản như fullname, email, password
-    public static function informRegister($object){
+    public  function informRegister($object){
+        $mail = new PHPMailer(true);
         try{
             $sMail=(isset($object)&&isset($object['mail']))?$object['mail']:$this->toEmail;
             $nMail=(isset($object)&&isset($object['fullname']))?$object['fullname']:$this->toEmail;
@@ -58,8 +65,8 @@ class email {
                 $content=
                 "
                   <h1>Wellcome to $this->name </h1>
-                  <p> <b> Your username:</b> ${$object['username']} </p>
-                  <p> <b> Your password:</b> ${$object['password']} </p>
+                  <p> <b> Your username:</b> {$object['username']} </p>
+                  <p> <b> Your password:</b> {$object['password']} </p>
                 ";
             } else {
                 $content="<h1>Error</h1>";
@@ -68,8 +75,8 @@ class email {
             $mail-> isSMTP();
             $mail->Host = 'smtp.gmail.com';
             $mail->SMTPAuth = true;
-            $mail->Username =$this->$master;
-            $mail->Password =$this->$pMaster;
+            $mail->Username =$this->master;
+            $mail->Password =$this->pMaster;
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             $mail->Port = 587;
             $mail->setFrom($this->master, $this->pMaster);
