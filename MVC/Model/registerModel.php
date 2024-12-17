@@ -1,30 +1,23 @@
 <?php
-    class registerModel  extends DModel {
-        public function __construct() {
-            parent::__construct();
-        }
-        public function getUser(){
-            $sql = "select * from users";
-            return $this->db->select($sql);
-        }
-        public function getCompany(){
-            $sql = "select * from companies";
-            return $this->db->select($sql);
-        }
-        public function getIndustry(){
-            $sql = "select * from industries";
-            return $this->db->select($sql);
-        }
-        public function addUser($name,$phone,$email,$password,$role){
-            //job table và data['key'=>$value];
-            //select * from user where fullname = : full_name and phone = : phone ;
-            $rpassword=md5($password);
-            $data=['full_name'=>$name,'phone'=>$phone,'email'=>$email,'password'=>$rpassword,'role'=>$role];
-            return $this->db->insert("users", $data);
-        }
-        public function addCompany($nameCompany,$industry,$address,$id_user){
-            $data=['comp_name'=>$nameCompany,'industry_id'=>$industry,'comp_address'=>$address,'user_id'=>$id_user];
-            return $this->db->insert("companies", $data);
-        }
+class RegisterModel extends DModel {
+    public function __construct() {
+        parent::__construct();
     }
+    public function addUser($name, $email, $password) {
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+        $data = [
+            'full_name' => $name,
+            'email' => $email,
+            'password' => $hashedPassword
+        ];
+        $checkSql = "SELECT * FROM users WHERE email = :email";
+        $checkUser = $this->db->select($checkSql, ['email' => $email]);
+
+        if (!empty($checkUser)) {
+            return ['status' => false, 'message' => 'Email đã tồn tại!'];
+        }
+        $result = $this->db->insert("users", $data);
+        return $result ? ['status' => true, 'message' => 'Đăng ký thành công!'] : ['status' => false, 'message' => 'Lỗi khi thêm người dùng!'];
+    }
+}
 ?>
