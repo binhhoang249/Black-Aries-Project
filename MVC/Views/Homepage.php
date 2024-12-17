@@ -181,7 +181,7 @@
         </div>
     </div>
     <?php include_once 'MVC/Views/footer.php'; ?>
-    <script src="http://localhost/Black-Aries-Project/public/js/homepage.js"></script>
+    <script src="public/js/homepage.js"></script>
 </body>
 
 </html>

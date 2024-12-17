@@ -3,6 +3,7 @@ var itemPerView = 5;
 var positionCurrent = 0;
 let itemWidth = 0;
 var listPFC = [];
+console.log("sssssss");
 function nextSlide() {
   var items = document.querySelectorAll(".itemal");
   itemWidth = items[0].offsetWidth;

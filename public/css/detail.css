@@ -126,7 +126,7 @@ body,html{
 .prev_price{
     color:gray;
     font-weight: lighter;
-    text-decoration: line-through'
+    text-decoration: line-through;
 }
 .borderal{
     border:1px solid black;

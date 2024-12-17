@@ -39,7 +39,7 @@
                 <?php if(isset($product_color)&& count($product_color)>0): 
                         $dis=(float)$product[0]['discount'];
                         $priceprev=(float)$product_color[0]['price'];
-                        $priceCur=$priceprev*$dis/100;
+                        $priceCur= $priceprev-$priceprev*$dis/100;
                         ?>
                             <div style="display:flex;align-items:center">
                                 <div class="cur_price"><?php echo($priceCur); ?>$</div>
@@ -153,13 +153,12 @@
                         break;
                     }
                 }
-                console.log(de_product_color)
                 document.querySelector('.cur_image').innerHTML=`
                     <img src="${de_product_color.image}" alt="image1">
-                `
+                `            
                 let dis= parseFloat(product[0].discount);
                 let de_price=parseFloat(de_product_color.price);
-                let de_curPrice= (dis*de_price)/100; 
+                let de_curPrice= de_price - (dis*de_price)/100; 
                 document.querySelector('.cur_price').innerHTML=de_curPrice+"$";
                 document.querySelector('.prev_price').innerHTML=de_price+"$";
                 document.getElementById('product_color_id').value= de_pro_id;

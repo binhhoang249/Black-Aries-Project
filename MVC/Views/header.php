@@ -20,7 +20,7 @@
     .header-logo{
         display:flex;
         align-items:center;
-        margin-left:30px;
+        margin-left:10px;
     }
     .header-logo-icon{
         width:180px;
@@ -85,7 +85,7 @@
             <ul>
                 <!--<li><a href="#">Trang chủ</a></li>-->
                 <li><a href="#">Product</a></li>
-                <li><a href="http://localhost/Black-Aries-Project/AboutUs">About as</a></li>
+                <li><a href="http://localhost/Black-Aries-Project/AboutUs">About us</a></li>
                 <li><a href="#">Contact</a></li>
             </ul>
         </div>
@@ -99,7 +99,7 @@
                 </div>
             </li>
             <li><a href="#"><i class="fas fa-user icon"></i>Profile</a></li>
-            <li><a href="#"><i class="fas fa-user icon"></i>Log in</a></li>
+            <li><a href="http://localhost/Black-Aries-Project/login"><i class="fas fa-user icon"></i>Log in</a></li>
             <li><a href="#"><i class="fas fa-shopping-cart icon"></i>Cart</a></li>
         </ul>
     </div>
