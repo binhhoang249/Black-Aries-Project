@@ -39,7 +39,7 @@
                 <?php if(isset($product_color)&& count($product_color)>0): 
                         $dis=(float)$product[0]['discount'];
                         $priceprev=(float)$product_color[0]['price'];
-                        $priceCur=$priceprev*$dis/100;
+                        $priceCur= $priceprev-$priceprev*$dis/100;
                         ?>
                             <div style="display:flex;align-items:center">
                                 <div class="cur_price"><?php echo($priceCur); ?>$</div>

@@ -99,7 +99,7 @@
                 </div>
             </li>
             <li><a href="#"><i class="fas fa-user icon"></i>Profile</a></li>
-            <li><a href="#"><i class="fas fa-user icon"></i>Log in</a></li>
+            <li><a href="http://localhost/Black-Aries-Project/login"><i class="fas fa-user icon"></i>Log in</a></li>
             <li><a href="#"><i class="fas fa-shopping-cart icon"></i>Cart</a></li>
         </ul>
     </div>
