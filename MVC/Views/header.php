@@ -20,7 +20,7 @@
     .header-logo{
         display:flex;
         align-items:center;
-        margin-left:30px;
+        margin-left:10px;
     }
     .header-logo-icon{
         width:180px;
