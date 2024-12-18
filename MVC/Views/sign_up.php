@@ -14,7 +14,7 @@
         <div class="content">
         <div class="logo-container">
                 <div class="line"></div>
-                <img src="./images/logo.png" alt="Logo">
+                <img src="public/images/logo.png" alt="Logo">
                 <div class="line"></div>
             </div>
                 <h1 class="title">WELCOME</h1>
