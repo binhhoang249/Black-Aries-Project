@@ -4,16 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign up</title>
-    <link href="http://localhost/Black-Aries-Project/public/css/login.css" rel="stylesheet">
+    <link href="http://localhost/Black-Aries-Project/public/css/login.css?ver=<?php echo time(); ?>" rel="stylesheet">
 </head>
 <body>
     <main>
-        <div class="logol">
-            <hr>
-            <div class="lg-logo"><img src="http://localhost/Black-Aries-Project/public/images/logo_shop-removebg-preview.png" alt=""></div>
-            <hr>
-        </div>
+        <div class="overlay"></div>
         <div class="lg-content">
+            <div class="logol">
+                <hr>
+                <div class="lg-logo"><img src="http://localhost/Black-Aries-Project/public/images/logo_shop-removebg-preview.png" alt=""></div>
+                <hr>
+            </div>
             <p class="p1">HELLO!</p>
             <p class="p2">WELCOME BACK</p>
             <form action="" method="POST">
