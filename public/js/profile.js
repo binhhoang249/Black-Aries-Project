@@ -119,46 +119,60 @@ comfPas.addEventListener('click',()=>{
             if(!result){
                 alert("Don't update password");
             }else{
-                if(result[0].password==oPass){
-                    if(nPass==cPass){
-                        fetch('http://localhost/Black-Aries-Project/public/ajax/serveData.php',{
-                            method:'POST',
-                            body: JSON.stringify({action:"updateInformUser",password:nPass}),
-                        })
-                        .then(reponse=>reponse.text())
-                        .then(data=>{
-                            try{
-                                console.log(data);
-                                let result= JSON.parse(data);
-                                if(!result){
-                                    alert("Don't update password");
-                                }else{
-                                    document.querySelector('.h1').style.display="block";
-                                    document.querySelector('.form1').style.display="block";
-                                    document.querySelector('.h2').style.display="none";
-                                    document.querySelector('.form2').style.display="none";
-                                    document.getElementById('Opassword').required =false;
-                                    document.getElementById('Opassword').readOnly =true;
-                                    document.getElementById('Npassword').required =false;
-                                    document.getElementById('Npassword').readOnly =true;
-                                    document.getElementById('Cpassword').required =false;
-                                    document.getElementById('Cpassword').readOnly =true;
-                                    //hàm hiện thong tin user
-                                }
-                            }catch{
-                                console.error("Error oarsing Json", error);
-                            }
-                        })
-                    }else{
-                        alert("Please enter 2 passwords that match each other!");
-                    }
-                }else{
-                    alert("Password is incorrect");
-                }
-                
+                // xác nhận mật khẩu đúng ko
+                fetch('http://localhost/Black-Aries-Project/public/ajax/serveData.php',{
+                    method:'POST',
+                    body: JSON.stringify({action:"checkPassword",hash:result[0].password,op:oPass}),
+                })
+                .then(reponse=>reponse.text())
+                .then(data=>{
+                    try{
+                        console.log(data);
+                        let result= JSON.parse(data);
+                        if(!result){
+                            alert("Password is incorrect");
+                        }else{
+                            if(nPass==cPass){
+                                fetch('http://localhost/Black-Aries-Project/public/ajax/serveData.php',{
+                                    method:'POST',
+                                    body: JSON.stringify({action:"updateInformUser",password:nPass}),
+                                })
+                                .then(reponse=>reponse.text())
+                                .then(data=>{
+                                    try{
+                                        console.log(data);
+                                        let result= JSON.parse(data);
+                                        if(!result){
+                                            alert("Don't update password");
+                                        }else{
+                                            document.querySelector('.h1').style.display="block";
+                                            document.querySelector('.form1').style.display="block";
+                                            document.querySelector('.h2').style.display="none";
+                                            document.querySelector('.form2').style.display="none";
+                                            document.getElementById('Opassword').required =false;
+                                            document.getElementById('Opassword').readOnly =true;
+                                            document.getElementById('Npassword').required =false;
+                                            document.getElementById('Npassword').readOnly =true;
+                                            document.getElementById('Cpassword').required =false;
+                                            document.getElementById('Cpassword').readOnly =true;
+                                            //hàm hiện thong tin user
+                                        }
+                                    }catch{
+                                        console.error("Error oarsing Json", error);
+                                    }//fetch thay đổi mật khảu
+                                })
+                            }else{
+                                alert("Please enter 2 passwords that match each other!");
+                            }//if so sánh 2 mật khẩu trùng nhau ko
+                        }
+                    }catch{
+                        console.error("Error oarsing Json", error);
+                    }//fetch checkPassword
+                }) 
             }
         }catch{
             console.error("Error oarsing Json", error);
-        }
+        }//fetch getUser
     })
 })
+//Hàm đẩy thông tin từ server

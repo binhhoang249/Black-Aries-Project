@@ -59,22 +59,35 @@ if ($condi =="getCategory"){
     }else{
         echo (json_encode(""));
     }
+}else if(isset($condi['action'])&&$condi['action']=="checkPassword"){
+    $idUseral = $_SESSION['userIDB']??0;
+    if(!empty($idUseral)){
+        $hash=$condi['hash']??0;
+        $def= $condi['op']??0;
+        if(!empty($hash)&&$empty($def)){
+            if(password_verify($def,$hash)){
+                echo (json_encode(true));
+            }else{
+                echo (json_encode(""));
+            }
+        }else{
+            echo (json_encode(""));
+        }
+    }else{
+        echo (json_encode(""));
+    }
 }else if(isset($condi['action'])&&$condi['action']=="updateInformUser"){
     $model= new userModel();
     $idUseral = $_SESSION['userIDB']??0;
     if(!empty($idUseral)){
         $uFname=$condi['fullname']??0;
         $uPassw = $condi['password']??0;
-        $add =$condi['address']??0;
         $data=[]; 
         if(!empty($uFname)){
             $data['fullname']=$uFname;
         } 
         if(!empty($uPassw)){
-            $data['password']=$uPassw;
-        }
-        if(!empty($add)){
-            $data['address']=$add;
+            $data['password']=password_hash($uPassw);
         }
         $con = "where user_id = {$idUseral}";
         if(count($data)>0){
@@ -100,7 +113,7 @@ if ($condi =="getCategory"){
         }else{
             if(move_uploaded_file($_FILES['avartarUser']['tmp_name'],$target_file)){
                 $uniquedName=getNameImage();
-                $data['image']=$uniquedName.$name_file;
+                $data['avatar']=$uniquedName.$name_file;
                 $con = "where user_id = {$idUseral}";
                 $res = $model->updateInformUser('users',$data,$con);
                 echo (json_encode($res));
