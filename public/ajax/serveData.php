@@ -4,7 +4,6 @@ include_once '../../MVC/core/Database.php';
 include_once '../../MVC/Model/HomepageModel.php';
 include_once '../../MVC/Model/userModel.php';
 //Tạo một đối tượng mới
-
 $condi=json_decode(file_get_contents('php://input'),true);
 if ($condi =="getCategory"){
     //tìm danh sách category
@@ -99,7 +98,7 @@ if ($condi =="getCategory"){
     $model= new userModel();
     $idUseral = $_SESSION['userIDB']??0;
     if(!empty($idUseral)){
-        $dir='http://localhost/Black-Aries-Project/public/images/avartars';
+        $dir=__DIR__.'/../images/avartars';
         $name_file= basename($_FILES['avatarUser']['name']);
         $target_file= $dir . $name_file;
         $file_type=strtolower(pathimfo($name_file,PATHINFO_EXTENSION));
@@ -108,14 +107,36 @@ if ($condi =="getCategory"){
             echo (json_encode(""));
         }else{
             if(move_uploaded_file($_FILES['avartarUser']['tmp_name'],$target_file)){
-                $data['image']=$name_file;
+                $uniquedName=getNameImage();
+                $data['image']=$uniquedName.$name_file;
                 $con = "where user_id = {$idUseral}";
                 $res = $model->updateInformUser('users',$data,$con);
+                echo (json_encode($res));
+            }else{
                 echo (json_encode($res));
             }
         }
     }else{
         echo (json_encode(""));
     }
+}
+//Hàm lấy tên ảnh theo ngày/mã băm(tên)
+function getNameImage(){
+    $model= new userModel();
+    $uss = $model-> getUsers();
+    $ob = null;
+    foreach($uss as $value){
+        if($value['user_id']==$idUseral){
+            $ob=$value;
+            break;
+        }
+    }
+    if(empty($ob)){
+        $ob="name".mt_rand(1,100);
+    }
+    $encriptName=md5($ob['fullname']);
+    $time= (new DateTime())->format('YmdHis');
+    $ramdumNumber= "e".mt_rand(1,1000);
+    return $time.$ramdumNumber.$encriptName;
 }
 ?>
