@@ -77,9 +77,10 @@ main{
     border:none;
     outline:none;
     height:33px;
-    background-color: #FDF7F2;
+    /*background-color: #FDF7F2;*/
     border-radius:5px;
     margin-bottom: 21px;
+    border-bottom: 1px solid gray;;
 }
 .lg-content  label a {
     position:absolute;
