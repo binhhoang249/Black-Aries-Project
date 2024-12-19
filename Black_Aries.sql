@@ -4,6 +4,27 @@ CREATE TABLE Categories (
       category_id INT PRIMARY KEY AUTO_INCREMENT,
       category_name VARCHAR(50) NOT NULL
 );
+CREATE TABLE Adress (
+    address_id INT AUTO_INCREMENT PRIMARY KEY,
+    name_province VARCHAR(50),
+    name_district VARCHAR(50),
+    name_commune VARCHAR(50),
+    note VARCHAR(50)
+);
+
+CREATE TABLE Users (
+    user_id INT PRIMARY KEY AUTO_INCREMENT,
+    fullname VARCHAR(50),
+    date_of_birth DATE,
+    phone VARCHAR(10),
+    email VARCHAR(100),
+    username VARCHAR(100),
+    password VARCHAR(100),
+    avatar VARCHAR(135),
+    role INT,
+    address_id INT,
+    FOREIGN KEY (address_id) REFERENCES Adress(address_id)
+);
 
 CREATE TABLE Products (
       product_id INT PRIMARY KEY AUTO_INCREMENT,
