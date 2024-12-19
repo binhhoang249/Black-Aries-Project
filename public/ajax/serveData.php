@@ -1,4 +1,5 @@
 <?php
+session_start();
 include_once '../../MVC/core/DModel.php';
 include_once '../../MVC/core/Database.php';
 include_once '../../MVC/Model/HomepageModel.php';
@@ -64,7 +65,7 @@ if ($condi =="getCategory"){
     if(!empty($idUseral)){
         $hash=$condi['hash']??0;
         $def= $condi['op']??0;
-        if(!empty($hash)&&$empty($def)){
+        if(!empty($hash)&&!empty($def)){
             if(password_verify($def,$hash)){
                 echo (json_encode(true));
             }else{
@@ -87,12 +88,16 @@ if ($condi =="getCategory"){
             $data['fullname']=$uFname;
         } 
         if(!empty($uPassw)){
-            $data['password']=password_hash($uPassw);
+            $data['password']=password_hash($uPassw,PASSWORD_DEFAULT);
         }
-        $con = "where user_id = {$idUseral}";
+        $con = "user_id = {$idUseral}";
         if(count($data)>0){
-            $res = $model->updateInformUser('users',$data,$con);
-            echo (json_encode($res));
+            $res = $model->setUser('Users',$data,$con);
+            if($res){
+                echo (json_encode(true));
+            }else{
+                echo (json_encode(""));
+            }
         }else{
             echo (json_encode(""));
         }
@@ -114,8 +119,8 @@ if ($condi =="getCategory"){
             if(move_uploaded_file($_FILES['avartarUser']['tmp_name'],$target_file)){
                 $uniquedName=getNameImage();
                 $data['avatar']=$uniquedName.$name_file;
-                $con = "where user_id = {$idUseral}";
-                $res = $model->updateInformUser('users',$data,$con);
+                $con = "user_id = {$idUseral}";
+                $res = $model->updateInformUser('Users',$data,$con);
                 echo (json_encode($res));
             }else{
                 echo (json_encode($res));

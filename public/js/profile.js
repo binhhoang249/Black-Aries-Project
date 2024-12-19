@@ -1,3 +1,4 @@
+displayInfo()
 var boxAvatar = document.querySelector('.update_avatar');
 document.querySelector('.edit-avatar-btn').addEventListener('click', () => {
         if(boxAvatar.style.display== "flex"){
@@ -68,8 +69,9 @@ updateInform.addEventListener('click',function(){
                     alert("Don't update your information");
                 }else{
                     //hàm hiện thong tin user
+                    displayInfo();
                 }
-            }catch{
+            }catch (error) {
                 console.error("Error oarsing Json", error);
             }
         })
@@ -88,6 +90,9 @@ chPass.addEventListener('click',()=>{
     document.getElementById('Npassword').required = true;
     document.getElementById('Cpassword').readOnly = false;
     document.getElementById('Cpassword').required = true;
+    document.getElementById('Opassword').value="";
+    document.getElementById('Npassword').value="";
+    document.getElementById('Cpassword').value="";
 })
 var canPass = document.querySelector('.caPass-btn');
 canPass.addEventListener('click',()=>{
@@ -104,7 +109,7 @@ canPass.addEventListener('click',()=>{
 })
 var comfPas = document.querySelector('.updatePass-btn');
 comfPas.addEventListener('click',()=>{
-    let oPass=document.getElementById('Npassword');
+    let oPass=document.getElementById('Opassword');
     let nPass=document.getElementById('Npassword');
     let cPass=document.getElementById('Cpassword');
     fetch('http://localhost/Black-Aries-Project/public/ajax/serveData.php',{
@@ -122,7 +127,7 @@ comfPas.addEventListener('click',()=>{
                 // xác nhận mật khẩu đúng ko
                 fetch('http://localhost/Black-Aries-Project/public/ajax/serveData.php',{
                     method:'POST',
-                    body: JSON.stringify({action:"checkPassword",hash:result[0].password,op:oPass}),
+                    body: JSON.stringify({action:"checkPassword",hash:result.password,op:oPass.value}),
                 })
                 .then(reponse=>reponse.text())
                 .then(data=>{
@@ -132,10 +137,10 @@ comfPas.addEventListener('click',()=>{
                         if(!result){
                             alert("Password is incorrect");
                         }else{
-                            if(nPass==cPass){
+                            if(nPass.value==cPass.value){
                                 fetch('http://localhost/Black-Aries-Project/public/ajax/serveData.php',{
                                     method:'POST',
-                                    body: JSON.stringify({action:"updateInformUser",password:nPass}),
+                                    body: JSON.stringify({action:"updateInformUser",password:nPass.value}),
                                 })
                                 .then(reponse=>reponse.text())
                                 .then(data=>{
@@ -156,8 +161,9 @@ comfPas.addEventListener('click',()=>{
                                             document.getElementById('Cpassword').required =false;
                                             document.getElementById('Cpassword').readOnly =true;
                                             //hàm hiện thong tin user
+                                            displayInfo();
                                         }
-                                    }catch{
+                                    }catch (error) {
                                         console.error("Error oarsing Json", error);
                                     }//fetch thay đổi mật khảu
                                 })
@@ -165,14 +171,43 @@ comfPas.addEventListener('click',()=>{
                                 alert("Please enter 2 passwords that match each other!");
                             }//if so sánh 2 mật khẩu trùng nhau ko
                         }
-                    }catch{
+                    }catch (error) {
                         console.error("Error oarsing Json", error);
                     }//fetch checkPassword
                 }) 
             }
-        }catch{
+        }catch (error) {
             console.error("Error oarsing Json", error);
         }//fetch getUser
     })
 })
 //Hàm đẩy thông tin từ server
+function displayInfo(){
+    let usernam =document.getElementById('username');
+    let fullnam=document.getElementById('fullname');
+    let passwo=document.getElementById('password');
+    let emai =document.getElementById('email');
+    fetch('http://localhost/Black-Aries-Project/public/ajax/serveData.php',{
+        method:'POST',
+        body: JSON.stringify({action:"getUser"}),
+    })
+    .then((response)=>response.text())
+    .then((data)=>{
+        try{
+            console.log(data);
+            let resk=JSON.parse(data);
+            console.log(resk);
+            if(!resk){
+                alert("Don't update password");
+            }else{
+                usernam.value=resk.username;
+                fullnam.value=resk.fullname;
+                passwo.value=resk.password;
+                emai.value=resk.email;
+            }
+        }catch (error) {
+            console.error("Error parsing JSON:", error);
+        }//fetch getUser
+
+    })
+}   

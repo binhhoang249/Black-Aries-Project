@@ -1,23 +1,25 @@
 <?php
-class RegisterModel extends DModel {
+class registerModel extends DModel {
     public function __construct() {
         parent::__construct();
     }
-    public function addUser($name, $email, $password) {
+
+    public function addUser($username,$name, $email, $password) {
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
         $data = [
-            'full_name' => $name,
+            'username' => $username,
+            'fullname' => $name,
             'email' => $email,
             'password' => $hashedPassword
         ];
-        $checkSql = "SELECT * FROM users WHERE email = :email";
+        $checkSql = "SELECT * FROM Users WHERE email = :email";
         $checkUser = $this->db->select($checkSql, ['email' => $email]);
 
         if (!empty($checkUser)) {
-            return ['status' => false, 'message' => 'Email đã tồn tại!'];
+            return ['status' => false, 'message' => 'Email already exists!'];
         }
-        $result = $this->db->insert("users", $data);
-        return $result ? ['status' => true, 'message' => 'Đăng ký thành công!'] : ['status' => false, 'message' => 'Lỗi khi thêm người dùng!'];
+        $result = $this->db->insert("Users", $data,);
+        return $result ? ['status' => true, 'message' => 'Registration successful!'] : ['status' => false, 'message' => 'Error adding user!'];
     }
 }
 ?>
