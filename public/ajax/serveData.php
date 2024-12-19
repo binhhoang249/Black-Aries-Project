@@ -16,7 +16,7 @@ if ($condi =="getCategory"){
         echo(json_encode([]));
     }
 
-}else if(preg_match("/^getProductFcategory/",$condi) ){
+}else if(is_string($condi)&&preg_match("/^getProductFcategory/",$condi) ){
     //Phần tử thứ 2 là id của industry
     $list =explode('-',$condi);
     //
@@ -63,21 +63,13 @@ if ($condi =="getCategory"){
     $model= new userModel();
     $idUseral = $_SESSION['userIDB']??0;
     if(!empty($idUseral)){
-        $uSname= $condi['username']??0;
         $uFname=$condi['fullname']??0;
-        $eMail=$condi['email']??0;
         $uPassw = $condi['password']??0;
         $add =$condi['address']??0;
-        $data=[];
-        if(!empty($uFname)){
-            $data['user_name']=$uFname;
-        } 
+        $data=[]; 
         if(!empty($uFname)){
             $data['fullname']=$uFname;
         } 
-        if(!empty($uFname)){
-            $data['email']=$eMail;
-        }
         if(!empty($uPassw)){
             $data['password']=$uPassw;
         }
