@@ -2,9 +2,10 @@
 include_once '../../MVC/core/DModel.php';
 include_once '../../MVC/core/Database.php';
 include_once '../../MVC/Model/HomepageModel.php';
+include_once '../../MVC/Model/userModel.php';
 //Tạo một đối tượng mới
 
-$condi=json_decode(file_get_contents('php://input'));
+$condi=json_decode(file_get_contents('php://input'),true);
 if ($condi =="getCategory"){
     //tìm danh sách category
     $model =new HomePageModel();
@@ -39,5 +40,82 @@ if ($condi =="getCategory"){
     $resMain['products']=isset($res)?$res:[];
     $resMain['product_colors']=isset($res1)?$res1:[];
     echo(json_encode($resMain));
+}else if(isset($condi['action'])&&$condi['action']=="getUser"){
+    $model= new userModel();
+    $idUseral = $_SESSION['userIDB']??0;
+    if(!empty($idUseral)){
+        $uss = $model-> getUsers();
+        $ob = null;
+        foreach($uss as $value){
+            if($value['user_id']==$idUseral){
+                $ob=$value;
+                break;
+            }
+        }
+        if(!empty($ob)){
+            echo (json_encode($ob));
+        }else{
+            echo (json_encode(""));
+        }
+    }else{
+        echo (json_encode(""));
+    }
+}else if(isset($condi['action'])&&$condi['action']=="updateInformUser"){
+    $model= new userModel();
+    $idUseral = $_SESSION['userIDB']??0;
+    if(!empty($idUseral)){
+        $uSname= $condi['username']??0;
+        $uFname=$condi['fullname']??0;
+        $eMail=$condi['email']??0;
+        $uPassw = $condi['password']??0;
+        $add =$condi['address']??0;
+        $data=[];
+        if(!empty($uFname)){
+            $data['user_name']=$uFname;
+        } 
+        if(!empty($uFname)){
+            $data['fullname']=$uFname;
+        } 
+        if(!empty($uFname)){
+            $data['email']=$eMail;
+        }
+        if(!empty($uPassw)){
+            $data['password']=$uPassw;
+        }
+        if(!empty($add)){
+            $data['address']=$add;
+        }
+        $con = "where user_id = {$idUseral}";
+        if(count($data)>0){
+            $res = $model->updateInformUser('users',$data,$con);
+            echo (json_encode($res));
+        }else{
+            echo (json_encode(""));
+        }
+    }else{
+        echo (json_encode(""));
+    }
+} else if (isset($_FILES['avatarUser'])){
+    $model= new userModel();
+    $idUseral = $_SESSION['userIDB']??0;
+    if(!empty($idUseral)){
+        $dir='http://localhost/Black-Aries-Project/public/images/avartars';
+        $name_file= basename($_FILES['avatarUser']['name']);
+        $target_file= $dir . $name_file;
+        $file_type=strtolower(pathimfo($name_file,PATHINFO_EXTENSION));
+        $allowed_type=['jpg','jpef','png','gif','pdf'];
+        if(!in_array($file_type,$allowed_type)){
+            echo (json_encode(""));
+        }else{
+            if(move_uploaded_file($_FILES['avartarUser']['tmp_name'],$target_file)){
+                $data['image']=$name_file;
+                $con = "where user_id = {$idUseral}";
+                $res = $model->updateInformUser('users',$data,$con);
+                echo (json_encode($res));
+            }
+        }
+    }else{
+        echo (json_encode(""));
+    }
 }
 ?>
