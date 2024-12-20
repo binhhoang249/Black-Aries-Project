@@ -53,7 +53,7 @@ class user extends Controller{
                 if($res){
                     ?>
                         <script type="text/javascript">
-                            window.location = 'http://localhost/Black-Aries-Project/User/code?act=error';
+                            window.location = 'http://localhost/Black-Aries-Project/login';
                         </script>
                     <?php
                 }else{
