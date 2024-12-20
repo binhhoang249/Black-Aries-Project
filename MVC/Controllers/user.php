@@ -85,7 +85,6 @@ class user extends Controller{
                 <?php
             }
         }
-
         self::view('fogotPassword',$data);
     }
     public function code(){
