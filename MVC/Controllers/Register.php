@@ -48,7 +48,7 @@ class Register extends Controller
             if ($sessionData['code'] == $inputCode) {
                 $userModel = self::model('registerModel');
                 $name = $sessionData['userData'];
-                $hashedPassword = password_hash($name['password'], PASSWORD_BCRYPT);
+                $hashedPassword = ($name['password']);
 
                 if (!$userModel->addUser($name['username'], $name['fullname'], $name['mail'], $hashedPassword)) {
                     echo "Failed to save user data. Please try again.";
