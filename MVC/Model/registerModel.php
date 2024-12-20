@@ -12,13 +12,13 @@ class registerModel extends DModel {
             'email' => $email,
             'password' => $hashedPassword
         ];
-        $checkSql = "SELECT * FROM users WHERE email = :email";
+        $checkSql = "SELECT * FROM Users WHERE email = :email";
         $checkUser = $this->db->select($checkSql, ['email' => $email]);
 
         if (!empty($checkUser)) {
             return ['status' => false, 'message' => 'Email already exists!'];
         }
-        $result = $this->db->insert("users", $data);
+        $result = $this->db->insert("Users", $data,);
         return $result ? ['status' => true, 'message' => 'Registration successful!'] : ['status' => false, 'message' => 'Error adding user!'];
     }
 }

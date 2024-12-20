@@ -17,16 +17,16 @@
             </div>
             <p class="p1">HELLO!</p>
             <p class="p2">WELCOME BACK</p>
-            <form action="" method="POST">
+            <form action="http://localhost/Black-Aries-Project/login" method="POST">
                 <label for="">
-                    <input type="text" placeholder="User name" required>
+                    <input type="text" name="username" placeholder="User name" required>
                 </label>
                 <label for="">
-                    <input type="password" placeholder="Password" required>
+                    <input type="password" name="password" placeholder="Password" required>
                     <a href="">Forgot password</a>
                 </label>
                 <div class="lg-flex">
-                    <button>Sign in</button>
+                    <button type="submit">Sign in</button>
                 </div>
                 <div class="lg-flex">
                     <div class="lg-su"><a href="">Sign up</a></div>

@@ -65,7 +65,7 @@ class Register extends Controller
         }
         ?>
         <script type="text/javascript">
-            window.location = 'http://localhost/Black-Aries-Project/home';
+            window.location = 'http://localhost/Black-Aries-Project/login';
         </script>
         <?php
     }
