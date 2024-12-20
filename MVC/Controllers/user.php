@@ -80,7 +80,7 @@ class user extends Controller{
             if(isset($_GET['act'])&&$_GET['act']=="error"){
                 ?>
                     <script type="text/javascript">
-                        alert("Please enter correct code");
+                        alert("Please enter correct email");
                     </script>
                 <?php
             }

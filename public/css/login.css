@@ -10,9 +10,10 @@ body,html{
 main{
     width: 100%;
     height:100%;
-    background-color: aqua;
     position: relative;
     background-image: url('http://localhost/Black-Aries-Project/public/images/Mask Group.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 .overlay {
     position: absolute;

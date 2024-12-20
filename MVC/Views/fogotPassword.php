@@ -48,6 +48,9 @@
                 <button type="submit" class="submit-button" name="change_password">Save Password</button>
             </form>
             <?php endif ; ?>
+            <p class="signin-text">
+                    Already have account? <a href="http://localhost/Black-Aries-Project/login">SIGN IN</a>
+            </p>
         </div>
     </div>
 

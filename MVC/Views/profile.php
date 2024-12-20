@@ -195,7 +195,7 @@
 </head>
 <body>
     <div class="content">
-        <a href="index.html" class="back-btn">
+        <a href="http://localhost/Black-Aries-Project/home" class="back-btn">
              Back
         </a>
         <h2 class="title h1">PERSONAL INFORMATION</h2>
