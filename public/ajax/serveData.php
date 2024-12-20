@@ -108,19 +108,20 @@ if ($condi =="getCategory"){
     $model= new userModel();
     $idUseral = $_SESSION['userIDB']??0;
     if(!empty($idUseral)){
-        $dir=__DIR__.'/../images/avartars';
+        $dir=__DIR__.'/../images/avatars/';
         $name_file= basename($_FILES['avatarUser']['name']);
+        $uniquedName=getNameImage();
+        $name_file=$uniquedName.$name_file;
         $target_file= $dir . $name_file;
-        $file_type=strtolower(pathimfo($name_file,PATHINFO_EXTENSION));
+        $file_type=strtolower(pathinfo($name_file,PATHINFO_EXTENSION));
         $allowed_type=['jpg','jpef','png','gif','pdf'];
         if(!in_array($file_type,$allowed_type)){
             echo (json_encode(""));
         }else{
-            if(move_uploaded_file($_FILES['avartarUser']['tmp_name'],$target_file)){
-                $uniquedName=getNameImage();
-                $data['avatar']=$uniquedName.$name_file;
+            if(move_uploaded_file($_FILES['avatarUser']['tmp_name'],$target_file)){
+                $data['avatar']=$name_file;
                 $con = "user_id = {$idUseral}";
-                $res = $model->updateInformUser('Users',$data,$con);
+                $res = $model->setUser('Users',$data,$con);
                 echo (json_encode($res));
             }else{
                 echo (json_encode($res));
@@ -135,6 +136,7 @@ function getNameImage(){
     $model= new userModel();
     $uss = $model-> getUsers();
     $ob = null;
+    $idUseral=$_SESSION['userIDB']??0;
     foreach($uss as $value){
         if($value['user_id']==$idUseral){
             $ob=$value;

@@ -202,7 +202,7 @@
         <h2 class="title h2">Change Password</h2>
         <div class="avatar">
             <div class="logo-container">
-                <img src="https://i.pinimg.com/474x/db/d4/b1/dbd4b19b7d26ad1c174d210f218797c8.jpg" alt="Logo">
+                <img id="l-imagel" src="https://i.pinimg.com/474x/db/d4/b1/dbd4b19b7d26ad1c174d210f218797c8.jpg" alt="Logo">
                 <button class="edit-avatar-btn">
                     <img src="http://localhost/Black-Aries-Project/public/Icon/pen.png" alt="Edit Icon">
                 </button>
@@ -223,7 +223,7 @@
 
             <!-- Họ tên -->
             <div class="form-group">
-                <label for="fullname" class="form-label">
+                <label for="fullname" class="form-label" >
                     <img src="http://localhost/Black-Aries-Project/public/Icon/pen.png" alt="Icon full name"> Full name:
                 </label>
                 <input type="text" id="fullname" name="fullname" readonly>
@@ -288,6 +288,6 @@
             </div>
         </form>
     </div>
-    <script src="http://localhost/Black-Aries-Project/public/js/profile.js"></script>
+    <script src="http://localhost/Black-Aries-Project/public/js/profile.js?ver=<?php echo time(); ?>"></script>
 </body>
 </html>

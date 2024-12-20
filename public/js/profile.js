@@ -9,7 +9,8 @@ document.querySelector('.edit-avatar-btn').addEventListener('click', () => {
     });
 document.getElementById('ve_avartar').addEventListener('click', () =>{
     boxAvatar.style.display= "none";
-    let image = document.getElementById('avataruser').file[0];
+    let image = document.getElementById('avataruser').files[0];
+    console.log(image);
     if(!image){
         alert("Don't update image");
         return;
@@ -23,13 +24,15 @@ document.getElementById('ve_avartar').addEventListener('click', () =>{
     .then((reponse)=>reponse.text())
     .then((data)=>{
         try{
+            console.log(data);
             let result= JSON.parse(data);
             if(!result){
                 alert("Don't update image");
             }else{
                 //hàm hiện thong tin user
+                displayInfo();
             }
-        }catch{
+        }catch (error){
             console.error("Error oarsing Json", error);
         }
     })
@@ -187,6 +190,7 @@ function displayInfo(){
     let fullnam=document.getElementById('fullname');
     let passwo=document.getElementById('password');
     let emai =document.getElementById('email');
+    let imagel =document.getElementById('l-imagel');
     fetch('http://localhost/Black-Aries-Project/public/ajax/serveData.php',{
         method:'POST',
         body: JSON.stringify({action:"getUser"}),
@@ -204,6 +208,8 @@ function displayInfo(){
                 fullnam.value=resk.fullname;
                 passwo.value=resk.password;
                 emai.value=resk.email;
+                imagel.src="http://localhost/Black-Aries-Project/public/images/avatars/"+resk.avatar;
+                console.log(imagel.src)
             }
         }catch (error) {
             console.error("Error parsing JSON:", error);
