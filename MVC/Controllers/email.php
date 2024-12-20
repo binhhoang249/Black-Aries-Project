@@ -22,7 +22,7 @@ class email {
             $sMail=(isset($object)&&isset($object['mail']))?$object['mail']:$this->toEmail;
             $nMail=(isset($object)&&isset($object['fullname']))?$object['fullname']:$this->toEmail;
             $code='';
-            if(isset($object)&&isset($object['mail'])&&isset($object['password'])&&isset($object['fullname'])){
+            if(isset($object)&&isset($object['mail'])&&isset($object['fullname'])){
                 $code= $this->findCode();
                 $content=
                 "

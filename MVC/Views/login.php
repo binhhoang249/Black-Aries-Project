@@ -8,6 +8,12 @@
 </head>
 <body>
     <main>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li style="margin-right:10px" class="breadcrumb-item"><a  href="http://localhost/Black-Aries-Project/home">Homepage</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Login</li>
+            </ol>
+        </nav>
         <div class="overlay"></div>
         <div class="lg-content">
             <div class="logol">
@@ -23,13 +29,13 @@
                 </label>
                 <label for="">
                     <input type="password" name="password" placeholder="Password" required>
-                    <a href="">Forgot password</a>
+                    <a href="http://localhost/black-Aries-Project/user/forgetPassword">Forgot password</a>
                 </label>
                 <div class="lg-flex">
                     <button type="submit">Sign in</button>
                 </div>
                 <div class="lg-flex">
-                    <div class="lg-su"><a href="">Sign up</a></div>
+                    <div class="lg-su"><a href="http://localhost/black-Aries-Project/register">Sign up</a></div>
                 </div>
             </form>
         </div>

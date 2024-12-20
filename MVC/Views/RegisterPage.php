@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="http://localhost/Black-Aries-Project/public/css/sign_up.css">
+    <link rel="stylesheet" type="text/css" href="http://localhost/Black-Aries-Project/public/css/sign_up.css?ver=<?php echo time(); ?>">
     <style>
         .error {
             color: red;
@@ -20,6 +20,12 @@
 
 <body>
     <div class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li style="margin-right:10px" class="breadcrumb-item"><a  href="http://localhost/Black-Aries-Project/home">Homepage</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Sign up</li>
+            </ol>
+        </nav>
         <div class="overlay"></div>
         <div class="content">
             <div class="logo-container">
@@ -53,7 +59,7 @@
                     </div>
                 </div>
                 <p class="signin-text">
-                    Already have account? <a href="#">SIGN IN</a>
+                    Already have account? <a href="http://localhost/Black-Aries-Project/login">SIGN IN</a>
                 </p>
                 <button class="sign-btn" type="submit">Register</button>
             </form>

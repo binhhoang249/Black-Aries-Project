@@ -175,3 +175,28 @@ img {
     font-size: 16px;
     z-index: 2;
 }
+.breadcrumb {
+    background-color: transparent;
+    font-size: 16px;
+    display:flex;
+    list-style-type:none;
+    position:absolute;
+    top:20px;
+    left:40px;
+    }
+.breadcrumb-item a {
+    text-decoration: none;
+    color: black;
+}
+
+.breadcrumb-item a:hover {
+    text-decoration: underline;
+}
+.breadcrumb-item, .active {
+font-weight: bold;
+color: #007bff;
+}
+a{
+    position: relative;
+    z-index: 10000;
+}

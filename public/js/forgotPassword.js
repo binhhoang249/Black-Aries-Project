@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     });
-
+    /*
 
     emailForm.addEventListener('submit', function (event) {
         event.preventDefault();
@@ -54,4 +54,16 @@ document.addEventListener('DOMContentLoaded', function () {
             alert("Passwords do not match.");
         }
     });
+    */
 });
+function validateForm() {
+    var pass = document.forms["myForm"]["password"].value;
+    var confirm_pass = document.forms["myForm"]["cPassword"].value;
+    if ( pass != confirm_pass) {
+        alert("Please enter 2 matching passwords!");
+        return false;
+    } else if ( pass.length<6) {
+        alert("Please enter 2 passwords with length greater than 5!");
+        return false;
+    }
+}
