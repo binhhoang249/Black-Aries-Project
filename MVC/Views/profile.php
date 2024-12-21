@@ -118,7 +118,6 @@
             width: 25px;
             height: 25px;
             border: none;
-            background-color: #527A9A;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -217,18 +216,19 @@
         <h2 class="title h1">PERSONAL INFORMATION</h2>
         <h2 class="title h2">Change Password</h2>
         <div class="avatar">
-            <div class="logo-container">
-                <img id="l-imagel" src="https://i.pinimg.com/474x/db/d4/b1/dbd4b19b7d26ad1c174d210f218797c8.jpg" alt="Logo">
-                <button class="edit-avatar-btn">
-                    <img src="http://localhost/Black-Aries-Project/public/Icon/pen.png" alt="Edit Icon">
-                </button>
-            </div>
-            <div class="update_avatar">
-                <input type="file" id="avataruser">
-                <button type="buton" id="ve_avartar" class="ve_avartar">Verify</button>
-            </div>
-        </div>
-        <form action="" method="POST" class="form1" name="myForm" autocomplete="off" onsubmit="return validateForm();">
+    <div class="logo-container">
+        <!-- Hiển thị ảnh mặc định -->
+        <img id="profile-image" src="http://localhost/Black-Aries-Project/public/images/default-images.jpg" alt="deafault-images">
+        <button class="edit-avatar-btn">
+            <img src="http://localhost/Black-Aries-Project/public/Icon/pen.png" alt="Edit Icon">
+        </button>
+    </div>
+    <div class="update_avatar" style="display: none;">
+        <input type="file" id="avataruser">
+        <button type="button" id="ve_avartar" class="ve_avartar">Verify</button>
+    </div>
+</div>
+   <form action="" method="POST" class="form1" name="myForm" autocomplete="off" onsubmit="return validateForm();">
             <!-- Tên đăng nhập -->
             <div class="form-group">
                 <label for="username" class="form-label">
