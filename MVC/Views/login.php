@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign up</title>
     <link href="http://localhost/Black-Aries-Project/public/css/login.css?ver=<?php echo time(); ?>" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <main>
@@ -28,7 +29,10 @@
                     <input type="text" name="username" placeholder="User name" required>
                 </label>
                 <label for="">
-                    <input type="password" name="password" placeholder="Password" required>
+                <div class="password-wrapper">
+                    <input type="password" name="password" id="password" placeholder="Mật khẩu" required>
+                    <i class="fas fa-eye" id="toggle-password"></i>
+                </div>
                     <a href="http://localhost/black-Aries-Project/user/forgetPassword">Forgot password</a>
                 </label>
                 <div class="lg-flex">
@@ -40,5 +44,6 @@
             </form>
         </div>
     </main>
+    <script src="http://localhost/Black-Aries-Project/public/js/display.js" ></script>
 </body>
 </html>

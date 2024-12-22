@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title>Personal Information</title>
     <style>
         body {
@@ -205,6 +206,26 @@
         .h2 {
             display: none;
         }
+        .password-wrapper {
+        position: relative;
+        width: 100%;
+    }
+
+    .password-wrapper input {
+        width: 94%;
+        padding-right: 40px;
+        padding-left: 10px;
+        border: 1px soild #CCC;
+    }
+
+    .password-wrapper i {
+        position: absolute;
+        right: 20px;
+        top: 27%;
+        transform: translateY(-50);
+        font-size: 16px;
+        z-index: 2;
+    }
     </style>
 </head>
 
@@ -276,25 +297,32 @@
         </form>
         <!--form mật khẩu -->
         <form class="form2" name="myForm">
-            <!-- Mật khẩu -->
-            <div class="form-group">
-                <label for="password" class="form-label">
+         <div class="form-group">
+                <label for="Opassword" class="form-label">
                     <img src="http://localhost/Black-Aries-Project/public/Icon/Key 02.png" alt="Icon password"> Old password:
                 </label>
-                <input type="password" id="Opassword" name="password" autocomplete="new-password" readonly>
-            </div>
-            <!-- Mật khẩu -->
+                <div class="password-wrapper">
+                    <input type="password" id="Opassword" name="password" autocomplete="new-password">
+                    <i class="far fa-eye toggle-password"></i>
+                </div>
+           </div>
             <div class="form-group">
-                <label for="password" class="form-label">
+                <label for="Npassword" class="form-label">
                     <img src="http://localhost/Black-Aries-Project/public/Icon/Key 02.png" alt="Icon password"> New password:
                 </label>
-                <input type="password" id="Npassword" name="password" autocomplete="new-password" readonly>
+                <div class="password-wrapper">
+                    <input type="password" id="Npassword" name="password" autocomplete="new-password">
+                    <i class="far fa-eye toggle-password"></i>
+                </div>
             </div>
             <div class="form-group">
-                <label for="password" class="form-label">
+                <label for="Cpassword" class="form-label">
                     <img src="http://localhost/Black-Aries-Project/public/Icon/Key 02.png" alt="Icon password"> Confirm your password:
                 </label>
-                <input type="password" id="Cpassword" name="password" autocomplete="new-password" readonly>
+                <div class="password-wrapper">
+                    <input type="password" id="Cpassword" name="password" autocomplete="new-password">
+                    <i class="far fa-eye toggle-password"></i>
+                </div>
             </div>
             <div class="button">
                 <button type="button" class="updatePass-btn">
@@ -306,6 +334,26 @@
             </div>
         </form>
     </div>
+    <script>// Lắng nghe sự kiện click trên tất cả các biểu tượng mắt
+document.querySelectorAll(".toggle-password").forEach(icon => {
+    icon.addEventListener("click", function() {
+        // Lấy trường mật khẩu tương ứng với biểu tượng mắt
+        const passwordInput = this.previousElementSibling;  // Trường mật khẩu nằm ngay trước biểu tượng mắt
+        const icon = this;
+
+        // Kiểm tra và thay đổi kiểu mật khẩu
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text"; // Hiển thị mật khẩu
+            icon.classList.remove("fa-eye");
+            icon.classList.add("fa-eye-slash"); // Thay đổi biểu tượng mắt
+        } else {
+            passwordInput.type = "password"; // Ẩn mật khẩu
+            icon.classList.remove("fa-eye-slash");
+            icon.classList.add("fa-eye"); // Thay đổi biểu tượng mắt bị gạch
+        }
+    });
+});
+</script>
     <script src="http://localhost/Black-Aries-Project/public/js/profile.js?ver=<?php echo time(); ?>"></script>
 </body>
 
