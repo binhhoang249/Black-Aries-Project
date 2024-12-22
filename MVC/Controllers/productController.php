@@ -1,9 +1,9 @@
 <?php
-class Detail extends Controller {
-    public function show($id) {
+class productController extends Controller {
+    public function detail($id) {
         // Lấy model của Details
         $idi=(int)$id;
-        $model = self::model("DetailsModel");
+        $model = self::model("productModel");
         $data['product'] = $model->getProduct($idi);
         $data['product_color'] = $model->getProduct_color($idi);
         $liProduct=$data['product_color'];
@@ -19,7 +19,7 @@ class Detail extends Controller {
         $data['color']=$model-> getColor();
         $data['product_color']=$liProduct;
         // Trả về View và truyền dữ liệu
-        self::view("detail", $data);
+        self::view("pages/productModel/detail", $data);
     }
 }
 ?>

@@ -2,13 +2,13 @@
 session_start();
 include_once '../../MVC/core/DModel.php';
 include_once '../../MVC/core/Database.php';
-include_once '../../MVC/Model/HomepageModel.php';
-include_once '../../MVC/Model/userModel.php';
+include_once '../../MVC/Models/productModel.php';
+include_once '../../MVC/Models/userModel.php';
 //Tạo một đối tượng mới
 $condi=json_decode(file_get_contents('php://input'),true);
 if ($condi =="getCategory"){
     //tìm danh sách category
-    $model =new HomePageModel();
+    $model =new productModel();
     $res['category'] = $model->getCatagories();
     $res['product']= $model->getProducts();
     if(!empty($res)){
@@ -21,7 +21,7 @@ if ($condi =="getCategory"){
     //Phần tử thứ 2 là id của industry
     $list =explode('-',$condi);
     //
-    $model =new HomePageModel();
+    $model =new productModel();
     $products=$model->getProducts();
     $pro_colors=$model->getProductColor();
     $res=[];

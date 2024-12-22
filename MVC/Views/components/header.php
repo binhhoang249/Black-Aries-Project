@@ -101,9 +101,9 @@
             <?php
                 if(isset($_SESSION['userIDB'])) :
             ?>
-            <li><a href="http://localhost/Black-Aries-Project/user/profile"><i class="fas fa-user icon"></i>Profile</a></li>
+            <li><a href="http://localhost/Black-Aries-Project/userController/profile"><i class="fas fa-user icon"></i>Profile</a></li>
             <?php else : ?>
-            <li><a href="http://localhost/Black-Aries-Project/login"><i class="fas fa-user icon"></i>Log in</a></li>
+            <li><a href="http://localhost/Black-Aries-Project/userController/login"><i class="fas fa-user icon"></i>Log in</a></li>
             <?php endif ; ?>
             <li><a href="#"><i class="fas fa-shopping-cart icon"></i>Cart</a></li>
         </ul>

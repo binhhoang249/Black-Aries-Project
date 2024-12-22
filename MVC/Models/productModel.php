@@ -1,8 +1,5 @@
 <?php
-    class DetailsModel  extends DModel {
-        public function __construct() {
-            parent::__construct();
-        }
+    class productModel extends DModel {
         public function getProduct($id) {
             $sql = "SELECT * from products where product_id = :id";
             $data[':id']=(int)$id;
@@ -17,6 +14,20 @@
             $sql = "select * from color";
             return $this->db->select($sql);
         }
+        //all
+        public function getProducts(){
+            $sql = "select * from products";
+            return $this->db->select($sql);
+        }
+
+        public function  getCatagories() {
+            $sql = "select * from categories";
+            return $this->db->select($sql);
+        }
+        public function getProductColor() {
+            $sql = "select * from Product_color where defaultal = :defaultala";
+            $data[':defaultala']=1;
+            return $this->db->select($sql,$data);
+        }
     }
 ?>
-

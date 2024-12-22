@@ -13,7 +13,7 @@
 
 <body>
     <div class="container">
-        <?php include_once 'MVC/Views/header.php'; ?>
+        <?php include_once 'MVC/Views/components/header.php'; ?>
 
         <div class="banner">
             <img src="http://localhost/Black-Aries-Project/public/images/aboutus.png" alt="Banner">

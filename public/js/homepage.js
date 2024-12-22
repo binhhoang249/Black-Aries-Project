@@ -39,8 +39,9 @@ fetch("http://localhost/Black-Aries-Project/public/ajax/serveData.php", {
   .then((reponse) => reponse.text())
   .then((data) => {
     try {
-      console.log(data);
+      ;
       let resu = JSON.parse(data);
+      console.log(data)
       categories = resu.category;
       let product = resu.product;
       if (categories.length > 0) {
@@ -120,7 +121,7 @@ function displayProductFcategory(type) {
           }
         }
         if(cu_productColor){
-          let url = cu_productColor.image;
+          let url = "http://localhost/Black-Aries-Project/public/images/"+cu_productColor.image;
           proFcate.innerHTML += `
                       <div class="col-md-3">
                           <div class="card-product text-center p-3 shadow-sm">
@@ -128,7 +129,7 @@ function displayProductFcategory(type) {
                                  <img src="${url}" class="card-img-top" alt="product">
                               </div>
                               <div class="card-body">
-                                  <a href="http://localhost/Black-Aries-Project/Detail/show/${pro.product_id}">
+                                  <a href="http://localhost/Black-Aries-Project/productController/detail/${pro.product_id}">
                                       <h5 class="card-title">${pro.product_name}</h5>
                                   </a>
                                   <p class="card-text">$${cu_productColor.price}</p>

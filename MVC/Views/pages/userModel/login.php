@@ -23,19 +23,19 @@
             </div>
             <p class="p1">HELLO!</p>
             <p class="p2">WELCOME BACK</p>
-            <form action="http://localhost/Black-Aries-Project/login" method="POST">
+            <form action="http://localhost/Black-Aries-Project/userController/login" method="POST">
                 <label for="">
                     <input type="text" name="username" placeholder="User name" required>
                 </label>
                 <label for="">
                     <input type="password" name="password" placeholder="Password" required>
-                    <a href="http://localhost/black-Aries-Project/user/forgetPassword">Forgot password</a>
+                    <a href="http://localhost/black-Aries-Project/userController/forgetPassword">Forgot password</a>
                 </label>
                 <div class="lg-flex">
                     <button type="submit">Sign in</button>
                 </div>
                 <div class="lg-flex">
-                    <div class="lg-su"><a href="http://localhost/black-Aries-Project/register">Sign up</a></div>
+                    <div class="lg-su"><a href="http://localhost/black-Aries-Project/userController/register">Sign up</a></div>
                 </div>
             </form>
         </div>

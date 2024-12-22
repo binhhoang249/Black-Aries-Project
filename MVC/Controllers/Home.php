@@ -2,7 +2,7 @@
 class Home extends Controller {
     static function index()
     {
-        $model = self::model("HomepageModel");
+        $model = self::model("productModel");
         $data['product']= $model->getProducts();
         $data['categories']= $model->getCatagories();
         $data['product_color']= $model->getProductColor();
@@ -30,7 +30,7 @@ class Home extends Controller {
         }
         $data['product_lates']=$dateProduct;
         $data['product_popular']=$liProduct;
-        self::view('Homepage',$data);
+        self::view('pages/webModel/Homepage',$data);
     }
 }
 ?>
