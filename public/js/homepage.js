@@ -121,7 +121,7 @@ function displayProductFcategory(type) {
           }
         }
         if(cu_productColor){
-          let url = "http://localhost/Black-Aries-Project/public/images/"+cu_productColor.image;
+          let url = "http://localhost/Black-Aries-Project/public/images/products/"+cu_productColor.image;
           proFcate.innerHTML += `
                       <div class="col-md-3">
                           <div class="card-product text-center p-3 shadow-sm">

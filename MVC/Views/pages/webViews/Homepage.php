@@ -74,7 +74,7 @@
                             <div class="col-md-3">
                                 <div class="card-product text-center p-3 shadow-sm">
                                     <div class="card-imagel">
-                                        <img src="http://localhost/Black-Aries-Project/public/images/' . htmlspecialchars(trim($p_color['image'])) . '" class="card-img-top" alt="' . htmlspecialchars($row["product_name"]) . '">
+                                        <img src="http://localhost/Black-Aries-Project/public/images/products/' . htmlspecialchars(trim($p_color['image'])) . '" class="card-img-top" alt="' . htmlspecialchars($row["product_name"]) . '">
                                     </div>
                                     <div class="card-body">
                                         <a href="http://localhost/Black-Aries-Project/productController/detail/' . $row["product_id"] . '">
@@ -116,7 +116,7 @@
                             <div class="col-md-3">
                                 <div class="card-product text-center p-3 shadow-sm">
                                     <div class="card-imagel">
-                                        <img src="http://localhost/Black-Aries-Project/public/images/' . htmlspecialchars(trim($p_color['image'])) . '" class="card-img-top" alt="' . htmlspecialchars($row["product_name"]) . '">
+                                        <img src="http://localhost/Black-Aries-Project/public/images/products/' . htmlspecialchars(trim($p_color['image'])) . '" class="card-img-top" alt="' . htmlspecialchars($row["product_name"]) . '">
                                     </div>
                                     <div class="card-body">
                                         <a href="http://localhost/Black-Aries-Project/productController/detail/' . $row["product_id"] . '">
@@ -157,7 +157,7 @@
                             <div class="col-md-3">
                                 <div class="card-product text-center p-3 shadow-sm">
                                     <div class="card-imagel">
-                                        <img src="http://localhost/Black-Aries-Project/public/images/' . htmlspecialchars(trim($p_color['image'])) . '" class="card-img-top" alt="' . htmlspecialchars($row["product_name"]) . '">
+                                        <img src="http://localhost/Black-Aries-Project/public/images/products/' . htmlspecialchars(trim($p_color['image'])) . '" class="card-img-top" alt="' . htmlspecialchars($row["product_name"]) . '">
                                     </div>
                                     <div class="card-body">
                                         <a href="http://localhost/Black-Aries-Project/productController/detail/' . $row["product_id"] . '">

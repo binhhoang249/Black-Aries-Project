@@ -19,7 +19,7 @@ class productController extends Controller {
         $data['color']=$model-> getColor();
         $data['product_color']=$liProduct;
         // Trả về View và truyền dữ liệu
-        self::view("pages/productModel/detail", $data);
+        self::view("pages/productViews/detail", $data);
     }
 }
 ?>

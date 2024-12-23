@@ -114,7 +114,7 @@ if ($condi =="getCategory"){
         $name_file=$uniquedName.$name_file;
         $target_file= $dir . $name_file;
         $file_type=strtolower(pathinfo($name_file,PATHINFO_EXTENSION));
-        $allowed_type=['jpg','jpef','png','gif','pdf'];
+        $allowed_type=['jpg','jpef','png','gif','pdf','jfif'];
         if(!in_array($file_type,$allowed_type)){
             echo (json_encode(""));
         }else{

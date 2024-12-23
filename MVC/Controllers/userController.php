@@ -2,7 +2,7 @@
 class userController extends Controller{
     //Profile //////////////////////////////////////////////////////////////////////////////////
     public function profile(){
-        self::view('pages/userModel/profile');
+        self::view('pages/userViews/profile');
     }
     //Forgotpassword/////////////////////////////////////////////////////////////////////////////
     public function forgetPassword(){
@@ -88,12 +88,12 @@ class userController extends Controller{
             }
         }
 
-        self::view('pages/userModel/fogotPassword',$data);
+        self::view('pages/userViews/fogotPassword',$data);
     }
     public function code(){
         //data2
         $data['check']=2;
-        self::view('pages/userModel/fogotPassword',$data);
+        self::view('pages/userViews/fogotPassword',$data);
         if(isset($_GET['act'])&&$_GET['act']=="error"){
             ?>
                 <script type="text/javascript">
@@ -119,11 +119,11 @@ class userController extends Controller{
             } else {
                 // Đăng nhập thất bại, hiển thị thông báo lỗi
                 $data['error'] = $result['message'];
-                self::view("pages/userModel/login", $data);
+                self::view("pages/userViews/login", $data);
             }
         } else {
             // Hiển thị trang login
-            self::view("pages/userModel/login");
+            self::view("pages/userViews/login");
         }
     }
     //Register////////////////////////////////////////////////////////////////////////////////////
@@ -159,7 +159,7 @@ class userController extends Controller{
                 </script>
             <?php
         }
-        self::view('pages/userModel/register');
+        self::view('pages/userViews/register');
     }
 
     static public function processVerification()

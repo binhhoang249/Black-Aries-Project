@@ -21,7 +21,7 @@ class AboutUs extends Controller {
             $logo = "default_logo.png";
             $image = "default_image.png";
         }
-        self::view("pages/webModel/AboutUsPage", [
+        self::view("pages/webViews/AboutUsPage", [
             "businessName" => $businessName,
             "description" => $description,
             "address" => $address,

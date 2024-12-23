@@ -30,7 +30,7 @@ class Home extends Controller {
         }
         $data['product_lates']=$dateProduct;
         $data['product_popular']=$liProduct;
-        self::view('pages/webModel/Homepage',$data);
+        self::view('pages/webViews/Homepage',$data);
     }
 }
 ?>
