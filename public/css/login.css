@@ -134,3 +134,23 @@ a{
     position: relative;
     z-index: 10000;
 }
+.password-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.password-wrapper input {
+    width: 90%;
+    padding-right: 40px;
+    padding-left: 10px;
+    border: 1px soild #CCC;
+}
+
+.password-wrapper i {
+    position: absolute;
+    right: 20px;
+    top: 27%;
+    transform: translateY(-50);
+    font-size: 16px;
+    z-index: 2;
+}
