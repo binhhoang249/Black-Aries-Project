@@ -48,9 +48,12 @@
                     <span id="emailError" class="error">Please enter a valid email</span>
                 </div>
                 <div class="form">
+                  <div class="password-wrapper">
                     <input type="password" class="password" id="password" name="password" placeholder="Enter your password" required>
+                    <i class="far fa-eye" id="toggle-password"></i>
                     <span id="passwordError" class="error">Password must be at least 6 characters</span>
-                </div>
+                 </div>
+              </div>
                 <div class="form">
                     <div class="password-wrapper">
                         <input type="password" class="confirm-password" id="confirm-password" name="confirmpassword" placeholder="Re-enter your password" required>
@@ -137,22 +140,8 @@
                 event.preventDefault();
             }
         });
-
-        document.getElementById("toggle-confirm-password").addEventListener("click", function() {
-            const passwordInput = document.getElementById("confirm-password");
-            const icon = this;
-
-            if (passwordInput.type === "password") {
-                passwordInput.type = "text";
-                icon.classList.remove("fa-eye");
-                icon.classList.add("fa-eye-slash");
-            } else {
-                passwordInput.type = "password";
-                icon.classList.remove("fa-eye-slash");
-                icon.classList.add("fa-eye");
-            }
-        });
     </script>
+    <script src="http://localhost/Black-Aries-Project/public/js/display.js" ></script>
 
 </body>
 

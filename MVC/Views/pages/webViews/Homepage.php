@@ -183,5 +183,4 @@
     <?php include_once 'MVC/Views/components/footer.php'; ?>
     <script src="public/js/homepage.js"></script>
 </body>
-
 </html>

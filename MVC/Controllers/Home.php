@@ -30,6 +30,9 @@ class Home extends Controller {
         }
         $data['product_lates']=$dateProduct;
         $data['product_popular']=$liProduct;
+        if (isset($_GET['logout']) && $_GET['logout'] == 'successt') {
+            unset($_SESSION['userIDB']);
+        }
         self::view('pages/webViews/Homepage',$data);
     }
 }
