@@ -130,6 +130,22 @@ if ($condi =="getCategory"){
     }else{
         echo (json_encode(""));
     }
+} else if(isset($condi['action'])&&$condi['action']=="getCarts"){
+    $idUseral = $_SESSION['userIDB']??0;
+    if(!empty($idUseral)){
+        $model =new productModel();
+        $res['product_color'] = $model->getProductColor();
+        $res['product']= $model->getProducts();
+        $res['cart']= $model->getCarts();
+        $res['color']= $model->getColor();
+        if(!empty($res)){
+            echo(json_encode($res));
+        }else{
+            echo(json_encode([]));
+        }
+    }else{
+        echo (json_encode("userId"));
+    }
 }
 //Hàm lấy tên ảnh theo ngày/mã băm(tên)
 function getNameImage(){

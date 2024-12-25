@@ -14,6 +14,11 @@
             $sql = "select * from color";
             return $this->db->select($sql);
         }
+        public function  getCarts($user_id) {
+            $sql = "select * from carts";
+            $data[':user_id']=$user_id;
+            return $this->db->select($sql);
+        }
         //all
         public function getProducts(){
             $sql = "select * from products";
