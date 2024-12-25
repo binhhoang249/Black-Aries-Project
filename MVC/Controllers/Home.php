@@ -2,7 +2,7 @@
 class Home extends Controller {
     static function index()
     {
-        $model = self::model("HomepageModel");
+        $model = self::model("productModel");
         $data['product']= $model->getProducts();
         $data['categories']= $model->getCatagories();
         $data['product_color']= $model->getProductColor();
@@ -33,7 +33,7 @@ class Home extends Controller {
         if (isset($_GET['logout']) && $_GET['logout'] == 'successt') {
             unset($_SESSION['userIDB']);
         }
-        self::view('Homepage',$data);
+        self::view('pages/webViews/Homepage',$data);
     }
 }
 ?>

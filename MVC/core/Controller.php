@@ -2,8 +2,10 @@
 class Controller {
     // Hàm gọi model
     static public function model($model) {
-        require_once __DIR__ . "/../model/" . $model . ".php";
-        return new $model();
+        $list=explode('/',$model);
+        $page=$list[(count($list)-1)];
+        require_once __DIR__ . "/../models/" . $model . ".php";
+        return new $page();
     }
 
     // Hàm gọi view

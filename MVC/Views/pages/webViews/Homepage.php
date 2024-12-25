@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Category List</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="http://localhost/Black-Aries-Project/public/css/homepage.css" rel="stylesheet">
+    <link href="http://localhost/Black-Aries-Project/public/css/homepage.css?ver=<?php echo time(); ?>" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
@@ -15,7 +15,7 @@
 <body>
     <?php
     extract($data);
-    include_once 'MVC/Views/header.php';
+    include_once 'MVC/Views/components/header.php';
     ?>
     <div style="width:100%;height:696px;position:relative">
         <img style="width:100%;height:100%" src="public/images/Rectangle 2.png" alt="Banner">
@@ -74,10 +74,10 @@
                             <div class="col-md-3">
                                 <div class="card-product text-center p-3 shadow-sm">
                                     <div class="card-imagel">
-                                        <img src="' . htmlspecialchars(trim($p_color['image'])) . '" class="card-img-top" alt="' . htmlspecialchars($row["product_name"]) . '">
+                                        <img src="http://localhost/Black-Aries-Project/public/images/products/' . htmlspecialchars(trim($p_color['image'])) . '" class="card-img-top" alt="' . htmlspecialchars($row["product_name"]) . '">
                                     </div>
                                     <div class="card-body">
-                                        <a href="http://localhost/Black-Aries-Project/Detail/show/' . $row["product_id"] . '">
+                                        <a href="http://localhost/Black-Aries-Project/productController/detail/' . $row["product_id"] . '">
                                             <h5 class="card-title">' . htmlspecialchars($row["product_name"]) . '</h5>
                                         </a>
                                         <p class="card-text">$' . htmlspecialchars($p_color['price']) . '</p>
@@ -116,10 +116,10 @@
                             <div class="col-md-3">
                                 <div class="card-product text-center p-3 shadow-sm">
                                     <div class="card-imagel">
-                                        <img src="' . htmlspecialchars(trim($p_color['image'])) . '" class="card-img-top" alt="' . htmlspecialchars($row["product_name"]) . '">
+                                        <img src="http://localhost/Black-Aries-Project/public/images/products/' . htmlspecialchars(trim($p_color['image'])) . '" class="card-img-top" alt="' . htmlspecialchars($row["product_name"]) . '">
                                     </div>
                                     <div class="card-body">
-                                        <a href="http://localhost/Black-Aries-Project/Detail/show/' . $row["product_id"] . '">
+                                        <a href="http://localhost/Black-Aries-Project/productController/detail/' . $row["product_id"] . '">
                                             <h5 class="card-title">' . htmlspecialchars($row["product_name"]) . '</h5>
                                         </a>
                                         <p class="card-text">$' . htmlspecialchars($p_color['price']) . '</p>
@@ -157,10 +157,10 @@
                             <div class="col-md-3">
                                 <div class="card-product text-center p-3 shadow-sm">
                                     <div class="card-imagel">
-                                        <img src="' . htmlspecialchars(trim($p_color['image'])) . '" class="card-img-top" alt="' . htmlspecialchars($row["product_name"]) . '">
+                                        <img src="http://localhost/Black-Aries-Project/public/images/products/' . htmlspecialchars(trim($p_color['image'])) . '" class="card-img-top" alt="' . htmlspecialchars($row["product_name"]) . '">
                                     </div>
                                     <div class="card-body">
-                                        <a href="http://localhost/Black-Aries-Project/Detail/show/' . $row["product_id"] . '">
+                                        <a href="http://localhost/Black-Aries-Project/productController/detail/' . $row["product_id"] . '">
                                             <h5 class="card-title">' . htmlspecialchars($row["product_name"]) . '</h5>
                                         </a>
                                         <p class="card-text">$' . htmlspecialchars($p_color['price']) . '</p>
@@ -180,7 +180,7 @@
 
         </div>
     </div>
-    <?php include_once 'MVC/Views/footer.php'; ?>
+    <?php include_once 'MVC/Views/components/footer.php'; ?>
     <script src="public/js/homepage.js"></script>
 </body>
 </html>

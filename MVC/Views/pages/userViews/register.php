@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <title>Document</title>
+    <title>Register</title>
     <link rel="stylesheet" type="text/css" href="http://localhost/Black-Aries-Project/public/css/sign_up.css?ver=<?php echo time(); ?>">
     <style>
         .error {
@@ -30,11 +30,11 @@
         <div class="content">
             <div class="logo-container">
                 <div class="line"></div>
-                <img src="public/images/logo.png" alt="Logo">
+                <img src="http://localhost/Black-Aries-Project/public/images/logo.png" alt="Logo">
                 <div class="line"></div>
             </div>
             <h1 class="title">WELCOME</h1>
-            <form id="register-form" method="POST" action="/Black-Aries-Project/Register/registerUser">
+            <form id="register-form" method="POST" action="/Black-Aries-Project/userController/register">
                 <div class="form">
                     <input type="text" class="fullname" id="fullname" name="fullname" placeholder="Enter your full name" required>
                     <span id="fullnameError" class="error">Full name is required</span>
@@ -62,7 +62,7 @@
                     </div>
                 </div>
                 <p class="signin-text">
-                    Already have account? <a href="http://localhost/Black-Aries-Project/login">SIGN IN</a>
+                    Already have account? <a href="http://localhost/Black-Aries-Project/userController/login">SIGN IN</a>
                 </p>
                 <button class="sign-btn" type="submit">Register</button>
             </form>

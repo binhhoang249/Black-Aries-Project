@@ -10,7 +10,7 @@
 <body>
     <div class="main_containerel">
     <div>
-        <?php include_once 'MVC/Views/header.php'; ?>
+        <?php include_once 'MVC/Views/components/header.php'; ?>
         <div class="detail-container">
             <!-- khung ảnh -->
             <div class="slider-container">
@@ -19,7 +19,11 @@
                         if(isset($product_color)&&count($product_color )>0) :
                             foreach($product_color as $value){
                                 ?>
-                                    <div class="item" data-id="<?php echo($value['product_color_id']);?>"> <div class="item-image"><img src="<?php echo($value['image']);?>" alt="product_color"></div></div>
+                                    <?php  if($value['defaultal']==1): ?>
+                                        <div class="item" data-id="<?php echo($value['product_color_id']);?>"> <div class="item-image borderal"><img src="http://localhost/Black-Aries-Project/public/images/products/<?php echo($value['image']);?>" alt="product_color"></div></div>
+                                    <?php else : ?>
+                                        <div class="item" data-id="<?php echo($value['product_color_id']);?>"> <div class="item-image"><img src="http://localhost/Black-Aries-Project/public/images/products/<?php echo($value['image']);?>" alt="product_color"></div></div>
+                                    <?php endif ;?>
                                 <?php
                             }
                         endif ;
@@ -30,7 +34,7 @@
             </div>
             <!--Anhr hiện lên -->
             <div class="cur_image">
-                <img src="<?php echo isset($product_color)? $product_color[0]['image']:"" ;?>" alt="image">
+                <img src="http://localhost/Black-Aries-Project/public/images/products/<?php echo isset($product_color)? $product_color[0]['image']:"" ;?>" alt="image">
             </div>
             <!-- Nội dung -->
             <div class="detail_content">
@@ -120,7 +124,7 @@
         </div>
     </div>
     
-    <?php include_once 'MVC/Views/footer.php'; ?>
+    <?php include_once 'MVC/Views/components/footer.php'; ?>
     </div>
     <script type="text/javascript">
         var list_product_color=(<?php echo( isset($product_color)?json_encode($product_color):""); ?>);
@@ -154,7 +158,7 @@
                     }
                 }
                 document.querySelector('.cur_image').innerHTML=`
-                    <img src="${de_product_color.image}" alt="image1">
+                    <img src="http://localhost/Black-Aries-Project/public/images/products/${de_product_color.image}" alt="image1">
                 `            
                 let dis= parseFloat(product[0].discount);
                 let de_price=parseFloat(de_product_color.price);
