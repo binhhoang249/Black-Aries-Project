@@ -42,6 +42,21 @@ main{
 .ct-price span {
     color:red;
 }
+#cps-price{
+    color: red;
+    display: inline-block;
+    border:none;
+    background-color: inherit;
+
+}
+#cp-1, #cp-2{
+    display: inline-block;
+    width: 40px;
+    border:none;
+    background-color: inherit;
+    text-align: center;
+    color: black;
+}
 .button-older{
     width:240px;
     background-color:#527A9A;
@@ -122,4 +137,7 @@ main{
 .total-price{
     font-size:18px;
     color:red;
+}
+#post_cart{
+    display: none;
 }

@@ -39,9 +39,8 @@ fetch("http://localhost/Black-Aries-Project/public/ajax/serveData.php", {
   .then((reponse) => reponse.text())
   .then((data) => {
     try {
-      ;
       let resu = JSON.parse(data);
-      console.log(data)
+      //console.log(data)
       categories = resu.category;
       let product = resu.product;
       if (categories.length > 0) {
@@ -133,7 +132,7 @@ function displayProductFcategory(type) {
                                       <h5 class="card-title">${pro.product_name}</h5>
                                   </a>
                                   <p class="card-text">$${cu_productColor.price}</p>
-                                  <a href="#" class="btn btn-primary">Add to cart</a>
+                                  <div class="btn btn-primary addCart" data-cart="${cu_productColor.product_color_id}" data-product="${cu_productColor.product_id}">Add to cart</div>
                               </div>
                           </div>
                       </div>
@@ -144,6 +143,7 @@ function displayProductFcategory(type) {
           numf++;
         }
       }
+      addToCart();
     } else {
       proFcate.innerHTML = "<h2>Don't have product</h2>";
     }
@@ -169,4 +169,171 @@ function findProductFcategory(type, callback) {
         console.error("Error oarsing Json", error);
       }
     });
+}
+function addToCart(){
+  console.log("sss")
+  var cart= document.querySelectorAll('.addCart');
+  cart.forEach(ob => {
+    ob.addEventListener('click',function(){
+        let product_co = ob.dataset.cart;
+        let de_product=ob.dataset.product
+        fetch('http://localhost/Black-Aries-Project/public/ajax/serveData.php',{
+          method: "POST",
+          body: JSON.stringify({action:"getCarts"}),
+        })
+        .then((reponse)=>reponse.text())
+        .then((data)=>{
+          console.log(data);
+          data= JSON.parse(data);
+          if(data=="userId"){
+            alert("You neet to sign up to add product to your cart");
+          }else if(data){
+            if(data.cart&&data.cart!=[]){
+              if(data.product&&data.product_color&&data.color){
+                  let mcarrt=null;
+                  for(let va of data.cart){
+                    if (va.product_color_id==product_co){
+                        mcarrt=va;
+                        break;
+                    }
+                  }
+                  let mp_c=null;
+                  let fakecarrt=null;
+                  if(mcarrt){
+                    for(let va of data.product_color){
+                      if (va.product_color_id==product_co){
+                        mp_c=va;
+                        break;
+                      }
+                    }
+                  }else{
+                    //tìm kiếm thẻ mà có product_id giống nó de_product
+                    for(let va of data.cart){
+                      let f_pcc=null;
+                      for(let vslu of data.product_color){
+                        if(vslu.product_color_id==va.product_color_id){
+                          f_pcc=vslu.product_id;
+                          console.log("sss"+f_pcc)
+                          break;
+                        }
+                      }
+                      if(f_pcc){
+                        if(f_pcc==de_product){
+                          fakecarrt=va;
+                          break;
+                        }
+                      }
+                    }
+                  }
+                  let mp=null;
+                  if(mp_c){
+                    for(let va of data.product){
+                      if (va.product_id==mp_c.product_id){
+                        mp=va;
+                        break;
+                      }
+                    }
+                  }
+                  if(fakecarrt){
+                    let nuMC= 1;
+                      //thay đổi
+                      fetch('http://localhost/Black-Aries-Project/public/ajax/serveData.php',{
+                        method: "POST",
+                        body: JSON.stringify({action:"updateCart1",cart_id:fakecarrt.older_id,product_color_id:product_co,quantity:nuMC}),
+                      })
+                      .then((reponse)=>reponse.text())
+                      .then((data)=>{
+                        console.log(data);
+                        data=JSON.parse(data);
+                        if(data=="userId"){
+                          alert("You neet to sign up to add product to your cart");
+                        }else{
+                          if(data){
+                            //Sau khi thêm thành công
+                          }else{
+                            alert("fail")
+                          }
+                        }
+                      })
+                  }else if(mp_c&&mcarrt){
+                    if(mcarrt.quantity<mp_c.quantity){
+                      let nuMC= parseInt( mcarrt.quantity)+1;
+                      //thay đổi
+                      fetch('http://localhost/Black-Aries-Project/public/ajax/serveData.php',{
+                        method: "POST",
+                        body: JSON.stringify({action:"updateCart",product_color_id:product_co,quantity:nuMC}),
+                      })
+                      .then((reponse)=>reponse.text())
+                      .then((data)=>{
+                        console.log(data);
+                        data=JSON.parse(data);
+                        if(data=="userId"){
+                          alert("You neet to sign up to add product to your cart");
+                        }else{
+                          if(data){
+                            //Sau khi thêm thành công
+                          }else{
+                            alert("fail")
+                          }
+                        }
+                      })
+                    }else{
+                      alert("Product had in your cart and this quantity is over rule")
+                    }//if
+                  }else{
+                    //thêm một froduct vào vcarrt
+                    fetch('http://localhost/Black-Aries-Project/public/ajax/serveData.php',{
+                      method: "POST",
+                      body: JSON.stringify({action:"addCart",product_color_id:product_co}),
+                    })
+                    .then((reponse)=>reponse.text())
+                    .then((data)=>{
+                      console.log(data);
+                      data=JSON.parse(data);
+                      if(data=="userId"){
+                        alert("You neet to sign up to add product to your cart");
+                      }else{
+                        if(data){
+                          //Sau khi thêm thành công
+                        }else{
+                          alert("fail")
+                        }
+                      }
+                    })
+                    //
+                  }
+              }else{
+                alert("error");
+              }
+            }else{
+              if(data.product&&data.product_color&&data.color){
+                console.log("sssssssssss111")
+                fetch('http://localhost/Black-Aries-Project/public/ajax/serveData.php',{
+                  method: "POST",
+                  body: JSON.stringify({action:"addCart",product_color_id:product_co}),
+                })
+                .then((reponse)=>reponse.text())
+                .then((data)=>{
+                  console.log(data);
+                  data=JSON.parse(data);
+                  if(data=="userId"){
+                    alert("You neet to sign up to add product to your cart");
+                  }else{
+                    if(data){
+                      //Sau khi thêm thành công
+                    }else{
+                      alert("fail")
+                    }
+                  }
+                })
+              }else{
+                alert("error j");
+              }
+            }
+          }else{
+            alert("error k");
+          }
+        })//then data
+    })//event
+  })//for
 }

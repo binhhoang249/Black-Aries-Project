@@ -130,19 +130,115 @@ if ($condi =="getCategory"){
     }else{
         echo (json_encode(""));
     }
-} else if(isset($condi['action'])&&$condi['action']=="getCarts"){
+} else if(isset($condi['action'])&&$condi['action']=="addCart"){
+    $model=new productModel();
+    $idUseral = $_SESSION['userIDB']??0;
+    if(!empty($idUseral)){
+        $p_color=$condi['product_color_id']??0;
+        $data=[]; 
+        if(!empty($p_color)){
+            $data['product_color_id']=$p_color;
+        } 
+        if(count($data)>0){
+            $data['user_id']=$idUseral;
+            $data['status']=0;
+            $data['quantity']=1;
+            $res = $model->addCart($data);
+            if($res){
+                echo (json_encode(true));
+            }else{
+                echo (json_encode(""));
+            }
+        }else{
+            echo (json_encode(""));
+        }
+    }else{
+        echo (json_encode("userId"));
+    }
+}else if(isset($condi['action'])&&$condi['action']=="getCarts"){
     $idUseral = $_SESSION['userIDB']??0;
     if(!empty($idUseral)){
         $model =new productModel();
-        $res['product_color'] = $model->getProductColor();
+        $res['product_color'] = $model->getProductColorAll();
         $res['product']= $model->getProducts();
-        $res['cart']= $model->getCarts();
+        $res['cart']= $model->getCarts($idUseral);
         $res['color']= $model->getColor();
         if(!empty($res)){
             echo(json_encode($res));
         }else{
             echo(json_encode([]));
         }
+    }else{
+        echo (json_encode("userId"));
+    }
+}else if(isset($condi['action'])&&$condi['action']=="updateCart"){
+    $model=new productModel();
+    $idUseral = $_SESSION['userIDB']??0;
+    if(!empty($idUseral)){
+        $p_color=$condi['product_color_id']??0;
+        $p_num=$condi['quantity']??0;
+        $p_price=$condi['price']??0;
+        $data=[]; 
+        if(!empty($p_num)){
+            $data['quantity']=$p_num;
+        } 
+        if(!empty($p_price)){
+            $data['price']=$p_price;
+        } 
+        $condi="user_id = ". $idUseral." and product_color_id = ". $p_color;
+        if(count($data)>0){
+            $res = $model->updateCart('Older',$data,$condi);
+            if($res){
+                echo (json_encode(true));
+            }else{
+                echo (json_encode(""));
+            }
+        }else{
+            echo (json_encode(""));
+        }
+    }else{
+        echo (json_encode("userId"));
+    }
+}else if(isset($condi['action'])&&$condi['action']=="updateCart1"){
+    $model=new productModel();
+    $idUseral = $_SESSION['userIDB']??0;
+    if(!empty($idUseral)){
+        $p_color=$condi['product_color_id']??0;
+        $p_num=$condi['quantity']??0;
+        $p_cart=$condi['cart_id']??0;
+        $data=[]; 
+        if(!empty($p_num)){
+            $data['quantity']=$p_num;
+        } 
+        if(!empty($p_color)){
+            $data['product_color_id']=$p_color;
+        } 
+        $condi="user_id = ". $idUseral." and older_id = ". $p_cart;
+        if(count($data)>0){
+            $res = $model->updateCart('Older',$data,$condi);
+            if($res){
+                echo (json_encode(true));
+            }else{
+                echo (json_encode(""));
+            }
+        }else{
+            echo (json_encode(""));
+        }
+    }else{
+        echo (json_encode("userId"));
+    }
+} else if(isset($condi['action'])&&$condi['action']=="deleteCart"){
+    $model=new productModel();
+    $idUseral = $_SESSION['userIDB']??0;
+    if(!empty($idUseral)){
+        $p_cart=$condi['cart_id']??0;
+        $condi="older_id = ". $p_cart;
+            $res = $model->deleteCart('Older',$condi);
+            if($res){
+                echo (json_encode(true));
+            }else{
+                echo (json_encode(""));
+            }
     }else{
         echo (json_encode("userId"));
     }

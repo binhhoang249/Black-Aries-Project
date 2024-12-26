@@ -17,16 +17,19 @@
                             <input type="checkbox">
                         </div>
                         <div class="c_quantity">
-                            <b>All(<span id="cp-1">1</span>/<span id="cp2">2</span> )</b>
+                            <b>All(<input type="number" id="cp-1" value="0" readonly>/<input type="number" value="0" id="cp-2" readonly> )</b>
                         </div>
                         <div class="c_delete">
-                            <b>Delete</b>
+                            <b></b><!-- delete -->
                         </div>
                         <div class="ct-price">
-                            <b> Totol: <span id="cps-price">0</span> </b>
+                            <b> Totol: <input type="number" id="cps-price" value="0" readonly></b>
                         </div>
                     </div>
-                    <button class="button-older"> older </button>
+                    <form action="" method="POST" name="myForm" onsubmit="return checkvaliddata();">
+                    <input type="text" id="post_cart" name="valueCart" readonly>
+                    <button type="submit" name="cart" class="button-older"> older </button>
+                    </form>
                 </div>
                 <div id="tb-cart" class="main-field flex-rr" style="margin-bottom:36px;">
                     <div class="c_option flex-rr">
@@ -101,5 +104,6 @@
         </div>
         <?php  include_once __DIR__.'/../../components/footer.php'; ?>
     </div>
+    <script src="http://localhost/Black-Aries-Project/public/js/cart.js?ver=<?php echo time(); ?>"></script>
 </body>
 </html>
