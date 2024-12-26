@@ -81,7 +81,7 @@
                                             <h5 class="card-title">' . htmlspecialchars($row["product_name"]) . '</h5>
                                         </a>
                                         <p class="card-text">$' . htmlspecialchars($p_color['price']) . '</p>
-                                        <a href="#" class="btn btn-primary">Add to cart</a>
+                                        <div class="btn btn-primary addCart" data-cart="' . $p_color["product_color_id"] . '" data-product="' . $p_color["product_id"] . '">Add to cart</div>
                                     </div>
                                 </div>
                             </div>';
@@ -123,7 +123,7 @@
                                             <h5 class="card-title">' . htmlspecialchars($row["product_name"]) . '</h5>
                                         </a>
                                         <p class="card-text">$' . htmlspecialchars($p_color['price']) . '</p>
-                                        <a href="#" class="btn btn-primary">Add to cart</a>
+                                         <div class="btn btn-primary addCart" data-cart="' . $p_color["product_color_id"] . '" data-product="' . $p_color["product_id"] . '">Add to cart</div>
                                     </div>
                                 </div>
                             </div>';
@@ -164,7 +164,7 @@
                                             <h5 class="card-title">' . htmlspecialchars($row["product_name"]) . '</h5>
                                         </a>
                                         <p class="card-text">$' . htmlspecialchars($p_color['price']) . '</p>
-                                        <a href="#" class="btn btn-primary">Add to cart</a>
+                                         <div class="btn btn-primary addCart" data-cart="' . $p_color["product_color_id"] . '" data-product="' . $p_color["product_id"] . '">Add to cart</div>
                                     </div>
                                 </div>
                             </div>';
@@ -181,6 +181,6 @@
         </div>
     </div>
     <?php include_once 'MVC/Views/components/footer.php'; ?>
-    <script src="public/js/homepage.js"></script>
+    <script src="public/js/homepage.js?ver=<?php echo time(); ?>"></script>
 </body>
 </html>

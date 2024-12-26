@@ -14,6 +14,24 @@
             $sql = "select * from color";
             return $this->db->select($sql);
         }
+        public function  getCarts($user_id) {
+            $sql = "select * from Older";
+            $data[':user_id']=$user_id;
+            $data[':status']=0;
+            return $this->db->select($sql);
+        }
+        public function addCart($data){
+            $result = $this->db->insert("Older", $data);
+            return $result;
+        }
+        public function updateCart($table,$data,$condi){
+            $result = $this->db->update($table, $data,$condi);
+            return $result;
+        }
+        public function deleteCart($table,$condi){
+            $result = $this->db->delete($table,$condi);
+            return $result;
+        }
         //all
         public function getProducts(){
             $sql = "select * from products";
@@ -29,16 +47,5 @@
             $data[':defaultala']=1;
             return $this->db->select($sql,$data);
         }
-        public function getAllOrders() {
-            $sql = "
-                SELECT o.order_id, p.product_name, c.category_name, o.quantity, o.price, o.status, p.image_url
-                FROM orders o
-                JOIN products p ON o.product_id = p.product_id
-                JOIN categories c ON p.category_id = c.id
-            ";
-        
-            return $this->db->select($sql);
-        }
-        
     }
 ?>
