@@ -105,7 +105,7 @@
             <?php else : ?>
             <li><a href="http://localhost/Black-Aries-Project/userController/login"><i class="fas fa-user icon"></i>Log in</a></li>
             <?php endif ; ?>
-            <li><a href="#"><i class="fas fa-shopping-cart icon"></i>Cart</a></li>
+            <li><a href="http://localhost/Black-Aries-Project/productController/cart"><i class="fas fa-shopping-cart icon"></i>Cart</a></li>
         </ul>
     </div>
 </header>

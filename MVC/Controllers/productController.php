@@ -21,5 +21,9 @@ class productController extends Controller {
         // Trả về View và truyền dữ liệu
         self::view("pages/productViews/detail", $data);
     }
+    //Cart page /////////////////////////////////////////////////////////////////////////////
+    public function cart(){
+        self::view("pages/productViews/cart");
+    }
 }
 ?>
