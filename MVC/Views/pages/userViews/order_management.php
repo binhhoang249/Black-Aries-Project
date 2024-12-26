@@ -23,5 +23,15 @@
         <li class="item">Complete (<?php echo $orderCounts['Complete']; ?>)</li>
         <li class="item">Canceled (<?php echo $orderCounts['Canceled']; ?>)</li>
     </div>
+    <div class="list-products">
+        <img src="" alt="">
+        <p class="name_product"></p>
+        <p class="category"></p>
+        <p class="quanlity"></p>
+        <div class="price_and_button">
+            <p class="price"></p>
+            <button class="button">Cancel order</button>
+        </div>
+    </div>
 </body>
 </html>
