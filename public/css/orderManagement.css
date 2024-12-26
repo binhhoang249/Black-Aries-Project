@@ -1,0 +1,31 @@
+.navigation {
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    margin-left: 55px;
+}
+
+.categories {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin: 20px 0;
+    justify-content: space-around;
+    background-color: #527A9A   ;
+    border-radius: 5px;
+}
+
+.categories .item {
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.categories .item:hover {
+    background-color: #e0e0e0;
+}
+
+.categories .item.active {
+    background-color: #d0d0d0;
+    font-weight: bold;
+}
