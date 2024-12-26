@@ -47,5 +47,10 @@
             $data[':defaultala']=1;
             return $this->db->select($sql,$data);
         }
+
+        public function getAllOrders() {
+            $sql = "SELECT * FROM orders"; // Thay đổi câu truy vấn phù hợp với cấu trúc bảng của bạn
+            return $this->db->select($sql);
+        }
     }
 ?>
