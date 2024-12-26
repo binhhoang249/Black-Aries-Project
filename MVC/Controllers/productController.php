@@ -25,5 +25,10 @@ class productController extends Controller {
     public function cart(){
         self::view("pages/productViews/cart");
     }
+    public function searchProduct(){
+        $model = self::model("productModel");
+        $data['product'] = $model->searchProduct();
+        self::view("pages/productViews/searchProduct", $data);
+    }
 }
 ?>
