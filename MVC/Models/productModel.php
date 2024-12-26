@@ -47,9 +47,5 @@
             $data[':defaultala']=1;
             return $this->db->select($sql,$data);
         }
-        public function getProductColorAll() {
-            $sql = "select * from Product_color";
-            return $this->db->select($sql);
-        }
     }
 ?>
