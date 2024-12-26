@@ -34,7 +34,7 @@ class OrderController extends Controller {
         ];
 
         // Truyền dữ liệu vào View
-        self::view("pages/userViews/order_management.php", $data);
+        self::view("pages/userViews/order_management", $data);
     }
 }
 ?>
