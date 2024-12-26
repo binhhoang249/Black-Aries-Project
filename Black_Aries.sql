@@ -11,7 +11,10 @@ CREATE TABLE Adress (
     name_commune VARCHAR(50),
     note VARCHAR(50)
 );
+/*
+select * from Older
 
+*/
 CREATE TABLE Users (
     user_id INT PRIMARY KEY AUTO_INCREMENT,
     fullname VARCHAR(50),
@@ -56,6 +59,31 @@ CREATE TABLE Product_color (
     FOREIGN KEY (product_id) REFERENCES Products(product_id),
     FOREIGN KEY (color_id) REFERENCES Color(color_id)
 );
+
+-- Tạo bảng payment
+CREATE TABLE payment (
+    payment_id INT PRIMARY KEY AUTO_INCREMENT,
+    payment_name VARCHAR(50) NOT NULL
+);
+
+-- Tạo bảng Older
+CREATE TABLE Older (
+    older_id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT NOT NULL,
+    product_color_id INT NOT NULL,
+    payment_id INT ,
+    order_date DATE ,
+    quantity INT ,
+    price DECIMAL(10, 2) ,
+    status VARCHAR(50) NOT NULL,
+    FOREIGN KEY (payment_id) REFERENCES payment(payment_id)
+);
+
+-- Chèn dữ liệu vào bảng payment
+INSERT INTO payment ( payment_name)
+VALUES 
+    ( 'Pay on delivery'),
+    ( 'MOMO');
 
 INSERT INTO Categories (category_name) VALUES
    ('Table'),
