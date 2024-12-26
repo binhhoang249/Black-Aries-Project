@@ -29,5 +29,16 @@
             $data[':defaultala']=1;
             return $this->db->select($sql,$data);
         }
+        public function getAllOrders() {
+            $sql = "
+                SELECT o.order_id, p.product_name, c.category_name, o.quantity, o.price, o.status, p.image_url
+                FROM orders o
+                JOIN products p ON o.product_id = p.product_id
+                JOIN categories c ON p.category_id = c.id
+            ";
+        
+            return $this->db->select($sql);
+        }
+        
     }
 ?>
