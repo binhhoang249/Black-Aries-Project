@@ -5,15 +5,31 @@ class OrderController extends Controller
 
     public function __construct()
     {
-        $this->productModel = self::model("productModel"); // Được điều chỉnh để sử dụng phương thức tải model
+        // Tải model productModel
+        $this->productModel = self::model("productModel");
     }
 
     public function orderManagement()
     {
+        // Mảng ánh xạ trạng thái
+        $statusMap = [
+            1 => 'Watting',
+            2 => 'Progress',
+            3 => 'Transport',
+            4 => 'Complete',
+            5 => 'Canceled'
+        ];
+
         // Lấy tất cả các đơn hàng từ model
-        $orders = $this->productModel->getAllOrders();
+        $orders = $this->productModel->getAllOrdersWithDetails();
         $totalPrice = 0;
-        $orderDetails = [];
+        $orderDetails = [
+            'Watting' => [],
+            'Progress' => [],
+            'Transport' => [],
+            'Complete' => [],
+            'Canceled' => []
+        ];
         $orderCounts = [
             'All' => 0,
             'Watting' => 0,
@@ -25,21 +41,27 @@ class OrderController extends Controller
 
         // Tính tổng tiền và chuẩn bị chi tiết đơn hàng
         foreach ($orders as $order) {
-            $totalPrice += $order['price'] * $order['quantity'];
+            $totalPrice += $order['order_price'] * $order['order_quantity'];
 
-            $orderDetails[] = [
+            // Chuyển đổi trạng thái từ số sang chuỗi
+            $status = $statusMap[$order['status']];
+
+            $orderDetails[$status][] = [
                 'product_name' => $order['product_name'],
                 'category_name' => $order['category_name'],
-                'quantity' => $order['quantity'],
-                'price' => $order['price'],
-                'status' => $order['status'],
-                'total' => $order['price'] * $order['quantity'] // Tổng tiền cho sản phẩm
+                'quantity' => $order['order_quantity'],
+                'price' => $order['order_price'],
+                'status' => $status,
+                'total' => $order['order_price'] * $order['order_quantity'], // Tổng tiền cho sản phẩm
+                'product_quantity' => $order['product_quantity'],
+                'image' => $order['image'],
+                'product_price' => $order['product_price']
             ];
 
             // Tăng số lượng cho từng trạng thái đơn hàng
             $orderCounts['All']++;
-            if (isset($orderCounts[$order['status']])) {
-                $orderCounts[$order['status']]++;
+            if (isset($orderCounts[$status])) {
+                $orderCounts[$status]++;
             }
         }
 
@@ -50,7 +72,8 @@ class OrderController extends Controller
             'orderCounts' => $orderCounts // Số lượng đơn hàng theo trạng thái
         ];
 
-        // Truyền dữ liệu vào View
+        // Truyền dữ liệu vào view
         self::view("pages/userViews/order_management", $data);
     }
 }
+?>
