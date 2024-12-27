@@ -72,11 +72,14 @@ class productModel extends DModel {
                     o.status,
                     pc.quantity AS product_quantity,
                     pc.image,
-                    pc.price AS product_price
+                    pc.price AS product_price,
+                    p.product_name
                 FROM 
                     orders o
                 JOIN 
-                    product_color pc ON o.product_color_id = pc.product_color_id";
+                    product_color pc ON o.product_color_id = pc.product_color_id
+                JOIN 
+                    products p ON pc.product_id = p.product_id";
         return $this->db->select($sql);
     }
 }
