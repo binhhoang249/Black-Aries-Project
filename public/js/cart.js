@@ -319,6 +319,8 @@ function showCartCard(){
                                     alert("You don't sign up")
                                 }else{
                                     showCartCard();
+                                    setTick();
+                                    checkTick();
                                 }
                             })
                         })
@@ -343,19 +345,57 @@ function showCartCard(){
                                         alert("You don't sign up")
                                     }else{
                                         showCartCard();
+                                        setTick();
+                                        checkTick();
                                     }
                                 })
                         })
                     })
                     // Khi nhấn tick fuction
-                    checkTick ()
-                    function checkTick (){
-                        var tick=document.querySelectorAll('.check_cart');
-                    tick.forEach(to=>{
+                    setTick();
+                    checkTick();
+                    //Function lấy chạt checked cho input
+                    function setTick(){
+                        let de_tick=document.querySelectorAll('.check_cart');
+                        let listTick=JSON.parse(sessionStorage.getItem('listTick'));
+                        de_tick.forEach(tieck => {
+                            if(listTick){
+                                for(let item of listTick){
+                                    if(parseInt(item)==parseInt(tieck.value)){
+                                        tieck.checked=true;
+                                        break
+                                    }
+                                }
+                            }
+                        })
+                        let res_totalal=0;
+                        let listCheck="";
+                        let numcheck=[];
+                        de_tick.forEach(ti => {
+                            let siClass=".res_total"+ti.value;
+                            let classsis=document.querySelector(siClass);
+                            if(ti.checked){
+                                if(listCheck.length>0){
+                                    res_totalal+=parseFloat(classsis.value)
+                                    listCheck+=","+ti.value
+                                }else{
+                                    listCheck+=ti.value
+                                    res_totalal+=parseFloat(classsis.value)
+                                }
+                                numcheck.push(parseInt(ti.value))
+                            }
+                        })
+                        document.getElementById('cp-1').value=numcheck.length;
+                        document.getElementById('post_cart').value=listCheck;
+                        document.getElementById('cps-price').value=res_totalal;
+                    }
+                    function checkTick(){
+                        let tick=document.querySelectorAll('.check_cart');
+                        tick.forEach(to=>{
                         to.addEventListener('change',function(){
-                            var res_totalal=0;
-                            var listCheck="";
-                            var numcheck=[];
+                            let res_totalal=0;
+                            let listCheck="";
+                            let numcheck=[];
                             tick.forEach(ti => {
                                 let siClass=".res_total"+ti.value;
                                 let classsis=document.querySelector(siClass);
@@ -367,9 +407,10 @@ function showCartCard(){
                                         listCheck+=ti.value
                                         res_totalal+=parseFloat(classsis.value)
                                     }
-                                    numcheck.push(ti.value)
+                                    numcheck.push(parseInt(ti.value))
                                 }
                             })
+                            sessionStorage.setItem('listTick', JSON.stringify(numcheck));
                             document.getElementById('cp-1').value=numcheck.length;
                             document.getElementById('post_cart').value=listCheck;
                             document.getElementById('cps-price').value=res_totalal;
@@ -378,16 +419,19 @@ function showCartCard(){
                         })
                     })
                     }
-                    //function kiểm tra giá trị
-                    function checkvaliddata(){
-                        let ck=document.forms["myForm"]["valueCart"].value;
-                        if(ck){
-                            return false
-                        }
-                    }
+                    
                 }//If để thêm card
 
             }
         }
     })
+}
+//function kiểm tra giá trị
+function checkvaliddata(){
+    let ck=document.forms["myForm"]["valueCart"].value;
+    if(ck){
+    }else{
+        alert("you don chose product")
+        return false
+    }
 }

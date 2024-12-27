@@ -23,12 +23,12 @@
                             <b></b><!-- delete -->
                         </div>
                         <div class="ct-price">
-                            <b> Totol: <input type="number" id="cps-price" value="0" readonly></b>
+                            <b> Total: <input type="number" id="cps-price" value="0" readonly></b>
                         </div>
                     </div>
-                    <form action="" method="POST" name="myForm" onsubmit="return checkvaliddata();">
+                    <form action="http://localhost/Black-Aries-Project/productController/checkout" method="POST" name="myForm" onsubmit="return checkvaliddata();">
                     <input type="text" id="post_cart" name="valueCart" readonly>
-                    <button type="submit" name="cart" class="button-older"> older </button>
+                    <button type="submit" name="cart" class="button-older"> Order </button>
                     </form>
                 </div>
                 <div id="tb-cart" class="main-field flex-rr" style="margin-bottom:36px;">
@@ -54,51 +54,6 @@
 <!-- -->
                 <div id="box-cart">
 
-                </div>
-                <div class="field-product flex-rr">
-                    <div class="c_option flex-rr">
-                        <input type="checkbox" name="c_op">
-                    </div>
-                    <div class="p-product flex-rr" >
-                        <a href="">
-                            <div class="tag-image">
-                                <img src="#" alt="">
-                            </div>
-                        </a>
-                        <div class="tag-info flex-rr">
-                            <a href="">
-                                <span  class="product_namer">Ghế</span>
-                            </a>
-                            <span >
-                                Màu: 
-                                <select name="id_proco" class="product_clolor">
-                                    <option class="product_clolor" value="Xám">Xám</option>
-                                    <option class="product_clolor" value="Xám">Đen</option>
-                                </select>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="p-price">
-                        <div class="tag-price flex-rr">
-                            <span id="old-price">12000</span>
-                            <span id="new-price">12000</span>
-                        </div>
-                    </div>
-                    <div class="p-quantity">
-                        <div class="tag-quntity">
-                            <span class="flex-rr rm">-</span>
-                            <input type="number" value="1">
-                            <span class="flex-rr ad">+</span>
-                        </div>
-                    </div>
-                    <div class="p-total_price">
-                        <span class="total-price">12000</span>
-                    </div>
-                    <div class="p-action">
-                        <button class="tag-delete">
-                            <b>Delete</b>
-                        </button>
-                    </div>
                 </div>
             </main>
         </div>

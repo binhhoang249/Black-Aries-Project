@@ -17,7 +17,7 @@
         public function  getCarts($user_id) {
             $sql = "select * from Older";
             $data[':user_id']=$user_id;
-            $data[':status']=0;
+            $data[':status']=1;
             return $this->db->select($sql);
         }
         public function addCart($data){
@@ -49,6 +49,10 @@
         }
         public function getProductColorAll() {
             $sql = "select * from Product_color";
+            return $this->db->select($sql);
+        }
+        public function getPayment(){
+            $sql = "select * from payment";
             return $this->db->select($sql);
         }
     }
