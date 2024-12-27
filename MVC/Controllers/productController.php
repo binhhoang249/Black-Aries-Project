@@ -103,5 +103,10 @@ class productController extends Controller {
         }
         self::view("pages/productViews/checkout",$data);
     }
+    public function searchProduct(){
+        $model = self::model("productModel");
+        $data['product'] = $model->searchProduct();
+        self::view("pages/productViews/searchProduct", $data);
+    }
 }
 ?>

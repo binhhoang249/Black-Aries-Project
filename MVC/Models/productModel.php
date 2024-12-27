@@ -54,6 +54,34 @@
         public function getPayment(){
             $sql = "select * from payment";
             return $this->db->select($sql);
+        }  
+       public function getAllOrders() {
+            $sql = "SELECT * FROM orders"; // Thay đổi câu truy vấn phù hợp với cấu trúc bảng của bạn
+            return $this->db->select($sql);
         }
-    }
+    
+        public function getAllOrdersWithDetails() {
+            $sql = "SELECT 
+                        o.order_id,
+                        o.user_id,
+                        o.product_color_id,
+                        o.payment_id,
+                        o.order_date,
+                        o.quantity AS order_quantity,
+                        o.price AS order_price,
+                        o.status,
+                        pc.quantity AS product_quantity,
+                        pc.image,
+                        pc.price AS product_price,
+                        p.product_name
+                    FROM 
+                        orders o
+                    JOIN 
+                        product_color pc ON o.product_color_id = pc.product_color_id
+                    JOIN 
+                        products p ON pc.product_id = p.product_id";
+            return $this->db->select($sql);
+        }
+  
+}
 ?>
