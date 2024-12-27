@@ -67,17 +67,24 @@ CREATE TABLE payment (
 );
 
 -- Tạo bảng Older
-CREATE TABLE Older (
-    older_id INT PRIMARY KEY AUTO_INCREMENT,
+CREATE TABLE Order (
+    order_id INT PRIMARY KEY AUTO_INCREMENT,
     user_id INT NOT NULL,
     product_color_id INT NOT NULL,
-    payment_id INT ,
-    order_date DATE ,
-    quantity INT ,
-    price DECIMAL(10, 2) ,
-    status VARCHAR(50) NOT NULL,
+    payment_id INT,
+    order_date DATE,
+    quantity INT,
+    price DECIMAL(10, 2),
+    status INT NOT NULL, 
     FOREIGN KEY (payment_id) REFERENCES payment(payment_id)
 );
+INSERT INTO `Order` (user_id, product_color_id, payment_id, order_date, quantity, price, status)
+VALUES 
+    (1, 1, 1, '2023-10-01', 2, 100.00, 1), -- Watting
+    (2, 2, 1, '2023-10-02', 1, 150.00, 2), -- Progress
+    (3, 3, 1, '2023-10-03', 3, 200.00, 3), -- Transport
+    (4, 4, 1, '2023-10-04', 1, 250.00, 4), -- Complete
+    (5, 5, 1, '2023-10-05', 2, 300.00, 5);
 
 -- Chèn dữ liệu vào bảng payment
 INSERT INTO payment ( payment_name)
