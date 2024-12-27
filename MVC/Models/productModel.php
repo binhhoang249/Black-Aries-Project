@@ -15,10 +15,10 @@
             return $this->db->select($sql);
         }
         public function  getCarts($user_id) {
-            $sql = "select * from Older";
+            $sql = "select * from Older where user_id = :user_id and status = :status";
             $data[':user_id']=$user_id;
             $data[':status']=1;
-            return $this->db->select($sql);
+            return $this->db->select($sql,$data);
         }
         public function addCart($data){
             $result = $this->db->insert("Older", $data);
