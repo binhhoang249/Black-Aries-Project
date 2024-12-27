@@ -141,7 +141,7 @@ if ($condi =="getCategory"){
         } 
         if(count($data)>0){
             $data['user_id']=$idUseral;
-            $data['status']=0;
+            $data['status']=1;
             $data['quantity']=1;
             $res = $model->addCart($data);
             if($res){

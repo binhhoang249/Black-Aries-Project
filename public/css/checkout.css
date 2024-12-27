@@ -1,0 +1,132 @@
+body,html{
+    width: 100%;
+    height: 100%;
+    margin:0;
+    padding:0;
+    background-color: #F6FBFF;
+}
+*{
+    box-sizing:border-box;
+}
+p{
+   padding:0;
+   margin:0; 
+}
+.main_containerel{
+    width: 100%;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.content-container{
+    display:flex;
+    margin-bottom:30px;
+    margin-left:40px;
+    margin-right:40px;
+    justify-content: space-between;
+    margin-top:21px;
+}
+.box-infoUser{
+    width: 60%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 5px 10px;
+}
+.box-products{
+    width: 35%;
+    height:300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position:sticky;
+    top:40px;
+    z-index:10;
+}
+.title{
+    font-size:21px;
+    font-weight:bold;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+.conten-product{
+    padding:5px 0;
+    border-top:1px solid #9F7A5F;
+    border-bottom:1px solid #9F7A5F;
+    width: 100%;
+    height:162px;
+    overflow: auto;
+}
+.content{
+    padding:5px 10px;
+}
+.fild-info-product{
+    display:flex;
+    width: 100%;
+    padding:0 10px;
+    margin-top:10px;
+}
+.big-field{
+    width: 100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+.big-field .field-user{
+    flex:1
+}
+.field-user input{
+    border:none;
+    background:white;
+    border-radius:6px;
+    height:30px;
+    min-width:210px;
+}
+.name-product{
+    width: 70%;
+}
+.price-product{
+    flex:1
+}
+.box-botton{
+    margin: 21px 0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+.box-botton button{
+    padding:5px 21px;
+    border: none;
+    border-radius:6px;
+    color:white;
+    background-color:#527A9A ;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+.field_address{
+    width:521px;
+}
+.box_pay{
+    padding: 5px 0;
+    display:flex;
+    flex-wrap:wrap;
+}
+.label-pay{
+    display:block;
+    border:none;
+    background:white;
+    border-radius:6px;
+    height:30px;
+    width:210px;
+    margin-right:12px;
+    margin-bottom:10px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+.label-pay input {
+    display:none;
+}
+.hove{
+    background:#527A9A ;
+    color:white;
+}

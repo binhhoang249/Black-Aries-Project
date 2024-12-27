@@ -7,6 +7,11 @@ class userModel extends DModel {
         $sql = "SELECT * FROM Users";
         return $this->db->select($sql);
     }
+    public function getUser($id){
+        $sql = "SELECT * FROM Users where user_id = :user_id";
+        $data[':user_id']=$id;
+        return $this->db->select($sql,$data);
+    }
     // Cú pháp update $table set $data[0] = :$data[0] where $condition(vd: user_id =1;)
     public function setUser($table,$data,$condition){
         return $this->db->update($table,$data,$condition);

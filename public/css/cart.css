@@ -6,6 +6,7 @@ body,html {
     width: 100%;
     margin:0;
     padding:0;
+    background-color: #F6FBFF;
 }
 .main_containerel{
     width: 100%;
@@ -133,6 +134,8 @@ main{
     align-items:center;
     padding:9px 21px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 21px;
+    background-color: white;
 }
 .total-price{
     font-size:18px;
