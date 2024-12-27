@@ -23,15 +23,21 @@
         <li class="item">Complete (<?php echo $orderCounts['Complete']; ?>)</li>
         <li class="item">Canceled (<?php echo $orderCounts['Canceled']; ?>)</li>
     </div>
-    <div class="list-products">
-        <img src="" alt="">
-        <p class="name_product"></p>
-        <p class="category"></p>
-        <p class="quanlity"></p>
-        <div class="price_and_button">
-            <p class="price"></p>
-            <button class="button">Cancel order</button>
-        </div>
-    </div>
+
+    <?php foreach ($orders as $status => $orderList): ?>
+        <h2><?php echo ucfirst($status); ?> Orders</h2>
+        <?php foreach ($orderList as $order): ?>
+            <div class="list-products">
+                <img src="<?php echo $order['image']; ?>" alt="Product Image">
+                <p class="name_product"><?php echo $order['product_name']; ?></p>
+                <p class="category"><?php echo $order['category_name']; ?></p>
+                <p class="quanlity">Quantity: <?php echo $order['quantity']; ?></p>
+                <div class="price_and_button">
+                    <p class="price">$<?php echo number_format($order['total'], 2); ?></p>
+                    <button class="button">Cancel order</button>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    <?php endforeach; ?>
 </body>
 </html>
