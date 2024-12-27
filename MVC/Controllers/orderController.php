@@ -39,26 +39,22 @@ class OrderController extends Controller
             'Canceled' => 0
         ];
 
-        // Tính tổng tiền và chuẩn bị chi tiết đơn hàng
         foreach ($orders as $order) {
             $totalPrice += $order['order_price'] * $order['order_quantity'];
 
-            // Chuyển đổi trạng thái từ số sang chuỗi
             $status = $statusMap[$order['status']];
 
             $orderDetails[$status][] = [
                 'product_name' => $order['product_name'],
-                'category_name' => $order['category_name'],
                 'quantity' => $order['order_quantity'],
                 'price' => $order['order_price'],
                 'status' => $status,
-                'total' => $order['order_price'] * $order['order_quantity'], // Tổng tiền cho sản phẩm
+                'total' => $order['order_price'] * $order['order_quantity'], 
                 'product_quantity' => $order['product_quantity'],
                 'image' => $order['image'],
                 'product_price' => $order['product_price']
             ];
 
-            // Tăng số lượng cho từng trạng thái đơn hàng
             $orderCounts['All']++;
             if (isset($orderCounts[$status])) {
                 $orderCounts[$status]++;
@@ -74,6 +70,11 @@ class OrderController extends Controller
 
         // Truyền dữ liệu vào view
         self::view("pages/userViews/order_management", $data);
+
+        // In ra dữ liệu để kiểm tra
+        echo '<pre>';
+        print_r($data);
+        echo '</pre>';
     }
 }
-?>
+?>  
