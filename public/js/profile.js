@@ -1,4 +1,4 @@
-displayInfo()
+displayInfo();
 var boxAvatar = document.querySelector('.update_avatar');
 document.querySelector('.edit-avatar-btn').addEventListener('click', () => {
         if(boxAvatar.style.display== "flex"){

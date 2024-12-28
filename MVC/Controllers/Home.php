@@ -12,7 +12,7 @@ class Home extends Controller {
                 if($liProduct[$i]['popular']<$liProduct[$i+1]['popular']){
                     $temp=$liProduct[$i];
                     $liProduct[$i]=$liProduct[$i+1];
-                    $liProduct[$i+1]=$temp;
+                    $liProduct[$i+1] = $temp;
                 }
             }
         }

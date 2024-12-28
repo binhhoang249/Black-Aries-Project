@@ -239,7 +239,7 @@ function addToCart(){
                       //thay đổi
                       fetch('http://localhost/Black-Aries-Project/public/ajax/serveData.php',{
                         method: "POST",
-                        body: JSON.stringify({action:"updateCart1",cart_id:fakecarrt.older_id,product_color_id:product_co,quantity:nuMC}),
+                        body: JSON.stringify({action:"updateCart1",cart_id:fakecarrt.order_id,product_color_id:product_co,quantity:nuMC}),
                       })
                       .then((reponse)=>reponse.text())
                       .then((data)=>{
@@ -256,7 +256,8 @@ function addToCart(){
                         }
                       })
                   }else if(mp_c&&mcarrt){
-                    if(mcarrt.quantity<mp_c.quantity){
+                    console.log(mcarrt.quantity+"ffff"+mp_c.quantity)
+                    if(parseInt(mcarrt.quantity)<parseInt(mp_c.quantity)){
                       let nuMC= parseInt( mcarrt.quantity)+1;
                       //thay đổi
                       fetch('http://localhost/Black-Aries-Project/public/ajax/serveData.php',{

@@ -41,7 +41,7 @@ class productController extends Controller {
             $rel=[];
             foreach($listP as $va){
                 foreach($listCart as $val){
-                    if($val['older_id']==$va){
+                    if($val['order_id']==$va){
                         array_push($rel,$val);
                         break;
                     }
@@ -56,7 +56,7 @@ class productController extends Controller {
             $rel=[];
             foreach($listP as $va){
                 foreach($listCart as $val){
-                    if($val['older_id']==$va){
+                    if($val['order_id']==$va){
                         array_push($rel,$val);
                         break;
                     }
@@ -80,13 +80,16 @@ class productController extends Controller {
                     }
                 }
                 if (!empty($pro_de)){
+                    $num=$product_col['quantity']-$value['quantity'];
+                    $cond="product_color_id = " . $product_col['product_color_id'];
+                    $model->updateProduct_Color(['quantity'=>$num],$cond);
                     $day=date("Y-m-d");
                     $idpp=$_POST['pay']??1;
                     $olPrice=(int)$product_col['price'];
                     $price=($olPrice - ($olPrice*($pro_de['discount'])/100))*$value['quantity'];
                     $davi=['price'=>$price,'status'=>2,'order_date'=>$day,'payment_id'=>$idpp];
-                    $condi="user_id = ".$_SESSION['userIDB']." and older_id = ".$value['older_id'];
-                    $model->updateCart("Older",$davi,$condi);
+                    $condi="user_id = ".$_SESSION['userIDB']." and order_id = ".$value['order_id'];
+                    $model->updateCart("Orders",$davi,$condi);
                 }else{
                     header("http://localhost/Black-Aries-Project/productController/checkout");
                 }

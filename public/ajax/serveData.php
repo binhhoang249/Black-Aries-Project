@@ -187,7 +187,7 @@ if ($condi =="getCategory"){
         } 
         $condi="user_id = ". $idUseral." and product_color_id = ". $p_color;
         if(count($data)>0){
-            $res = $model->updateCart('Older',$data,$condi);
+            $res = $model->updateCart('Orders',$data,$condi);
             if($res){
                 echo (json_encode(true));
             }else{
@@ -213,9 +213,9 @@ if ($condi =="getCategory"){
         if(!empty($p_color)){
             $data['product_color_id']=$p_color;
         } 
-        $condi="user_id = ". $idUseral." and older_id = ". $p_cart;
+        $condi="user_id = ". $idUseral." and order_id = ". $p_cart;
         if(count($data)>0){
-            $res = $model->updateCart('Older',$data,$condi);
+            $res = $model->updateCart('Orders',$data,$condi);
             if($res){
                 echo (json_encode(true));
             }else{
@@ -232,8 +232,8 @@ if ($condi =="getCategory"){
     $idUseral = $_SESSION['userIDB']??0;
     if(!empty($idUseral)){
         $p_cart=$condi['cart_id']??0;
-        $condi="older_id = ". $p_cart;
-            $res = $model->deleteCart('Older',$condi);
+        $condi="order_id = ". $p_cart;
+            $res = $model->deleteCart('Orders',$condi);
             if($res){
                 echo (json_encode(true));
             }else{

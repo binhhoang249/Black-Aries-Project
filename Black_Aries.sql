@@ -4,16 +4,16 @@ CREATE TABLE Categories (
       category_id INT PRIMARY KEY AUTO_INCREMENT,
       category_name VARCHAR(50) NOT NULL
 );
-CREATE TABLE Adress (
+/*CREATE TABLE Adress (
     address_id INT AUTO_INCREMENT PRIMARY KEY,
     name_province VARCHAR(50),
     name_district VARCHAR(50),
     name_commune VARCHAR(50),
     note VARCHAR(50)
 );
-/*
+drop database black_aries
 select * from Older
-
+select * from Older
 */
 CREATE TABLE Users (
     user_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -25,8 +25,7 @@ CREATE TABLE Users (
     password VARCHAR(100),
     avatar VARCHAR(135),
     role INT,
-    address_id INT,
-    FOREIGN KEY (address_id) REFERENCES Adress(address_id)
+    address text
 );
 
 CREATE TABLE Products (
@@ -67,7 +66,7 @@ CREATE TABLE payment (
 );
 
 -- Tạo bảng Older
-CREATE TABLE Order (
+CREATE TABLE Orders (
     order_id INT PRIMARY KEY AUTO_INCREMENT,
     user_id INT NOT NULL,
     product_color_id INT NOT NULL,
@@ -78,13 +77,6 @@ CREATE TABLE Order (
     status INT NOT NULL, 
     FOREIGN KEY (payment_id) REFERENCES payment(payment_id)
 );
-INSERT INTO `Order` (user_id, product_color_id, payment_id, order_date, quantity, price, status)
-VALUES 
-    (1, 1, 1, '2023-10-01', 2, 100.00, 1), -- Watting
-    (2, 2, 1, '2023-10-02', 1, 150.00, 2), -- Progress
-    (3, 3, 1, '2023-10-03', 3, 200.00, 3), -- Transport
-    (4, 4, 1, '2023-10-04', 1, 250.00, 4), -- Complete
-    (5, 5, 1, '2023-10-05', 2, 300.00, 5);
 
 -- Chèn dữ liệu vào bảng payment
 INSERT INTO payment ( payment_name)
@@ -98,6 +90,15 @@ INSERT INTO Categories (category_name) VALUES
    ('Lamp'),
    ('Sofa'),
    ('Bed');
+-- Chèn dữ liệu vào bảng Orders
+INSERT INTO `Orders` (user_id, product_color_id, payment_id, order_date, quantity, price, status)
+VALUES 
+    (1, 1, 1, '2023-10-01', 2, 100.00, 1), -- Watting
+    (2, 2, 1, '2023-10-02', 1, 150.00, 2), -- Progress
+    (3, 3, 1, '2023-10-03', 1, 200.00, 3), -- Transport
+    (4, 4, 1, '2023-10-04', 1, 250.00, 4), -- Complete
+    (5, 5, 1, '2023-10-05', 2, 300.00, 5);
+
 
   INSERT INTO Products (product_name, description, time_stamp, category_id, status, discount, popular)
 VALUES
