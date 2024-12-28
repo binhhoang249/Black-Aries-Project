@@ -75,9 +75,9 @@
                             $price=($olPrice - ($olPrice*($pro_de['discount'])/100))*$value['quantity'];
                             $total += $price;
                             if(strlen($listCa)>0){
-                                $listCa .= ",".$value['older_id'];
+                                $listCa .= ",".$value['order_id'];
                             }else{
-                                $listCa .=$value['older_id'];
+                                $listCa .=$value['order_id'];
                             }
                             ?>
                                 <div class="fild-info-product">

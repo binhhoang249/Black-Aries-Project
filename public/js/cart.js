@@ -49,7 +49,7 @@ function showCartCard(){
                                 `
                                     <div class="field-product flex-rr">
                                         <div class="c_option flex-rr">
-                                            <input type="checkbox" name="c_op" class="check_cart" value="${cart.older_id}">
+                                            <input type="checkbox" name="c_op" class="check_cart" value="${cart.order_id}">
                                         </div>
                                         <div class="p-product flex-rr" >
                                             <a href="">
@@ -63,36 +63,36 @@ function showCartCard(){
                                                 </a>
                                                 <span >
                                                     Màu: 
-                                                    <select name="id_proco" class="product_clolor pcal${cart.older_id}"  data-cart="${cart.older_id}">
+                                                    <select name="id_proco" class="product_clolor pcal${cart.order_id}"  data-cart="${cart.order_id}">
                                                     </select>
                                                 </span>
                                             </div>
                                         </div>
                                         <div class="p-price">
                                             <div class="tag-price flex-rr">
-                                                <span class="old-price old-price${cart.older_id}">${ne_price}</span>
-                                                <span class="new-price new-price${cart.older_id}">${ol_price}</span>
+                                                <span class="old-price old-price${cart.order_id}">${ne_price}</span>
+                                                <span class="new-price new-price${cart.order_id}">${ol_price}</span>
                                             </div>
                                         </div>
                                         <div class="p-quantity">
                                             <div class="tag-quntity">
-                                                <span class="flex-rr rm" data-cart="${cart.older_id}">-</span>
-                                                <input type="number" value="${cart.quantity}" class="quantity${cart.older_id}" readonly >
-                                                <span class="flex-rr ad"  data-cart="${cart.older_id}">+</span>
+                                                <span class="flex-rr rm" data-cart="${cart.order_id}">-</span>
+                                                <input type="number" value="${cart.quantity}" class="quantity${cart.order_id}" readonly >
+                                                <span class="flex-rr ad"  data-cart="${cart.order_id}">+</span>
                                             </div>
                                         </div>
                                         <div class="p-total_price">
-                                            <input type="number" class="res_total${cart.older_id}" style="display:none" value="${to_product}"> 
-                                            <span class="total-price total-price${cart.older_id}">${to_product}</span>
+                                            <input type="number" class="res_total${cart.order_id}" style="display:none" value="${to_product}"> 
+                                            <span class="total-price total-price${cart.order_id}">${to_product}</span>
                                         </div>
                                         <div class="p-action">
-                                            <button class="tag-delete" data-cart="${cart.older_id}">
+                                            <button class="tag-delete" data-cart="${cart.order_id}">
                                                 <b>Delete</b>
                                             </button>
                                         </div>
                                     </div>
                                 `
-                                let nameclass="."+"pcal"+cart.older_id;
+                                let nameclass="."+"pcal"+cart.order_id;
                                 let ccolor= document.querySelector(nameclass);
                                 let PcolorFP=[];
                                 for(let value of data.product_color){
@@ -156,7 +156,7 @@ function showCartCard(){
                                         }else{
                                             let findCart=null;
                                             for(let value_cart of data.cart){
-                                                if(value_cart.older_id==valueDefuault){
+                                                if(value_cart.order_id==valueDefuault){
                                                     findCart=value_cart;
                                                     break;
                                                 }
@@ -176,10 +176,8 @@ function showCartCard(){
                                                         break;
                                                     }
                                                 }
-                                                console.log(findP)
                                                 if(findP_C){
-                                                    console.log("ssssssssss")
-                                                    if(findCart.quantity<findP_C.quantity){
+                                                    if(parseInt(findCart.quantity) < parseInt(findP_C.quantity)){
                                                         let changeQuantity= document.querySelector(nameRClass);
                                                         let numaf =parseInt(changeQuantity.value)+1;
                                                         changeQuantity.value=numaf;
@@ -243,7 +241,7 @@ function showCartCard(){
                                         }else{
                                             let findCart=null;
                                             for(let value_cart of data.cart){
-                                                if(value_cart.older_id==valueDefuault){
+                                                if(value_cart.order_id==valueDefuault){
                                                     findCart=value_cart;
                                                     break;
                                                 }
