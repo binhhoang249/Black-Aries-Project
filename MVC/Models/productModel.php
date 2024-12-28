@@ -84,7 +84,7 @@
         }
     public function updateProduct_Color($data,$condi){
         $result = $this->db->update("Product_color" ,$data,$condi);
-        return $res;
+        return $result;
     }
   
 }
