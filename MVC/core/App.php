@@ -1,7 +1,7 @@
 <?php
     class App {
         // http://localhost/BlackArirsProjecct/Home/Sayhi/12/3123
-        protected $controller = "Home";
+        protected $controller = "HomeController";
         protected $action = "index";
         protected $params;
         function __construct() {

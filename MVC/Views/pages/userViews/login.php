@@ -11,7 +11,7 @@
     <main>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li style="margin-right:10px" class="breadcrumb-item"><a  href="http://localhost/Black-Aries-Project/home">Homepage</a></li>
+                <li style="margin-right:10px" class="breadcrumb-item"><a  href="http://localhost/Black-Aries-Project/HomeController">Homepage</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Sign in</li>
             </ol>
         </nav>
@@ -24,7 +24,7 @@
             </div>
             <p class="p1">HELLO!</p>
             <p class="p2">WELCOME BACK</p>
-            <form action="http://localhost/Black-Aries-Project/userController/login" method="POST">
+            <form action="http://localhost/Black-Aries-Project/UserController/login" method="POST">
                 <label for="">
                     <input type="text" name="username" placeholder="User name" required>
                 </label>
@@ -33,13 +33,13 @@
                     <input type="password" name="password" id="password" placeholder="Mật khẩu" required>
                     <i class="fas fa-eye" id="toggle-password"></i>
                 </div>
-                    <a href="http://localhost/black-Aries-Project/userController/forgetPassword">Forgot password</a>
+                    <a href="http://localhost/black-Aries-Project/UserController/forgetPassword">Forgot password</a>
                 </label>
                 <div class="lg-flex">
                     <button type="submit">Sign in</button>
                 </div>
                 <div class="lg-flex">
-                    <div class="lg-su"><a href="http://localhost/black-Aries-Project/userController/register">Sign up</a></div>
+                    <div class="lg-su"><a href="http://localhost/black-Aries-Project/UserController/register">Sign up</a></div>
                 </div>
             </form>
         </div>

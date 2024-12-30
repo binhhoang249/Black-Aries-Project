@@ -1,5 +1,5 @@
 <?php
-class userModel extends DModel {
+class UserModel extends DModel {
     public function __construct(){
         parent::__construct();
     }

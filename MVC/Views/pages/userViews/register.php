@@ -22,7 +22,7 @@
     <div class="container">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li style="margin-right:10px" class="breadcrumb-item"><a  href="http://localhost/Black-Aries-Project/home">Homepage</a></li>
+                <li style="margin-right:10px" class="breadcrumb-item"><a  href="http://localhost/Black-Aries-Project/HomeController">Homepage</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Sign up</li>
             </ol>
         </nav>
@@ -34,7 +34,7 @@
                 <div class="line"></div>
             </div>
             <h1 class="title">WELCOME</h1>
-            <form id="register-form" method="POST" action="/Black-Aries-Project/userController/register">
+            <form id="register-form" method="POST" action="/Black-Aries-Project/UserController/register">
                 <div class="form">
                     <input type="text" class="fullname" id="fullname" name="fullname" placeholder="Enter your full name" required>
                     <span id="fullnameError" class="error">Full name is required</span>
@@ -62,7 +62,7 @@
                     </div>
                 </div>
                 <p class="signin-text">
-                    Already have account? <a href="http://localhost/Black-Aries-Project/userController/login">SIGN IN</a>
+                    Already have account? <a href="http://localhost/Black-Aries-Project/UserController/login">SIGN IN</a>
                 </p>
                 <button class="sign-btn" type="submit">Register</button>
             </form>

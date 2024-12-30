@@ -2,7 +2,7 @@
 class userController extends Controller{
     //Profile //////////////////////////////////////////////////////////////////////////////////
     public function profile(){
-        self::view('pages/userViews/profile');
+        self::view('Pages/UserViews/Profile');
     }
     //Forgotpassword/////////////////////////////////////////////////////////////////////////////
     public function forgetPassword(){
@@ -88,12 +88,12 @@ class userController extends Controller{
             }
         }
 
-        self::view('pages/userViews/fogotPassword',$data);
+        self::view('Pages/UserViews/FogotPassword',$data);
     }
     public function code(){
         //data2
         $data['check']=2;
-        self::view('pages/userViews/fogotPassword',$data);
+        self::view('Pages/UserViews/FogotPassword',$data);
         if(isset($_GET['act'])&&$_GET['act']=="error"){
             ?>
                 <script type="text/javascript">
@@ -114,16 +114,16 @@ class userController extends Controller{
             if ($result['status']) {
                 // Đăng nhập thành công, có thể lưu thông tin người dùng vào session
                 $_SESSION['userIDB'] = $result['user']['user_id'];
-                header("Location: http://localhost/Black-Aries-Project/home"); // Chuyển hướng đến trang chính
+                header("Location: http://localhost/Black-Aries-Project/HomeController"); // Chuyển hướng đến trang chính
                 exit();
             } else {
                 // Đăng nhập thất bại, hiển thị thông báo lỗi
                 $data['error'] = $result['message'];
-                self::view("pages/userViews/login", $data);
+                self::view("Pages/UserViews/Login", $data);
             }
         } else {
             // Hiển thị trang login
-            self::view("pages/userViews/login");
+            self::view("Pages/UserViews/Login");
         }
     }
     //Register////////////////////////////////////////////////////////////////////////////////////
@@ -159,7 +159,7 @@ class userController extends Controller{
                 </script>
             <?php
         }
-        self::view('pages/userViews/register');
+        self::view('Pages/UserViews/Register');
     }
 
     static public function processVerification()

@@ -1,5 +1,5 @@
 <?php
-class Home extends Controller {
+class HomeController extends Controller {
     static function index()
     {
         $model = self::model("productModel");
@@ -33,7 +33,38 @@ class Home extends Controller {
         if (isset($_GET['logout']) && $_GET['logout'] == 'successt') {
             unset($_SESSION['userIDB']);
         }
-        self::view('pages/webViews/Homepage',$data);
+        self::view('Pages/HomeViews/Homepage',$data);
+    }
+    static function aboutUs() {
+        $model = self::model("HomeModel");
+        $businessData = $model->getInformationAboutUs();
+        if (!empty($businessData) && isset($businessData[0])) {
+            $business = $businessData[0];
+            $businessName = $business['bussiness_name'];
+            $description = $business['description'];
+            $address = $business['address'];
+            $contactNumber = $business['contact_number'];
+            $email = $business['email'];
+            $logo = $business['logo'];
+            $image = $business['image'];
+        } else {
+            $businessName = "N/A";
+            $description = "No description available.";
+            $address = "No address available.";
+            $contactNumber = "No contact number.";
+            $email = "No email provided.";
+            $logo = "default_logo.png";
+            $image = "default_image.png";
+        }
+        self::view("Pages/HomeViews/AboutUsPage", [
+            "businessName" => $businessName,
+            "description" => $description,
+            "address" => $address,
+            "contactNumber" => $contactNumber,
+            "email" => $email,
+            "logo" => $logo,
+            "image" => $image,
+        ]);
     }
 }
 ?>

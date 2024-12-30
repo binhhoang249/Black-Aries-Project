@@ -15,7 +15,7 @@
 <body>
     <?php
     extract($data);
-    include_once 'MVC/Views/components/header.php';
+    include_once 'MVC/Views/Components/Header.php';
     ?>
     <div style="width:100%;height:696px;position:relative">
         <img style="width:100%;height:100%" src="public/images/Rectangle 2.png" alt="Banner">
@@ -119,7 +119,7 @@
                                         <img src="http://localhost/Black-Aries-Project/public/images/products/' . htmlspecialchars(trim($p_color['image'])) . '" class="card-img-top" alt="' . htmlspecialchars($row["product_name"]) . '">
                                     </div>
                                     <div class="card-body">
-                                        <a href="http://localhost/Black-Aries-Project/productController/detail/' . $row["product_id"] . '">
+                                        <a href="http://localhost/Black-Aries-Project/ProductController/detail/' . $row["product_id"] . '">
                                             <h5 class="card-title">' . htmlspecialchars($row["product_name"]) . '</h5>
                                         </a>
                                         <p class="card-text">$' . htmlspecialchars($p_color['price']) . '</p>
@@ -160,7 +160,7 @@
                                         <img src="http://localhost/Black-Aries-Project/public/images/products/' . htmlspecialchars(trim($p_color['image'])) . '" class="card-img-top" alt="' . htmlspecialchars($row["product_name"]) . '">
                                     </div>
                                     <div class="card-body">
-                                        <a href="http://localhost/Black-Aries-Project/productController/detail/' . $row["product_id"] . '">
+                                        <a href="http://localhost/Black-Aries-Project/ProductController/detail/' . $row["product_id"] . '">
                                             <h5 class="card-title">' . htmlspecialchars($row["product_name"]) . '</h5>
                                         </a>
                                         <p class="card-text">$' . htmlspecialchars($p_color['price']) . '</p>
@@ -180,7 +180,7 @@
 
         </div>
     </div>
-    <?php include_once 'MVC/Views/components/footer.php'; ?>
+    <?php include_once 'MVC/Views/Components/Footer.php'; ?>
     <script src="public/js/homepage.js?ver=<?php echo time(); ?>"></script>
 </body>
 </html>
