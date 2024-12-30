@@ -10,8 +10,8 @@
 <body>
     <div class="main_containerel">
         <div>
-            <?php include_once __DIR__.'/../../components/header.php'; ?>
-            <form action="http://localhost/Black-Aries-Project/productController/checkout" method="POST" name="myForm" class="content-container" onsubmit="return checkvaliddata();">
+            <?php include_once __DIR__.'/../../Components/Header.php'; ?>
+            <form action="http://localhost/Black-Aries-Project/OrderController/checkout" method="POST" name="myForm" class="content-container" onsubmit="return checkvaliddata();">
                 <div class="box-infoUser">
                     <p class="title">Infomation</p>
                     <div class="content">
@@ -61,6 +61,15 @@
                                     break;
                                 }
                             }
+                            $colorCurrent=null;
+                            if(!empty($product_col)){
+                                foreach($colors as $color){
+                                    if($color['color_id']==$product_col['color_id']){
+                                        $colorCurrent=$color;
+                                        break;
+                                    }
+                                }
+                            }
                             $pro_de=null;
                             if(!empty($product_col)){
                                 foreach($products as $prod){
@@ -81,7 +90,7 @@
                             }
                             ?>
                                 <div class="fild-info-product">
-                                    <p class="name-product">(<?php echo $value['quantity'] ;?>)<?php echo $pro_de['product_name'] ;?></p>
+                                    <p class="name-product">(<?php echo $value['quantity'] ;?>)<?php echo $pro_de['product_name'] ;?> - <?php echo $colorCurrent['color_name'] ; ?></p>
                                     <p class="price-product"><?php echo $price ;?></p>
                                 </div>
                             <?php
@@ -100,7 +109,7 @@
                 </div>
             </form>
         </div>
-        <?php include_once __DIR__.'/../../components/footer.php'; ?>
+        <?php include_once __DIR__.'/../../Components/Footer.php'; ?>
     </div>
     <script>
         var pay=document.querySelectorAll('.label-pay');
@@ -133,7 +142,7 @@
                 alert("Chose payment method");
                 event.preventDefault(); 
             }
-            let pho = document.querySelector('f_phone');
+            let pho = document.querySelector('#f_phone');
             if(pho.value.length<8){
                 alert("Length of phone should be more 8 character");
                 event.preventDefault(); 

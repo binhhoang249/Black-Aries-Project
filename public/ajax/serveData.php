@@ -2,8 +2,9 @@
 session_start();
 include_once '../../MVC/core/DModel.php';
 include_once '../../MVC/core/Database.php';
-include_once '../../MVC/Models/productModel.php';
-include_once '../../MVC/Models/userModel.php';
+include_once '../../MVC/Models/ProductModel.php';
+include_once '../../MVC/Models/UserModel.php';
+include_once '../../MVC/Models/OrderModel.php';
 //Tạo một đối tượng mới
 $condi=json_decode(file_get_contents('php://input'),true);
 if ($condi =="getCategory"){
@@ -131,7 +132,7 @@ if ($condi =="getCategory"){
         echo (json_encode(""));
     }
 } else if(isset($condi['action'])&&$condi['action']=="addCart"){
-    $model=new productModel();
+    $model=new OrderModel();
     $idUseral = $_SESSION['userIDB']??0;
     if(!empty($idUseral)){
         $p_color=$condi['product_color_id']??0;
@@ -158,10 +159,11 @@ if ($condi =="getCategory"){
 }else if(isset($condi['action'])&&$condi['action']=="getCarts"){
     $idUseral = $_SESSION['userIDB']??0;
     if(!empty($idUseral)){
-        $model =new productModel();
+        $model =new ProductModel();
+        $olderModel= new OrderModel();
         $res['product_color'] = $model->getProductColorAll();
         $res['product']= $model->getProducts();
-        $res['cart']= $model->getCarts($idUseral);
+        $res['cart']= $olderModel->getCarts($idUseral);
         $res['color']= $model->getColor();
         if(!empty($res)){
             echo(json_encode($res));
@@ -172,7 +174,7 @@ if ($condi =="getCategory"){
         echo (json_encode("userId"));
     }
 }else if(isset($condi['action'])&&$condi['action']=="updateCart"){
-    $model=new productModel();
+    $model=new OrderModel();
     $idUseral = $_SESSION['userIDB']??0;
     if(!empty($idUseral)){
         $p_color=$condi['product_color_id']??0;
@@ -200,7 +202,7 @@ if ($condi =="getCategory"){
         echo (json_encode("userId"));
     }
 }else if(isset($condi['action'])&&$condi['action']=="updateCart1"){
-    $model=new productModel();
+    $model=new orderModel();
     $idUseral = $_SESSION['userIDB']??0;
     if(!empty($idUseral)){
         $p_color=$condi['product_color_id']??0;
@@ -228,7 +230,7 @@ if ($condi =="getCategory"){
         echo (json_encode("userId"));
     }
 } else if(isset($condi['action'])&&$condi['action']=="deleteCart"){
-    $model=new productModel();
+    $model=new orderModel();
     $idUseral = $_SESSION['userIDB']??0;
     if(!empty($idUseral)){
         $p_cart=$condi['cart_id']??0;

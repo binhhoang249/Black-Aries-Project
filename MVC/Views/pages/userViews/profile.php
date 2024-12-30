@@ -231,7 +231,7 @@
 
 <body>
     <div class="content">
-        <a href="http://localhost/Black-Aries-Project/home" class="back-btn">
+        <a href="http://localhost/Black-Aries-Project/HomeController" class="back-btn">
             Back
         </a>
         <h2 class="title h1">PERSONAL INFORMATION</h2>
@@ -288,7 +288,7 @@
                 <button type="button" class="up-btn" data-check="1">
                     <img src="http://localhost/Black-Aries-Project/public/Icon/update.png" alt="Update Icon"> <span>Update</span>
                 </button>
-                <a href="http://localhost/Black-Aries-Project/Home&&logout=successt">
+                <a href="http://localhost/Black-Aries-Project/HomeController&&logout=successt">
                     <button type="button" class="ca-btn">
                         <img src="http://localhost/Black-Aries-Project/public/Icon/logout.png" alt="Logout Icon"> Log out
                     </button>

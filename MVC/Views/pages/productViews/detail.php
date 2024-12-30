@@ -10,7 +10,7 @@
 <body>
     <div class="main_containerel">
     <div>
-        <?php include_once 'MVC/Views/components/header.php'; ?>
+        <?php include_once 'MVC/Views/Components/Header.php'; ?>
         <div class="detail-container">
             <!-- khung ảnh -->
             <div class="slider-container">
@@ -49,12 +49,12 @@
                                 <div class="cur_price"><?php echo($priceCur); ?>$</div>
                                 <div class="prev_price"><?php echo($priceprev); ?>$</div>
                             </div>
-                                <form action="" method="POST" class="goCheckout">
-                                <input id="product_color_id" name="product_color_id" type="text" placeholder="id của poduct_id" value="<?php echo($product_color[0]['product_color_id']); ?>" disabled>
+                                <form action="http://localhost/Black-Aries-Project/OrderController/checkout" method="POST" class="goCheckout">
+                                <input id="product_color_id" name="productColorId" type="text" placeholder="id của poduct_id" value="<?php echo($product_color[0]['product_color_id']); ?>" readonly >
                                 <input id="product_pr" name="product_pr" type="number" placeholder="price" value="<?php echo($priceCur); ?>" disabled>
                                 <label>$<input type="text" value="<?php echo($priceCur); ?>" name="product_price" id="product_price" disabled></label> 
                                 <input type="number" name="product_quantity" id="product_quantity" value="1">
-                                <button type="submit" id="product_but" name="product_but">Buy</button>
+                                <button type="submit" id="product_but" name="product_but">Order</button>
                             </form>
                         <?php
                     endif ;
@@ -124,7 +124,7 @@
         </div>
     </div>
     
-    <?php include_once 'MVC/Views/components/footer.php'; ?>
+    <?php include_once 'MVC/Views/Components/Footer.php'; ?>
     </div>
     <script type="text/javascript">
         var list_product_color=(<?php echo( isset($product_color)?json_encode($product_color):""); ?>);
@@ -205,6 +205,15 @@
             }
             slider.style.transform = `translateY(${positionCurrent}px)`; // Di chuyển slider
         }
+        var idUserCurrent = "<?php echo isset($_SESSION['userIDB']) ? $_SESSION['userIDB'] : ''; ?>";
+        var order = document.getElementById('product_but');
+        order.addEventListener('click', function() {
+            if (!idUserCurrent) {
+                alert("You have to sign up to go to the checkout");
+                event.preventDefault();
+            } else {
+            }
+        });
     </script>
 </body>
 </html>

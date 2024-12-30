@@ -9,7 +9,7 @@
 <body>
     <div class="main_containerel">
         <div>
-            <?php include_once __DIR__.'/../../components/header.php'; ?>
+            <?php include_once __DIR__.'/../../Components/Header.php'; ?>
             <main>
                 <div class="main-field flex-rr" style="margin-bottom:0.66px;">
                     <div class="elem-filed flex-rr">
@@ -26,7 +26,7 @@
                             <b> Total: <input type="number" id="cps-price" value="0" readonly></b>
                         </div>
                     </div>
-                    <form action="http://localhost/Black-Aries-Project/productController/checkout" method="POST" name="myForm" onsubmit="return checkvaliddata();">
+                    <form action="http://localhost/Black-Aries-Project/OrderController/checkout" method="POST" name="myForm" onsubmit="return checkvaliddata();">
                     <input type="text" id="post_cart" name="valueCart" readonly>
                     <button type="submit" name="cart" class="button-older"> Order </button>
                     </form>
@@ -57,7 +57,7 @@
                 </div>
             </main>
         </div>
-        <?php  include_once __DIR__.'/../../components/footer.php'; ?>
+        <?php  include_once __DIR__.'/../../Components/Footer.php'; ?>
     </div>
     <script src="http://localhost/Black-Aries-Project/public/js/cart.js?ver=<?php echo time(); ?>"></script>
 </body>

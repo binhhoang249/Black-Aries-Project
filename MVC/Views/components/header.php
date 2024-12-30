@@ -78,14 +78,14 @@
 <!-- link: <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">  -->
 <header>
     <div class="header-logo">
-        <a href="http://localhost/Black-Aries-Project/home">
+        <a href="http://localhost/Black-Aries-Project/HomeController">
             <div class="header-logo-icon"><img src="http://localhost/Black-Aries-Project/public/images/logo_shop-removebg-preview.png" alt="Logo web"></div>
         </a>
         <div class="header-logo-navigation">
             <ul>
                 <!--<li><a href="#">Trang chủ</a></li>-->
                 <li><a href="#">Product</a></li>
-                <li><a href="http://localhost/Black-Aries-Project/AboutUs">About us</a></li>
+                <li><a href="http://localhost/Black-Aries-Project/HomeController/aboutUs">About us</a></li>
                 <li><a href="#">Contact</a></li>
             </ul>
         </div>
@@ -101,11 +101,11 @@
             <?php
                 if(isset($_SESSION['userIDB'])) :
             ?>
-            <li><a href="http://localhost/Black-Aries-Project/userController/profile"><i class="fas fa-user icon"></i>Profile</a></li>
+            <li><a href="http://localhost/Black-Aries-Project/UserController/profile"><i class="fas fa-user icon"></i>Profile</a></li>
             <?php else : ?>
-            <li><a href="http://localhost/Black-Aries-Project/userController/login"><i class="fas fa-user icon"></i>Log in</a></li>
+            <li><a href="http://localhost/Black-Aries-Project/UserController/login"><i class="fas fa-user icon"></i>Log in</a></li>
             <?php endif ; ?>
-            <li><a href="http://localhost/Black-Aries-Project/productController/cart"><i class="fas fa-shopping-cart icon"></i>Cart</a></li>
+            <li><a href="http://localhost/Black-Aries-Project/OrderController/cart"><i class="fas fa-shopping-cart icon"></i>Cart</a></li>
         </ul>
     </div>
 </header>
