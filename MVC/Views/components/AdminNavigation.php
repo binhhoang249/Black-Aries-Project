@@ -14,9 +14,10 @@
         justify-content:center;
         align-items:center;
         text-decoration:none;
-        padding:9px 0 ;
+        padding:12px 0 ;
         color:white;
         border-bottom:1px solid gray;
+        font-size:18px;
     }
     .box-navigation li a:hover{
         background:#527A9A;
