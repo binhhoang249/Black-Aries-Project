@@ -92,10 +92,13 @@
     </div>
     <div class="header-user">
         <ul>
-            <li class="header-search"><span  id="h-search"><i class="fas fa-search icon"></i>Search</span>
+        <li class="header-search">
+                <span id="h-search"><i class="fas fa-search icon"></i> Search</span>
                 <div class="h-searchField"> 
-                    <input type="text" placeholder="Enter name of product!">
-                    <button>Run</button>
+                    <form action="/Black-Aries-Project/productController/search" method="POST">
+                        <input type="text" name="categoryName" placeholder="Enter name of product!" required>
+                        <button type="submit">Run</button>
+                    </form>
                 </div>
             </li>
             <?php
