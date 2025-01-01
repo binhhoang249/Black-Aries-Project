@@ -35,8 +35,8 @@
                                 <td><?php echo $user['email']; ?></td>
                                 <td><?php echo $user['address']; ?></td>
                                 <td class="td_action">
-                                    <button onclick="edit(<?php echo $user['user_id']; ?>)">Detail</button>
-                                    <form action = "" method="POST">
+                                    <button onclick="detailView(<?php echo $user['user_id']; ?>)">Detail</button>
+                                    <form action = "" method="POST" style="display:none">
                                         <input type="number" name="user_id" readonly value="<?php echo $user['user_id']; ?>">
                                         <button type="submit" class="delete_button" >Delete</button>
                                     </form>
@@ -51,7 +51,7 @@
             <form class="form-detail">
                 <div class="field">
                     <div class="box-image">
-                        <img src="" alt="">
+                        <img id="f-image"src="" alt="">
                     </div>
                     <div class="box-info">
                         <p> <b>Id:</b> &nbsp; <span id="f-user_id"></span></p>
@@ -89,7 +89,7 @@
                     </div>
                     <div class="order">
                         <h3>Shipped</h3>
-                        <p id="order-shiped">0</p>
+                        <p id="order-shipped">0</p>
                     </div>
                 </div>
                 <button type="button" class="button-cancel">X</button>
@@ -97,5 +97,6 @@
         </div>
         <div class="wall"></div>
     </div>
+    <script src="http://localhost/Black-Aries-Project/public/js/UserManagermain.js"></script>
 </body>
 </html>

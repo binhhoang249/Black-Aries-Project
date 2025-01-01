@@ -73,6 +73,10 @@ td{
     background:gray;
     margin-left:21px
 }
+.box-image img{
+    width: 100%;
+    height:100%;
+}
 .field b {
     display:inline-block;
     width:102px;
