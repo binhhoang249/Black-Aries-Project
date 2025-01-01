@@ -32,5 +32,16 @@
             echo(" <script> document.addEventListener('DOMContentLoaded', function() { alert('The password is wrong'); }); </script>");
         }
     }
+    public function userManagerment(){
+        $model=self::model('UserModel');
+        $users=$model->getUsers();
+        $data['users']=[];
+        foreach($users as $user){
+            if($user['role']!=1){
+                array_push($data['users'],$user);
+            }
+        }
+        self::view("Pages/AdminViews/UserManagement",$data);
+    }
  }
 ?>

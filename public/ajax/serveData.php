@@ -61,6 +61,14 @@ if ($condi =="getCategory"){
     }else{
         echo (json_encode(""));
     }
+}else if(isset($condi['action'])&&$condi['action']=="getUsers"){
+    $model= new userModel();
+    $users = $model-> getUsers();
+    if(!empty($users)){
+        echo (json_encode($users));
+    }else{
+        echo (json_encode(""));
+    }
 }else if(isset($condi['action'])&&$condi['action']=="checkPassword"){
     $idUseral = $_SESSION['userIDB']??0;
     if(!empty($idUseral)){
@@ -128,6 +136,14 @@ if ($condi =="getCategory"){
                 echo (json_encode($res));
             }
         }
+    }else{
+        echo (json_encode(""));
+    }
+}else if(isset($condi['action'])&&$condi['action']=="getOrders"){
+    $model= new OrderModel();
+    $orders = $model-> getAllOrders();
+    if(!empty($orders)){
+        echo (json_encode($orders));
     }else{
         echo (json_encode(""));
     }

@@ -22,7 +22,8 @@ class UserModel extends DModel {
             'username' => $username,
             'fullname' => $name,
             'email' => $email,
-            'password' => $hashedPassword
+            'password' => $hashedPassword,
+            'role'=>2
         ];
         $checkSql = "SELECT * FROM Users WHERE email = :email";
         $checkUser = $this->db->select($checkSql, ['email' => $email]);

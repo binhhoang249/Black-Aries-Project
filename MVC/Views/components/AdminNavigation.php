@@ -14,9 +14,10 @@
         justify-content:center;
         align-items:center;
         text-decoration:none;
-        padding:9px 0 ;
+        padding:12px 0 ;
         color:white;
         border-bottom:1px solid gray;
+        font-size:18px;
     }
     .box-navigation li a:hover{
         background:#527A9A;
@@ -26,7 +27,7 @@
     <ul>
         <li id="position1"><a href="?position=1">Product managerment</a></li>
         <li id="position2"><a href="?position=2">User managerment</a></li>
-        <li id="position3"><a href="?position=3">Order managerment</a></li>
+        <li id="position3"><a href="http://localhost/Black-Aries-Project/AdminController/UserManagerment?position=3">Order managerment</a></li>
         <li id="position4"><a href="?position=4">Category managerment</a></li>
     </ul>
 </div>
