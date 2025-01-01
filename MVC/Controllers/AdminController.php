@@ -16,7 +16,7 @@
             //print_r($user);
             if(!empty($user) && $user['role']==1){
                 if(password_verify($_POST['password'], $user['password'])){
-                    //Di chuyển đến trang gi đó
+                    header ("Location: http://localhost/Black-Aries-Project/AdminController/productManagement?position=1");
                     echo("good");
                 }else{
                     $error="password";
@@ -42,6 +42,16 @@
             }
         }
         self::view("Pages/AdminViews/UserManagement",$data);
+    }
+
+    public function productManagement(){
+        $model=self::model('ProductModel');
+        $products=$model->getProducts();
+        $data['products']=[];
+        foreach($products as $product){
+            array_push($data['products'],$product);
+        }
+        self::view("Pages/AdminViews/ProductsManagement",$data);
     }
  }
 ?>

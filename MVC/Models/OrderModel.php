@@ -13,9 +13,9 @@ class OrderModel extends DModel
         $result = $this->db->insert("Orders", $data);
         return $result;
     }
-    public function updateCart($table, $data, $condition, $conditionParams)
+    public function updateCart($table, $data, $condition)
     {
-        return $this->db->update($table, $data, $condition, $conditionParams);
+        return $this->db->update($table, $data, $condition);
     }
     public function deleteCart($table, $condi)
     {
