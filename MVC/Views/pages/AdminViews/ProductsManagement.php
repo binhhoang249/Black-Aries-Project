@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,11 +7,99 @@
     <title>Product Management</title>
     <link href="http://localhost/Black-Aries-Project/public/css/ProductManagement.css?ver=<?php echo time(); ?>" rel="stylesheet">
     <style>
-        
+    
+
+        html,
+        body {
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid #ddd;
+        }
+
+        th,
+        td {
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f4f4f4;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+
+        .btn {
+            padding: 10px 15px;
+            margin-right: 5px;
+            cursor: pointer;
+        }
+
+        .btn-add {
+            background-color: #28a745;
+            color: white;
+            border: none;
+        }
+
+        .btn-edit {
+            background-color: #ffc107;
+            color: white;
+            border: none;
+        }
+
+        .btn-delete {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+        }
+
+        .btn-cancel {
+            background-color: #6c757d;
+            color: white;
+            border: none;
+        }
     </style>
 </head>
 
 <body>
+    <?php extract($data); ?>
     <div class="big-container">
         <?php include_once __DIR__ . '/../../Components/AdminNavigation.php'; ?>
 
@@ -38,18 +125,18 @@
                 <tbody>
                     <?php foreach ($products as $product): ?>
                         <tr>
-                            <td><?php echo $product['id']; ?></td>
-                            <td><?php echo $product['name']; ?></td>
+                            <td><?php echo $product['product_id']; ?></td>
+                            <td><?php echo $product['product_name']; ?></td>
                             <td><?php echo $product['description']; ?></td>
-                            <td><?php echo $product['timestamp']; ?></td>
-                            <td><?php echo $product['category']; ?></td>
+                            <td><?php echo $product['time_stamp']; ?></td>
+                            <td><?php echo $product['category_id']; ?></td>
                             <td><?php echo $product['status']; ?></td>
                             <td><?php echo $product['discount']; ?>%</td>
                             <td><?php echo $product['popular']; ?></td>
                             <td class="td_action">
-                                <button onclick="viewDetails(<?php echo $product['id']; ?>)" aria-label="View Details">Detail</button>
+                                <button onclick="viewDetails(<?php echo $product['product_id']; ?>)" aria-label="View Details">Detail</button>
                                 <form action="" method="POST" style="display:none">
-                                    <input type="number" name="product_id" readonly value="<?php echo $product['id']; ?>">
+                                    <input type="number" name="product_id" readonly value="<?php echo $product['product_id']; ?>">
                                     <button type="submit" class="delete_button" aria-label="Delete Product">Delete</button>
                                 </form>
                             </td>
@@ -58,21 +145,4 @@
                 </tbody>
             </table>
 
-            <!-- Product Details Form -->
-            <form class="form-detail" id="product-detail-form" style="display:none;" onsubmit="return validateForm()">
-                <div class="field">
-                    <div class="box-image">
-                        <img id="f-image" src="" alt="Product Image">
-                    </div>
-                    <div class="box-info">
-                        <p><b>Id:</b> <span id="f-product-id"></span></p>
-                        <p><b>Product Name:</b> <span id="f-product-name"></span></p>
-                        <p><b>Description:</b> <span id="f-description"></span></p>
-                    </div>
-                </div>
-                <div class="field">
-                    <label><b>Discount:</b> <input type="number" id="f-discount" readonly></label>
-                </div>
-                <div class="field">
-                    <label><b>Status:</b> <input type="text" id="f-status" readonly></label>
-                </div>
+</html>
