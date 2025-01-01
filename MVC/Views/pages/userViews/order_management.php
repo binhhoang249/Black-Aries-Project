@@ -41,7 +41,7 @@
         <?php foreach ($orders as $status => $orderList): ?>
             <?php foreach ($orderList as $order): ?>
                 <div class="list-products">
-                    <img src="<?php echo $order['image']; ?>" alt="Product Image">
+                    <img src="http://localhost/Black-Aries-Project/public/images/products/<?php echo $order['image']; ?>" alt="Product Image">
                     <p class="name_product"><?php echo $order['product_name']; ?></p>
                     <p class="quanlity">Quantity: <?php echo $order['quantity']; ?></p>
                     <div class="price_and_button">
@@ -57,13 +57,20 @@
             <h2><?php echo ucfirst($status); ?> Orders</h2>
             <?php foreach ($orderList as $order): ?>
                 <div class="list-products">
-                    <img src="<?php echo $order['image']; ?>" alt="Product Image">
+                    <img src="http://localhost/Black-Aries-Project/public/images/products/<?php echo $order['image']; ?>" alt="Product Image">
                     <p class="name_product"><?php echo $order['product_name']; ?></p>
                     <p class="quanlity">Quantity: <?php echo $order['quantity']; ?></p>
                     <div class="price_and_button">
                         <p class="price">$<?php echo number_format($order['total'], 2); ?></p>
-                        <?php if ($status == 'Watting'): ?>
-                            <button class="button">Cancel order</button>
+                        <?php if ($status === 'Watting'): ?>
+                            <?php if (isset($order['order_id'])): ?>
+                                <form action="http://localhost/Black-Aries-Project/OrderController/cancelOrder" method="POST">
+                                    <input type="number" name="order_id" value="<?php echo $order['order_id']; ?>" hidden>
+                                    <button type="submit" class="button">Cancel order</button>
+                                </form>
+                            <?php else: ?>
+                                <button class="button disabled" disabled>No Order ID</button>
+                            <?php endif; ?>
                         <?php else: ?>
                             <button class="button disabled" disabled>Cancel order</button>
                         <?php endif; ?>
