@@ -1,8 +1,8 @@
 <style>
     .box-navigation{
-        width:20%;
+        width:20% !important;
         background-color:black;
-        height:100%;
+        min-height:100%;
     }
     .box-navigation ul{
         list-style:none;
@@ -26,7 +26,7 @@
 <div class="box-navigation">
     <ul>
         <li id="position1"><a href="http://localhost/Black-Aries-Project/AdminController/productManagement?position=1">Product managerment</a></li>
-        <li id="position2"><a href="http://localhost/Black-Aries-Project/AdminController/UserManagerment?position=2">User managerment</a></li>
+        <li id="position2"><a href="http://localhost/Black-Aries-Project/AdminController/UserManagement?position=2">User managerment</a></li>
         <li id="position3"><a href="http://localhost/Black-Aries-Project/AdminController/orderManagement?position=3">Order managerment</a></li>
         <li id="position4"><a href="?position=4">Category managerment</a></li>
     </ul>

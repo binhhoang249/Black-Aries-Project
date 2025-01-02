@@ -1,5 +1,5 @@
 <?php
-class userController extends Controller{
+class UserController extends Controller{
     //Profile //////////////////////////////////////////////////////////////////////////////////
     public function profile(){
         self::view('Pages/UserViews/Profile');

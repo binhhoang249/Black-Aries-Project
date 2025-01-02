@@ -17,7 +17,16 @@
             height: 100%;
             font-family: Arial, sans-serif;
         }
-
+        .big-container{
+            display:flex;
+            width:100%;
+            height:100%;
+        }
+        .main-container{
+            flex:1;
+            padding:15px 21px;
+            position:relative;
+        }
         .container {
             max-width: 1000px;
             margin: 0 auto;
@@ -36,7 +45,7 @@
         table,
         th,
         td {
-            border: 1px solid #ddd;
+            border: 1px solid black;
         }
 
         th,
@@ -46,7 +55,7 @@
         }
 
         th {
-            background-color: #f4f4f4;
+            background-color:#527A9A !important;
         }
 
         .form-group {
@@ -57,7 +66,7 @@
             display: block;
             margin-bottom: 5px;
         }
-
+        
         .form-group input,
         .form-group select,
         .form-group textarea {
