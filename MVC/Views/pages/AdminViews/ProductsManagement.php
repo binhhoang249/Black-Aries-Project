@@ -16,11 +16,10 @@
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
         }
-
-        .big-container {
-            display: flex;
-            width: 100%;
-            height: 100%;
+        .big-container{
+            display:flex;
+            width:100%;
+            height:100%;
         }
 
         .main-container {

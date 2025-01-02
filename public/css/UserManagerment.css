@@ -14,6 +14,7 @@ html,body{
     flex:1;
     padding:15px 21px;
     position:relative;
+    overflow-y: auto;
 }
 .main-container h1 {
     text-align:center;
@@ -22,23 +23,23 @@ html,body{
 .main-container table{
     width:100%;
 }
-.main-container table, .main-container thead, .main-container td, .main-container td{
+.main-container table, .main-container thead, .main-container tr, .main-container td{
     border:1px solid black;
     border-collapse:collapse;
     padding: 15px !important;
 }
 thead {
-    border-bottom: 1px solid #ddd;
     background-color:#527A9A;
     color: white;
     padding: 15px !important;
+    border:none !important;
 }
 td{
     text-align:center;
 }
 .td_action{
     display:flex;
-    border:none;
+    border:none !important;
 }
 .td_action input{
     display:none;
@@ -46,6 +47,11 @@ td{
 .td_action button{
     margin-right:12px;
     border:none;
+    padding: 10px 15px;
+    background-color:#527A9A;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
 }
 .wall{
     display:none;
