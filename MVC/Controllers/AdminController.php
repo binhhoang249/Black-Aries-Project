@@ -16,7 +16,7 @@
             //print_r($user);
             if(!empty($user) && $user['role']==1){
                 if(password_verify($_POST['password'], $user['password'])){
-                    //Di chuyển đến trang gi đó
+                    header ("Location: http://localhost/Black-Aries-Project/AdminController/productManagement?position=1");
                     echo("good");
                 }else{
                     $error="password";
@@ -42,6 +42,49 @@
             }
         }
         self::view("Pages/AdminViews/UserManagement",$data);
+    }
+
+    public function productManagement(){
+        $model=self::model('ProductModel');
+        $products=$model->getProducts();
+        $data['products']=[];
+        foreach($products as $product){
+            array_push($data['products'],$product);
+        }
+        self::view("Pages/AdminViews/ProductsManagement",$data);
+    }
+    
+    public function orderManagement() {
+        $model = self::model("OrderModel");
+        $orders = $model->admingetAllOrdersWithDetails();
+    
+        if (!empty($orders)) {
+            $data = ['result' => $orders];
+        } else {
+            $data = ['result' => null, 'message' => 'No orders found.'];
+        }
+    
+        self::view("Pages/AdminViews/orderManagement", $data);
+    }
+    public function searchOrder() {
+        if (isset($_POST['searchorder']) && !empty(trim($_POST['searchorder']))) {
+            $query = trim($_POST['searchorder']);  
+    
+            $model = self::model("OrderModel");
+            $results = $model->searchOrders($query);  
+        } else {
+            echo "Từ khóa tìm kiếm không hợp lệ hoặc trống!";
+            return;  
+        }
+        if ($results && !empty($results)) {
+            $data['result'] = $results;  
+            $data['searchTerm'] = $query; 
+            $data['message'] = "No orders found matching your search."; 
+    
+        
+        self::view("Pages/AdminViews/orderManagement", $data);  
+    }
+
     }
  }
 ?>
