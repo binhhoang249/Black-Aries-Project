@@ -31,8 +31,8 @@
                                 <td><?php echo $user['fullname']; ?></td>
                                 <td><?php echo $user['username']; ?></td>
                                 <td><?php echo $user['date_of_birth']; ?></td>
-                                <td><?php echo $user['phone']; ?></td>
                                 <td><?php echo $user['email']; ?></td>
+                                <td><?php echo $user['phone']; ?></td>
                                 <td><?php echo $user['address']; ?></td>
                                 <td class="td_action">
                                     <button onclick="detailView(<?php echo $user['user_id']; ?>)">Detail</button>

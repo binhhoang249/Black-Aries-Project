@@ -24,7 +24,7 @@ html,body{
     width:100%;
 }
 .main-container table, .main-container thead, .main-container tr, .main-container td{
-    border:1px solid black;
+    border:1px solid #ddd;
     border-collapse:collapse;
     padding: 15px !important;
 }
