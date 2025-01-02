@@ -53,5 +53,38 @@
         }
         self::view("Pages/AdminViews/ProductsManagement",$data);
     }
+    
+    public function orderManagement() {
+        $model = self::model("OrderModel");
+        $orders = $model->admingetAllOrdersWithDetails();
+    
+        if (!empty($orders)) {
+            $data = ['result' => $orders];
+        } else {
+            $data = ['result' => null, 'message' => 'No orders found.'];
+        }
+    
+        self::view("Pages/AdminViews/orderManagement", $data);
+    }
+    public function searchOrder() {
+        if (isset($_POST['searchorder']) && !empty(trim($_POST['searchorder']))) {
+            $query = trim($_POST['searchorder']);  
+    
+            $model = self::model("OrderModel");
+            $results = $model->searchOrders($query);  
+        } else {
+            echo "Từ khóa tìm kiếm không hợp lệ hoặc trống!";
+            return;  
+        }
+        if ($results && !empty($results)) {
+            $data['result'] = $results;  
+            $data['searchTerm'] = $query; 
+            $data['message'] = "No orders found matching your search."; 
+    
+        
+        self::view("Pages/AdminViews/orderManagement", $data);  
+    }
+
+    }
  }
 ?>

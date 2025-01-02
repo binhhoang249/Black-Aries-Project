@@ -85,4 +85,65 @@ class OrderModel extends DModel
         }
         return $statement->execute();
     }
+
+    public function admingetAllOrdersWithDetails() {
+        $sql = "SELECT 
+        o.order_id,
+        o.user_id,
+        o.payment_id,
+        o.order_date,
+        o.quantity AS order_quantity,
+        p.status AS product_status,  -- Sử dụng status từ bảng Products
+        o.status,
+        u.fullname AS customer_name, 
+        pc.quantity AS product_quantity,
+        pc.image,
+        p.product_name,
+        pc.price AS product_price,
+        (o.quantity * pc.price) AS total
+    FROM 
+        Orders o
+    JOIN 
+        Users u ON o.user_id = u.user_id
+    JOIN 
+        Product_color pc ON o.product_color_id = pc.product_color_id
+    JOIN 
+        Products p ON pc.product_id = p.product_id";
+         return $this->db->select($sql);
+
+    }
+    public function searchOrders($query) {
+        // Xử lý tìm kiếm chỉ theo tên khách hàng (fullname)
+        $sql = "SELECT 
+                    o.order_id,
+                    o.user_id,
+                    o.payment_id,
+                    o.order_date,
+                    o.quantity AS order_quantity,
+                    p.status AS product_status,
+                    o.status,
+                    u.fullname AS customer_name, 
+                    pc.quantity AS product_quantity,
+                    pc.image,
+                    p.product_name,
+                    pc.price AS product_price,
+                    (o.quantity * pc.price) AS total
+                FROM 
+                    Orders o
+                JOIN 
+                    Users u ON o.user_id = u.user_id
+                JOIN 
+                    Product_color pc ON o.product_color_id = pc.product_color_id
+                JOIN 
+                    Products p ON pc.product_id = p.product_id
+                WHERE 
+                    LOWER(u.fullname) LIKE LOWER(:query)";  // Tìm kiếm theo tên khách hàng (customer_name)
+    
+        // Chuẩn bị tham số tìm kiếm
+        $data = [':query' => '%' . $query . '%'];
+    
+        // Thực thi câu lệnh và trả về kết quả
+        return $this->db->select($sql, $data);
+    }
+    
 }
