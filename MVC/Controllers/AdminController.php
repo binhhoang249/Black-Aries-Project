@@ -32,7 +32,7 @@
             echo(" <script> document.addEventListener('DOMContentLoaded', function() { alert('The password is wrong'); }); </script>");
         }
     }
-    public function userManagerment(){
+    public function userManagement(){
         $model=self::model('UserModel');
         $users=$model->getUsers();
         $data['users']=[];
