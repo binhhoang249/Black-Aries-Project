@@ -7,8 +7,6 @@
     <title>Product Management</title>
     <link href="http://localhost/Black-Aries-Project/public/css/ProductManagement.css?ver=<?php echo time(); ?>" rel="stylesheet">
     <style>
-    
-
         html,
         body {
             padding: 0;
@@ -16,24 +14,36 @@
             width: 100%;
             height: 100%;
             font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
         }
-        .big-container{
-            display:flex;
-            width:100%;
-            height:100%;
+
+        .big-container {
+            display: flex;
+            width: 100%;
+            height: 100%;
         }
-        .main-container{
-            flex:1;
-            padding:15px 21px;
-            position:relative;
+
+        .main-container {
+            flex: 1;
+            padding: 15px 21px;
+            position: relative;
+            overflow-y: auto;
+            /* Enable vertical scrolling */
         }
+
         .container {
             max-width: 1000px;
             margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
         }
 
         h1 {
             text-align: center;
+            color: #333;
+            margin-bottom: 20px;
         }
 
         table {
@@ -45,17 +55,26 @@
         table,
         th,
         td {
-            border: 1px solid black;
+            border: 1px solid #ddd;
         }
 
         th,
         td {
-            padding: 8px;
+            padding: 12px;
             text-align: left;
         }
 
         th {
-            background-color:#527A9A !important;
+            background-color: #527A9A;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
         }
 
         .form-group {
@@ -65,44 +84,62 @@
         .form-group label {
             display: block;
             margin-bottom: 5px;
+            color: #333;
         }
-        
+
         .form-group input,
         .form-group select,
         .form-group textarea {
             width: 100%;
-            padding: 8px;
+            padding: 10px;
             box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 4px;
         }
 
         .btn {
             padding: 10px 15px;
             margin-right: 5px;
             cursor: pointer;
+            border-radius: 4px;
+            border: none;
+            transition: background-color 0.3s;
         }
 
         .btn-add {
             background-color: #28a745;
             color: white;
-            border: none;
+        }
+
+        .btn-add:hover {
+            background-color: #218838;
         }
 
         .btn-edit {
             background-color: #ffc107;
             color: white;
-            border: none;
+        }
+
+        .btn-edit:hover {
+            background-color: #e0a800;
         }
 
         .btn-delete {
             background-color: #dc3545;
             color: white;
-            border: none;
+        }
+
+        .btn-delete:hover {
+            background-color: #c82333;
         }
 
         .btn-cancel {
             background-color: #6c757d;
             color: white;
-            border: none;
+        }
+
+        .btn-cancel:hover {
+            background-color: #5a6268;
         }
     </style>
 </head>
@@ -142,13 +179,13 @@
                             <td><?php echo $product['status']; ?></td>
                             <td><?php echo $product['discount']; ?>%</td>
                             <td><?php echo $product['popular']; ?></td>
-                            <td class="td_action">
+                            <!-- <td class="td_action">
                                 <button onclick="viewDetails(<?php echo $product['product_id']; ?>)" aria-label="View Details">Detail</button>
                                 <form action="" method="POST" style="display:none">
                                     <input type="number" name="product_id" readonly value="<?php echo $product['product_id']; ?>">
                                     <button type="submit" class="delete_button" aria-label="Delete Product">Delete</button>
                                 </form>
-                            </td>
+                            </td> -->
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
