@@ -17,10 +17,12 @@ html,body{
     overflow-y: auto;
 }
 .main-content {
-    flex-grow: 1;
-    padding: 20px;
+    flex:1;
     box-sizing: border-box;
     background-color: #ecf0f1;
+    padding:15px 21px;
+    position:relative;
+    overflow-y: auto;
 }
 .header {
     display: flex;
