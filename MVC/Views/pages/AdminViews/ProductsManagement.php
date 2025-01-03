@@ -5,10 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Management</title>
-    <link href="http://localhost/Black-Aries-Project/public/css/ProductManagement.css?ver=<?php echo time(); ?>" rel="stylesheet">
     <style>
-        html,
-        body {
+        html, body {
             padding: 0;
             margin: 0;
             width: 100%;
@@ -16,10 +14,11 @@
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
         }
-        .big-container{
-            display:flex;
-            width:100%;
-            height:100%;
+
+        .big-container {
+            display: flex;
+            width: 100%;
+            height: 100%;
         }
 
         .main-container {
@@ -27,7 +26,6 @@
             padding: 15px 21px;
             position: relative;
             overflow-y: auto;
-            /* Enable vertical scrolling */
         }
 
         .container {
@@ -51,14 +49,11 @@
             margin-top: 20px;
         }
 
-        table,
-        th,
-        td {
+        table, th, td {
             border: 1px solid #ddd;
         }
 
-        th,
-        td {
+        th, td {
             padding: 12px;
             text-align: left;
         }
@@ -76,47 +71,37 @@
             background-color: #f1f1f1;
         }
 
-        .form-group {
-            margin-bottom: 15px;
+        .pagination {
+            text-align: center;
+            margin-top: 20px;
         }
 
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            color: #333;
-        }
-
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 10px;
-            box-sizing: border-box;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-
-        .btn {
-            padding: 10px 15px;
-            margin-right: 5px;
-            cursor: pointer;
-            border-radius: 4px;
+        .btn-pagination {
+            padding: 8px 12px;
+            margin: 0 5px;
             border: none;
+            border-radius: 4px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
             transition: background-color 0.3s;
         }
 
-        .btn-add {
-            background-color: #28a745;
-            color: white;
+        .btn-pagination:hover {
+            background-color: #0056b3;
         }
 
-        .btn-add:hover {
-            background-color: #218838;
+        .btn {
+            padding: 5px 10px;
+            margin-right: 5px;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            cursor: pointer;
         }
 
         .btn-edit {
             background-color: #ffc107;
-            color: white;
         }
 
         .btn-edit:hover {
@@ -125,20 +110,10 @@
 
         .btn-delete {
             background-color: #dc3545;
-            color: white;
         }
 
         .btn-delete:hover {
             background-color: #c82333;
-        }
-
-        .btn-cancel {
-            background-color: #6c757d;
-            color: white;
-        }
-
-        .btn-cancel:hover {
-            background-color: #5a6268;
         }
     </style>
 </head>
@@ -164,7 +139,7 @@
                         <th scope="col">Status</th>
                         <th scope="col">Discount</th>
                         <th scope="col">Popular</th>
-                        <th scope="col">Action</th>
+                        <th scope="col">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -178,16 +153,70 @@
                             <td><?php echo $product['status']; ?></td>
                             <td><?php echo $product['discount']; ?>%</td>
                             <td><?php echo $product['popular']; ?></td>
-                            <!-- <td class="td_action">
-                                <button onclick="viewDetails(<?php echo $product['product_id']; ?>)" aria-label="View Details">Detail</button>
-                                <form action="" method="POST" style="display:none">
-                                    <input type="number" name="product_id" readonly value="<?php echo $product['product_id']; ?>">
-                                    <button type="submit" class="delete_button" aria-label="Delete Product">Delete</button>
-                                </form>
+                            <!-- <td>
+                                <button class="btn btn-edit" onclick="editProduct(<?php echo $product['product_id']; ?>)">Edit</button>
+                                <button class="btn btn-delete" onclick="deleteProduct(<?php echo $product['product_id']; ?>)">Delete</button>
                             </td> -->
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
             </table>
+        </section>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const rows = document.querySelectorAll('tbody tr');
+            const rowsPerPage = 10;
+            const totalPages = Math.ceil(rows.length / rowsPerPage);
+
+            // Tạo các nút phân trang
+            const paginationContainer = document.createElement('div');
+            paginationContainer.className = 'pagination';
+            document.querySelector('.main-container').appendChild(paginationContainer);
+
+            for (let i = 1; i <= totalPages; i++) {
+                const btn = document.createElement('button');
+                btn.textContent = i;
+                btn.className = 'btn-pagination';
+                btn.setAttribute('data-page', i);
+                paginationContainer.appendChild(btn);
+            }
+
+            // Hàm hiển thị trang tương ứng
+            function showPage(page) {
+                rows.forEach((row, index) => {
+                    row.style.display =
+                        index >= (page - 1) * rowsPerPage && index < page * rowsPerPage ? 'table-row' : 'none';
+                });
+            }
+
+            // Hiển thị trang đầu tiên mặc định
+            showPage(1);
+
+            // Xử lý khi nhấn vào nút phân trang
+            document.querySelectorAll('.btn-pagination').forEach(button => {
+                button.addEventListener('click', function () {
+                    const page = parseInt(this.getAttribute('data-page'));
+                    showPage(page);
+                });
+            });
+        });
+
+        // // Hàm chỉnh sửa sản phẩm
+        // function editProduct(productId) {
+        //     alert('Edit product with ID: ' + productId);
+        //     // TODO: Redirect or open edit form
+        // }
+
+        // // Hàm xóa sản phẩm
+        // function deleteProduct(productId) {
+        //     if (confirm('Are you sure you want to delete product with ID: ' + productId + '?')) {
+        //         // TODO: Gửi yêu cầu xóa sản phẩm tới server qua AJAX hoặc form
+        //         alert('Product with ID ' + productId + ' has been deleted.');
+        //     }
+        // }
+    </script>
+</body>
 
 </html>
