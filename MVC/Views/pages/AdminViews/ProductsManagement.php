@@ -5,227 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Management</title>
-    <style>
-        html,
-        body {
-            padding: 0;
-            margin: 0;
-            width: 100%;
-            height: 100%;
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-        }
-
-        .big-container {
-            display: flex;
-            width: 100%;
-            height: 100%;
-        }
-
-        .main-container {
-            flex: 1;
-            padding: 15px 21px;
-            position: relative;
-            overflow-y: auto;
-        }
-
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            background-color: #fff;
-            padding: 20px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-        }
-
-        h1 {
-            text-align: center;
-            color: #333;
-            margin-bottom: 20px;
-        }
-
-        .header-actions {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .btn-add {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            background-color: #28a745;
-            color: white;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            font-size: 14px;
-        }
-
-        .btn-add:hover {
-            background-color: #218838;
-        }
-
-        .search-box {
-            display: flex;
-            align-items: center;
-        }
-
-        .search-box input {
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 14px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        table,
-        th,
-        td {
-            border: 1px solid #ddd;
-        }
-
-        th,
-        td {
-            padding: 12px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #527A9A;
-            color: white;
-        }
-
-        tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-
-        tr:hover {
-            background-color: #f1f1f1;
-        }
-
-        .pagination {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .btn-pagination {
-            padding: 8px 12px;
-            margin: 0 5px;
-            border: none;
-            border-radius: 4px;
-            background-color: #007bff;
-            color: white;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .btn-pagination:hover {
-            background-color: #0056b3;
-        }
-
-        .btn-action {
-            display: flex;
-            justify-content: center;
-        }
-
-        .btn {
-            padding: 5px 10px;
-            margin-right: 5px;
-            border: none;
-            border-radius: 4px;
-            color: white;
-            cursor: pointer;
-        }
-
-        .btn-edit {
-            background-color: #ffc107;
-        }
-
-        .btn-edit:hover {
-            background-color: #e0a800;
-        }
-
-        .btn-delete {
-            background-color: #dc3545;
-        }
-
-        .btn-delete:hover {
-            background-color: #c82333;
-        }
-
-        /* Modal styles */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.5);
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal-content {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            width: 500px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .modal-header h2 {
-            margin: 0;
-        }
-
-        .modal-close {
-            cursor: pointer;
-            font-size: 24px;
-        }
-
-        .modal-body input,
-        .modal-body textarea {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-
-        .modal-footer {
-            text-align: right;
-        }
-
-        .modal-footer button {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            background-color: #28a745;
-            color: white;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            font-size: 14px;
-        }
-
-        .modal-footer button:hover {
-            background-color: #218838;
-        }
-    </style>
+    <link href="http://localhost/Black-Aries-Project/public/css/ProductsManagement.css?ver=<?php echo time(); ?>" rel="stylesheet">
 </head>
 
 <body>
@@ -270,7 +50,7 @@
                             <td><?php echo $product['discount']; ?>%</td>
                             <td><?php echo $product['popular']; ?></td>
                             <td>
-                                <div class="btn-action" style="width: 100px;">
+                                <div class="btn-action">
                                     <button class="btn btn-edit" onclick="editProduct(<?php echo $product['product_id']; ?>)">Edit</button>
                                     <button class="btn btn-delete" onclick="deleteProduct(<?php echo $product['product_id']; ?>)">Delete</button>
                                 </div>
@@ -282,7 +62,6 @@
         </section>
     </div>
 
-    <!-- Modal for adding product -->
     <div id="addProductModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -330,8 +109,7 @@
                 });
             }
 
-            // Hiển thị trang đầu tiên mặc định
-            showPage(1);
+           
 
             // Xử lý khi nhấn vào nút phân trang
             document.querySelectorAll('.btn-pagination').forEach(button => {
