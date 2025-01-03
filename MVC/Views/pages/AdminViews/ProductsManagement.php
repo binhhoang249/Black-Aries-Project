@@ -158,6 +158,73 @@
         .btn-delete:hover {
             background-color: #c82333;
         }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            width: 500px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+        }
+
+        .modal-close {
+            cursor: pointer;
+            font-size: 24px;
+        }
+
+        .modal-body input,
+        .modal-body textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .modal-footer {
+            text-align: right;
+        }
+
+        .modal-footer button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #28a745;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 14px;
+        }
+
+        .modal-footer button:hover {
+            background-color: #218838;
+        }
     </style>
 </head>
 
@@ -170,7 +237,7 @@
             <header>
                 <h1>Product Management</h1>
                 <div class="header-actions">
-                    <button class="btn-add" onclick="addProduct()">Add Product</button>
+                    <button class="btn-add" onclick="openAddProductModal()">Add Product</button>
                     <div class="search-box">
                         <input type="text" id="search" placeholder="Search products..." onkeyup="searchProducts()">
                     </div>
@@ -213,6 +280,27 @@
                 </tbody>
             </table>
         </section>
+    </div>
+
+    <!-- Modal for adding product -->
+    <div id="addProductModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add New Product</h2>
+                <span class="modal-close" onclick="closeAddProductModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <input type="text" id="productName" placeholder="Product Name">
+                <textarea id="productDescription" placeholder="Product Description"></textarea>
+                <input type="text" id="productCategory" placeholder="Category">
+                <input type="text" id="productStatus" placeholder="Status">
+                <input type="number" id="productDiscount" placeholder="Discount">
+                <input type="text" id="productPopular" placeholder="Popular">
+            </div>
+            <div class="modal-footer">
+                <button onclick="saveProduct()">Save</button>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -268,10 +356,30 @@
             }
         }
 
-        // Hàm thêm sản phẩm
-        function addProduct() {
-            alert('Add new product');
-            // TODO: Redirect or open add form
+        // Hàm mở modal thêm sản phẩm
+        function openAddProductModal() {
+            document.getElementById('addProductModal').style.display = 'flex';
+        }
+
+        // Hàm đóng modal thêm sản phẩm
+        function closeAddProductModal() {
+            document.getElementById('addProductModal').style.display = 'none';
+        }
+
+        // Hàm lưu sản phẩm mới
+        function saveProduct() {
+            const productName = document.getElementById('productName').value;
+            const productDescription = document.getElementById('productDescription').value;
+            const productCategory = document.getElementById('productCategory').value;
+            const productStatus = document.getElementById('productStatus').value;
+            const productDiscount = document.getElementById('productDiscount').value;
+            const productPopular = document.getElementById('productPopular').value;
+
+            // TODO: Gửi dữ liệu sản phẩm mới tới server qua AJAX hoặc form
+            alert('Product saved: ' + productName);
+
+            // Đóng modal sau khi lưu
+            closeAddProductModal();
         }
 
         // Hàm tìm kiếm sản phẩm
