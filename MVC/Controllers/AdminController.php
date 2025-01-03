@@ -32,13 +32,18 @@
             echo(" <script> document.addEventListener('DOMContentLoaded', function() { alert('The password is wrong'); }); </script>");
         }
     }
-    public function userManagement(){
+    public function UserManagement(){
         $model=self::model('UserModel');
-        $users=$model->getUsers();
-        $data['users']=[];
-        foreach($users as $user){
-            if($user['role']!=1){
-                array_push($data['users'],$user);
+        if(isset($_POST['search'])){
+            $condition = "fullname LIKE '%" .trim($_POST['search_name']). "%' and role != 1";
+            $data['users'] = $model->findUser($condition);
+        }else{
+            $users=$model->getUsers();
+            $data['users']=[];
+            foreach($users as $user){
+                if($user['role'] !=1 ){
+                    array_push($data['users'],$user);
+                }
             }
         }
         self::view("Pages/AdminViews/UserManagement",$data);

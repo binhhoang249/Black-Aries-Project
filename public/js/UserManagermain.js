@@ -1,3 +1,4 @@
+import { displayPagination } from 'http://localhost/Black-Aries-Project/public/js/Pagination.js';
 async function getAllOneTable(actional){
     try {
         let response = await fetch('http://localhost/Black-Aries-Project/public/ajax/serveData.php', {
@@ -84,3 +85,14 @@ function detailView(id){
         })
     })()
 }
+// Phần điều phân trang
+let listRow= document.querySelectorAll('.row-object');
+var numPage= 0;
+if(listRow.length%10 == 0){
+    numPage = Math.floor(listRow.length/10) ;
+}else{
+    numPage = Math.floor(listRow.length/10 + 1) ;
+}
+var current_page =1;
+console.log(current_page);
+displayPagination(current_page,numPage);

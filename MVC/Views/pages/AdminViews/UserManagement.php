@@ -11,7 +11,13 @@
     <div class="big-container">
         <?php include_once __DIR__.'/../../Components/AdminNavigation.php' ;?>
         <div class="main-container">
-            <h1>User managerment</h1>
+            <div class="header_content">
+                <h1>User managerment</h1>
+                <form class="form_search" action="http://localhost/black-Aries-Project/adminController/UserManagement?position=2" method="POST">
+                <input type="text" name="search_name" placeholder="Enter name of user" value = "<?php if ( isset( $_POST['search'] ) ) { echo $_POST['search_name'] ;}?>" >
+                <button type="submit" name="search">Search</button>
+            </form>
+            </div>
             <table>
                 <thead>
                     <td>ID</td>
@@ -24,9 +30,13 @@
                     <td>Action</td>
                 </thead>
                 <tbody>
+                    <?php if (count($users) > 0):
+                        $page=1;
+                        $num=1;
+                    ?>
                     <?php foreach($users as $user){
                         ?>
-                            <tr>
+                            <tr class="row-object" data-page="<?php echo $page ; ?>">
                                 <td><?php echo $user['user_id']; ?></td>
                                 <td><?php echo $user['fullname']; ?></td>
                                 <td><?php echo $user['username']; ?></td>
@@ -43,8 +53,19 @@
                                 </td>
                             </tr>
                         <?php
+                        if($num == 10){
+                            $page +=1;
+                            $num=1;
+                        }else{
+                            $num +=1;
+                        }
                     }
                     ?>
+                    <?php else : ?>
+                        <tr>
+                            <td colspan='8'>Don't find out user</td>
+                        </tr>
+                    <?php endif ; ?>
                 </tbody>
             </table>
             <!--form detail -->
@@ -94,9 +115,14 @@
                 </div>
                 <button type="button" class="button-cancel">X</button>
             </form>
-        </div>
+            <div class="pagination" id="pagination">
+                <div ><<</div>
+                <div >3</div>
+                <div class="border-right">>></div>
+            </div>
+        </div><!--Main container -->
         <div class="wall"></div>
     </div>
-    <script src="http://localhost/Black-Aries-Project/public/js/UserManagermain.js"></script>
+    <script type="module" src="http://localhost/Black-Aries-Project/public/js/UserManagermain.js?ver=<?php echo time(); ?>"></script>
 </body>
 </html>
