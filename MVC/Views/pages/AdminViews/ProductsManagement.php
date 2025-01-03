@@ -44,6 +44,40 @@
             margin-bottom: 20px;
         }
 
+        .header-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .btn-add {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #28a745;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 14px;
+        }
+
+        .btn-add:hover {
+            background-color: #218838;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-box input {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
         table {
             width: 100%;
             border-collapse: collapse;
@@ -95,6 +129,11 @@
             background-color: #0056b3;
         }
 
+        .btn-action {
+            display: flex;
+            justify-content: center;
+        }
+
         .btn {
             padding: 5px 10px;
             margin-right: 5px;
@@ -130,6 +169,12 @@
         <section class="main-container">
             <header>
                 <h1>Product Management</h1>
+                <div class="header-actions">
+                    <button class="btn-add" onclick="addProduct()">Add Product</button>
+                    <div class="search-box">
+                        <input type="text" id="search" placeholder="Search products..." onkeyup="searchProducts()">
+                    </div>
+                </div>
             </header>
 
             <table>
@@ -158,8 +203,10 @@
                             <td><?php echo $product['discount']; ?>%</td>
                             <td><?php echo $product['popular']; ?></td>
                             <td>
-                                <button class="btn btn-edit" onclick="editProduct(<?php echo $product['product_id']; ?>)">Edit</button>
-                                <button class="btn btn-delete" onclick="deleteProduct(<?php echo $product['product_id']; ?>)">Delete</button>
+                                <div class="btn-action" style="width: 100px;">
+                                    <button class="btn btn-edit" onclick="editProduct(<?php echo $product['product_id']; ?>)">Edit</button>
+                                    <button class="btn btn-delete" onclick="deleteProduct(<?php echo $product['product_id']; ?>)">Delete</button>
+                                </div>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -219,6 +266,23 @@
                 // TODO: Gửi yêu cầu xóa sản phẩm tới server qua AJAX hoặc form
                 alert('Product with ID ' + productId + ' has been deleted.');
             }
+        }
+
+        // Hàm thêm sản phẩm
+        function addProduct() {
+            alert('Add new product');
+            // TODO: Redirect or open add form
+        }
+
+        // Hàm tìm kiếm sản phẩm
+        function searchProducts() {
+            const searchValue = document.getElementById('search').value.toLowerCase();
+            const rows = document.querySelectorAll('tbody tr');
+
+            rows.forEach(row => {
+                const productName = row.querySelector('td:nth-child(2)').textContent.toLowerCase();
+                row.style.display = productName.includes(searchValue) ? 'table-row' : 'none';
+            });
         }
     </script>
 </body>
