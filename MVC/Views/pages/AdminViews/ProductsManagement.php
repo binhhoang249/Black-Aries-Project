@@ -389,10 +389,10 @@
 
             rows.forEach(row => {
                 const productName = row.querySelector('td:nth-child(2)').textContent.toLowerCase();
-                row.style.display = productName.includes(searchValue) ? 'table-row' : 'none';
+                const productId = row.querySelector('td:nth-child(1)').textContent.toLowerCase();
+                row.style.display = productName.includes(searchValue) || productId.includes(searchValue) ? 'table-row' : 'none';
             });
         }
     </script>
 </body>
-
 </html>
