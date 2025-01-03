@@ -123,6 +123,6 @@
         </div><!--Main container -->
         <div class="wall"></div>
     </div>
-    <script src="http://localhost/Black-Aries-Project/public/js/UserManagermain.js?ver=<?php echo time(); ?>"></script>
+    <script type="module" src="http://localhost/Black-Aries-Project/public/js/UserManagermain.js?ver=<?php echo time(); ?>"></script>
 </body>
 </html>
