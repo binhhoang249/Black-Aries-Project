@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="http://localhost/Black-Aries-Project/public/css/admin_order_management.css?ver=<?php echo time(); ?>" rel="stylesheet">
+    <link href="http://localhost/Black-Aries-Project/public/css/admin_order_management.css" rel="stylesheet">
     <title>Order Management Admin</title>
 </head>
 <body>
@@ -31,16 +31,7 @@
                 </tr>
             </thead>
             <tbody>
-            <?php
-if (isset($result)) {
-    //var_dump($result); // In dữ liệu để kiểm tra
-} else {
-    echo "Không có dữ liệu!";
-}
-?>
-
-                <?php
-                
+            <?php                
                 // Kiểm tra nếu có đơn hàng
                 if (!empty($data['result'])) {
                     foreach ($data['result'] as $row) {
