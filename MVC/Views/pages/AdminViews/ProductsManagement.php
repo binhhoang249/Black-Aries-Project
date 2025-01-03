@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Management</title>
     <style>
-        html, body {
+        html,
+        body {
             padding: 0;
             margin: 0;
             width: 100%;
@@ -49,11 +50,14 @@
             margin-top: 20px;
         }
 
-        table, th, td {
+        table,
+        th,
+        td {
             border: 1px solid #ddd;
         }
 
-        th, td {
+        th,
+        td {
             padding: 12px;
             text-align: left;
         }
@@ -153,10 +157,10 @@
                             <td><?php echo $product['status']; ?></td>
                             <td><?php echo $product['discount']; ?>%</td>
                             <td><?php echo $product['popular']; ?></td>
-                            <!-- <td>
+                            <td>
                                 <button class="btn btn-edit" onclick="editProduct(<?php echo $product['product_id']; ?>)">Edit</button>
                                 <button class="btn btn-delete" onclick="deleteProduct(<?php echo $product['product_id']; ?>)">Delete</button>
-                            </td> -->
+                            </td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
@@ -165,7 +169,7 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             const rows = document.querySelectorAll('tbody tr');
             const rowsPerPage = 10;
             const totalPages = Math.ceil(rows.length / rowsPerPage);
@@ -196,26 +200,26 @@
 
             // Xử lý khi nhấn vào nút phân trang
             document.querySelectorAll('.btn-pagination').forEach(button => {
-                button.addEventListener('click', function () {
+                button.addEventListener('click', function() {
                     const page = parseInt(this.getAttribute('data-page'));
                     showPage(page);
                 });
             });
         });
 
-        // // Hàm chỉnh sửa sản phẩm
-        // function editProduct(productId) {
-        //     alert('Edit product with ID: ' + productId);
-        //     // TODO: Redirect or open edit form
-        // }
+        // Hàm chỉnh sửa sản phẩm
+        function editProduct(productId) {
+            alert('Edit product with ID: ' + productId);
+            // TODO: Redirect or open edit form
+        }
 
-        // // Hàm xóa sản phẩm
-        // function deleteProduct(productId) {
-        //     if (confirm('Are you sure you want to delete product with ID: ' + productId + '?')) {
-        //         // TODO: Gửi yêu cầu xóa sản phẩm tới server qua AJAX hoặc form
-        //         alert('Product with ID ' + productId + ' has been deleted.');
-        //     }
-        // }
+        // Hàm xóa sản phẩm
+        function deleteProduct(productId) {
+            if (confirm('Are you sure you want to delete product with ID: ' + productId + '?')) {
+                // TODO: Gửi yêu cầu xóa sản phẩm tới server qua AJAX hoặc form
+                alert('Product with ID ' + productId + ' has been deleted.');
+            }
+        }
     </script>
 </body>
 
