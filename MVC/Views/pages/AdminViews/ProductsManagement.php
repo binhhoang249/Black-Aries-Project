@@ -109,7 +109,8 @@
                 });
             }
 
-           
+            // Hiển thị trang đầu tiên mặc định
+            showPage(1);
 
             // Xử lý khi nhấn vào nút phân trang
             document.querySelectorAll('.btn-pagination').forEach(button => {
