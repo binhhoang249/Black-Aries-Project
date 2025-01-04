@@ -91,5 +91,44 @@
     }
 
     }
+    public function Order_details($order_id) {
+        // Gọi model để lấy chi tiết đơn hàng
+        $model = self::model("OrderModel");
+        $orderDetails = $model->orderdetails($order_id); // Truyền order_id vào phương thức model
+    
+        // Kiểm tra nếu có dữ liệu
+        if (!empty($orderDetails)) {
+            $data = ['result' => $orderDetails];
+        } else {
+            $data = ['result' => null, 'message' => 'Không tìm thấy đơn hàng.'];
+        }
+        // Truyền dữ liệu vào view
+        self::view("Pages/AdminViews/Orderdetails", $data);
+    }
+
+    public function updateStatusAction()
+    {
+        // Lấy giá trị 'order_id' và 'status' từ request (POST)
+        $orderId = $_POST['order_id'] ?? null;
+        $status = $_POST['status'] ?? null;
+    
+        if ($orderId && $status) {
+            // Tạo đối tượng model để làm việc với dữ liệu
+            $orderModel = self::model("OrderModel");
+    
+            // Gọi phương thức updateOrderStatus từ model để cập nhật trạng thái
+            $result = $orderModel->updateOrderStatus($orderId, $status);
+    
+            if ($result) {
+                // Sử dụng đúng đường dẫn đến view thông báo
+                self::view("Pages/AdminViews/secuss_notification",$result);
+            } else {
+                echo "Lỗi";
+            }
+    
+        } else {
+            echo "Dữ liệu không hợp lệ!";
+        }
+    }
  }
 ?>
