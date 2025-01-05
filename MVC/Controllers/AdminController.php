@@ -89,7 +89,7 @@ class AdminController extends controller
             $model = self::model("OrderModel");
             $results = $model->searchOrders($query);
         } else {
-            echo "Từ khóa tìm kiếm không hợp lệ hoặc trống!";
+            echo "Invalid or empty search keyword!";
             return;
         }
         if ($results && !empty($results)) {
@@ -110,7 +110,7 @@ class AdminController extends controller
         if (!empty($orderDetails)) {
             $data = ['result' => $orderDetails];
         } else {
-            $data = ['result' => null, 'message' => 'Không tìm thấy đơn hàng.'];
+            $data = ['result' => null, 'message' => 'No order found.'];
         }
         // Truyền dữ liệu vào view
         self::view("Pages/AdminViews/Orderdetails", $data);
@@ -133,11 +133,11 @@ class AdminController extends controller
                 // Sử dụng đúng đường dẫn đến view thông báo
                 self::view("Pages/AdminViews/secuss_notification",$result);
             } else {
-                echo "Lỗi";
+                echo "Error";
             }
     
         } else {
-            echo "Dữ liệu không hợp lệ!";
+            echo "Invalid data!";
         }
     }
     
