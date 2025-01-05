@@ -68,13 +68,10 @@ class OrderModel extends DModel
         $result = $this->db->select($sql, $params);
         return !empty($result) ? $result[0] : null;
     }
-
     public function cancelOrder($orderId, $userId)
     {
-        // Câu lệnh SQL để cập nhật trạng thái đơn hàng
         $sql = "UPDATE Orders SET status = 6 WHERE order_id = :order_id AND user_id = :user_id";
 
-        // Tham số truyền vào câu lệnh SQL
         $params = [
             ':order_id' => $orderId,
             ':user_id' => $userId
@@ -85,7 +82,6 @@ class OrderModel extends DModel
         }
         return $statement->execute();
     }
-
     public function admingetAllOrdersWithDetails() {
         $sql = "SELECT 
         o.order_id,
@@ -93,7 +89,7 @@ class OrderModel extends DModel
         o.payment_id,
         o.order_date,
         o.quantity AS order_quantity,
-        p.status AS product_status,  -- Sử dụng status từ bảng Products
+        p.status AS product_status, 
         o.status,
         u.fullname AS customer_name, 
         pc.quantity AS product_quantity,
@@ -113,14 +109,9 @@ class OrderModel extends DModel
 
     }
     public function searchOrders($query) {
-        // Loại bỏ dấu cách trong chuỗi tìm kiếm
         $queryWithoutSpaces = str_replace(' ', '', $query);
-        
-        // Kiểm tra xem input có phải là một số (mã đơn hàng)
-        $isNumeric = is_numeric($query);
-    
-        // Tạo câu lệnh SQL
-        $sql = "SELECT 
+                $isNumeric = is_numeric($query);
+            $sql = "SELECT 
                     o.order_id,
                     o.user_id,
                     o.payment_id,
@@ -144,30 +135,21 @@ class OrderModel extends DModel
                     Products p ON pc.product_id = p.product_id
                 WHERE ";
     
-        // Xử lý trường hợp nếu không có dấu cách trong chuỗi
         if (strpos($query, ' ') === false) {
             if ($isNumeric) {
-                // Nếu query là số và không có dấu cách (tìm theo order_id)
                 $sql .= "o.order_id = :query"; 
             } else {
-                // Nếu query không phải là số và không có dấu cách (tìm theo fullname)
-                $sql .= "LOWER(REPLACE(u.fullname, ' ', '')) LIKE LOWER(:query)"; // Loại bỏ dấu cách trong fullname
-                $query = '%' . $queryWithoutSpaces . '%'; // Chuẩn bị tham số cho tìm kiếm theo tên không có dấu cách
+                $sql .= "LOWER(REPLACE(u.fullname, ' ', '')) LIKE LOWER(:query)"; 
+                $query = '%' . $queryWithoutSpaces . '%'; 
             }
         } else {
-            // Nếu có dấu cách, tìm kiếm theo fullname
-            $sql .= "LOWER(REPLACE(u.fullname, ' ', '')) LIKE LOWER(:query)"; // Loại bỏ dấu cách trong fullname
-            $query = '%' . $queryWithoutSpaces . '%'; // Chuẩn bị tham số cho tìm kiếm theo tên không có dấu cách
+            $sql .= "LOWER(REPLACE(u.fullname, ' ', '')) LIKE LOWER(:query)";
+            $query = '%' . $queryWithoutSpaces . '%'; 
         }
-    
-        // Thực thi câu lệnh và trả về kết quả
-        $data = [':query' => $query];
+            $data = [':query' => $query];
         return $this->db->select($sql, $data);
     }
     
-    
-    
-
     public function orderdetails($order_id) {
         $sql = "SELECT 
             o.order_id,
@@ -183,7 +165,7 @@ class OrderModel extends DModel
             pc.quantity AS product_quantity,
             pc.image,
             p.product_name,
-            c.category_name, -- Lấy tên thể loại
+            c.category_name, 
             pc.price AS product_price,
 (o.quantity * pc.price) AS total
         FROM 
@@ -195,7 +177,7 @@ class OrderModel extends DModel
         JOIN 
             Products p ON pc.product_id = p.product_id
         JOIN 
-            Categories c ON p.category_id = c.category_id -- Kết nối với bảng Categories
+            Categories c ON p.category_id = c.category_id 
         WHERE 
             o.order_id = :order_id";
     
@@ -204,21 +186,13 @@ class OrderModel extends DModel
     
     public function updateOrderStatus($orderId, $status)
     {
-        // Kết nối đến cơ sở dữ liệu
         $db = $this->db;
-    
-        // Tạo câu lệnh SQL với placeholder
-        $sql = "UPDATE orders SET status = :status WHERE order_id = :orderId";
-    
-        // Chuẩn bị câu lệnh SQL
-        $stmt = $db->prepare($sql);
-    
-        // Gán giá trị cho các placeholder
-        $stmt->bindParam(':status', $status, PDO::PARAM_STR);
+            $sql = "UPDATE orders SET status = :status WHERE order_id = :orderId";
+            $stmt = $db->prepare($sql);
+            $stmt->bindParam(':status', $status, PDO::PARAM_STR);
         $stmt->bindParam(':orderId', $orderId, PDO::PARAM_INT);
     
-        // Thực thi câu lệnh SQL
-        return $stmt->execute(); // Nếu thành công, trả về true
+        return $stmt->execute(); 
     }
     
 }
