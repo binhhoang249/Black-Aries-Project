@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="http://localhost/Black-Aries-Project/public/css/admin_order_management.css" rel="stylesheet">
+    <link href="http://localhost/Black-Aries-Project/public/css/admin_order_management.css?ver=<?php echo time(); ?>" rel="stylesheet">
+
     <title>Order Management Admin</title>
 </head>
 <body>
