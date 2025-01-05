@@ -89,4 +89,35 @@ class ProductModel extends DModel
     {
         return $this->db->update($table, $data, $condi, $params);
     }
+
+    public function getProductDetails($productId)
+    {
+        $sql = "SELECT 
+                    p.product_id, 
+                    p.product_name, 
+                    p.description, 
+                    p.time_stamp, 
+                    p.category_id, 
+                    p.status, 
+                    p.discount, 
+                    p.popular, 
+                    c.color_id, 
+                    c.color_name, 
+                    c.color_link, 
+                    pc.product_color_id, 
+                    pc.quantity, 
+                    pc.image, 
+                    pc.price, 
+                    pc.defaultal
+                FROM 
+                    products p
+                LEFT JOIN 
+                    Product_color pc ON p.product_id = pc.product_id
+                LEFT JOIN 
+                    Color c ON pc.color_id = c.color_id
+                WHERE 
+                    p.product_id = :product_id";
+        $data[':product_id'] = (int)$productId;
+        return $this->db->select($sql, $data);
+    }
 }
