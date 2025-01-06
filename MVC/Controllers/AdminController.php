@@ -1,96 +1,146 @@
 <?php
- class AdminController extends controller {
-    public function index(){
+class AdminController extends controller
+{
+    public function index()
+    {
         $data = [];
-        $error=null;
+        $error = null;
         $model = self::model('UserModel');
-        if(isset($_POST['signup'])){
+        if (isset($_POST['signup'])) {
             $users = $model->getUsers();
-            $user=null;
-            foreach($users as $value){
-                if($value['username'] == $_POST['username']){
-                    $user=$value;
+            $user = null;
+            foreach ($users as $value) {
+                if ($value['username'] == $_POST['username']) {
+                    $user = $value;
                     break;
                 }
             }
             //print_r($user);
-            if(!empty($user) && $user['role']==1){
-                if(password_verify($_POST['password'], $user['password'])){
-                    header ("Location: http://localhost/Black-Aries-Project/AdminController/productManagement?position=1");
-                    echo("good");
-                }else{
-                    $error="password";
+            if (!empty($user) && $user['role'] == 1) {
+                if (password_verify($_POST['password'], $user['password'])) {
+                    header("Location: http://localhost/Black-Aries-Project/AdminController/productManagement?position=1");
+                    echo ("good");
+                } else {
+                    $error = "password";
                 }
-            }else{
-                $error="wrongAccount";
+            } else {
+                $error = "wrongAccount";
             }
         }
         self::view("Pages/AdminViews/index");
-        if(!empty($error) && $error == "wrongAccount"){
-            echo(" <script> document.addEventListener('DOMContentLoaded', function() { alert('Account is unexited'); }); </script>");
-        }else if(!empty($error) && $error == "password"){
-            echo(" <script> document.addEventListener('DOMContentLoaded', function() { alert('The password is wrong'); }); </script>");
+        if (!empty($error) && $error == "wrongAccount") {
+            echo (" <script> document.addEventListener('DOMContentLoaded', function() { alert('Account is unexited'); }); </script>");
+        } else if (!empty($error) && $error == "password") {
+            echo (" <script> document.addEventListener('DOMContentLoaded', function() { alert('The password is wrong'); }); </script>");
         }
     }
-    public function UserManagement(){
-        $model=self::model('UserModel');
-        if(isset($_POST['search'])){
-            $condition = "fullname LIKE '%" .trim($_POST['search_name']). "%' and role != 1";
+    public function UserManagement()
+    {
+        $model = self::model('UserModel');
+        if (isset($_POST['search'])) {
+            $condition = "fullname LIKE '%" . trim($_POST['search_name']) . "%' and role != 1";
             $data['users'] = $model->findUser($condition);
-        }else{
-            $users=$model->getUsers();
-            $data['users']=[];
-            foreach($users as $user){
-                if($user['role'] !=1 ){
-                    array_push($data['users'],$user);
+        } else {
+            $users = $model->getUsers();
+            $data['users'] = [];
+            foreach ($users as $user) {
+                if ($user['role'] != 1) {
+                    array_push($data['users'], $user);
                 }
             }
         }
-        self::view("Pages/AdminViews/UserManagement",$data);
+        self::view("Pages/AdminViews/UserManagement", $data);
     }
 
-    public function productManagement(){
-        $model=self::model('ProductModel');
-        $products=$model->getProducts();
-        $data['products']=[];
-        foreach($products as $product){
-            array_push($data['products'],$product);
+    public function productManagement()
+    {
+        $model = self::model('ProductModel');
+        $products = $model->getProducts();
+        $data['products'] = [];
+
+        foreach ($products as $product) {
+            $productDetails = $model->getProductDetails($product['product_id']);
+            if (!empty($productDetails)) {
+                $data['products'][] = $productDetails[0]; // Assuming getProductDetails returns an array of results
+            }
         }
-        self::view("Pages/AdminViews/ProductsManagement",$data);
+
+        self::view("Pages/AdminViews/ProductsManagement", $data);
     }
-    
-    public function orderManagement() {
+
+    public function orderManagement()
+    {
         $model = self::model("OrderModel");
         $orders = $model->admingetAllOrdersWithDetails();
-    
+
         if (!empty($orders)) {
             $data = ['result' => $orders];
         } else {
             $data = ['result' => null, 'message' => 'No orders found.'];
         }
-    
+
         self::view("Pages/AdminViews/orderManagement", $data);
     }
-    public function searchOrder() {
+    public function searchOrder()
+    {
         if (isset($_POST['searchorder']) && !empty(trim($_POST['searchorder']))) {
-            $query = trim($_POST['searchorder']);  
-    
+            $query = trim($_POST['searchorder']);
+
             $model = self::model("OrderModel");
-            $results = $model->searchOrders($query);  
+            $results = $model->searchOrders($query);
         } else {
-            echo "Từ khóa tìm kiếm không hợp lệ hoặc trống!";
-            return;  
+            echo "Invalid or empty search keyword!";
+            return;
         }
         if ($results && !empty($results)) {
-            $data['result'] = $results;  
-            $data['searchTerm'] = $query; 
-            $data['message'] = "No orders found matching your search."; 
+            $data['result'] = $results;
+            $data['searchTerm'] = $query;
+            $data['message'] = "No orders found matching your search.";
+
+
+            self::view("Pages/AdminViews/orderManagement", $data);
+        }
+    }
+    public function Order_details($order_id) {
+        // Gọi model để lấy chi tiết đơn hàng
+        $model = self::model("OrderModel");
+        $orderDetails = $model->orderdetails($order_id); // Truyền order_id vào phương thức model
     
-        
-        self::view("Pages/AdminViews/orderManagement", $data);  
+        // Kiểm tra nếu có dữ liệu
+        if (!empty($orderDetails)) {
+            $data = ['result' => $orderDetails];
+        } else {
+            $data = ['result' => null, 'message' => 'No order found.'];
+        }
+        // Truyền dữ liệu vào view
+        self::view("Pages/AdminViews/Orderdetails", $data);
     }
 
+    public function updateStatusAction()
+    {
+        // Lấy giá trị 'order_id' và 'status' từ request (POST)
+        $orderId = $_POST['order_id'] ?? null;
+        $status = $_POST['status'] ?? null;
+    
+        if ($orderId && $status) {
+            // Tạo đối tượng model để làm việc với dữ liệu
+            $orderModel = self::model("OrderModel");
+    
+            // Gọi phương thức updateOrderStatus từ model để cập nhật trạng thái
+            $result = $orderModel->updateOrderStatus($orderId, $status);
+    
+            if ($result) {
+                // Sử dụng đúng đường dẫn đến view thông báo
+                self::view("Pages/AdminViews/secuss_notification",$result);
+            } else {
+                echo "Error";
+            }
+    
+        } else {
+            echo "Invalid data!";
+        }
     }
+<<<<<<< HEAD
     public function dashBoard(){
         $modelHome = self::model("HomeModel");
         $modelProduct = self::model("ProductModel");
@@ -100,5 +150,8 @@
         $data['products'] = $modelProduct->getProducts();
         self::view("Pages/AdminViews/DashBoard", $data); 
     }
+=======
+    
+>>>>>>> origin
  }
 ?>

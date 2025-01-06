@@ -237,9 +237,9 @@
         <h2 class="title h1">PERSONAL INFORMATION</h2>
         <h2 class="title h2">Change Password</h2>
         <div class="avatar">
-    <div class="logo-container">
+        <div class="logo-container">
         <!-- Hiển thị ảnh mặc định -->
-        <img id="l-imagel" src="http://localhost/Black-Aries-Project/public/images/default-images.jpg" alt="deafault-images">
+        <img id="profile-image" src="http://localhost/Black-Aries-Project/public/images/default-images.jpg" alt="deafault-images">
         <button class="edit-avatar-btn">
             <img src="http://localhost/Black-Aries-Project/public/Icon/pen.png" alt="Edit Icon">
         </button>

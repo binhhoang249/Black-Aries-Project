@@ -29,12 +29,15 @@
                     <tr>
                         <th scope="col">ID</th>
                         <th scope="col">Product Name</th>
-                        <th scope="col">Description</th>
                         <th scope="col">Timestamp</th>
                         <th scope="col">Category</th>
                         <th scope="col">Status</th>
                         <th scope="col">Discount</th>
-                        <th scope="col">Popular</th>
+                        <th scope="col">Color</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Default</th>
+                        <th scope="col">Image</th>
                         <th scope="col">Actions</th>
                     </tr>
                 </thead>
@@ -43,12 +46,15 @@
                         <tr>
                             <td><?php echo $product['product_id']; ?></td>
                             <td><?php echo $product['product_name']; ?></td>
-                            <td><?php echo $product['description']; ?></td>
                             <td><?php echo $product['time_stamp']; ?></td>
                             <td><?php echo $product['category_id']; ?></td>
                             <td><?php echo $product['status']; ?></td>
                             <td><?php echo $product['discount']; ?>%</td>
-                            <td><?php echo $product['popular']; ?></td>
+                            <td><?php echo $product['color_name']; ?></td>
+                            <td><?php echo $product['quantity']; ?></td>
+                            <td><?php echo $product['price']; ?></td>
+                            <td><?php echo $product['defaultal']; ?></td>
+                            <td><img src="http://localhost/Black-Aries-Project/public/images/products/<?php echo $product['image']; ?>" alt="Product Image" width="50"></td>
                             <td>
                                 <div class="btn-action">
                                     <button class="btn btn-edit" onclick="editProduct(<?php echo $product['product_id']; ?>)">Edit</button>
@@ -61,27 +67,6 @@
             </table>
         </section>
     </div>
-
-    <div id="addProductModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Add New Product</h2>
-                <span class="modal-close" onclick="closeAddProductModal()">&times;</span>
-            </div>
-            <div class="modal-body">
-                <input type="text" id="productName" placeholder="Product Name">
-                <textarea id="productDescription" placeholder="Product Description"></textarea>
-                <input type="text" id="productCategory" placeholder="Category">
-                <input type="text" id="productStatus" placeholder="Status">
-                <input type="number" id="productDiscount" placeholder="Discount">
-                <input type="text" id="productPopular" placeholder="Popular">
-            </div>
-            <div class="modal-footer">
-                <button onclick="saveProduct()">Save</button>
-            </div>
-        </div>
-    </div>
-
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const rows = document.querySelectorAll('tbody tr');
@@ -101,12 +86,23 @@
                 paginationContainer.appendChild(btn);
             }
 
+            // Thêm phần tử hiển thị số trang hiện tại
+            const currentPageDisplay = document.createElement('div');
+            currentPageDisplay.className = 'current-page-display';
+
             // Hàm hiển thị trang tương ứng
             function showPage(page) {
                 rows.forEach((row, index) => {
-                    row.style.display =
-                        index >= (page - 1) * rowsPerPage && index < page * rowsPerPage ? 'table-row' : 'none';
+                    row.style.display = index >= (page - 1) * rowsPerPage && index < page * rowsPerPage ? 'table-row' : 'none';
                 });
+                // Cập nhật số trang hiện tại
+                currentPageDisplay.textContent = 'Current Page: ' + page;
+
+                // Cập nhật nút phân trang hiện tại
+                document.querySelectorAll('.btn-pagination').forEach(button => {
+                    button.classList.remove('active');
+                });
+                document.querySelector(`.btn-pagination[data-page="${page}"]`).classList.add('active');
             }
 
             // Hiển thị trang đầu tiên mặc định
@@ -120,7 +116,6 @@
                 });
             });
         });
-
         // Hàm chỉnh sửa sản phẩm
         function editProduct(productId) {
             alert('Edit product with ID: ' + productId);
@@ -174,4 +169,5 @@
         }
     </script>
 </body>
+
 </html>
