@@ -5,6 +5,7 @@ include_once '../../MVC/core/Database.php';
 include_once '../../MVC/Models/ProductModel.php';
 include_once '../../MVC/Models/UserModel.php';
 include_once '../../MVC/Models/OrderModel.php';
+include_once '../../MVC/Models/HomeModel.php';
 //Tạo một đối tượng mới
 $condi=json_decode(file_get_contents('php://input'),true);
 if ($condi =="getCategory"){
@@ -152,6 +153,29 @@ if ($condi =="getCategory"){
     $color = $model-> getColor();
     if(!empty($color)){
         echo (json_encode($color));
+    }else{
+        echo (json_encode(""));
+    }
+}else if(isset($condi['action'])&&$condi['action']=="getBussiness"){
+    $model= new HomeModel();
+    $bussiness = $model-> getInformationAboutUs();
+    if(!empty($bussiness)){
+        echo (json_encode($bussiness));
+    }else{
+        echo (json_encode(""));
+    }
+}else if(isset($condi['action'])&&$condi['action']=="updateBussiness"){
+    $model= new HomeModel();
+    if(!empty($condi['description'])){
+        $data['description']=$condi['description'];
+    }
+    if(!empty($data)){
+        $result= $model->updateBussiness($data);
+        if(!empty($result)){
+            echo (json_encode($result));
+        }else{
+            echo (json_encode(""));
+        }
     }else{
         echo (json_encode(""));
     }

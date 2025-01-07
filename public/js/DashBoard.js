@@ -40,13 +40,44 @@ async function updateAllOneTable(body){
         return null; 
     }
 }
-const textarea = document.getElementById("myTextarea");
-textarea.addEventListener("change", function () {
+var textarea = document.getElementById("myTextarea");
+textarea.addEventListener("change", adjustTestArea);
+function adjustTestArea(){
     textarea.style.height = "auto"; // Reset chiều cao trước khi tính toán
     textarea.style.height = textarea.scrollHeight + "px"; // Điều chỉnh chiều cao theo nội dung
-});
+}
+showDescription();
+function showDescription(){
+    (async ()=>{
+        let bussiness = await getAllOneTable("getBussiness");
+        console.log(bussiness)
+        textarea.value= bussiness[0].description;
+        adjustTestArea();
+    })()
+}
 textarea.style.height = textarea.scrollHeight + "px";
-
+var buttonEditDescription = document.getElementById('button-editDescriptionBusiness');
+buttonEditDescription.addEventListener('click', function(){
+    if(buttonEditDescription.dataset.role == 1){
+        textarea.readOnly = false ;
+        textarea.required = true ;
+        textarea.style.outline = "2px solid black";
+        buttonEditDescription.dataset.role = 2;
+        buttonEditDescription.innerHTML = "Verify";
+        buttonEditDescription.style.backgroundColor = "red";
+    }else if(buttonEditDescription.dataset.role == 2){
+        textarea.readOnly = true ;
+        textarea.required = false ;
+        textarea.style.outline = "none";
+        buttonEditDescription.dataset.role = 1;
+        buttonEditDescription.innerHTML = "Edit";
+        buttonEditDescription.style.backgroundColor = "#EFEFEF";
+        let descriptional  = textarea.value;
+        let body = {action : "updateBussiness", description : descriptional};
+        updateAllOneTable(body);
+        showDescription();
+    }
+})
 //
 showInterfaceColor();
 showInterfaceCategory();
@@ -143,6 +174,7 @@ function categoryDetailView(){
                     }
                 }
                 document.getElementById('boc').style.display = "block";
+                boxDetail.innerHTML = "";
                 document.getElementById('box-content').innerHTML=
                 `
                     <div class="box-verify">
@@ -247,6 +279,7 @@ function colorDetailView(){
                         }
                     }
                     document.getElementById('boc').style.display = "block";
+                    boxDetail.innerHTML = "";
                     document.getElementById('box-content').innerHTML=
                     `
                      <div class="box-verify">

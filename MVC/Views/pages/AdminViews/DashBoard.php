@@ -62,6 +62,7 @@
             overflow: hidden;
             resize: none;
             height:auto;
+            outline: none;
         }
         .show{
             width:100%;
@@ -232,62 +233,22 @@
             </div>
             <div class="description">
                 <h2>Description</h2>
-                <div id="button-editDescriptionBusiness">Edit</div>
+                <button id="button-editDescriptionBusiness" data-role="1">Edit</button>
             </div>
-            <textarea id="myTextarea" readonly><?php echo $business[0]['description'] ; ?></textarea>
+            <textarea id="myTextarea" readonly></textarea>
             <div class="description">
                 <h2>Color</h2>
                 <button type="button" id="button-editColor">View more</button>
             </div>
             <div class="show container-color">
-                <?php if (count($color)>0) :
-                $n=1;
-                ?>
-                <?php foreach($color as $value){ ?>
-                <div class="card">
-                    <div class="card-color" style="background-color:<?php echo $value['color_link']  ; ?>"></div>
-                    <p class="card-name"><?php echo $value['color_name']  ; ?></p>
-                </div>
-                <?php 
-                if($n == 5){
-                    break;
-                }
-                $n+=1;
-                }?>
-                <?php else : ?>
-                    <p>Don't color</p>
-                <?php endif ; ?>
+                
             </div>
             <div class="description">
                 <h2>Categories</h2>
                 <button type="button" id="button-editCategories">View more</button>
             </div>
             <div class="show container-category">
-                <?php if(count($categories)>0) :
-                $n=0;
-                ?>
-                <?php foreach($categories as $value) {
-                    $list=[];
-                    foreach($products as $product){
-                        if($product['category_id'] == $value['category_id']){
-                            array_push($list,$product);
-                        }
-                        $num = count($list);
-                    }
-                    ?>
-                        <div class="card">
-                            <h3><?php echo $value['category_name'] ; ?></h3>
-                            <p> <?php echo $num ; ?> Available Item</p>
-                        </div>
-                    <?php
-                    if($n == 5){
-                        break;
-                    }
-                    $n+=1;
-                } ?>
-                <?php else : ?>
-                    <p>Don't Category</p>
-                <?php endif ; ?>
+                
             </div>
             <div class="box-content" >
                     <div id="boc"></div>
