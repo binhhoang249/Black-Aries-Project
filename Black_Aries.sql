@@ -12,8 +12,9 @@ CREATE TABLE Categories (
     note VARCHAR(50)
 );
 drop database black_aries
-select * from Older
-select * from Older
+select * from Users;
+select * from Product_color;
+select * from Orders
 */
 CREATE TABLE Users (
     user_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -27,6 +28,68 @@ CREATE TABLE Users (
     role INT,
     address text
 );
+INSERT INTO Users (fullname, date_of_birth, phone, email, username, password, avatar, role, address)
+VALUES
+('John Doe', '1990-01-01', '0912345678', 'johndoe@example.com', 'johndoe', 'password123', 'avatar1.png', 2, '123 Main St'),
+('Jane Smith', '1992-05-15', '0923456789', 'janesmith@example.com', 'janesmith', 'password123', 'avatar2.png', 2, '456 Elm St'),
+('Alice Johnson', '1988-09-20', '0934567890', 'alicej@example.com', 'alicejohnson', 'password123', 'avatar3.png', 2, '789 Maple Ave'),
+('Bob Brown', '1995-11-12', '0945678901', 'bobbrown@example.com', 'bobbrown', 'password123', 'avatar4.png', 2, '321 Oak Dr'),
+('Charlie White', '1991-03-08', '0956789012', 'charliew@example.com', 'charliewhite', 'password123', 'avatar5.png', 2, '654 Pine Rd'),
+('Emily Davis', '1993-07-14', '0967890123', 'emilyd@example.com', 'emilydavis', 'password123', 'avatar6.png', 2, '987 Cedar Blvd'),
+('Daniel Garcia', '1994-10-22', '0978901234', 'danielg@example.com', 'danielgarcia', 'password123', 'avatar7.png', 2, '159 Spruce Ln'),
+('Grace Lee', '1996-02-02', '0989012345', 'gracelee@example.com', 'gracelee', 'password123', 'avatar8.png', 2, '753 Birch Ct'),
+('Hannah Martinez', '1989-06-18', '0990123456', 'hannahm@example.com', 'hannahmartinez', 'password123', 'avatar9.png', 2, '951 Redwood Ter'),
+('Jack Wilson', '1997-04-25', '0901234567', 'jackw@example.com', 'jackwilson', 'password123', 'avatar10.png', 2, '357 Poplar Cir'),
+('Linda Taylor', '1990-02-10', '0912345671', 'lindat@example.com', 'lindataylor', 'password123', 'avatar11.png', 2, '123 Main St'),
+('Mark Robinson', '1991-03-20', '0923456782', 'markr@example.com', 'markrobinson', 'password123', 'avatar12.png', 2, '456 Elm St'),
+('Nancy Walker', '1992-04-30', '0934567893', 'nancyw@example.com', 'nancywalker', 'password123', 'avatar13.png', 2, '789 Maple Ave'),
+('Oscar Green', '1993-05-05', '0945678904', 'oscarg@example.com', 'oscargreen', 'password123', 'avatar14.png', 2, '321 Oak Dr'),
+('Paula Hall', '1994-06-15', '0956789015', 'paulah@example.com', 'paulahall', 'password123', 'avatar15.png', 1, '654 Pine Rd'),
+('Quincy Allen', '1995-07-25', '0967890126', 'quincya@example.com', 'quincyallen', 'password123', 'avatar16.png', 2, '987 Cedar Blvd'),
+('Rachel Young', '1996-08-05', '0978901237', 'rachely@example.com', 'rachelyoung', 'password123', 'avatar17.png', 2, '159 Spruce Ln'),
+('Steve Hernandez', '1997-09-15', '0989012348', 'steveh@example.com', 'stevehernandez', 'password123', 'avatar18.png', 2, '753 Birch Ct'),
+('Tina King', '1998-10-25', '0990123459', 'tinak@example.com', 'tinaking', 'password123', 'avatar19.png', 2, '951 Redwood Ter'),
+('Uma Brooks', '1999-11-05', '0901234560', 'umab@example.com', 'umabrooks', 'password123', 'avatar20.png', 2, '357 Poplar Cir'),
+('Victor Scott', '1980-12-15', '0912345671', 'victors@example.com', 'victorscott', 'password123', 'avatar21.png', 2, '123 Main St'),
+('Wendy Phillips', '1981-01-25', '0923456782', 'wendyp@example.com', 'wendyphillips', 'password123', 'avatar22.png', 2, '456 Elm St'),
+('Xander Martinez', '1982-02-05', '0934567893', 'xanderm@example.com', 'xandermartinez', 'password123', 'avatar23.png', 2, '789 Maple Ave'),
+('Yvonne Reed', '1983-03-15', '0945678904', 'yvonner@example.com', 'yvonnereed', 'password123', 'avatar24.png', 2, '321 Oak Dr'),
+('Zack Fisher', '1984-04-25', '0956789015', 'zackf@example.com', 'zackfisher', 'password123', 'avatar25.png', 2, '654 Pine Rd'),
+('Aaron Clark', '1985-05-05', '0967890126', 'aaronc@example.com', 'aaronclark', 'password123', 'avatar26.png', 2, '987 Cedar Blvd'),
+('Betty Rogers', '1986-06-15', '0978901237', 'bettyr@example.com', 'bettyrogers', 'password123', 'avatar27.png', 2, '159 Spruce Ln'),
+('Carl Baker', '1987-07-25', '0989012348', 'carlb@example.com', 'carlbaker', 'password123', 'avatar28.png', 2, '753 Birch Ct'),
+('Donna Adams', '1988-08-05', '0990123459', 'donnaa@example.com', 'donnaadams', 'password123', 'avatar29.png', 2, '951 Redwood Ter'),
+('Ethan Torres', '1989-09-15', '0901234560', 'ethant@example.com', 'ethantorres', 'password123', 'avatar30.png', 2, '357 Poplar Cir'),
+('Fiona James', '1990-10-25', '0912345671', 'fionaj@example.com', 'fionajames', 'password123', 'avatar31.png', 2, '123 Main St'),
+('George Russell', '1991-11-05', '0923456782', 'georger@example.com', 'georgerussell', 'password123', 'avatar32.png', 2, '456 Elm St'),
+('Holly Bell', '1992-12-15', '0934567893', 'hollyb@example.com', 'hollybell', 'password123', 'avatar33.png', 2, '789 Maple Ave'),
+('Ian Morris', '1993-01-25', '0945678904', 'ianm@example.com', 'ianmorris', 'password123', 'avatar34.png', 2, '321 Oak Dr'),
+('Julia Cook', '1994-02-05', '0956789015', 'juliac@example.com', 'juliacook', 'password123', 'avatar35.png', 2, '654 Pine Rd'),
+('Kevin Ward', '1995-03-15', '0967890126', 'kevinw@example.com', 'kevinward', 'password123', 'avatar36.png', 2, '987 Cedar Blvd'),
+('Laura Price', '1996-04-25', '0978901237', 'laurap@example.com', 'lauraprice', 'password123', 'avatar37.png', 2, '159 Spruce Ln'),
+('Michael Perez', '1997-05-05', '0989012348', 'michaelp@example.com', 'michaelperez', 'password123', 'avatar38.png', 2, '753 Birch Ct'),
+('Nina Bryant', '1998-06-15', '0990123459', 'ninab@example.com', 'ninabryant', 'password123', 'avatar39.png', 2, '951 Redwood Ter'),
+('Oliver Gomez', '1999-07-25', '0901234560', 'oliverg@example.com', 'olivergomez', 'password123', 'avatar40.png', 2, '357 Poplar Cir'),
+('Patricia Morgan', '1980-08-05', '0912345671', 'patriciam@example.com', 'patriciamorgan', 'password123', 'avatar41.png', 2, '123 Main St'),
+('Quentin Edwards', '1981-09-15', '0923456782', 'quentine@example.com', 'quentinedwards', 'password123', 'avatar42.png', 2, '456 Elm St'),
+('Rebecca Sanders', '1982-10-25', '0934567893', 'rebeccas@example.com', 'rebeccasanders', 'password123', 'avatar43.png', 2, '789 Maple Ave'),
+('Samuel Rivera', '1983-11-05', '0945678904', 'samuelr@example.com', 'samuelrivera', 'password123', 'avatar44.png', 2, '321 Oak Dr'),
+('Tracy Cooper', '1984-12-15', '0956789015', 'tracyc@example.com', 'tracycooper', 'password123', 'avatar45.png', 2, '654 Pine Rd'),
+('Ursula Kelly', '1985-01-25', '0967890126', 'ursulak@example.com', 'ursulakelly', 'password123', 'avatar46.png', 2, '987 Cedar Blvd'),
+('Victor Watson', '1986-02-05', '0978901237', 'victorw@example.com', 'victorwatson', 'password123', 'avatar47.png', 2, '159 Spruce Ln'),
+('Wanda Jenkins', '1987-03-15', '0989012348', 'wandaj@example.com', 'wandajenkins', 'password123', 'avatar48.png', 2, '753 Birch Ct'),
+('Xenia Freeman', '1988-04-25', '0990123459', 'xeniaf@example.com', 'xeniafreeman', 'password123', 'avatar49.png', 2, '951 Redwood Ter'),
+('Yuri Hudson', '1989-05-05', '0901234560', 'yurih@example.com', 'yurihudson', 'password123', 'avatar50.png', 2, '357 Poplar Cir'),
+('Zara Mason', '1990-06-15', '0912345671', 'zaram@example.com', 'zaramason', 'password123', 'avatar51.png', 2, '123 Main St'),
+('Adam Hopkins', '1991-07-25', '0923456782', 'adamh@example.com', 'adamhopkins', 'password123', 'avatar52.png', 2, '456 Elm St'),
+('Betty Jordan', '1992-08-05', '0934567893', 'bettyj@example.com', 'bettyjordan', 'password123', 'avatar53.png', 2, '789 Maple Ave'),
+('Carter Franklin', '1993-09-15', '0945678904', 'carterf@example.com', 'carterfranklin', 'password123', 'avatar54.png', 2, '321 Oak Dr'),
+('Diana Lowe', '1994-10-25', '0956789015', 'dianal@example.com', 'dianalowe', 'password123', 'avatar55.png', 2, '654 Pine Rd'),
+('Evan Watts', '1995-11-05', '0967890126', 'evanw@example.com', 'evanwatts', 'password123', 'avatar56.png', 2, '987 Cedar Blvd'),
+('Fiona Sharp', '1996-12-15', '0978901237', 'fionas@example.com', 'fionasharp', 'password123', 'avatar57.png', 2, '159 Spruce Ln'),
+('George Abbott', '1997-01-25', '0989012348', 'georgea@example.com', 'georgeabbott', 'password123', 'avatar58.png', 2, '753 Birch Ct'),
+('Holly Steele', '1998-02-05', '0990123459', 'hollys@example.com', 'hollysteele', 'password123', 'avatar59.png', 2, '951 Redwood Ter'),
+('Ian Ford', '1999-03-15', '0901234560', 'ianf@example.com', 'ianford', 'password123', 'avatar60.png', 2, '357 Poplar Cir');
 
 CREATE TABLE Products (
       product_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -37,7 +100,7 @@ CREATE TABLE Products (
       status INT,
       discount FLOAT,
       popular INT DEFAULT 0,
-      FOREIGN KEY (category_id) REFERENCES Categories(category_id)
+      FOREIGN KEY (category_id) REFERENCES Categories(category_id) on update cascade on delete cascade
 );
 
 CREATE TABLE Color (
@@ -55,8 +118,8 @@ CREATE TABLE Product_color (
     defaultal INT,
     product_id INT,
     color_id INT,
-    FOREIGN KEY (product_id) REFERENCES Products(product_id),
-    FOREIGN KEY (color_id) REFERENCES Color(color_id)
+    FOREIGN KEY (product_id) REFERENCES Products(product_id) on update cascade on delete cascade,
+    FOREIGN KEY (color_id) REFERENCES Color(color_id) on update cascade on delete cascade
 );
 
 -- Tạo bảng payment
@@ -75,7 +138,7 @@ CREATE TABLE Orders (
     quantity INT,
     price DECIMAL(10, 2),
     status INT NOT NULL, 
-    FOREIGN KEY (payment_id) REFERENCES payment(payment_id)
+    FOREIGN KEY (payment_id) REFERENCES payment(payment_id) on update cascade on delete cascade
 );
 
 -- Chèn dữ liệu vào bảng payment

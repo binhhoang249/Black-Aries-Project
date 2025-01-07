@@ -74,8 +74,12 @@ buttonEditDescription.addEventListener('click', function(){
         buttonEditDescription.style.backgroundColor = "#EFEFEF";
         let descriptional  = textarea.value;
         let body = {action : "updateBussiness", description : descriptional};
-        updateAllOneTable(body);
-        showDescription();
+        (async ()=> {
+            let res = await updateAllOneTable(body);
+            if(res){
+                showDescription();
+            }
+        })
     }
 })
 //
