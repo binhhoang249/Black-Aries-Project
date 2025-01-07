@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <link href="http://localhost/Black-Aries-Project/public/css/DashBoard.css?ver=<?php echo time(); ?>" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <style>
@@ -95,6 +94,9 @@
             border-top-right-radius: 9px;
             border-bottom:1px solid gray;
         }
+        .card-color2{
+            height: 90px;
+        }
         .card-name{
             text-align:center;
             color: black !important;
@@ -109,6 +111,8 @@
             padding:9px 21px 18px 21px;
             z-index:999;
             background:white;
+            height:555px;
+            overflow-y: auto;
         }
         .title{
             text-align:center;
@@ -122,9 +126,10 @@
         }
         .box-card{
             width: 31%;
-            height:192px;
+            max-height:192px;
             position:relative;
             box-shadow: 2px 4px 4px 2px rgba(0, 0, 0, 0.4);
+            border-radius:6px;
         }
         .field{
             width:100%;
@@ -153,17 +158,70 @@
             position:absolute;
             top:0;
             right:0;
+            z-index: 1000;
         }
         .button-add{
             position:absolute;
             top:3px;
             left:0;
         }
-        .cancel1, .upColor{
+        .cancel1, .upColor, .cancel2, .upCategory{
             display:none;
         }
         .box-content{
             display:none;
+        }
+        .colorFcode{
+            display:none;
+        }
+        .box-verify{
+            position:absolute;
+            top:50%;
+            left:50%;
+            transform:translate(-50%,-50%);
+            width: 300px;
+            z-index:1100;
+            font-size:18px;
+        }
+        #boc{
+            position:absolute;
+            z-index: 1050;
+            width: 100%;
+            height:100%;
+            top:0;
+            right:0;
+            background:white;
+            display:none;
+        }
+        .form-add, .form-add-category{
+            width: 300px;
+            margin-bottom:15px;
+            display:none;
+            border:1px solid gray;
+            padding:2px 6px;
+        }
+        .form-add h2, .form-add-category h2{
+            text-align:center;
+            margin-top:0;
+            padding-top:0;
+        }
+        .categoryName{
+            text-align: center; /* Căn giữa văn bản */
+            font-size: 27px !important;   /* Kích cỡ chữ */
+            font-weight: bold; /* Đậm chữ */
+            color: black;      /* Màu chữ */
+            padding: 10px;     /* Khoảng cách bên trong */
+            box-sizing: border-box; /* Đả */
+            width:100%;
+            outline: none;
+            margin:0;
+        }
+        .field_category{
+            text-align:center;
+            color:gray;
+            margin-top:0;
+            font-size:13px;
+            padding-top:0;
         }
     </style>
     <div class="big-container">
@@ -177,13 +235,11 @@
                 <div id="button-editDescriptionBusiness">Edit</div>
             </div>
             <textarea id="myTextarea" readonly><?php echo $business[0]['description'] ; ?></textarea>
-            <h2>Chart</h2>
-            <canvas id="barChart" width="400" height="200"></canvas>
             <div class="description">
                 <h2>Color</h2>
-                <div id="button-editColor">View more</div>
+                <button type="button" id="button-editColor">View more</button>
             </div>
-            <div class="show">
+            <div class="show container-color">
                 <?php if (count($color)>0) :
                 $n=1;
                 ?>
@@ -193,10 +249,10 @@
                     <p class="card-name"><?php echo $value['color_name']  ; ?></p>
                 </div>
                 <?php 
-                if($n==5){
+                if($n == 5){
                     break;
                 }
-                $n+1;
+                $n+=1;
                 }?>
                 <?php else : ?>
                     <p>Don't color</p>
@@ -204,9 +260,9 @@
             </div>
             <div class="description">
                 <h2>Categories</h2>
-                <div id="button-editCategories">View more</div>
+                <button type="button" id="button-editCategories">View more</button>
             </div>
-            <div class="show">
+            <div class="show container-category">
                 <?php if(count($categories)>0) :
                 $n=0;
                 ?>
@@ -224,30 +280,34 @@
                             <p> <?php echo $num ; ?> Available Item</p>
                         </div>
                     <?php
+                    if($n == 5){
+                        break;
+                    }
+                    $n+=1;
                 } ?>
                 <?php else : ?>
                     <p>Don't Category</p>
                 <?php endif ; ?>
             </div>
-            <div class="box-content">
+            <div class="box-content" >
+                    <div id="boc"></div>
+                    <div id="box-content"></div>
                     <button type="button" class="button-cancel">X</button>
                     <h1 class="title"><span>Color</span>
                         <button type="button" class="button-add" data-type="">Add</button>
                     </h1>
+                    <div id="box-addForm"></div>
                     <div class="box_containerCard">
                         <form class="box-card">
-                            <button type="button" class="button-cancelDetail" onclick="deleteColor()">X</button>
-                            <div class="card-color2" style="background-color: "></div>
+                            <button type="button" class="button-cancelDetail" onclick="deleteCategory()">X</button>
                             <div class="field">
-                                <span>Color Code:</span><input type="color" class="colorCode">
+                                <input type="text" placeholder="Category" value="name" required class="categoryName" readonly>
                             </div>
-                            <div class="field">
-                                <span>Color name: </span><input type="text" value="name" required class="colorName">
-                            </div>
+                            <p class="field_category"> <span class="num_category"></span>&nbsp;Available Item</p>
                             <div class="box-button">
-                                <button type="button" class="up1 up1" onclick="up1()">Update</button>
-                                <button type="button" class="cancel1 cancel1" onclick="cancel()">Cancel</button>
-                                <button type="button" class="upColor upColor" onclick="upColor()">Verify</button>
+                                <button type="button" class="up2 up2${color.color_id}" data-num="${color.color_id}">Update</button>
+                                <button type="button" class="cancel2 cancel2${color.color_id}" data-num="${color.color_id}">Cancel</button>
+                                <button type="button" class="upCategory upCategory${color.color_id}" data-num="${color.color_id}">Verify</button>
                             </div>
                         </form>
                     </div>

@@ -18,17 +18,36 @@ class ProductModel extends DModel
         $sql = "select * from color";
         return $this->db->select($sql);
     }
+    public function updateColor($data,$condition){
+        return $this->db->update("color",$data,$condition);
+    }
+    public function deleteColor($data){
+        $result = $this->db->delete('color', $data);
+        return $result;
+    }
+    public function addColor($data){
+        return $this->db->insert("color",$data);
+    }
     //all
     public function getProducts()
     {
         $sql = "select * from products";
         return $this->db->select($sql);
     }
-
+    public function addCategory($data){
+        return $this->db->insert("categories",$data);
+    }
     public function  getCatagories()
     {
         $sql = "select * from categories";
         return $this->db->select($sql);
+    }
+    public function deleteCategory($data){
+        $result = $this->db->delete('categories', $data);
+        return $result;
+    }
+    public function updateCategory($data,$condition){
+        return $this->db->update("categories",$data,$condition);
     }
     public function getProductColor()
     {

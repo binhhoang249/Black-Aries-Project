@@ -140,7 +140,6 @@ class AdminController extends controller
             echo "Invalid data!";
         }
     }
-<<<<<<< HEAD
     public function dashBoard(){
         $modelHome = self::model("HomeModel");
         $modelProduct = self::model("ProductModel");
@@ -150,8 +149,5 @@ class AdminController extends controller
         $data['products'] = $modelProduct->getProducts();
         self::view("Pages/AdminViews/DashBoard", $data); 
     }
-=======
-    
->>>>>>> origin
  }
 ?>

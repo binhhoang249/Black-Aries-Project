@@ -147,7 +147,137 @@ if ($condi =="getCategory"){
     }else{
         echo (json_encode(""));
     }
-} else if(isset($condi['action'])&&$condi['action']=="addCart"){
+} else if(isset($condi['action'])&&$condi['action']=="getColor"){
+    $model= new productModel();
+    $color = $model-> getColor();
+    if(!empty($color)){
+        echo (json_encode($color));
+    }else{
+        echo (json_encode(""));
+    }
+} else if(isset($condi['action'])&&$condi['action']=="addCategory"){
+    $model= new productModel();
+    $data=[];
+    if(!empty($condi['category_name'])){
+        $data['category_name']=$condi['category_name'];
+    }
+    if(!empty($data)){
+        $result = $model->addCategory($data);
+        if(!empty($result)){
+            echo (json_encode($result));
+        }else{
+            echo (json_encode(""));
+        }
+    }else{
+        echo (json_encode(""));
+    }
+}else if(isset($condi['action'])&&$condi['action']=="getCategories"){
+    $model= new productModel();
+    $categories = $model->getCatagories();
+    if(!empty($categories)){
+        echo (json_encode($categories));
+    }else{
+        echo (json_encode(""));
+    }
+}else if(isset($condi['action'])&&$condi['action']=="deleteCategory"){
+    $model= new productModel();
+    $category_id=$condi['category_id'];
+    if(!empty($category_id)){
+        $con="category_id = " . $category_id;
+        $res=$model->deleteCategory($con);
+        if(!empty($res)){
+            echo (json_encode($res));
+        }else{
+            echo (json_encode(""));
+        }
+    }else{
+        echo (json_encode(""));
+    }
+}else if(isset($condi['action'])&&$condi['action']=="updateCategory"){
+    $model= new productModel();
+    if(!empty($condi['category_name'])){
+        $data['category_name']=$condi['category_name'];
+    }
+    if(!empty($data)){
+        $con= "category_id = " . $condi['category_id'];
+        $result= $model->updateCategory($data, $con);
+        if(!empty($result)){
+            echo (json_encode($result));
+        }else{
+            echo (json_encode(""));
+        }
+    }else{
+        echo (json_encode(""));
+    }
+}else if(isset($condi['action'])&&$condi['action']=="getProducts"){
+    $model= new productModel();
+    $products = $model-> getProducts();
+    if(!empty($products)){
+        echo (json_encode($products));
+    }else{
+        echo (json_encode(""));
+    }
+}else if(isset($condi['action'])&&$condi['action']=="addColor"){
+    $model= new productModel();
+    $data=[];
+    if(!empty($condi['color_name'])){
+        $data['color_name']=$condi['color_name'];
+    }
+    if(!empty($condi['color_link'])){
+        $data['color_link']=$condi['color_link'];
+    }
+    if(!empty($data)){
+        $result = $model->addColor($data);
+        if(!empty($result)){
+            echo (json_encode($result));
+        }else{
+            echo (json_encode(""));
+        }
+    }else{
+        echo (json_encode(""));
+    }
+}else if(isset($condi['action'])&&$condi['action']=="updateColor"){
+    $model= new productModel();
+    if(!empty($condi['color_name'])){
+        $data['color_name']=$condi['color_name'];
+    }
+    if(!empty($condi['color_link'])){
+        $data['color_link']=$condi['color_link'];
+    }
+    if(!empty($data)){
+        $con= "color_id = " . $condi['color_id'];
+        $result= $model->updateColor($data, $con);
+        if(!empty($result)){
+            echo (json_encode($result));
+        }else{
+            echo (json_encode(""));
+        }
+    }else{
+        echo (json_encode(""));
+    }
+}else if(isset($condi['action'])&&$condi['action']=="deleteColor"){
+    $model= new productModel();
+    $color_id=$condi['color_id'];
+    if(!empty($color_id)){
+        $con="color_id = " . $color_id;
+        $res=$model->deleteColor($con);
+        if(!empty($res)){
+            echo (json_encode($res));
+        }else{
+            echo (json_encode(""));
+        }
+    }else{
+        echo (json_encode(""));
+    }
+}else if(isset($condi['action'])&&$condi['action']=="getProductColor"){
+    $model= new productModel();
+    $product_color = $model-> getProductColorAll();
+    if(!empty($product_color)){
+        echo (json_encode($product_color));
+    }else{
+        echo (json_encode(""));
+    }
+}else if(isset($condi['action'])&&$condi['action']=="addCart"){
     $model=new OrderModel();
     $idUseral = $_SESSION['userIDB']??0;
     if(!empty($idUseral)){
