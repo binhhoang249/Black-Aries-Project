@@ -1,34 +1,37 @@
 <?php
-class ProductController extends Controller {
-    public function detail($id) {
+class ProductController extends Controller
+{
+    public function detail($id)
+    {
         // Lấy model của Details
-        $idi=(int)$id;
+        $idi = (int)$id;
         $model = self::model("productModel");
         $data['product'] = $model->getProduct($idi);
         $data['product_color'] = $model->getProduct_color($idi);
-        $liProduct=$data['product_color'];
-        for($j=0;$j<count($liProduct)-1;$j++){
-            for( $i=0;$i<count($liProduct)-1-$j;$i++){
-                if($liProduct[$i]['defaultal']<$liProduct[$i+1]['defaultal']){
-                    $temp=$liProduct[$i];
-                    $liProduct[$i]=$liProduct[$i+1];
-                    $liProduct[$i+1]=$temp;
+        $liProduct = $data['product_color'];
+        for ($j = 0; $j < count($liProduct) - 1; $j++) {
+            for ($i = 0; $i < count($liProduct) - 1 - $j; $i++) {
+                if ($liProduct[$i]['defaultal'] < $liProduct[$i + 1]['defaultal']) {
+                    $temp = $liProduct[$i];
+                    $liProduct[$i] = $liProduct[$i + 1];
+                    $liProduct[$i + 1] = $temp;
                 }
             }
         }
-        $data['color']=$model-> getColor();
-        $data['product_color']=$liProduct;
+        $data['color'] = $model->getColor();
+        $data['product_color'] = $liProduct;
         // Trả về View và truyền dữ liệu
         self::view("Pages/ProductViews/Detail", $data);
     }
-    public function search() {
+    public function search()
+    {
         if (isset($_POST['categoryName']) && !empty(trim($_POST['categoryName']))) {
             $query = trim($_POST['categoryName']);
-    
+
             // Tạo model và tìm kiếm sản phẩm
             $model = self::model("productModel");
             $results = $model->searchProductsByCategoryName($query);  // Gọi phương thức tìm kiếm
-    
+
             // Kiểm tra nếu có kết quả tìm kiếm
             if ($results && !empty($results)) {
                 $data['products'] = $results;  // Gán sản phẩm tìm được vào data
@@ -40,17 +43,18 @@ class ProductController extends Controller {
             // Nếu không có query tìm kiếm
             $data['message'] = "Please enter a keyword to search.";  // Yêu cầu người dùng nhập từ khóa
         }
-    
+
         // Gửi dữ liệu vào view
         self::view("pages/productViews/searchResults", $data);
     }
 
-    public function filterProductsByPrice() {
+    public function filterProductsByPrice()
+    {
         // Lấy các tham số lọc từ form
         $categoryName = isset($_POST['categoryName']) ? $_POST['categoryName'] : '';
         $minPrice = isset($_POST['minPrice']) ? (int)$_POST['minPrice'] : 0;
         $maxPrice = isset($_POST['maxPrice']) ? (int)$_POST['maxPrice'] : 0;
-    
+
         // Gọi phương thức model để tìm kiếm sản phẩm với các tiêu chí lọc
         $model = $this->model("productModel");
         $filteredProducts = $model->searchProducts($categoryName, $minPrice, $maxPrice);
@@ -62,9 +66,8 @@ class ProductController extends Controller {
         $data['categoryName'] = $categoryName;
         $data['minPrice'] = $minPrice;
         $data['maxPrice'] = $maxPrice;
-    
+
         // Hiển thị kết quả lọc
         $this->view("pages/productViews/filterResult", $data);
+    }
 }
-}
-?>
