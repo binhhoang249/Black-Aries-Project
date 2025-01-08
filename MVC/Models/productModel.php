@@ -139,4 +139,14 @@ class ProductModel extends DModel
         $data[':product_id'] = (int)$productId;
         return $this->db->select($sql, $data);
     }
+    public function addProduct($data)
+    {
+        $this->db->insert("Products", $data);
+        return $this->db->lastInsertId();
+    }
+
+    public function addProductColor($data)
+    {
+        return $this->db->insert("Product_color", $data);
+    }
 }

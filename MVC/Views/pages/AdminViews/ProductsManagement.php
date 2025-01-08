@@ -67,6 +67,66 @@
             </table>
         </section>
     </div>
+    <!-- Modal to add new product -->
+    <div id="addProductModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeAddProductModal()">&times;</span>
+            <h2>Add New Product</h2>
+            <form id="addProductForm" method="POST" action="http://localhost/Black-Aries-Project/AdminController/addProduct" enctype="multipart/form-data">
+                <label for="productName">Product Name:</label>
+                <input type="text" id="productName" name="product_name" placeholder="Enter product name" required>
+
+                <label for="productDescription">Product Description:</label>
+                <textarea id="productDescription" name="product_description" placeholder="Enter product description" required></textarea>
+
+                <label for="productCategory">Category:</label>
+                <select id="productCategory" name="product_category">
+                    <option value="1">Category 1</option>
+                    <option value="2">Category 2</option>
+                </select>
+
+                <label for="productStatus">Status:</label>
+                <select id="productStatus" name="product_status">
+                    <option value="1">Active</option>
+                    <option value="0">Inactive</option>
+                </select>
+
+                <label for="productDiscount">Discount (%):</label>
+                <input type="number" id="productDiscount" name="product_discount" min="0" max="100">
+
+                <!-- Colors section -->
+                <div id="colorsContainer">
+                    <h3>Colors</h3>
+                    <div class="color-row">
+                        <label for="color">Color:</label>
+                        <select class="colorSelect" name="color[]">
+                            <option value="1">Red</option>
+                            <option value="2">Blue</option>
+                            <option value="3">Green</option>
+                        </select>
+
+                        <label for="quantity">Quantity:</label>
+                        <input type="number" class="quantityInput" name="quantity[]" min="0" required>
+
+                        <label for="price">Price:</label>
+                        <input type="number" class="priceInput" name="price[]" min="0" required>
+
+                        <label for="default">Default:</label>
+                        <select class="defaultSelect" name="default[]">
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select>
+
+                        <label for="image">Image:</label>
+                        <input type="file" class="imageInput" name="image[]" accept="image/*">
+                    </div>
+                </div>
+
+                <button type="button" onclick="addColorRow()">Add Another Color</button>
+                <button type="submit">Save Product</button>
+            </form>
+        </div>
+    </div>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const rows = document.querySelectorAll('tbody tr');
@@ -166,6 +226,29 @@
                 const productId = row.querySelector('td:nth-child(1)').textContent.toLowerCase();
                 row.style.display = productName.includes(searchValue) || productId.includes(searchValue) ? 'table-row' : 'none';
             });
+        }
+        // Open modal
+        function openAddProductModal() {
+            document.getElementById('addProductModal').style.display = 'block';
+        }
+
+        // Close modal
+        function closeAddProductModal() {
+            document.getElementById('addProductModal').style.display = 'none';
+        }
+
+        // Add a new color row
+        function addColorRow() {
+            const container = document.getElementById('colorsContainer');
+            const colorRow = document.querySelector('.color-row').cloneNode(true);
+
+            // Clear input values in the cloned row
+            colorRow.querySelector('.quantityInput').value = '';
+            colorRow.querySelector('.priceInput').value = '';
+            colorRow.querySelector('.imageInput').value = '';
+            colorRow.querySelector('.defaultSelect').value = '0';
+
+            container.appendChild(colorRow);
         }
     </script>
 </body>

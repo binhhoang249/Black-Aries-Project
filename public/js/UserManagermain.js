@@ -20,7 +20,15 @@ async function getAllOneTable(actional){
         return null; 
     }
 }
-window.detailView = function (id){
+
+console.log("-----------------------------");
+let buttonDetail = document.querySelectorAll('.detail-button');
+for(let button of buttonDetail){
+button.addEventListener('click',function(event){
+    let id = event.target.getAttribute('data-id');
+    detailView(id);
+})};
+function detailView(id){
     console.log("idddd"+id);
     (async ()=>{
         console.log("sssssssssss")

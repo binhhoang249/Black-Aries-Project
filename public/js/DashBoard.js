@@ -429,6 +429,7 @@ verifyAdd.addEventListener('click', function(){
     if(!nameColor){
         alert("Please enter color's name");
     }else{
+        console.log("----------------->"+ codeColor);
         let body = {action : "addColor", color_name : nameColor, color_link : codeColor};
         (async ()=>{
             let res = await updateAllOneTable(body);
