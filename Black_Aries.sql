@@ -1,3 +1,4 @@
+drop database black_aries;
 CREATE DATABASE Black_Aries;
 USE Black_Aries; 
 CREATE TABLE Categories (
@@ -14,7 +15,8 @@ CREATE TABLE Categories (
 drop database black_aries
 select * from Users;
 select * from Product_color;
-select * from Orders
+select * from Orders;
+select * from Address_Order;
 */
 CREATE TABLE Users (
     user_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -27,6 +29,12 @@ CREATE TABLE Users (
     avatar VARCHAR(135),
     role INT,
     address text
+);
+create table Address_Order(
+	address_order_id int PRIMARY KEY AUTO_INCREMENT,
+    address varchar(235),
+    user_id int,
+    FOREIGN KEY (user_id) REFERENCES Users(user_id) on update cascade on delete cascade
 );
 INSERT INTO Users (fullname, date_of_birth, phone, email, username, password, avatar, role, address)
 VALUES
@@ -136,8 +144,10 @@ CREATE TABLE Orders (
     payment_id INT,
     order_date DATE,
     quantity INT,
+    address varchar(235),
     price DECIMAL(10, 2),
     status INT NOT NULL, 
+    FOREIGN KEY (user_id) REFERENCES Users(user_id) on update cascade on delete cascade,
     FOREIGN KEY (payment_id) REFERENCES payment(payment_id) on update cascade on delete cascade
 );
 

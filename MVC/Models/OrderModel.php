@@ -27,6 +27,19 @@ class OrderModel extends DModel
         $sql = "select * from payment";
         return $this->db->select($sql);
     }
+    public function getAddress_OrderBy_User_id($user_id){
+        $sql = "select * from Address_Order where user_id = :user_id";
+        $data[':user_id'] = $user_id;
+        return $this->db->select($sql,$data);
+    }
+    public function addAddress_Order($data){
+        $result = $this->db->insert("Address_Order", $data);
+        return $result;
+    }
+    public function updateAddress_Order($data,$condition){
+        $result = $this->db->update("Address_Order", $data,$condition);
+        return $result;
+    }
     public function getAllOrders()
     {
         $sql = "SELECT * FROM Orders"; // Thay đổi câu truy vấn phù hợp với cấu trúc bảng của bạn
