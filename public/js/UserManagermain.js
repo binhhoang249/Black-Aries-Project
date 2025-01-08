@@ -20,7 +20,7 @@ async function getAllOneTable(actional){
         return null; 
     }
 }
-function detailView(id){
+window.detailView = function (id){
     console.log("idddd"+id);
     (async ()=>{
         console.log("sssssssssss")

@@ -182,6 +182,8 @@ class OrderController extends Controller
                 $adr = $_POST['address_user'] ?? "";
                 $pho = $_POST['phone_user'] ?? "";
                 $condi = "user_id = " . $_SESSION['userIDB'];
+//đây///////////////////////////////////////////////////////////////////////////////////
+                //
                 $model1->setUser("Users", ['address' => $adr, 'phone' => $pho], $condi);
 
                 // Chuyển hướng sau khi xử lý xong
@@ -231,6 +233,8 @@ class OrderController extends Controller
                 $adr = $_POST['address_user'] ?? "";
                 $pho = $_POST['phone_user'] ?? "";
                 $condi = "user_id = " . $_SESSION['userIDB'];
+                //đây /////////////////////////////////////////////////////////////////////////////////
+
                 $model1->setUser("Users", ['address' => $adr, 'phone' => $pho], $condi);
 
                 // Chuyển hướng sau khi xử lý xong

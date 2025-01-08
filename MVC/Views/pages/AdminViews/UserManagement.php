@@ -45,7 +45,7 @@
                                 <td><?php echo $user['phone']; ?></td>
                                 <td><?php echo $user['address']; ?></td>
                                 <td class="td_action">
-                                    <button onclick="detailView(<?php echo $user['user_id']; ?>)">Detail</button>
+                                    <button type="button" onclick="detailView(<?php echo $user['user_id']; ?>)">Detail</button>
                                     <form action = "" method="POST" style="display:none">
                                         <input type="number" name="user_id" readonly value="<?php echo $user['user_id']; ?>">
                                         <button type="submit" class="delete_button" >Delete</button>
