@@ -51,6 +51,30 @@ class AdminController extends controller
         }
         self::view("Pages/AdminViews/UserManagement", $data);
     }
+    public function dashBoard(){
+        $modelHome = self::model("HomeModel");
+        $modelProduct = self::model("ProductModel");
+        $data['color'] = $modelProduct->getColor();
+        $data['categories'] = $modelProduct->getCatagories();
+        $data['business'] = $modelHome->getInformationAboutUs();
+        $data['products'] = $modelProduct->getProducts();
+        self::view("Pages/AdminViews/DashBoard", $data); 
+    }
+    public function productManagement()
+    {
+        $model = self::model('ProductModel');
+        $products = $model->getProducts();
+        $data['products'] = [];
+
+        foreach ($products as $product) {
+            $productDetails = $model->getProductDetails($product['product_id']);
+            if (!empty($productDetails)) {
+                $data['products'][] = $productDetails[0]; // Assuming getProductDetails returns an array of results
+            }
+        }
+
+        self::view("Pages/AdminViews/ProductsManagement", $data);
+    }
 
     public function orderManagement()
     {
@@ -65,7 +89,7 @@ class AdminController extends controller
 
         self::view("Pages/AdminViews/orderManagement", $data);
     }
-
+    
     public function searchOrder()
     {
         if (isset($_POST['searchorder']) && !empty(trim($_POST['searchorder']))) {
@@ -86,12 +110,11 @@ class AdminController extends controller
             self::view("Pages/AdminViews/orderManagement", $data);
         }
     }
-    public function Order_details($order_id)
-    {
+    public function Order_details($order_id) {
         // Gọi model để lấy chi tiết đơn hàng
         $model = self::model("OrderModel");
         $orderDetails = $model->orderdetails($order_id); // Truyền order_id vào phương thức model
-
+    
         // Kiểm tra nếu có dữ liệu
         if (!empty($orderDetails)) {
             $data = ['result' => $orderDetails];
@@ -107,20 +130,21 @@ class AdminController extends controller
         // Lấy giá trị 'order_id' và 'status' từ request (POST)
         $orderId = $_POST['order_id'] ?? null;
         $status = $_POST['status'] ?? null;
-
+    
         if ($orderId && $status) {
             // Tạo đối tượng model để làm việc với dữ liệu
             $orderModel = self::model("OrderModel");
-
+    
             // Gọi phương thức updateOrderStatus từ model để cập nhật trạng thái
             $result = $orderModel->updateOrderStatus($orderId, $status);
-
+    
             if ($result) {
                 // Sử dụng đúng đường dẫn đến view thông báo
-                self::view("Pages/AdminViews/secuss_notification", $result);
+                self::view("Pages/AdminViews/secuss_notification",$result);
             } else {
                 echo "Lỗi";
             }
+    
         } else {
             echo "Dữ liệu không hợp lệ!";
         }
@@ -140,13 +164,11 @@ class AdminController extends controller
         $quantities = $_POST['quantity'] ?? [];
         $prices = $_POST['price'] ?? [];
         $defaults = $_POST['default'] ?? [];
-        $data = [
-            'product_name' => $productName,
-            'description' => $productDescription,
-            'category_id' => $productCategory,
-            'status' => $productStatus,
-            'discount' => $productDiscount,
-        ];
+        $data = ['product_name' => $productName,
+                'description' => $productDescription,
+                'category_id' => $productCategory,
+                'status' => $productStatus,
+                'discount' => $productDiscount,]; 
         print_r($data);
         if ($productName && $productCategory) {
             $productId = $model->addProduct([
@@ -168,7 +190,7 @@ class AdminController extends controller
                 echo "------->";
                 print_r($data1);
             }
-
+            
             foreach ($colors as $index => $color) {
                 $model->addProductColor([
                     'product_id' => $productId,
@@ -185,4 +207,5 @@ class AdminController extends controller
             echo "Invalid product data!";
         }
     }
-}
+ }
+?>

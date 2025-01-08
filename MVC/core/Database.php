@@ -20,7 +20,6 @@ class Database extends PDO {
         $values = ":" . implode(', :',array_keys($data));
 
         $sql = "insert into $table_jobs($keys) values($values)";
-        var_dump($sql); 
         $statement = $this->prepare($sql);
 
         foreach ($data as $key => $value) {
