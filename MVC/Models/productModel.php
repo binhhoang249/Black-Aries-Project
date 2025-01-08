@@ -3,67 +3,67 @@ class ProductModel extends DModel
 {
     public function getProduct($id)
     {
-        $sql = "SELECT * from products where product_id = :id";
+        $sql = "SELECT * from Products where product_id = :id";
         $data[':id'] = (int)$id;
         return $this->db->select($sql, $data);
     }
     public function getProduct_color($id)
     {
-        $sql = "SELECT * from Product_color where product_id = :id";
+        $sql = "SELECT * from Product_colors where product_id = :id";
         $data[':id'] = (int)$id;
         return $this->db->select($sql, $data);
     }
     public function  getColor()
     {
-        $sql = "select * from color";
+        $sql = "select * from Colors";
         return $this->db->select($sql);
     }
     public function updateColor($data,$condition){
-        return $this->db->update("color",$data,$condition);
+        return $this->db->update("Colors",$data,$condition);
     }
     public function deleteColor($data){
-        $result = $this->db->delete('color', $data);
+        $result = $this->db->delete('Colors', $data);
         return $result;
     }
     public function addColor($data){
-        return $this->db->insert("color",$data);
+        return $this->db->insert("Colors",$data);
     }
     //all
     public function getProducts()
     {
-        $sql = "select * from products";
+        $sql = "select * from Products";
         return $this->db->select($sql);
     }
     public function addCategory($data){
-        return $this->db->insert("categories",$data);
+        return $this->db->insert("Categories",$data);
     }
     public function  getCatagories()
     {
-        $sql = "select * from categories";
+        $sql = "select * from Categories";
         return $this->db->select($sql);
     }
     public function deleteCategory($data){
-        $result = $this->db->delete('categories', $data);
+        $result = $this->db->delete('Categories', $data);
         return $result;
     }
     public function updateCategory($data,$condition){
-        return $this->db->update("categories",$data,$condition);
+        return $this->db->update("Categories",$data,$condition);
     }
     public function getProductColor()
     {
-        $sql = "select * from Product_color where defaultal = :defaultala and quantity > :quantity";
+        $sql = "select * from Product_colors where defaultal = :defaultala and quantity > :quantity";
         $data[':defaultala'] = 1;
         $data[':quantity'] = 0;
         return $this->db->select($sql, $data);
     }
     public function getProductColorAll()
     {
-        $sql = "select * from Product_color";
+        $sql = "select * from Product_colors";
         return $this->db->select($sql);
     }
     public function updateProduct_Color($data, $condi)
     {
-        $result = $this->db->update("Product_color", $data, $condi);
+        $result = $this->db->update("Product_colors", $data, $condi);
         return $result;
     }
     public function getAllOrdersWithDetails($userId)
@@ -82,11 +82,11 @@ class ProductModel extends DModel
                     pc.price AS product_price,
                     p.product_name
                 FROM 
-                    orders o
+                    Orders o
                 JOIN 
-                    product_color pc ON o.product_color_id = pc.product_color_id
+                    Product_colors pc ON o.product_color_id = pc.product_color_id
                 JOIN 
-                    products p ON pc.product_id = p.product_id
+                    Products p ON pc.product_id = p.product_id
                 WHERE 
                     o.user_id = :userId";
         $data[':userId'] = $userId;
@@ -129,11 +129,11 @@ class ProductModel extends DModel
                     pc.price, 
                     pc.defaultal
                 FROM 
-                    products p
+                    Products p
                 LEFT JOIN 
-                    Product_color pc ON p.product_id = pc.product_id
+                    Product_colors pc ON p.product_id = pc.product_id
                 LEFT JOIN 
-                    Color c ON pc.color_id = c.color_id
+                    Colors c ON pc.color_id = c.color_id
                 WHERE 
                     p.product_id = :product_id";
         $data[':product_id'] = (int)$productId;
@@ -147,6 +147,6 @@ class ProductModel extends DModel
 
     public function addProductColor($data)
     {
-        return $this->db->insert("Product_color", $data);
+        return $this->db->insert("Product_colors", $data);
     }
 }
