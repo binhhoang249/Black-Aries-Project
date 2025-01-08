@@ -51,7 +51,15 @@ class AdminController extends controller
         }
         self::view("Pages/AdminViews/UserManagement", $data);
     }
-
+    public function dashBoard(){
+        $modelHome = self::model("HomeModel");
+        $modelProduct = self::model("ProductModel");
+        $data['color'] = $modelProduct->getColor();
+        $data['categories'] = $modelProduct->getCatagories();
+        $data['business'] = $modelHome->getInformationAboutUs();
+        $data['products'] = $modelProduct->getProducts();
+        self::view("Pages/AdminViews/DashBoard", $data); 
+    }
     public function productManagement()
     {
         $model = self::model('ProductModel');
@@ -81,6 +89,7 @@ class AdminController extends controller
 
         self::view("Pages/AdminViews/orderManagement", $data);
     }
+    
     public function searchOrder()
     {
         if (isset($_POST['searchorder']) && !empty(trim($_POST['searchorder']))) {
@@ -89,7 +98,7 @@ class AdminController extends controller
             $model = self::model("OrderModel");
             $results = $model->searchOrders($query);
         } else {
-            echo "Invalid or empty search keyword!";
+            echo "Từ khóa tìm kiếm không hợp lệ hoặc trống!";
             return;
         }
         if ($results && !empty($results)) {
@@ -110,7 +119,7 @@ class AdminController extends controller
         if (!empty($orderDetails)) {
             $data = ['result' => $orderDetails];
         } else {
-            $data = ['result' => null, 'message' => 'No order found.'];
+            $data = ['result' => null, 'message' => 'Không tìm thấy đơn hàng.'];
         }
         // Truyền dữ liệu vào view
         self::view("Pages/AdminViews/Orderdetails", $data);
@@ -133,21 +142,70 @@ class AdminController extends controller
                 // Sử dụng đúng đường dẫn đến view thông báo
                 self::view("Pages/AdminViews/secuss_notification",$result);
             } else {
-                echo "Error";
+                echo "Lỗi";
             }
     
         } else {
-            echo "Invalid data!";
+            echo "Dữ liệu không hợp lệ!";
         }
     }
-    public function dashBoard(){
-        $modelHome = self::model("HomeModel");
-        $modelProduct = self::model("ProductModel");
-        $data['color'] = $modelProduct->getColor();
-        $data['categories'] = $modelProduct->getCatagories();
-        $data['business'] = $modelHome->getInformationAboutUs();
-        $data['products'] = $modelProduct->getProducts();
-        self::view("Pages/AdminViews/DashBoard", $data); 
+
+    public function addProduct()
+    {
+        echo 123;
+        $model = self::model('ProductModel');
+
+        $productName = $_POST['product_name'] ?? null;
+        $productDescription = $_POST['product_description'] ?? null;
+        $productCategory = $_POST['product_category'] ?? null;
+        $productStatus = $_POST['product_status'] ?? null;
+        $productDiscount = $_POST['product_discount'] ?? null;
+        $colors = $_POST['color'] ?? [];
+        $quantities = $_POST['quantity'] ?? [];
+        $prices = $_POST['price'] ?? [];
+        $defaults = $_POST['default'] ?? [];
+        $data = ['product_name' => $productName,
+                'description' => $productDescription,
+                'category_id' => $productCategory,
+                'status' => $productStatus,
+                'discount' => $productDiscount,]; 
+        print_r($data);
+        if ($productName && $productCategory) {
+            $productId = $model->addProduct([
+                'product_name' => $productName,
+                'description' => $productDescription,
+                'category_id' => $productCategory,
+                'status' => $productStatus,
+                'discount' => $productDiscount,
+            ]);
+            foreach ($colors as $index => $color) {
+                $data1 = [
+                    'product_id' => $productId,
+                    'color_id' => $color,
+                    'quantity' => $quantities[$index] ?? 0,
+                    'price' => $prices[$index] ?? 0,
+                    'defaultal' => $defaults[$index] ?? 0,
+                    'image' => $_FILES['image']['name'][$index] ?? null
+                ];
+                echo "------->";
+                print_r($data1);
+            }
+            
+            foreach ($colors as $index => $color) {
+                $model->addProductColor([
+                    'product_id' => $productId,
+                    'color_id' => $color,
+                    'quantity' => $quantities[$index] ?? 0,
+                    'price' => $prices[$index] ?? 0,
+                    'defaultal' => $defaults[$index] ?? 0,
+                    'image' => $_FILES['image']['name'][$index] ?? null
+                ]);
+            }
+
+            header("http://localhost/Black-Aries-Project/AdminController/productManagement?position=1");
+        } else {
+            echo "Invalid product data!";
+        }
     }
  }
 ?>
