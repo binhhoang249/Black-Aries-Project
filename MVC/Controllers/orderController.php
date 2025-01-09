@@ -177,18 +177,18 @@ class OrderController extends Controller
                         'order_date' => $day,
                         'payment_id' => $idpp,
                         'quantity' => $quantityCurrent,
-                        'address'=> $adr
+                        'address' => $adr
                     ];
                     $model2->addCart($davi);
                 }
                 $pho = $_POST['phone_user'] ?? "";
                 $condi = "user_id = " . $_SESSION['userIDB'];
                 $address_order = $model2->getAddress_OrderBy_User_id($id);
-                if(count($address_order)<1){
-                    $model2->addAddress_Order(['address' => $adr,'user_id'=>$id]);
-                }else{
+                if (count($address_order) < 1) {
+                    $model2->addAddress_Order(['address' => $adr, 'user_id' => $id]);
+                } else {
                     $condition = "address_order_id = " . $address_order[0]['address_order_id'];
-                    $model2->updateAddress_Order(['address' => $adr],$condition);
+                    $model2->updateAddress_Order(['address' => $adr], $condition);
                 }
                 $model1->setUser("Users", ['phone' => $pho], $condi);
 
@@ -232,7 +232,7 @@ class OrderController extends Controller
                         $idpp = $_POST['pay'] ?? 1;
                         $olPrice = (int)$product_col['price'];
                         $price = ($olPrice - ($olPrice * ($pro_de['discount']) / 100)) * $value['quantity'];
-                        $davi = ['price' => $price, 'status' => 2, 'order_date' => $day, 'payment_id' => $idpp, 'address'=>$adr];
+                        $davi = ['price' => $price, 'status' => 2, 'order_date' => $day, 'payment_id' => $idpp, 'address' => $adr];
                         $condi = "user_id = " . $_SESSION['userIDB'] . " and order_id = " . $value['order_id'];
                         $model2->updateCart("Orders", $davi, $condi);
                     }
@@ -242,11 +242,11 @@ class OrderController extends Controller
                 $condi = "user_id = " . $_SESSION['userIDB'];
                 //đây /////////////////////////////////////////////////////////////////////////////////
                 $address_order = $model2->getAddress_OrderBy_User_id($id);
-                if(count($address_order)<1){
-                    $model2->addAddress_Order(['address' => $adr,'user_id'=>$id]);
-                }else{
+                if (count($address_order) < 1) {
+                    $model2->addAddress_Order(['address' => $adr, 'user_id' => $id]);
+                } else {
                     $condition = "address_order_id = " . $address_order[0]['address_order_id'];
-                    $model2->updateAddress_Order(['address' => $adr],$condition);
+                    $model2->updateAddress_Order(['address' => $adr], $condition);
                 }
                 $model1->setUser("Users", ['phone' => $pho], $condi);
                 // Chuyển hướng sau khi xử lý xong
