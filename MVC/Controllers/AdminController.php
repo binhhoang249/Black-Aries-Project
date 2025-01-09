@@ -52,13 +52,7 @@ class AdminController extends controller
         self::view("Pages/AdminViews/UserManagement", $data);
     }
     public function dashBoard(){
-        $modelHome = self::model("HomeModel");
-        $modelProduct = self::model("ProductModel");
-        $data['color'] = $modelProduct->getColor();
-        $data['categories'] = $modelProduct->getCatagories();
-        $data['business'] = $modelHome->getInformationAboutUs();
-        $data['products'] = $modelProduct->getProducts();
-        self::view("Pages/AdminViews/DashBoard", $data); 
+        self::view("Pages/AdminViews/DashBoard"); 
     }
     public function productManagement()
     {

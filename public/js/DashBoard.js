@@ -195,12 +195,14 @@ function categoryDetailView(){
                 document.getElementById('button-box2-verify2').addEventListener('click',function(){
                     let id1 = document.getElementById('button-box2-verify2').dataset.num;
                     let body = {action : "deleteCategory", category_id : id1};
-                    let res = updateAllOneTable(body);
-                    if(res){
-                        document.getElementById('boc').style.display = "none";
-                        document.getElementById('box-content').innerHTML="";
-                        categoryDetailView();
-                    }
+                    (async ()=>{
+                        let res = await updateAllOneTable(body);
+                        if(res){   
+                            document.getElementById('boc').style.display = "none";
+                            document.getElementById('box-content').innerHTML="";
+                            categoryDetailView();
+                        }
+                    })()
                 })
             })
         })
@@ -235,9 +237,12 @@ function categoryDetailView(){
                 let classa= ".categoryName" + id;
                 let name = document.querySelector(classa).value;
                 let body = {action : "updateCategory", category_name : name, category_id : id};
-                let res = updateAllOneTable(body);
-                console.log(res);
-                cancel2(id);
+                (async ()=>{
+                    let res = await updateAllOneTable(body);
+                    if(res){   
+                        cancel2(id);
+                    }
+                })()
             })
         })
         showInterfaceColor();
@@ -300,12 +305,15 @@ function colorDetailView(){
                     document.getElementById('button-box-verify2').addEventListener('click',function(){
                         let id1 = document.getElementById('button-box-verify2').dataset.num;
                         let body = {action : "deleteColor", color_id : id1};
-                        let res = updateAllOneTable(body);
-                        if(res){
-                            document.getElementById('boc').style.display = "none";
-                            document.getElementById('box-content').innerHTML="";
-                            colorDetailView();
-                        }
+                        (async ()=>{
+                            let res = await updateAllOneTable(body);
+                            console.log(res);
+                            if(res){   
+                                document.getElementById('boc').style.display = "none";
+                                document.getElementById('box-content').innerHTML="";
+                                colorDetailView();
+                            }
+                        })()
                     })
                 })()
             })
@@ -344,11 +352,15 @@ function colorDetailView(){
                 let classb = ".colorCode" + id;
                 let name = document.querySelector(classa).value;
                 let code = document.querySelector(classb).value;
-                console.log(code)
                 let body = {action : "updateColor", color_name : name, color_link : code, color_id : id};
-                let res = updateAllOneTable(body);
-                console.log(res);
-                cancel1(id);
+                (async ()=>{
+                    let res = await updateAllOneTable(body);
+                    console.log(res);
+                    if(res){   
+                        console.log(res);
+                        cancel1(id);
+                    }
+                })()
             })
         })
         showInterfaceColor();

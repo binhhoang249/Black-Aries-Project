@@ -124,7 +124,7 @@ class OrderController extends Controller
         $id = $_SESSION['userIDB'] ?? 0;
         $data['user'] = $model1->getUser($id);
         $data['payment'] = $model2->getPayment();
-
+        $data['address_order'] = $model2->getAddress_OrderBy_User_id($id);
         if (isset($_POST['cart'])) {
             $listP = explode(',', $_POST['valueCart']);
             $listCart = $model2->getCarts($_SESSION['userIDB']);
@@ -158,6 +158,7 @@ class OrderController extends Controller
                         }
                     }
                 }
+                $adr = $_POST['address_user'] ?? "";
                 if (!empty($pro_de)) {
                     $quantityCurrent = $_SESSION['fakeCart'][1];
                     $idproductColorCurrent = $_SESSION['fakeCart'][0];
@@ -175,20 +176,28 @@ class OrderController extends Controller
                         'status' => 2,
                         'order_date' => $day,
                         'payment_id' => $idpp,
-                        'quantity' => $quantityCurrent
+                        'quantity' => $quantityCurrent,
+                        'address'=> $adr
                     ];
                     $model2->addCart($davi);
                 }
-                $adr = $_POST['address_user'] ?? "";
                 $pho = $_POST['phone_user'] ?? "";
                 $condi = "user_id = " . $_SESSION['userIDB'];
-                $model1->setUser("Users", ['address' => $adr, 'phone' => $pho], $condi);
+                $address_order = $model2->getAddress_OrderBy_User_id($id);
+                if(count($address_order)<1){
+                    $model2->addAddress_Order(['address' => $adr,'user_id'=>$id]);
+                }else{
+                    $condition = "address_order_id = " . $address_order[0]['address_order_id'];
+                    $model2->updateAddress_Order(['address' => $adr],$condition);
+                }
+                $model1->setUser("Users", ['phone' => $pho], $condi);
 
                 // Chuyển hướng sau khi xử lý xong
                 header("Location: http://localhost/Black-Aries-Project/OrderController/orderManagement");
                 exit;
             } else {
                 $listCart = $model2->getCarts($_SESSION['userIDB']);
+                $adr = $_POST['address_user'] ?? "";
                 $rel = [];
                 foreach ($listP as $va) {
                     foreach ($listCart as $val) {
@@ -223,7 +232,7 @@ class OrderController extends Controller
                         $idpp = $_POST['pay'] ?? 1;
                         $olPrice = (int)$product_col['price'];
                         $price = ($olPrice - ($olPrice * ($pro_de['discount']) / 100)) * $value['quantity'];
-                        $davi = ['price' => $price, 'status' => 2, 'order_date' => $day, 'payment_id' => $idpp];
+                        $davi = ['price' => $price, 'status' => 2, 'order_date' => $day, 'payment_id' => $idpp, 'address'=>$adr];
                         $condi = "user_id = " . $_SESSION['userIDB'] . " and order_id = " . $value['order_id'];
                         $model2->updateCart("Orders", $davi, $condi);
                     }
@@ -231,8 +240,15 @@ class OrderController extends Controller
                 $adr = $_POST['address_user'] ?? "";
                 $pho = $_POST['phone_user'] ?? "";
                 $condi = "user_id = " . $_SESSION['userIDB'];
-                $model1->setUser("Users", ['address' => $adr, 'phone' => $pho], $condi);
-
+                //đây /////////////////////////////////////////////////////////////////////////////////
+                $address_order = $model2->getAddress_OrderBy_User_id($id);
+                if(count($address_order)<1){
+                    $model2->addAddress_Order(['address' => $adr,'user_id'=>$id]);
+                }else{
+                    $condition = "address_order_id = " . $address_order[0]['address_order_id'];
+                    $model2->updateAddress_Order(['address' => $adr],$condition);
+                }
+                $model1->setUser("Users", ['phone' => $pho], $condi);
                 // Chuyển hướng sau khi xử lý xong
                 header("Location: http://localhost/Black-Aries-Project/OrderController/orderManagement");
                 exit;

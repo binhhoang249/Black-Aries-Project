@@ -29,7 +29,7 @@
                         <br>
                         <div class="field-user">
                             <p>Adress</p>
-                            <input type="text" name="address_user" value="<?php echo $user[0]['address'] ;?>"  class="field_address" required>
+                            <input type="text" name="address_user" value="<?php echo !empty($address_order) ? $address_order[0]['address'] : "" ;?>"  class="field_address" required>
                         </div>
                         <br>
                         <br>

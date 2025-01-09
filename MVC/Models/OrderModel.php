@@ -24,8 +24,21 @@ class OrderModel extends DModel
     }
     public function getPayment()
     {
-        $sql = "select * from payment";
+        $sql = "select * from Payments";
         return $this->db->select($sql);
+    }
+    public function getAddress_OrderBy_User_id($user_id){
+        $sql = "select * from Address_Order where user_id = :user_id";
+        $data[':user_id'] = $user_id;
+        return $this->db->select($sql,$data);
+    }
+    public function addAddress_Order($data){
+        $result = $this->db->insert("Address_Order", $data);
+        return $result;
+    }
+    public function updateAddress_Order($data,$condition){
+        $result = $this->db->update("Address_Order", $data,$condition);
+        return $result;
     }
     public function getAllOrders()
     {
@@ -51,7 +64,7 @@ class OrderModel extends DModel
                     FROM 
                         orders o
                     JOIN 
-                        product_color pc ON o.product_color_id = pc.product_color_id
+                        Product_colors pc ON o.product_color_id = pc.product_color_id
                     JOIN 
                         products p ON pc.product_id = p.product_id
                     WHERE 
@@ -103,7 +116,7 @@ class OrderModel extends DModel
     JOIN 
         Users u ON o.user_id = u.user_id
     JOIN 
-        Product_color pc ON o.product_color_id = pc.product_color_id
+        Product_colors pc ON o.product_color_id = pc.product_color_id
     JOIN 
         Products p ON pc.product_id = p.product_id";
         return $this->db->select($sql);
@@ -136,7 +149,7 @@ class OrderModel extends DModel
                 JOIN 
                     Users u ON o.user_id = u.user_id
                 JOIN 
-                    Product_color pc ON o.product_color_id = pc.product_color_id
+                    Product_colors pc ON o.product_color_id = pc.product_color_id
                 JOIN 
                     Products p ON pc.product_id = p.product_id
                 WHERE ";
@@ -188,7 +201,7 @@ class OrderModel extends DModel
         JOIN 
             Users u ON o.user_id = u.user_id
         JOIN 
-            Product_color pc ON o.product_color_id = pc.product_color_id
+            Product_colors pc ON o.product_color_id = pc.product_color_id
         JOIN 
             Products p ON pc.product_id = p.product_id
         JOIN 
@@ -205,7 +218,7 @@ class OrderModel extends DModel
         $db = $this->db;
 
         // Tạo câu lệnh SQL với placeholder
-        $sql = "UPDATE orders SET status = :status WHERE order_id = :orderId";
+        $sql = "UPDATE Orders SET status = :status WHERE order_id = :orderId";
 
         // Chuẩn bị câu lệnh SQL
         $stmt = $db->prepare($sql);

@@ -20,6 +20,7 @@ async function getAllOneTable(actional){
         return null; 
     }
 }
+
 console.log("-----------------------------");
 let buttonDetail = document.querySelectorAll('.detail-button');
 for(let button of buttonDetail){
