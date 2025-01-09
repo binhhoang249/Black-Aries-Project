@@ -149,4 +149,10 @@ class ProductModel extends DModel
     {
         return $this->db->insert("Product_colors", $data);
     }
+
+    public function deleteProduct($condition)
+    {
+        $result = $this->db->delete('Products', $condition);
+        return $result;
+    }
 }

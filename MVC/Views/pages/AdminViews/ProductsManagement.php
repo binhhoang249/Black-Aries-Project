@@ -61,7 +61,7 @@
                                         <input type="hidden" name="product_id" value="<?php echo $product['product_id']; ?>">
                                         <button type="submit" class="btn btn-edit">Edit</button>
                                     </form>
-                                    <form action="/deleteProduct.php" method="POST" class="form-delete" onsubmit="return confirmDelete();">
+                                    <form action="http://localhost/Black-Aries-Project/AdminController/deleteProduct" method="POST" class="form-delete" onsubmit="return confirmDelete();">
                                         <input type="hidden" name="product_id" value="<?php echo $product['product_id']; ?>">
                                         <button type="submit" class="btn btn-delete">Delete</button>
                                     </form>
@@ -243,20 +243,6 @@
 
             container.appendChild(colorRow);
         }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            console.log("DOM fully loaded");
-            const deleteButtons = document.querySelectorAll('.btn-delete');
-            deleteButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    const productId = button.getAttribute('data-id');
-                    deleteProduct(productId);
-                });
-            });
-        });
-        const deleteProduct = (productId) => {
-            console.log('Deleting product with ID: ' + productId);
-        };
     </script>
 </body>
 

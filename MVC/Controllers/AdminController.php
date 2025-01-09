@@ -203,12 +203,16 @@ class AdminController extends controller
             echo "Invalid product data!";
         }
     }
-    public function deleteProduct($product_id)
+    public function deleteProduct()
     {
+        $id_product = $_POST['product_id'] ?? null;
+        echo $id_product;
+        $condition = "product_id = " . $id_product;
         $model = self::model('ProductModel');
-        $result = $model->deleteProduct($product_id);
+        $result = $model->deleteProduct($condition);
         if ($result) {
             header("Location: http://localhost/Black-Aries-Project/AdminController/productManagement?position=1");
+            echo "Success";
         } else {
             echo "Error";
         }
