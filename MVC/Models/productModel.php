@@ -149,4 +149,50 @@ class ProductModel extends DModel
     {
         return $this->db->insert("Product_colors", $data);
     }
+
+    public function deleteProduct($condition)
+    {
+        $result = $this->db->delete('Products', $condition);
+        return $result;
+    }
+    public function searchProductsByCategoryName($categoryName) {
+        // Câu truy vấn tìm sản phẩm theo tên thể loại
+        $sql = "
+            SELECT p.product_id, p.product_name, p.description, c.category_name, 
+                   pc.price, pc.image 
+            FROM products p
+            LEFT JOIN Product_colors pc ON p.product_id = pc.product_id
+            LEFT JOIN categories c ON p.category_id = c.category_id
+            WHERE LOWER(c.category_name) like LOWER(:categoryName)
+        ";
+    
+        $data = [':categoryName' => $categoryName];
+    
+        return $this->db->select($sql, $data);
+    }
+                    
+            // Method to search products by category name, price range, and include images
+            public function searchProducts($categoryName, $minPrice, $maxPrice) {
+                $sql = "
+                   SELECT p.product_id, p.product_name, p.description, c.category_name, 
+                   pc.price, pc.image 
+                FROM products p
+                LEFT JOIN Product_colors pc ON p.product_id = pc.product_id
+                LEFT JOIN categories c ON p.category_id = c.category_id
+                WHERE LOWER(c.category_name) LIKE LOWER(:categoryName)";
+                
+                // Prepare the data array with the parameters
+                $data = [':categoryName' => "%" . $categoryName . "%"];
+               
+                if ($minPrice > 0) {
+                    $sql .= " AND pc.price >= :minPrice";
+                    $data[':minPrice'] = $minPrice;
+                }
+                if ($maxPrice > 0) {
+                    $sql .= " AND pc.price <= :maxPrice";
+                    $data[':maxPrice'] = $maxPrice;
+                }
+               
+                return $this->db->select($sql, $data);
+            }
 }

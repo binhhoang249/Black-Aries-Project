@@ -57,8 +57,14 @@
                             <td><img src="http://localhost/Black-Aries-Project/public/images/products/<?php echo $product['image']; ?>" alt="Product Image" width="50"></td>
                             <td>
                                 <div class="btn-action">
-                                    <button class="btn btn-edit" onclick="editProduct(<?php echo $product['product_id']; ?>)">Edit</button>
-                                    <button class="btn btn-delete" onclick="deleteProduct(<?php echo $product['product_id']; ?>)">Delete</button>
+                                    <form action="/editProduct.php" method="GET" class="form-edit">
+                                        <input type="hidden" name="product_id" value="<?php echo $product['product_id']; ?>">
+                                        <button type="submit" class="btn btn-edit">Edit</button>
+                                    </form>
+                                    <form action="http://localhost/Black-Aries-Project/AdminController/deleteProduct" method="POST" class="form-delete" onsubmit="return confirmDelete();">
+                                        <input type="hidden" name="product_id" value="<?php echo $product['product_id']; ?>">
+                                        <button type="submit" class="btn btn-delete">Delete</button>
+                                    </form>
                                 </div>
                             </td>
                         </tr>
@@ -176,19 +182,6 @@
                 });
             });
         });
-        // Hàm chỉnh sửa sản phẩm
-        function editProduct(productId) {
-            alert('Edit product with ID: ' + productId);
-            // TODO: Redirect or open edit form
-        }
-
-        // Hàm xóa sản phẩm
-        function deleteProduct(productId) {
-            if (confirm('Are you sure you want to delete product with ID: ' + productId + '?')) {
-                // TODO: Gửi yêu cầu xóa sản phẩm tới server qua AJAX hoặc form
-                alert('Product with ID ' + productId + ' has been deleted.');
-            }
-        }
 
         // Hàm mở modal thêm sản phẩm
         function openAddProductModal() {
