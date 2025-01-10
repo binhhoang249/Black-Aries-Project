@@ -171,7 +171,6 @@ function findProductFcategory(type, callback) {
     });
 }
 function addToCart(){
-  console.log("sss")
   var cart= document.querySelectorAll('.addCart');
   cart.forEach(ob => {
     ob.addEventListener('click',function(){
@@ -183,7 +182,6 @@ function addToCart(){
         })
         .then((reponse)=>reponse.text())
         .then((data)=>{
-          console.log(data);
           data= JSON.parse(data);
           if(data=="userId"){
             alert("You neet to sign up to add product to your cart");

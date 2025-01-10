@@ -18,7 +18,7 @@ class AdminController extends controller
             //print_r($user);
             if (!empty($user) && $user['role'] == 1) {
                 if (password_verify($_POST['password'], $user['password'])) {
-                    header("Location: http://localhost/Black-Aries-Project/AdminController/productManagement?position=1");
+                    header("Location: http://localhost/Black-Aries-Project/AdminController/DashBoard?position=1");
                     echo ("good");
                 } else {
                     $error = "password";

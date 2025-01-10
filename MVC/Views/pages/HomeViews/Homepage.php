@@ -89,6 +89,9 @@
                             $n++;
                         }
                     }
+                    if($n==1){
+                        echo "<p>Không có sản phẩm nào!</p>";
+                    }
                 } else {
                     echo "<p>Không có sản phẩm nào!</p>";
                 }
@@ -131,6 +134,9 @@
                             $n++;
                         }
                     }
+                    if($n==1){
+                        echo "<p>Không có sản phẩm nào!</p>";
+                    }
                 } else {
                     echo "<p>Không có sản phẩm nào!</p>";
                 }
@@ -171,6 +177,9 @@
                             if ($n == 4) break;
                             $n++;
                         }
+                    }
+                    if($n==1){
+                        echo "<p>Không có sản phẩm nào!</p>";
                     }
                 } else {
                     echo "<p>Không có sản phẩm nào!</p>";
