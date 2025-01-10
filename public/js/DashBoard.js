@@ -50,7 +50,6 @@ showDescription();
 function showDescription(){
     (async ()=>{
         let bussiness = await getAllOneTable("getBussiness");
-        console.log(bussiness)
         textarea.value= bussiness[0].description;
         adjustTestArea();
     })()
@@ -79,7 +78,7 @@ buttonEditDescription.addEventListener('click', function(){
             if(res){
                 showDescription();
             }
-        })
+        })()
     }
 })
 //
@@ -87,6 +86,7 @@ showInterfaceColor();
 showInterfaceCategory();
 var viewColor = document.getElementById('button-editColor');
 var viewDetail = document.querySelector('.box-content');
+viewDetail.style.display = "none"
 var boxDetail= document.querySelector('.box_containerCard');
 viewColor.addEventListener('click',function(){
     if(viewDetail.style.display == "none"){
@@ -169,7 +169,6 @@ function categoryDetailView(){
         let buttonDelete = document.querySelectorAll('.deleteCategory');
         buttonDelete.forEach(button => {
             button.addEventListener('click', function(){
-                console.log("sssssssss")
                 let id = button.dataset.num;
                 let list=[];
                 for(let value of products){
@@ -212,7 +211,6 @@ function categoryDetailView(){
             up.addEventListener('click', function(){
                 let id = up.dataset.num;
                 let class1= ".up2" + id;
-                console.log(class1)
                 let class2 = ".cancel2" + id;
                 let class3 = ".upCategory" + id;
                 let class4 = ".categoryName" + id ;
@@ -277,7 +275,6 @@ function colorDetailView(){
         let buttonDelete = document.querySelectorAll('.deleteColor');
         buttonDelete.forEach(button => {
             button.addEventListener('click', function(){
-                console.log("sssssssss")
                 let id = button.dataset.num;
                 (async ()=>{
                     let products = await getAllOneTable("getProductColor");
@@ -307,7 +304,6 @@ function colorDetailView(){
                         let body = {action : "deleteColor", color_id : id1};
                         (async ()=>{
                             let res = await updateAllOneTable(body);
-                            console.log(res);
                             if(res){   
                                 document.getElementById('boc').style.display = "none";
                                 document.getElementById('box-content').innerHTML="";
@@ -324,7 +320,6 @@ function colorDetailView(){
             up.addEventListener('click', function(){
                 let id = up.dataset.num;
                 let class1= ".up1" + id;
-                console.log(class1)
                 let class2 = ".cancel1" + id;
                 let class3 = ".upColor" + id;
                 let class4 = ".colorFcode" + id ;
@@ -355,9 +350,7 @@ function colorDetailView(){
                 let body = {action : "updateColor", color_name : name, color_link : code, color_id : id};
                 (async ()=>{
                     let res = await updateAllOneTable(body);
-                    console.log(res);
                     if(res){   
-                        console.log(res);
                         cancel1(id);
                     }
                 })()
@@ -416,20 +409,16 @@ addButton.addEventListener('click',function(){
     let optionAdd = addButton.dataset.type;
     if(optionAdd == 1){
         let formAdd=document.querySelector('.form-add');
-        if(formAdd.style.display == "none"){
+        if(formAdd.style.display !== "block"){
             formAdd.style.display = "block";
-            console.log("ppp")
         }else{
-            console.log("sss")
             formAdd.style.display = "none";
         }
     }else if(optionAdd == 2){
         let formAdd=document.querySelector('.form-add-category');
-        if(formAdd.style.display == "none"){
+        if(formAdd.style.display !== "block"){
             formAdd.style.display = "block";
-            console.log("ppp")
         }else{
-            console.log("sss")
             formAdd.style.display = "none";
         }
     }
@@ -441,11 +430,9 @@ verifyAdd.addEventListener('click', function(){
     if(!nameColor){
         alert("Please enter color's name");
     }else{
-        console.log("----------------->"+ codeColor);
         let body = {action : "addColor", color_name : nameColor, color_link : codeColor};
         (async ()=>{
             let res = await updateAllOneTable(body);
-            console.log(res);
             if(res){
                 document.querySelector('.a-colorName').value = "";
                 colorDetailView();
@@ -463,7 +450,6 @@ verifyAdd2.addEventListener('click', function(){
         let body = {action : "addCategory", category_name : nameCategory};
         (async ()=>{
             let res = await updateAllOneTable(body);
-            console.log(res);
             if(res){
                 document.querySelector('.a-categoryName').value = "";
                 categoryDetailView();
