@@ -24,6 +24,7 @@
                 </div>
             </header>
 
+            ...
             <table>
                 <thead>
                     <tr>
@@ -32,11 +33,9 @@
                         <th scope="col">Timestamp</th>
                         <th scope="col">Category</th>
                         <th scope="col">Status</th>
-                        <th scope="col">Discount</th>
-                        <th scope="col">Color</th>
+                        <th scope="col">Colors</th>
                         <th scope="col">Quantity</th>
                         <th scope="col">Price</th>
-                        <th scope="col">Default</th>
                         <th scope="col">Image</th>
                         <th scope="col">Actions</th>
                     </tr>
@@ -49,12 +48,18 @@
                             <td><?php echo $product['time_stamp']; ?></td>
                             <td><?php echo $product['category_id']; ?></td>
                             <td><?php echo $product['status']; ?></td>
-                            <td><?php echo $product['discount']; ?>%</td>
-                            <td><?php echo $product['color_name']; ?></td>
-                            <td><?php echo $product['quantity']; ?></td>
-                            <td><?php echo $product['price']; ?></td>
-                            <td><?php echo $product['defaultal']; ?></td>
-                            <td><img src="http://localhost/Black-Aries-Project/public/images/products/<?php echo $product['image']; ?>" alt="Product Image" width="50"></td>
+                            <td>
+                                <select class="colorSelect" data-product-id="<?php echo $product['product_id']; ?>">
+                                    <?php foreach ($product['colors'] as $color): ?>
+                                        <option value="<?php echo $color['color_id']; ?>" data-quantity="<?php echo $color['quantity']; ?>" data-price="<?php echo $color['price']; ?>" data-image="<?php echo $color['image']; ?>">
+                                            <?php echo $color['color_name']; ?>
+                                        </option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </td>
+                            <td class="quantity"><?php echo $product['colors'][0]['quantity']; ?></td>
+                            <td class="price"><?php echo $product['colors'][0]['price']; ?></td>
+                            <td><img src="http://localhost/Black-Aries-Project/public/images/products/<?php echo $product['colors'][0]['image']; ?>" alt="Product Image" width="50"></td>
                             <td>
                                 <div class="btn-action">
                                     <form action="/editProduct.php" method="GET" class="form-edit">
@@ -78,7 +83,7 @@
         <div class="modal-content">
             <span class="close" onclick="closeAddProductModal()">&times;</span>
             <h2>Add New Product</h2>
-            <form id="addProductForm" method="POST" action="http://localhost/Black-Aries-Project/AdminController/addProduct" enctype="multipart/form-data">
+            <form id="addProductForm" method="POST" action="http://localhost/Black-Aries-Project/AdminController/addProduct" enctype="multipart/form-data" onsubmit="return validateForm()">
                 <label for="productName">Product Name:</label>
                 <input type="text" id="productName" name="product_name" placeholder="Enter product name" required>
 
@@ -87,8 +92,9 @@
 
                 <label for="productCategory">Category:</label>
                 <select id="productCategory" name="product_category">
-                    <option value="1">Category 1</option>
-                    <option value="2">Category 2</option>
+                    <?php foreach ($categories as $category): ?>
+                        <option value="<?php echo $category['category_id']; ?>"><?php echo $category['category_name']; ?></option>
+                    <?php endforeach; ?>
                 </select>
 
                 <label for="productStatus">Status:</label>
@@ -105,10 +111,10 @@
                     <h3>Colors</h3>
                     <div class="color-row">
                         <label for="color">Color:</label>
-                        <select class="colorSelect" name="color[]">
-                            <option value="1">Red</option>
-                            <option value="2">Blue</option>
-                            <option value="3">Green</option>
+                        <select class="colorSelect" name="color[]" required>
+                            <?php foreach ($colors as $color): ?>
+                                <option value="<?php echo $color['color_id']; ?>"><?php echo $color['color_name']; ?></option>
+                            <?php endforeach; ?>
                         </select>
 
                         <label for="quantity">Quantity:</label>
@@ -124,16 +130,83 @@
                         </select>
 
                         <label for="image">Image:</label>
-                        <input type="file" class="imageInput" name="image[]" accept="image/*">
+                        <input type="file" class="imageInput" name="image[]" accept="image/*" required>
                     </div>
                 </div>
 
                 <button type="button" onclick="addColorRow()">Add Another Color</button>
                 <button type="submit">Save Product</button>
             </form>
+
         </div>
     </div>
     <script>
+        function validateForm() {
+            const productName = document.getElementById('productName').value;
+            const colors = document.querySelectorAll('.colorSelect');
+            const quantities = document.querySelectorAll('.quantityInput');
+            const prices = document.querySelectorAll('.priceInput');
+            const images = document.querySelectorAll('.imageInput');
+            let errorMessage = '';
+
+            // Kiểm tra tên sản phẩm
+            if (!productName) {
+                errorMessage += 'Product name is required.\n';
+            }
+
+            // Kiểm tra màu sắc
+            colors.forEach((color, index) => {
+                if (!color.value) {
+                    errorMessage += `Color is required for row ${index + 1}.\n`;
+                }
+            });
+
+            // Kiểm tra số lượng
+            quantities.forEach((quantity, index) => {
+                if (!quantity.value || quantity.value <= 0) {
+                    errorMessage += `Quantity must be greater than 0 for row ${index + 1}.\n`;
+                }
+            });
+
+            // Kiểm tra giá
+            prices.forEach((price, index) => {
+                if (!price.value || price.value <= 0) {
+                    errorMessage += `Price must be greater than 0 for row ${index + 1}.\n`;
+                }
+            });
+
+            // Kiểm tra hình ảnh
+            images.forEach((image, index) => {
+                if (!image.value) {
+                    errorMessage += `Image is required for row ${index + 1}.\n`;
+                }
+            });
+
+            if (errorMessage) {
+                alert(errorMessage);
+                return false;
+            }
+
+            return true;
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            const colorSelects = document.querySelectorAll('.colorSelect');
+
+            colorSelects.forEach(select => {
+                select.addEventListener('change', function() {
+                    const selectedOption = this.options[this.selectedIndex];
+                    const productId = this.getAttribute('data-product-id');
+                    const quantity = selectedOption.getAttribute('data-quantity');
+                    const price = selectedOption.getAttribute('data-price');
+                    const image = selectedOption.getAttribute('data-image');
+
+                    const row = this.closest('tr');
+                    row.querySelector('.quantity').textContent = quantity;
+                    row.querySelector('.price').textContent = price;
+                    row.querySelector('img').src = `http://localhost/Black-Aries-Project/public/images/products/${image}`;
+                });
+            });
+        });
         document.addEventListener('DOMContentLoaded', function() {
             const rows = document.querySelectorAll('tbody tr');
             const rowsPerPage = 10;

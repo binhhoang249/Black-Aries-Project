@@ -18,15 +18,18 @@ class ProductModel extends DModel
         $sql = "select * from Colors";
         return $this->db->select($sql);
     }
-    public function updateColor($data,$condition){
-        return $this->db->update("Colors",$data,$condition);
+    public function updateColor($data, $condition)
+    {
+        return $this->db->update("Colors", $data, $condition);
     }
-    public function deleteColor($data){
+    public function deleteColor($data)
+    {
         $result = $this->db->delete('Colors', $data);
         return $result;
     }
-    public function addColor($data){
-        return $this->db->insert("Colors",$data);
+    public function addColor($data)
+    {
+        return $this->db->insert("Colors", $data);
     }
     //all
     public function getProducts()
@@ -34,20 +37,23 @@ class ProductModel extends DModel
         $sql = "select * from Products";
         return $this->db->select($sql);
     }
-    public function addCategory($data){
-        return $this->db->insert("Categories",$data);
+    public function addCategory($data)
+    {
+        return $this->db->insert("Categories", $data);
     }
     public function  getCatagories()
     {
         $sql = "select * from Categories";
         return $this->db->select($sql);
     }
-    public function deleteCategory($data){
+    public function deleteCategory($data)
+    {
         $result = $this->db->delete('Categories', $data);
         return $result;
     }
-    public function updateCategory($data,$condition){
-        return $this->db->update("Categories",$data,$condition);
+    public function updateCategory($data, $condition)
+    {
+        return $this->db->update("Categories", $data, $condition);
     }
     public function getProductColor()
     {
@@ -112,37 +118,51 @@ class ProductModel extends DModel
     public function getProductDetails($productId)
     {
         $sql = "SELECT 
-                    p.product_id, 
-                    p.product_name, 
-                    p.description, 
-                    p.time_stamp, 
-                    p.category_id, 
-                    p.status, 
-                    p.discount, 
-                    p.popular, 
-                    c.color_id, 
-                    c.color_name, 
-                    c.color_link, 
-                    pc.product_color_id, 
-                    pc.quantity, 
-                    pc.image, 
-                    pc.price, 
-                    pc.defaultal
-                FROM 
-                    Products p
-                LEFT JOIN 
-                    Product_colors pc ON p.product_id = pc.product_id
-                LEFT JOIN 
-                    Colors c ON pc.color_id = c.color_id
-                WHERE 
-                    p.product_id = :product_id";
+                p.product_id, 
+                p.product_name, 
+                p.description, 
+                p.time_stamp, 
+                p.category_id, 
+                p.status, 
+                p.discount, 
+                p.popular, 
+                c.color_id, 
+                c.color_name, 
+                c.color_link, 
+                pc.product_color_id, 
+                pc.quantity, 
+                pc.image, 
+                pc.price, 
+                pc.defaultal
+            FROM 
+                Products p
+            LEFT JOIN 
+                Product_colors pc ON p.product_id = pc.product_id
+            LEFT JOIN 
+                Colors c ON pc.color_id = c.color_id
+            WHERE 
+                p.product_id = :product_id";
         $data[':product_id'] = (int)$productId;
         return $this->db->select($sql, $data);
     }
+    public function getProductByName($productName)
+    {
+        $sql = "SELECT * FROM Products WHERE product_name = :product_name";
+        $data[':product_name'] = $productName;
+        return $this->db->select($sql, $data);
+    }
+
+    public function getProductColorByProductIdAndColorId($productId, $colorId)
+    {
+        $sql = "SELECT * FROM Product_colors WHERE product_id = :product_id AND color_id = :color_id";
+        $data[':product_id'] = (int)$productId;
+        $data[':color_id'] = (int)$colorId;
+        return $this->db->select($sql, $data);
+    }
+
     public function addProduct($data)
     {
-        $this->db->insert("Products", $data);
-        return $this->db->lastInsertId();
+        return $this->db->insert("Products", $data);
     }
 
     public function addProductColor($data)
@@ -155,7 +175,8 @@ class ProductModel extends DModel
         $result = $this->db->delete('Products', $condition);
         return $result;
     }
-    public function searchProductsByCategoryName($categoryName) {
+    public function searchProductsByCategoryName($categoryName)
+    {
         // Câu truy vấn tìm sản phẩm theo tên thể loại
         $sql = "
             SELECT p.product_id, p.product_name, p.description, c.category_name, 
@@ -165,34 +186,47 @@ class ProductModel extends DModel
             LEFT JOIN categories c ON p.category_id = c.category_id
             WHERE LOWER(c.category_name) like LOWER(:categoryName)
         ";
-    
+
         $data = [':categoryName' => $categoryName];
-    
+
         return $this->db->select($sql, $data);
     }
-                    
-            // Method to search products by category name, price range, and include images
-            public function searchProducts($categoryName, $minPrice, $maxPrice) {
-                $sql = "
+
+    // Method to search products by category name, price range, and include images
+    public function searchProducts($categoryName, $minPrice, $maxPrice)
+    {
+        $sql = "
                    SELECT p.product_id, p.product_name, p.description, c.category_name, 
                    pc.price, pc.image 
                 FROM products p
                 LEFT JOIN Product_colors pc ON p.product_id = pc.product_id
                 LEFT JOIN categories c ON p.category_id = c.category_id
                 WHERE LOWER(c.category_name) LIKE LOWER(:categoryName)";
-                
-                // Prepare the data array with the parameters
-                $data = [':categoryName' => "%" . $categoryName . "%"];
-               
-                if ($minPrice > 0) {
-                    $sql .= " AND pc.price >= :minPrice";
-                    $data[':minPrice'] = $minPrice;
-                }
-                if ($maxPrice > 0) {
-                    $sql .= " AND pc.price <= :maxPrice";
-                    $data[':maxPrice'] = $maxPrice;
-                }
-               
-                return $this->db->select($sql, $data);
-            }
+
+        // Prepare the data array with the parameters
+        $data = [':categoryName' => "%" . $categoryName . "%"];
+
+        if ($minPrice > 0) {
+            $sql .= " AND pc.price >= :minPrice";
+            $data[':minPrice'] = $minPrice;
+        }
+        if ($maxPrice > 0) {
+            $sql .= " AND pc.price <= :maxPrice";
+            $data[':maxPrice'] = $maxPrice;
+        }
+
+        return $this->db->select($sql, $data);
+    }
+
+    public function getCategories()
+    {
+        $sql = "SELECT * FROM Categories";
+        return $this->db->select($sql);
+    }
+
+    public function getColors()
+    {
+        $sql = "SELECT * FROM Colors";
+        return $this->db->select($sql);
+    }
 }
