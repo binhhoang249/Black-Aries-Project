@@ -45,7 +45,14 @@ class OrderModel extends DModel
         $sql = "SELECT * FROM Orders"; // Thay đổi câu truy vấn phù hợp với cấu trúc bảng của bạn
         return $this->db->select($sql);
     }
-
+    public function getOrdersSortYear(){
+        $sql="SELECT * FROM Orders where status = 5 ORDER BY order_date ASC;";
+        return $this->db->select($sql);
+    }
+    public function getOrderWithYear($year){
+        $sql = "SELECT * FROM Orders WHERE YEAR(order_date) = ". $year . " and status = 5;";
+        return $this->db->select($sql);
+    }
     public function getAllOrdersWithDetails($userId)
     {
         $sql = "SELECT 

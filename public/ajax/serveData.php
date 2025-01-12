@@ -414,6 +414,18 @@ if ($condi =="getCategory"){
     }else{
         echo (json_encode("userId"));
     }
+}else if(isset($condi['action'])&&$condi['action']=="getOrderWithYear"){
+    $model= new orderModel();
+    if(!empty($condi['year'])){
+        $orders = $model-> getOrderWithYear($condi['year']);
+        if(!empty($orders)){
+            echo (json_encode($orders));
+        }else{
+            echo (json_encode(""));
+        }
+    } else{
+        echo (json_encode(""));
+    }
 }
 //Hàm lấy tên ảnh theo ngày/mã băm(tên)
 function getNameImage(){
