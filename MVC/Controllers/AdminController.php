@@ -59,12 +59,17 @@ class AdminController extends controller
     {
         $model = self::model('ProductModel');
         $products = $model->getProducts();
+        $categories = $model->getCategories(); // Lấy danh sách categories
+        $colors = $model->getColors(); // Lấy danh sách colors
         $data['products'] = [];
+        $data['categories'] = $categories; // Truyền danh sách categories đến view
+        $data['colors'] = $colors; // Truyền danh sách colors đến view
 
         foreach ($products as $product) {
             $productDetails = $model->getProductDetails($product['product_id']);
             if (!empty($productDetails)) {
-                $data['products'][] = $productDetails[0]; // Assuming getProductDetails returns an array of results
+                $product['colors'] = $productDetails; // Assuming getProductDetails returns an array of results
+                $data['products'][] = $product;
             }
         }
 
@@ -158,6 +163,8 @@ class AdminController extends controller
         $quantities = $_POST['quantity'] ?? [];
         $prices = $_POST['price'] ?? [];
         $defaults = $_POST['default'] ?? [];
+        $images = $_FILES['image'] ?? [];
+
         $data = [
             'product_name' => $productName,
             'description' => $productDescription,
@@ -165,42 +172,53 @@ class AdminController extends controller
             'status' => $productStatus,
             'discount' => $productDiscount,
         ];
-        print_r($data);
+
         if ($productName && $productCategory) {
-            $productId = $model->addProduct([
-                'product_name' => $productName,
-                'description' => $productDescription,
-                'category_id' => $productCategory,
-                'status' => $productStatus,
-                'discount' => $productDiscount,
-            ]);
-            foreach ($colors as $index => $color) {
-                $data1 = [
-                    'product_id' => $productId,
-                    'color_id' => $color,
-                    'quantity' => $quantities[$index] ?? 0,
-                    'price' => $prices[$index] ?? 0,
-                    'defaultal' => $defaults[$index] ?? 0,
-                    'image' => $_FILES['image']['name'][$index] ?? null
-                ];
-                echo "------->";
-                print_r($data1);
+            // Kiểm tra xem sản phẩm đã tồn tại hay chưa
+            $existingProduct = $model->getProductByName($productName);
+            if ($existingProduct) {
+                $productId = $existingProduct[0]['product_id'];
+                // Kiểm tra xem màu sắc đã tồn tại hay chưa
+                foreach ($colors as $index => $colorId) {
+                    $existingColor = $model->getProductColorByProductIdAndColorId($productId, $colorId);
+                    if ($existingColor) {
+                        echo "<script>alert('Màu sắc đã tồn tại cho sản phẩm này!'); window.history.back();</script>";
+                        return;
+                    }
+                }
+                // Thêm màu sắc mới cho sản phẩm đã tồn tại
+                foreach ($colors as $index => $colorId) {
+                    $colorData = [
+                        'product_id' => $productId,
+                        'color_id' => $colorId,
+                        'quantity' => $quantities[$index],
+                        'price' => $prices[$index],
+                        'defaultal' => $defaults[$index],
+                        'image' => $images['name'][$index],
+                    ];
+                    move_uploaded_file($images['tmp_name'][$index], "public/images/products/" . $images['name'][$index]);
+                    $model->addProductColor($colorData);
+                }
+            } else {
+                // Thêm sản phẩm mới
+                $productId = $model->addProduct($data);
+                // Thêm màu sắc cho sản phẩm mới
+                foreach ($colors as $index => $colorId) {
+                    $colorData = [
+                        'product_id' => $productId,
+                        'color_id' => $colorId,
+                        'quantity' => $quantities[$index],
+                        'price' => $prices[$index],
+                        'defaultal' => $defaults[$index],
+                        'image' => $images['name'][$index],
+                    ];
+                    move_uploaded_file($images['tmp_name'][$index], "public/images/products/" . $images['name'][$index]);
+                    $model->addProductColor($colorData);
+                }
             }
-
-            foreach ($colors as $index => $color) {
-                $model->addProductColor([
-                    'product_id' => $productId,
-                    'color_id' => $color,
-                    'quantity' => $quantities[$index] ?? 0,
-                    'price' => $prices[$index] ?? 0,
-                    'defaultal' => $defaults[$index] ?? 0,
-                    'image' => $_FILES['image']['name'][$index] ?? null
-                ]);
-            }
-
-            header("http://localhost/Black-Aries-Project/AdminController/productManagement?position=1");
+            header("Location: http://localhost/Black-Aries-Project/AdminController/productManagement?position=1");
         } else {
-            echo "Invalid product data!";
+            echo "<script>alert('Invalid product data!'); window.history.back();</script>";
         }
     }
     public function deleteProduct()
