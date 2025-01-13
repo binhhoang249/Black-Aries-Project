@@ -6,7 +6,7 @@ class DModel
     {
         $connect = 'mysql:dbname=Black_Aries; host=localhost; charset=utf8';
         $user = 'root';
-        $pass = 'worldforme';
+        $pass = '';
         $this->db = new Database($connect, $user, $pass);
     }
 }
