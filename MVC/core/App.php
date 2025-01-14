@@ -9,9 +9,9 @@
         // Xu li controller, no se goi controller nao, cu the hon la page nao
         if(isset($arr[0])){
             if( file_exists("./MVC/controllers/" . $arr[0] . ".php") ) {
-                $this->controller = $arr[0];   
-                unset($arr[0]);
-            }
+                $this->controller = $arr[0];  
+            } 
+            unset($arr[0]);
         }
         require_once "./MVC/controllers/".$this->controller.".php";
         $this->controller = new $this->controller;
@@ -21,7 +21,7 @@
                 $this->action = $arr[1];
             }
             unset($arr[1]);
-        }   
+        }
         // Xu li params
         $this->params = $arr?array_values($arr):[];
         call_user_func_array([$this->controller, $this->action], $this->params);
