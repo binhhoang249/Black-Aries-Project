@@ -84,7 +84,7 @@
         <div class="header-logo-navigation">
             <ul>
                 <!--<li><a href="#">Trang chủ</a></li>-->
-                <li><a href="#">Product</a></li>
+                <li><a href="http://localhost/Black-Aries-Project/productController">Product</a></li>
                 <li><a href="http://localhost/Black-Aries-Project/HomeController/aboutUs">About us</a></li>
                 <li><a href="#">Contact</a></li>
             </ul>
@@ -97,7 +97,7 @@
                 <div class="h-searchField"> 
                     <form action="/Black-Aries-Project/productController/search" method="POST">
                         <input type="text" name="categoryName" placeholder="Enter name of product!" required>
-                        <button type="submit">Run</button>
+                        <button type="submit">Search</button>
                     </form>
                 </div>
             </li>
