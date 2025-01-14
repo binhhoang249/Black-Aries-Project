@@ -693,6 +693,8 @@ function getDataWithYear(year_current){
                 }
                 console.log(data)
                 chart(data);
+            }else{
+                chart(data);
             }
         })()
     }

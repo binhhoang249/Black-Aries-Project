@@ -84,7 +84,7 @@
         <div class="header-logo-navigation">
             <ul>
                 <!--<li><a href="#">Trang chủ</a></li>-->
-                <li><a href="http://localhost/Black-Aries-Project/productController/search">Product</a></li>
+                <li><a href="http://localhost/Black-Aries-Project/productController">Product</a></li>
                 <li><a href="http://localhost/Black-Aries-Project/HomeController/aboutUs">About us</a></li>
                 <li><a href="#">Contact</a></li>
             </ul>
