@@ -45,7 +45,7 @@ class ProductController extends Controller
         }
 
         // Gửi dữ liệu vào view
-        self::view("pages/productViews/searchResults", $data);
+        self::view("pages/productViews/product", $data);
     }
 
     public function filterProductsByPrice()
@@ -68,6 +68,6 @@ class ProductController extends Controller
         $data['maxPrice'] = $maxPrice;
 
         // Hiển thị kết quả lọc
-        $this->view("pages/productViews/filterResult", $data);
+        $this->view("pages/productViews/product", $data);
     }
 }
