@@ -1,5 +1,6 @@
 <?php
     class App {
+        // http://localhost/BlackArirsProjecct/Home/Sayhi/12/3123
         protected $controller = "HomeController";
         protected $action = "index";
         protected $params;
@@ -33,3 +34,4 @@
         }
     }
 ?>
+<!-- Muốn chuyển trang mới thì tạo page tương ứng trong controller -->

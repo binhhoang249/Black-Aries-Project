@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="http://localhost/Black-Aries-Project/public/css/admin_order_management.css?ver=<?php echo time(); ?>" rel="stylesheet">
-
     <title>Order Management Admin</title>
 </head>
 <body>
@@ -62,7 +61,6 @@
                                         <option value='4' " . ($row['status'] == '4' ? 'selected' : '') . ">4</option>
                                         <option value='5' " . ($row['status'] == '5' ? 'selected' : '') . ">5</option>
                                         <option value='6' " . ($row['status'] == '6' ? 'selected' : '') . ">6</option>
-
                                     </select>
                                 </form>
                             </div>
@@ -81,20 +79,52 @@
                     ?>
                 </tbody>
             </table>
+            <!-- Pagination Container -->
+            <div class="pagination"></div>
         </div>
         </div>
             </div>
             <script>
             function toggleStatusDropdown(orderId) {
-    var form = document.getElementById('status-form-' + orderId);
-    
-    // Kiểm tra trạng thái hiển thị của form dropdown
-    if (form.style.display === 'none') {
-        form.style.display = 'block';  // Hiển thị dropdown
-    } else {
-        form.style.display = 'none';   // Ẩn dropdown
-    }
-}
-</script>
-
-
+                var form = document.getElementById('status-form-' + orderId);
+                if (form.style.display === 'none') {
+                    form.style.display = 'block'; 
+                } else {
+                    form.style.display = 'none';  
+                }
+            }
+            document.addEventListener('DOMContentLoaded', function() {
+                const rows = document.querySelectorAll('tbody tr');
+                const rowsPerPage = 10;
+                const totalPages = Math.ceil(rows.length / rowsPerPage);
+                const paginationContainer = document.querySelector('.pagination');
+                for (let i = 1; i <= totalPages; i++) {
+                    const btn = document.createElement('button');
+                    btn.textContent = i;
+                    btn.className = 'btn-pagination';
+                    btn.setAttribute('data-page', i);
+                    paginationContainer.appendChild(btn);
+                }
+                const currentPageDisplay = document.createElement('div');
+                currentPageDisplay.className = 'current-page-display';
+                paginationContainer.appendChild(currentPageDisplay);
+                function showPage(page) {
+                    rows.forEach((row, index) => {
+                        row.style.display = index >= (page - 1) * rowsPerPage && index < page * rowsPerPage ? 'table-row' : 'none';
+                    });
+                    document.querySelectorAll('.btn-pagination').forEach(button => {
+                        button.classList.remove('active');
+                    });
+                    document.querySelector(`.btn-pagination[data-page="${page}"]`).classList.add('active');
+                }
+                showPage(1);
+                document.querySelectorAll('.btn-pagination').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const page = parseInt(this.getAttribute('data-page'));
+                        showPage(page);
+                    });
+                });
+            });
+            </script>
+</body>
+</html>

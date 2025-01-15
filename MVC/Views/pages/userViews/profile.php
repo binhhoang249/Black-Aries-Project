@@ -206,26 +206,31 @@
         .h2 {
             display: none;
         }
+
         .password-wrapper {
-        position: relative;
-        width: 100%;
-    }
+            position: relative;
+            width: 100%;
+        }
 
-    .password-wrapper input {
-        width: 94%;
-        padding-right: 40px;
-        padding-left: 10px;
-        border: 1px soild #CCC;
-    }
+        .password-wrapper input {
+            width: 94%;
+            padding-right: 40px;
+            padding-left: 10px;
+            border: 1px soild #CCC;
+        }
 
-    .password-wrapper i {
-        position: absolute;
-        right: 20px;
-        top: 27%;
-        transform: translateY(-50);
-        font-size: 16px;
-        z-index: 2;
-    }
+        .password-wrapper i {
+            position: absolute;
+            right: 20px;
+            top: 27%;
+            transform: translateY(-50);
+            font-size: 16px;
+            z-index: 2;
+        }
+
+        .white-icon {
+            filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
+        }
     </style>
 </head>
 
@@ -237,19 +242,19 @@
         <h2 class="title h1">PERSONAL INFORMATION</h2>
         <h2 class="title h2">Change Password</h2>
         <div class="avatar">
-        <div class="logo-container">
-        <!-- Hiển thị ảnh mặc định -->
-        <img id="profile-image" src="http://localhost/Black-Aries-Project/public/images/default-images.jpg" alt="deafault-images">
-        <button class="edit-avatar-btn">
-            <img src="http://localhost/Black-Aries-Project/public/Icon/pen.png" alt="Edit Icon">
-        </button>
-    </div>
-    <div class="update_avatar" style="display: none;">
-        <input type="file" id="avataruser">
-        <button type="button" id="ve_avartar" class="ve_avartar">Verify</button>
-    </div>
-</div>
-   <form action="" method="POST" class="form1" name="myForm" autocomplete="off" onsubmit="return validateForm();">
+            <div class="logo-container">
+                <!-- Hiển thị ảnh mặc định -->
+                <img id="profile-image" src="http://localhost/Black-Aries-Project/public/images/default-images.jpg" alt="deafault-images">
+                <button class="edit-avatar-btn">
+                    <img src="http://localhost/Black-Aries-Project/public/Icon/pen.png" alt="Edit Icon">
+                </button>
+            </div>
+            <div class="update_avatar" style="display: none;">
+                <input type="file" id="avataruser">
+                <button type="button" id="ve_avartar" class="ve_avartar">Verify</button>
+            </div>
+        </div>
+        <form action="" method="POST" class="form1" name="myForm" autocomplete="off" onsubmit="return validateForm();">
             <!-- Tên đăng nhập -->
             <div class="form-group">
                 <label for="username" class="form-label">
@@ -293,11 +298,16 @@
                         <img src="http://localhost/Black-Aries-Project/public/Icon/logout.png" alt="Logout Icon"> Log out
                     </button>
                 </a>
+                <a href="http://localhost/Black-Aries-Project/OrderController/orderManagement">
+                    <button type="button" class="order-btn">
+                        <img class="white-icon" src="http://localhost/Black-Aries-Project/public/Icon/orders.png" alt="Orders Icon"> Order Management
+                    </button>
+                </a>
             </div>
         </form>
         <!--form mật khẩu -->
         <form class="form2" name="myForm">
-         <div class="form-group">
+            <div class="form-group">
                 <label for="Opassword" class="form-label">
                     <img src="http://localhost/Black-Aries-Project/public/Icon/Key 02.png" alt="Icon password"> Old password:
                 </label>
@@ -305,7 +315,7 @@
                     <input type="password" id="Opassword" name="password" autocomplete="new-password">
                     <i class="far fa-eye toggle-password"></i>
                 </div>
-           </div>
+            </div>
             <div class="form-group">
                 <label for="Npassword" class="form-label">
                     <img src="http://localhost/Black-Aries-Project/public/Icon/Key 02.png" alt="Icon password"> New password:
@@ -334,26 +344,27 @@
             </div>
         </form>
     </div>
-    <script>// Lắng nghe sự kiện click trên tất cả các biểu tượng mắt
-document.querySelectorAll(".toggle-password").forEach(icon => {
-    icon.addEventListener("click", function() {
-        // Lấy trường mật khẩu tương ứng với biểu tượng mắt
-        const passwordInput = this.previousElementSibling;  // Trường mật khẩu nằm ngay trước biểu tượng mắt
-        const icon = this;
+    <script>
+        // Lắng nghe sự kiện click trên tất cả các biểu tượng mắt
+        document.querySelectorAll(".toggle-password").forEach(icon => {
+            icon.addEventListener("click", function() {
+                // Lấy trường mật khẩu tương ứng với biểu tượng mắt
+                const passwordInput = this.previousElementSibling; // Trường mật khẩu nằm ngay trước biểu tượng mắt
+                const icon = this;
 
-        // Kiểm tra và thay đổi kiểu mật khẩu
-        if (passwordInput.type === "password") {
-            passwordInput.type = "text"; // Hiển thị mật khẩu
-            icon.classList.remove("fa-eye");
-            icon.classList.add("fa-eye-slash"); // Thay đổi biểu tượng mắt
-        } else {
-            passwordInput.type = "password"; // Ẩn mật khẩu
-            icon.classList.remove("fa-eye-slash");
-            icon.classList.add("fa-eye"); // Thay đổi biểu tượng mắt bị gạch
-        }
-    });
-});
-</script>
+                // Kiểm tra và thay đổi kiểu mật khẩu
+                if (passwordInput.type === "password") {
+                    passwordInput.type = "text"; // Hiển thị mật khẩu
+                    icon.classList.remove("fa-eye");
+                    icon.classList.add("fa-eye-slash"); // Thay đổi biểu tượng mắt
+                } else {
+                    passwordInput.type = "password"; // Ẩn mật khẩu
+                    icon.classList.remove("fa-eye-slash");
+                    icon.classList.add("fa-eye"); // Thay đổi biểu tượng mắt bị gạch
+                }
+            });
+        });
+    </script>
     <script src="http://localhost/Black-Aries-Project/public/js/profile.js?ver=<?php echo time(); ?>"></script>
 </body>
 
