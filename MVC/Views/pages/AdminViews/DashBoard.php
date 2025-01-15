@@ -21,6 +21,21 @@
             </div>
             <textarea id="myTextarea" readonly></textarea>
             <div class="description">
+                <h2>Statistics</h2>
+            </div>
+            <div class="container-flex">
+                <div class="box-item">
+                    <p><?php  echo isset($products) ? count($products) : 0 ; ?></p>
+                    <h2>Products</h2>
+                    <button><a href="http://localhost/Black-Aries-Project/AdminController/productManagement?position=2">All</a></button>
+                </div>
+                <div class="box-item">
+                    <p><?php  echo isset($orders) ? count($orders) : 0 ; ?></p>
+                    <h2>Orders</h2>
+                    <button><a href="http://localhost/Black-Aries-Project/AdminController/orderManagement?position=4">All</a></button>
+                </div>
+            </div>
+            <div class="description">
                 <h2>Chard</h2>
             </div>
             <form action="">
@@ -46,7 +61,7 @@
                      ?>
                 </select>
             </form>
-            <canvas id="barChart" width="400" height="200"></canvas>
+            <canvas id="barChart" width="400" height="180"></canvas>
             <div class="description">
                 <h2>Color</h2>
                 <button type="button" id="button-editColor">View more</button>

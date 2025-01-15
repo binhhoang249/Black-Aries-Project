@@ -104,6 +104,8 @@ export function displayPagination(current_page,numPage){
             pageCurrent(current_page);
             comfirmPageButton(current_page);
             displayPagination(current_page,numPage);
+            
+            alert(current_page)
         })
     })
     // function hiện các card có page là current_page

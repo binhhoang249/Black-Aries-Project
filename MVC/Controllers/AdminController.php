@@ -53,12 +53,16 @@ class AdminController extends controller
     }
     public function dashBoard()
     {
+        $modelModel = self::model('ProductModel');
+        $products = $modelModel->getProducts();
         $orderModel = self::model("OrderModel");
         $orders= $orderModel->getOrdersSortYear();
         $date = $orders[0]['order_date'];
         $dateTime = new DateTime($date); // Tạo đối tượng DateTime từ chuỗi ngày
         $year = $dateTime->format('Y');
         $data['year']= $year;
+        $data['products']=$products;
+        $data['orders']=$orders;
         self::view("Pages/AdminViews/DashBoard",$data);
     }
     public function productManagement()
@@ -156,8 +160,7 @@ class AdminController extends controller
         }
     }
 
-    public function addProduct()
-    {
+    public function addProduct(){
         $model = self::model('ProductModel');
         $data = $this->infomationProduct();
         $dataProduct=['product_name' => $data['product_name'],'description' => $data['description'],'category_id' => $data['category_id'],
@@ -215,7 +218,7 @@ class AdminController extends controller
             }
             header("Location: http://localhost/Black-Aries-Project/AdminController/productManagement?position=1");
         } else {
-            //echo "<script>alert('Invalid product data!'); window.history.back();</script>";
+            echo "<script>alert('Invalid product data!'); window.history.back();</script>";
         }
     }
     public function deleteProduct()

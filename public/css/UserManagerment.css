@@ -5,6 +5,7 @@ html,body{
     height:100%;
     font-family: Arial, sans-serif;
     font-size:12px;
+    background-color: #eef1f5;
 }
 .big-container{
     display:flex;
@@ -66,7 +67,7 @@ td{
 }
 .form-detail{
     display:none;
-    position:absolute;
+    position: fixed;
     z-index:100;
     top:50%;
     left:50%;
@@ -153,25 +154,29 @@ td{
     display:flex;
     justify-content: center;
     align-items:center;
+    gap:5px;
 }
 .pagination > div{
     width: 60px;
     height:40px;
-    border-top:1px solid black;
-    border-bottom:1px solid black;
-    border-left:1px solid black;
+    border:1px solid #1d3557;
     box-sizing: border-box;
     display:flex;
     justify-content:center;
     align-items:center;
     margin-top:21px;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #fff;
 }
 .pagination > div:hover{
-    background-color: #527A9A;
+    background-color: #1d3557 !important;
+    color: #fff;
 }
 .act{
-    background-color: #527A9A;
+    background-color: #1d3557 !important;
+    color: #fff;
 }
 .border-right{
-    border-right:1px solid black;
+    border-right:1px solid #1d3557;
 }

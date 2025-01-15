@@ -8,6 +8,7 @@ html,body{
     height:100%;
     font-family: Arial, sans-serif;
     font-size:12px;
+    background-color: #eef1f5;
 }
 .big-container{
     display:flex;
@@ -45,6 +46,11 @@ html,body{
     border:none;
     border-radius:6px;
 }
+.description > button {
+    background-color: rgb(223, 223, 223);
+    border: 1px solid gray;
+    border-radius: 3px;
+}
 textarea{
     border:none;
     width:100%;
@@ -52,6 +58,7 @@ textarea{
     resize: none;
     height:auto;
     outline: none;
+    background-color: inherit;
 }
 .show{
     width:100%;
@@ -67,6 +74,7 @@ textarea{
     border-radius:9px;
     box-shadow: 2px 4px 4px 2px rgba(0, 0, 0, 0.4);
     height:90px;
+    background-color: white;
 }
 .card h3 {
     text-align:center;
@@ -210,4 +218,35 @@ textarea{
     margin-top:0;
     font-size:13px;
     padding-top:0;
+}
+.container-flex{
+    display: flex;
+}
+.box-item{
+    width:180px;
+    padding: 5px 36px;
+    margin-left: 21px;
+    box-shadow: 2px 4px 4px 2px rgba(0, 0, 0, 0.4);
+    position: relative;
+    background-color: white;
+}
+.box-item p {
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    height:21px;
+    color:gray;
+}
+.box-item h2{
+    text-align: center;
+}
+.box-item button {
+    top:0;
+    right: 0;
+    position: absolute;
+    border:none;
+    background-color: inherit;
+}
+.box-item button a {
+    text-decoration: none;
 }
