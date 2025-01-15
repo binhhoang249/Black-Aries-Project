@@ -61,7 +61,7 @@
                      ?>
                 </select>
             </form>
-            <canvas id="barChart" width="400" height="200"></canvas>
+            <canvas id="barChart" width="400" height="180"></canvas>
             <div class="description">
                 <h2>Color</h2>
                 <button type="button" id="button-editColor">View more</button>
