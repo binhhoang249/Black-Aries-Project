@@ -109,6 +109,8 @@ viewColor.addEventListener('click',function(){
         colorupcolorbutton.forEach(up => {
             up.style.display = "none";
         })
+        document.querySelector('.form-add-category').style.display = "none";
+        document.querySelector('.form-add').style.display = "none";
     }
     
 })
@@ -134,6 +136,8 @@ viewCategory.addEventListener('click',function(){
         upcategorybutton.forEach(up => {
             up.style.display = "none";
         })
+        document.querySelector('.form-add-category').style.display = "none";
+        document.querySelector('.form-add').style.display = "none";
     }
     
 })
@@ -375,6 +379,8 @@ cancelForm.addEventListener('click', function(){
     colorupcolorbutton.forEach(up => {
         up.style.display = "none";
     })
+    document.querySelector('.form-add-category').style.display = "none";
+    document.querySelector('.form-add').style.display = "none";
 })
 
 //
@@ -395,7 +401,7 @@ document.getElementById('box-addForm').innerHTML=
         <form class="form-add-category">
             <h2>Add category</h2>
             <div class="field">
-                <span>Category name: </span><input type="text" placeholder="Enter color's name" value="" required class="a-categoryName">
+                <span>Category name: </span><input type="text" placeholder="Enter category's name" value="" required class="a-categoryName">
             </div>
             <div class="box-button">
                 <button type="button" class="addCategory">Verify</button>

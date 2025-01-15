@@ -1,6 +1,5 @@
 <?php
     class App {
-        // http://localhost/BlackArirsProjecct/Home/Sayhi/12/3123
         protected $controller = "HomeController";
         protected $action = "index";
         protected $params;
@@ -30,8 +29,7 @@
         function UrlProcess () {
             if (isset($_GET["url"])) {
                 return explode("/",filter_var(trim($_GET["url"], "/")));
-            }
+            } 
         }
     }
 ?>
-<!-- Muốn chuyển trang mới thì tạo page tương ứng trong controller -->

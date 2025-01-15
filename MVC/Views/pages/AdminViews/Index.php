@@ -39,20 +39,23 @@
             z-index: 100; 
         }
         .form-login{
-            width:400px;
+            top:50%;
+            width:500px;
+            font-size:15px;
+            transform:translate( -50%,-50%);
             position:absolute;
             right:10%;
-            top:40%;
             background:white;
             border-radius:9px;
             padding:9px 10px;
             z-index: 500;
-            transform:translateY( -50%);
             background: rgba(62, 62, 62, 0.6);
         }
         .form-login h1{
             text-align:center;
             color:black;
+            margin-bottom:30px;
+            font-size:39px;
         }
         .field{
             display:flex;
@@ -61,13 +64,15 @@
         }
         .field input{
             flex:1;
-            height:30px;
             border:none;
             border-bottom:1px solid rgb(29, 29, 29);
             outline:none;
             border-radius:5px;
             background-color:inherit;
             color:rgb(234, 234, 234);
+            margin-bottom:12px;
+            font-size:18px;
+            height:30px;
         }
         .field input::placeholder{
             color:rgb(234, 234, 234);
@@ -78,29 +83,11 @@
             align-items:center;
         }
         .box_button button{
-            padding: 12px 45px;
             background-color:#527A9A;
             color:white;
             border-radius:9px;
             border:none;
             margin-top:12px;
-        }
-        .change_form{
-            top:50%;
-            width:500px;
-            font-size:15px;
-            transform:translate( -50%,-50%);
-        }
-        .change_input{
-            margin-bottom:12px;
-            font-size:18px;
-            height:30px;
-        }
-        .change_h1{
-            margin-bottom:30px;
-            font-size:39px;
-        }
-        .change_button{
             padding:15px 60px;
             font-size:18px;
         }
@@ -126,17 +113,6 @@
             </div>
         </form>
     </div>
-    <script>
-        var form = document.querySelector('.form-login');
-        form.addEventListener('click',function(){
-            form.classList.add('change_form');
-            document.querySelector('.button-login').classList.add('change_button');
-            let inp=form.querySelectorAll('input');
-            inp.forEach(input => {
-                input.classList.add('change_input');
-            })
-            form.querySelector('h1').classList.add('change_h1');
-        })
-    </script>
+    
 </body>
 </html>

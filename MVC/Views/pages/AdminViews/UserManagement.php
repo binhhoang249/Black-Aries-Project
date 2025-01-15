@@ -85,17 +85,17 @@
                         <input class="input1" type="text" id="f-fullname" readonly>
                     </label>
                     <label><b>Date of birth:</b>&nbsp;
-                        <input class="input1" type="date" id="f-birth">
+                        <input class="input1" type="date" id="f-birth" readonly>
                     </label>
                 </div>
                 <div class="field">
                     <label><b>Phone:</b>&nbsp;
-                        <input class="input2" type="text" id="f-phone">
+                        <input class="input2" type="text" id="f-phone" readonly>
                     </label>
                 </div>
                 <div class="field">
                     <label><b>Address:</b>&nbsp;
-                        <input class="input2" type="text" id="f-address">
+                        <input class="input2" type="text" id="f-address" readonly>
                     </label>
                 </div>
                 <h2>Order</h2>
