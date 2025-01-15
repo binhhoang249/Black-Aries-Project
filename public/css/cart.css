@@ -144,3 +144,53 @@ main{
 #post_cart{
     display: none;
 }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .main-field, .field-product {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .c_quantity, .c_delete {
+        margin-right: 0;
+    }
+
+    .button-older {
+        width: 100%;
+        text-align: center;
+    }
+
+    .p-product, .p-quantity, .p-price, .p-total_price, .p-action {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-field, .field-product {
+        padding: 5px 10px;
+    }
+
+    .tag-image {
+        width: 60px;
+        height: 40px;
+        margin-right: 10px;
+    }
+
+    .tag-quntity input {
+        width: 30px;
+        height: 15px;
+        margin: 0 6px;
+    }
+
+    .rm, .ad {
+        width: 15px;
+        height: 15px;
+    }
+
+    .button-older {
+        font-size: 16px;
+        padding: 5px 20px !important;
+    }
+}
