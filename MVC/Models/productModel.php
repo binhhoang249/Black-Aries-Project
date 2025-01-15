@@ -3,7 +3,7 @@ class ProductModel extends DModel
 {
     public function getProduct($id)
     {
-        $sql = "SELECT * from Products where product_id = :id";
+        $sql = "SELECT * from Products where product_id = :id AND status = 1";
         $data[':id'] = (int)$id;
         return $this->db->select($sql, $data);
     }
@@ -34,7 +34,7 @@ class ProductModel extends DModel
     //all
     public function getProducts()
     {
-        $sql = "select * from Products";
+        $sql = "select * from Products where status = 1";
         return $this->db->select($sql);
     }
     public function addCategory($data)
@@ -185,8 +185,9 @@ class ProductModel extends DModel
             LEFT JOIN Product_colors pc ON p.product_id = pc.product_id
             LEFT JOIN categories c ON p.category_id = c.category_id
             WHERE LOWER(c.category_name) like LOWER(:categoryName)
+            AND defaultal = 1 AND status = 1
         ";
-
+        $categoryName='%'.$categoryName.'%';
         $data = [':categoryName' => $categoryName];
 
         return $this->db->select($sql, $data);
@@ -201,7 +202,9 @@ class ProductModel extends DModel
                 FROM products p
                 LEFT JOIN Product_colors pc ON p.product_id = pc.product_id
                 LEFT JOIN categories c ON p.category_id = c.category_id
-                WHERE LOWER(c.category_name) LIKE LOWER(:categoryName)";
+                WHERE LOWER(c.category_name) LIKE LOWER(:categoryName)
+                AND defaultal = 1 AND status = 1
+                ";
 
         // Prepare the data array with the parameters
         $data = [':categoryName' => "%" . $categoryName . "%"];

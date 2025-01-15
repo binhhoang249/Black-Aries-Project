@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <link href="http://localhost/Black-Aries-Project/public/css/DashBoard.css?ver=<?php echo time(); ?>" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <div class="big-container">
@@ -19,6 +20,33 @@
                 <button id="button-editDescriptionBusiness" data-role="1">Edit</button>
             </div>
             <textarea id="myTextarea" readonly></textarea>
+            <div class="description">
+                <h2>Chard</h2>
+            </div>
+            <form action="">
+                <span><b>Year:</b></span>
+                <select id="chart_year">
+                    <?php 
+                        $currentYear = date('Y');
+                        if(!empty($year)){
+                            while(true){
+                                if($year == $currentYear){
+                                    ?>
+                                        <option value="<?php echo $year ; ?>" selected><?php echo $year ; ?></option>
+                                    <?php
+                                    break;
+                                }else{
+                                    ?>
+                                        <option value="<?php echo $year ; ?>"><?php echo $year ; ?></option>
+                                    <?php
+                                }
+                                $year +=1;
+                            }
+                        }
+                     ?>
+                </select>
+            </form>
+            <canvas id="barChart" width="400" height="200"></canvas>
             <div class="description">
                 <h2>Color</h2>
                 <button type="button" id="button-editColor">View more</button>

@@ -195,7 +195,7 @@ function displayInfo(){
     let fullnam=document.getElementById('fullname');
     let passwo=document.getElementById('password');
     let emai =document.getElementById('email');
-    let imagel =document.getElementById('l-imagel');
+    let imagel =document.getElementById('profile-image');
     fetch('http://localhost/Black-Aries-Project/public/ajax/serveData.php',{
         method:'POST',
         body: JSON.stringify({action:"getUser"}),
