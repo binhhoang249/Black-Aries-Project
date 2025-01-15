@@ -121,7 +121,7 @@
                         <input type="number" class="quantityInput" name="quantity[]" min="0" required>
 
                         <label for="price">Price:</label>
-                        <input type="number" class="priceInput" name="price[]" min="0" required>
+                        <input type="number" class="priceInput" name="price[]" min="0" required >
 
                         <label for="default">Default:</label>
                         <select class="defaultSelect" name="default[]">
@@ -130,14 +130,13 @@
                         </select>
 
                         <label for="image">Image:</label>
-                        <input type="file" class="imageInput" name="image[]" accept="image/*" required>
+                        <input type="file" class="imageInput" name="image[]" accept="image/*" multiple required>
                     </div>
                 </div>
 
                 <button type="button" onclick="addColorRow()">Add Another Color</button>
                 <button type="submit">Save Product</button>
             </form>
-
         </div>
     </div>
     <script>
@@ -148,50 +147,32 @@
             const prices = document.querySelectorAll('.priceInput');
             const images = document.querySelectorAll('.imageInput');
             let errorMessage = '';
-
-            // Kiểm tra tên sản phẩm
             if (!productName) {
                 errorMessage += 'Product name is required.\n';
             }
-
-            // Kiểm tra màu sắc
-            colors.forEach((color, index) => {
-                if (!color.value) {
-                    errorMessage += `Color is required for row ${index + 1}.\n`;
-                }
-            });
-
-            // Kiểm tra số lượng
             quantities.forEach((quantity, index) => {
                 if (!quantity.value || quantity.value <= 0) {
                     errorMessage += `Quantity must be greater than 0 for row ${index + 1}.\n`;
                 }
             });
-
-            // Kiểm tra giá
             prices.forEach((price, index) => {
                 if (!price.value || price.value <= 0) {
                     errorMessage += `Price must be greater than 0 for row ${index + 1}.\n`;
                 }
             });
-
-            // Kiểm tra hình ảnh
             images.forEach((image, index) => {
                 if (!image.value) {
                     errorMessage += `Image is required for row ${index + 1}.\n`;
                 }
             });
-
             if (errorMessage) {
                 alert(errorMessage);
                 return false;
             }
-
             return true;
         }
         document.addEventListener('DOMContentLoaded', function() {
             const colorSelects = document.querySelectorAll('.colorSelect');
-
             colorSelects.forEach(select => {
                 select.addEventListener('change', function() {
                     const selectedOption = this.options[this.selectedIndex];
