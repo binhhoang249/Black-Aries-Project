@@ -53,7 +53,13 @@ class AdminController extends controller
     }
     public function dashBoard()
     {
-        self::view("Pages/AdminViews/DashBoard");
+        $orderModel = self::model("OrderModel");
+        $orders= $orderModel->getOrdersSortYear();
+        $date = $orders[0]['order_date'];
+        $dateTime = new DateTime($date); // Tạo đối tượng DateTime từ chuỗi ngày
+        $year = $dateTime->format('Y');
+        $data['year']= $year;
+        self::view("Pages/AdminViews/DashBoard",$data);
     }
     public function productManagement()
     {

@@ -533,3 +533,169 @@ function showInterfaceCategory(){
         }
     })()
 }
+// biểu đồ
+let barChart;
+function chart(listData){
+    let ctx = document.getElementById('barChart').getContext('2d');
+    if (barChart) {
+        barChart.destroy();
+    }
+    barChart = new Chart(ctx, {
+        type: 'bar', // Loại biểu đồ
+        data: {
+            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'], // Nhãn trục X
+            datasets: [{
+                //label: 'Revenue (USD)', // Chú thích
+                data: listData, // Dữ liệu
+                backgroundColor: [
+                    'rgb(143, 143, 143)',
+                    'rgb(0, 0, 0)',
+                    'rgb(143, 143, 143)',
+                    'rgb(0, 0, 0)',
+                    'rgb(143, 143, 143)',
+                    'rgb(0, 0, 0)',
+                    'rgb(143, 143, 143)',
+                    'rgb(0, 0, 0)',
+                    'rgb(143, 143, 143)',
+                    'rgb(0, 0, 0)',
+                    'rgb(143, 143, 143)',
+                    'rgb(0, 0, 0)'
+                ],
+                borderColor: [
+                    'rgb(106, 105, 105)',
+                    'rgb(0, 0, 0)',
+                    'rgb(106, 105, 105)',
+                    'rgb(0, 0, 0)',
+                    'rgb(106, 105, 105)',
+                    'rgb(0, 0, 0)',
+                    'rgb(106, 105, 105)',
+                    'rgb(0, 0, 0)',
+                    'rgb(106, 105, 105)',
+                    'rgb(0, 0, 0)',
+                    'rgb(106, 105, 105)',
+                    'rgb(0, 0, 0)',
+                ],
+                borderWidth: 1 // Độ dày viền
+            }]
+        },
+        options: {
+            plugins: {
+                // Thêm tiêu đề cho biểu đồ
+                title: {
+                    display: true,
+                    text: 'Monthly Revenue Chart'
+                },
+                // Thêm tooltip tùy chỉnh
+                tooltip: {
+                    callbacks: {
+                        label: function (context) {
+                            return `Revenue (USD): ${context.raw} USD`;//${context.dataset.label}
+                        }
+                    }
+                },
+                // Thêm chú thích tùy chỉnh
+                legend: {
+                    display: false,
+                    position: 'top',
+                    labels: {
+                        color: 'blue',
+                        font: {
+                            size: 14,
+                            weight: 'bold'
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Months',
+                        color: 'green',
+                        font: {
+                            size: 16,
+                            weight: 'bold'
+                        }
+                    }
+                },
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Revenue (USD)',
+                        color: 'red',
+                        font: {
+                            size: 16,
+                            weight: 'bold'
+                        }
+                    }
+                }
+            },
+        }
+    });
+}
+var char_year = document.getElementById('chart_year');
+let year = char_year.value;
+getDataWithYear(year)
+char_year.addEventListener('change', function(){
+    let year = char_year.value;
+    getDataWithYear(year)
+})
+function getDataWithYear(year_current){
+    if(year_current){
+        let data = [0,0,0,0,0,0,0,0,0,0,0,0];
+        (async ()=>{
+            let body = {action : "getOrderWithYear", year : year_current};
+            let orders = await updateAllOneTable(body);
+            console.log(orders);
+            if(orders){
+                for( let value of orders){
+                    let date = new Date(value.order_date); 
+                    let month = date.getMonth() + 1;
+                    switch (month) {
+                        case 1: 
+                            data[0]= data[0]+ parseFloat(value.price);
+                            break;
+                        case 2:
+                            data[1]= data[1]+ parseFloat(value.price);
+                            break;
+                        case 3:
+                            data[2]= data[2]+ parseFloat(value.price);
+                            break;
+                        case 4:
+                            data[3]= data[3]+ parseFloat(value.price);
+                            break;
+                        case 5:
+                            data[4]= data[4]+ parseFloat(value.price);
+                            break;
+                        case 6:
+                            data[5]= data[5]+ parseFloat(value.price);
+                            break;
+                        case 7:
+                            data[6]= data[6]+ parseFloat(value.price);
+                            break;
+                        case 8:
+                            data[7]= data[7]+ parseFloat(value.price);
+                            break;
+                        case 9:
+                            data[8]= data[8]+ parseFloat(value.price);
+                            break;
+                        case 10:
+                            data[9]= data[9]+ parseFloat(value.price);
+                            break;
+                        case 11:
+                            data[10]= data[10]+ parseFloat(value.price);
+                            break;
+                        case 12:
+                            data[11]= data[11]+ parseFloat(value.price);
+                            break;
+                    }
+                }
+                console.log(data)
+                chart(data);
+            }else{
+                chart(data);
+            }
+        })()
+    }
+}

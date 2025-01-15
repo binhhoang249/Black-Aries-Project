@@ -1,6 +1,14 @@
 <?php
 class ProductController extends Controller
 {
+    public function index(){
+        $model = self::model("productModel");
+        $query="";
+        $results = $model->searchProductsByCategoryName($query); 
+        $data['products'] = $results;  
+        $data['numResults']= count($data['products']);
+        self::view("pages/productViews/product", $data);
+    }
     public function detail($id)
     {
         // Lấy model của Details
@@ -35,6 +43,7 @@ class ProductController extends Controller
             // Kiểm tra nếu có kết quả tìm kiếm
             if ($results && !empty($results)) {
                 $data['products'] = $results;  // Gán sản phẩm tìm được vào data
+                $data['numResults']= count($data['products']);
                 $data['categoryName'] = $query;  // Gán truy vấn tìm kiếm vào data
             } else {
                 $data['message'] = "No products found matching your search.";  // Nếu không tìm thấy sản phẩm
@@ -45,7 +54,7 @@ class ProductController extends Controller
         }
 
         // Gửi dữ liệu vào view
-        self::view("pages/productViews/searchResults", $data);
+        self::view("pages/productViews/product", $data);
     }
 
     public function filterProductsByPrice()
@@ -68,6 +77,6 @@ class ProductController extends Controller
         $data['maxPrice'] = $maxPrice;
 
         // Hiển thị kết quả lọc
-        $this->view("pages/productViews/filterResult", $data);
+        $this->view("pages/productViews/product", $data);
     }
 }
