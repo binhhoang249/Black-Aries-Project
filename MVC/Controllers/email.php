@@ -16,43 +16,8 @@ class email {
         
     }
     //Object lưu các thong tin cơ bản như fullname, email, password
-    public  function sendCode($object){
-        $mail = new PHPMailer(true);
-        try{
-            $sMail=(isset($object)&&isset($object['mail']))?$object['mail']:$this->toEmail;
-            $nMail=(isset($object)&&isset($object['fullname']))?$object['fullname']:$this->toEmail;
-            $code='';
-            if(isset($object)&&isset($object['mail'])&&isset($object['fullname'])){
-                $code= $this->findCode();
-                $content=
-                "
-                  <h1> Please enter code </h1>
-                  <p> <b> $code </b> </p>
-                ";
-            } else {
-                $content="<h1>Error</h1>";
-            }
-            $mail->SMTPDebug= SMTP::DEBUG_SERVER;
-            $mail-> isSMTP();
-            $mail->Host = 'smtp.gmail.com';
-            $mail->SMTPAuth = true;
-            $mail->Username =$this->master;
-            $mail->Password =$this->pMaster;
-            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-            $mail->Port = 587;
-            $mail->setFrom($this->master, $this->pMaster);
-            $mail->addAddress($sMail,$nMail);
-            $mail->addReplyTo($this->master, 'Information');
-            $mail->isHTML(true);
-            $mail->Subject = (isset($object)&&isset($object['mail']))?"Code Authentication":"Error";
-            $mail->Body = $content;
-            $mail->AltBody = $content;    
-            $mail->send();
-            return $code;
-        }catch(Exception $e){
-            return false;
-        }
-    }
+    
+    
     //Object lưu các thong tin cơ bản như fullname, email, password
     public  function informRegister($object){
         $mail = new PHPMailer(true);
@@ -79,7 +44,7 @@ class email {
             $mail->Password =$this->pMaster;
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             $mail->Port = 587;
-            $mail->setFrom($this->master, $this->pMaster);
+            $mail->setFrom($this->master, $this->name);
             $mail->addAddress($sMail,$nMail);
             $mail->addReplyTo($this->master, 'Information');
             $mail->isHTML(true);
