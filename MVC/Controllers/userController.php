@@ -94,7 +94,7 @@ class UserController extends Controller{
         //data2
         $data['check']=2;
         self::view('Pages/UserViews/FogotPassword',$data);
-        if(isset($_GET['act'])&&$_GET['act']=="error"){
+        if(isset($_GET['act'])&&$_GET['act']=="error"){ 
             ?>
                 <script type="text/javascript">
                     alert("Please enter correct code");

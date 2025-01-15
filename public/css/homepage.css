@@ -2,28 +2,31 @@
     width: 100%;
     max-width: 1450px;  /* Điều chỉnh chiều rộng tối đa */
     min-height: auto; /* Không cần chiều cao tối thiểu */
-
 }
+
 .card-category {
     border: none;
     border-radius: 10px;
     height: 150px;
     margin: 10px;
-    margin-left:0px;
-    margin-right:10px;
-
+    margin-left: 0px;
+    margin-right: 10px;
 }
+
 .card-category:hover {
     background-color: #f0f8ff;
     cursor: pointer;
 }
+
 .card-category.active {
     background-color: #365b85;
     color: #fff;
 }
+
 .card-category .bi {
     color: #365b85;
 }
+
 .card-category.active .bi {
     color: #fff;
 }
@@ -56,10 +59,12 @@
 .card-product:hover {
     transform: scale(1.05);
 }
-.card-imagel{
+
+.card-imagel {
     height: 270px;
-    width:100%;
+    width: 100%;
 }
+
 .card-imagel img {
     width: 100%; /* Giữ hình ảnh rộng 100% của card */
     height: 100%; /* Nếu không có ảnh, sẽ có một chiều cao mặc định */
@@ -92,17 +97,17 @@
 .card-product .btn:hover {
     background-color: #8cacc6;
 }
-.banner .img-fluid{
+
+.banner .img-fluid {
     width: 1400px;
     object-fit: cover;
-    margin-left:140px;
-    
+    margin-left: 140px;
 }
 
 .banner {
     position: relative;
-    width:83%;
-    margin-left:130px;
+    width: 83%;
+    margin-left: 130px;
     height: 400px; /* Bạn có thể điều chỉnh chiều cao tùy theo nhu cầu */
     background-image: url('../images/banner.png'); /* Đường dẫn đến hình ảnh nền */
     background-size: cover; /* Đảm bảo hình ảnh phủ đầy banner */
@@ -121,28 +126,69 @@
 .banner h1 {
     font-size: 26px; /* Kích thước chữ tiêu đề */
     margin-bottom: 10px;
-    margin-left:30px;
+    margin-left: 30px;
 }
 
 .banner p {
     font-size: 18px; /* Kích thước chữ mô tả */
 }
+
 .carousel-control-next-icon {
     background-color: gray !important; /* Màu đen cho mũi tên */
 }
+
 .carousel-control-prev-icon {
     background-color: gray !important; /* Màu đen cho mũi tên */
 }
-.itemal{
-        display:flex;
-        justify-content:center;
-        align-items:center;
-        width:20%;
+
+.itemal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
 }
-    .back_color{
-        background:#F6FBFF;
+
+.back_color {
+    background: #F6FBFF;
 }
+
 a {
     position: relative;
     z-index: 1; /* Đảm bảo thẻ <a> hiển thị trên các phần tử khác */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .row {
+        flex-wrap: wrap; /* Cho phép các thẻ card xuống dòng */
+    }
+
+    .card-product {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .banner {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .banner .img-fluid {
+        width: 100%;
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .card-product {
+        height: auto; /* Điều chỉnh chiều cao tự động */
+    }
+
+    .banner h1 {
+        font-size: 20px; /* Điều chỉnh kích thước chữ tiêu đề */
+    }
+
+    .banner p {
+        font-size: 16px; /* Điều chỉnh kích thước chữ mô tả */
+    }
 }
